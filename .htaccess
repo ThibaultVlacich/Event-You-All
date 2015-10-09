@@ -1,0 +1,13 @@
+
+# Use utf8 by default
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+	# Activate rewriting
+	RewriteEngine on
+
+	# Redirect everything but a physical file to the application
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule . index.php [L]
+</IfModule>
