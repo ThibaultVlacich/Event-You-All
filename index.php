@@ -1,6 +1,6 @@
 <?php
 /**
- * Event-U-All index.php start-up file
+ * Event-You-All index.php start-up file
  *
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
  * @version 0.1.0-dev
