@@ -24,7 +24,7 @@ require_once 'paths.php';
 /**
  * Core classes inclusion
  */
-require_once SYS_DIR.DS.'Main.php';
+require_once SYS_DIR.'Main.php';
 
 /**
  * Execute Main process
