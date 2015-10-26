@@ -19,7 +19,7 @@ body {
   position: relative;
 }
 header {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.4);
 }
 nav.main-navigation {
   background: #CC0033;
@@ -38,6 +38,22 @@ nav.main-navigation ul li {
 }
 nav.main-navigation ul li.search {
   float: right;
+  margin-right: 10px;
+}
+nav.main-navigation ul li.search p {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+nav.main-navigation ul li.search button {
+  background: transparent;
+  border: 0;
+  font-size: 1.2em;
+}
+nav.main-navigation ul li.search input[type="search"] {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 1.2em;
 }
 nav.main-navigation ul li a {
   display: block;
