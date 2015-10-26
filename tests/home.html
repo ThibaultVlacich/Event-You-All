@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Event-You-All | Home page</title>
+  <link rel="stylesheet" href="../librairies/font-awesome-4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="home.css">
 </head>
 
@@ -20,6 +21,16 @@
         <li><a href="home.html">Thèmes</a></li>
         <li><a href="home.html">Articles</a></li>
         <li><a href="home.html">Forum</a></li>
+        <li class="search">
+          <form action="/search" method="POST">
+            <p>
+              <input type="search" name="search" id="search" placeholder="Recherche">
+              <button type="submit" name="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </p>
+          </form>
+        </li>
       </ul>
     </nav>
     <div class="slider">

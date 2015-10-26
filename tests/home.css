@@ -16,6 +16,7 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: 1000px;
+  position: relative;
 }
 header {
   background: rgba(255, 255, 255, 0.8);
@@ -34,6 +35,9 @@ nav.main-navigation ul {
 nav.main-navigation ul li {
   float: left;
   height: 50px;
+}
+nav.main-navigation ul li.search {
+  float: right;
 }
 nav.main-navigation ul li a {
   display: block;
