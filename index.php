@@ -24,6 +24,7 @@ require_once 'paths.php';
 /**
  * Core classes inclusion
  */
+require_once SYS_DIR.'Route.php';
 require_once SYS_DIR.'Main.php';
 
 /**
