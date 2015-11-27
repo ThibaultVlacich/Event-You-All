@@ -1,0 +1,115 @@
+.infoinitial div
+{
+    display:inline-block;
+}
+
+.statut
+{
+    margin-left:30%;
+    margin-right:25%
+}
+
+.topicforum
+{
+    text-decoration:none;
+    color:black;
+    border:2px black solid;
+    padding:2px;
+    box-shadow:2px 2px 0px black;
+}
+
+p
+{
+    text-align: justify;
+}
+
+.description
+{
+    border:1px black solid;
+    padding:10px;
+    border-radius:10px 10px 10px 10px;
+}
+
+.adresse
+{
+    border:1px black solid;
+    padding:10px;
+    border-radius:10px 10px 10px 10px;
+}
+
+h1
+{
+    font-weight:normal;
+}
+body
+{
+    margin:5%;
+}
+
+.entreprise,.telephone
+{
+    display:inline-block;
+}
+
+.partenaire,.site
+{
+    display:inline-block;
+}
+
+.image
+{
+    float:right;
+    width:40%;
+    vertical-align: top;
+}
+
+.article
+{
+    border:1px black solid;
+    padding:10px;
+    border-radius:10px 10px 10px 10px;
+}
+
+.incajocon a
+{
+    text-decoration:none;
+    color:black;
+    border:2px black solid;
+    padding:2px;
+    box-shadow:2px 2px 0px black;
+    margin-right:2%;
+}
+
+.note
+{
+    margin-top: 30px;
+}
+
+.badge
+{
+    text-decoration:none;
+    color:black;
+    border:2px black solid;
+    padding:2px;
+    box-shadow:2px 2px 0px black;
+    margin-right:2%;
+}
+
+.nbrpage
+{
+    text-decoration:none;
+    color:black;
+    border:1px solid black;
+    padding:4px;
+}
+
+.addcomment
+{
+    text-decoration:none;
+    color:black;
+    border:2px black solid;
+    padding:2px;
+    box-shadow:2px 2px 0px black;
+    margin-right:2%;
+    margin-left:60%;
+}

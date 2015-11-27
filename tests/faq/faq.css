@@ -1,0 +1,43 @@
+//parfait !!!!!!
+.blocinscri form {
+    width:80%;
+    margin: auto;
+}
+.centre {
+    position:relative;
+    width:80%;
+    margin: auto;
+}
+
+.plusieurs{
+    display:inline-block;
+}
+
+.long{
+    height:;
+    width: 100%
+}
+.label{
+    display:inline-block;
+    width: 20%;
+}
+.long input{
+    display:inline-block;
+    width:78%;
+}
+
+.gauche{
+    font-size:small;
+}
+label {
+    display:inline-block;
+    margin-top:30px;
+    //width:8%;
+    
+}
+.question{
+    font-weight:bold;
+}
+.answer{
+    color:grey;
+}

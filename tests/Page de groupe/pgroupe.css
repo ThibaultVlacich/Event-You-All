@@ -1,0 +1,18 @@
+h2{
+    margin-left: 40%;
+   // border: black solid;
+    text-align: justify;
+}
+form{
+    margin-left: 45%;
+    margin-bottom: 10px;
+}
+section{
+    margin: 0 auto;
+    width:90%;
+    border: black solid;
+    padding: 6px;
+}
+div{
+    margin-top: 20%;
+}

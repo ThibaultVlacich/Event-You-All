@@ -1,0 +1,19 @@
+section
+{
+    margin:0 auto;
+    width:50%;
+}
+
+label
+{
+    display:inline-block;
+    width : 50%;
+    margin-top:3%;
+}
+
+input
+{
+    display:inline-block;
+    width:45%;
+    margin-top:3%;
+}

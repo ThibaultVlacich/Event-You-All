@@ -1,0 +1,39 @@
+.clearer {
+    clear: both;
+}
+
+section
+{ width:50%;
+  margin:0 auto;
+  
+}
+
+
+label
+{   width:50%;
+    display:inline-block;
+    margin-top:20px;
+}
+
+.links {
+    margin-top: 30px;
+}
+
+.oublimdp
+{
+    float: left;
+}
+
+.register {
+    float: right;
+}
+
+.Seconnecter
+{
+    margin-top:20px;
+}
+
+#MotdePasse,#Mail
+{
+    width:30%;
+}

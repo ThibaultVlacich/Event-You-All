@@ -1,0 +1,36 @@
+//pb d'alignement des champs longs à droite
+.blocinscri form {
+    width:80%;
+    margin: auto;
+}
+.centre {
+    position:relative;
+    width:80%;
+    margin: auto;
+}
+.right {
+    diplay:inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.blocinscri form .long {
+    vertical-align: top;
+    width:80%;
+    margin-left:10px;
+    right:20px;
+    border:1px black solid;
+}
+label , input, .long{
+    display:inline-block;
+    margin-top:30px;
+    
+}
+label {
+    display:inline-block;
+    margin-top:30px;
+    //width:8%;
+    
+}
+#bouton{
+    width:200px;
+}

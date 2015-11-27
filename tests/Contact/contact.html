@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+A faire : - changer le lien html vers connexion
+          - inserrer la page dans le design du site (header, footer) et centrer le block
+-->
+<html>
+    <head>
+        <title>Event-You-All /Contact</title> <!-- changer le / en baton droit -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="contact.css"/>
+    </head>
+    <body>
+        <!--haut page-->
+        <section class="blocinscri">
+            <h2>Nous Contacter</h2>
+            <form method='post' action='truc.php' >
+                <div class="centre">
+                    <div class="long">
+                        <label for='nom'>Nom*  </label>
+                        <input type='text' name='nom' id='nom' maxlength="12" required placeholder="ex : Smith">
+                    </div>
+                    <div class="long">
+                        <div class="label">
+                            <label for='mail'>Adresse e-mail*  </label>
+                        </div>
+                        <input  type='email' name='mail' id='mail' maxlength="30" required placeholder="ex : boby.smith@event.com">
+                    </div>
+                    <div class="long">
+                        <div class="label">
+                            <label for='tel'>Telephone  </label>
+                        </div>
+                    <input type='text' name='tel' id='tel' maxlength="14" placeholder="ex : 03 80 73 48 76">
+                    </div>
+                </div>
+                <div class="centre">
+                <div class="long">
+                        <div class="label">
+                            <label for='descript'>Votre Message  </label>
+                        </div>
+                        <br>
+                        <textarea required name="descript" rows=10 cols=100>message</textarea>
+                </div>
+                 <p><input type='checkbox' name='condi' id='condi' required/> 
+                     <label for='condi'>J'accepte les conditions d'utilisation du site... *</label></p>
+                 <br>
+                 <p class="gauche">* : champs obligatoires</p>
+                 <p><input id="bouton" type='submit' value='Envoyer'/></p>
+                 
+                </div>
+            </form>
+        </section>
+        <!--bas page-->
+    </body>
+</html>

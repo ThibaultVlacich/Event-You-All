@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ModifierMonProfil</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="cssModifierMonProfil.css">
+    </head>
+    <body>
+        <div id="LATOTALE">
+            <h1>Mon Compte</h1>
+            <form method="post" action="traitement.php"> 
+                
+                <h2>Modifier mon Profil</h2>
+                <section>
+                <div class="LAPHOTO">   
+                        <p class="Principal">
+                            <img class="photoinconnu" src="images/photoinconnu.jpeg" alt="Photo d'inconnu"/>
+                        </p>
+                        <p>
+                            <input type="file" name="photoperso" class="photoperso"/><br/>
+						</p>
+                        <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
+                            <textarea class="textlaissercommentaire" name="commentaire" id="commentaire"></textarea>
+                </div>
+                <div class="infoperso">
+                    <div class="infoperso1">
+                            <input type="checkbox" id="Profilprive" name="Profilprive"/>
+                            <label for="Profilprive">Profil privé</label><br/>
+                            <p class="nom">Nom : Michard</p><p class="prenom">Prénom : Hugo</p><p class="datedenaissance">Date de naissance : 13/11/1961</p>
+                            <p id="sexe">Sexe :
+                                <input type="radio" name="sexe" id="Homme"/><label for="Homme">Homme</label>
+                                <input type="radio" name="sexe" id="Femme"/><label for="Femme">Femme</label>
+                            </p>
+                            <input type="button" value="Modifier mon mot de passe"/>
+                    </div>
+                    <div class="infoperso2"><br/>
+                                <label for="adressephysique">Adresse : </label><input id="adressephysique" name="adressephysique" type="text" placeholder="Ex : 12, rue Tsointsoin"/><br/>
+                                <label for="codepostal">Code Postal : </label><input id="codepostal" name="codepostal" type="number" min="0"/>
+                                <label for="Ville">Ville : </label><input id="Ville" name="Ville" type="text"/><br/>
+                                <label for="adressemail">Mon Adresse Mail : </label><input id="adressemail" name="adressemail" type="email"/><br/>
+                                <label for="telephone">Numéro de Téléphone : </label><input id="telephone" name="telephone" type="tel"/><br/>
+                                <label for="interet">Ce que j'aime : </label><textarea id="interet" name="interet"></textarea>
+                    </div>
+                </div>
+                <div class="affichage">
+                                <input type="checkbox" id="affichergroupes" name="affichergroupes"/><label for="affichergroupes">Afficher Groupes</label>
+                                <input type="checkbox" id="afficherevenements" name="afficherevenements"/><label for="afficherevenements">Afficher mes événements</label>
+                                <input type="checkbox" id="affichercrees" name="affichercrees"/><label for="affichercrees">Afficher mes événements créés</label>
+                 </div>             
+                </section>
+                <section class="terminer">
+                    <input class="envoyer" type="submit" value="Enregistrer les modifications"/>
+                    <input class="annuler" type="reset" value="Annuler"/>
+                </section>    
+            </form>
+        </div>
+    </body>
+</html>
