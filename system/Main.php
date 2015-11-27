@@ -51,7 +51,7 @@ class Main {
 				}
 			}
 			if ($error) {
-				$route = Route::route();
+				$route = Route::getRoute();
 				if ($route['app'] != 'media') {
 					header('HTTP/1.0 404 Not Found');
 					//Note::error(404, WLang::get('error_404'), 'die');
@@ -63,6 +63,7 @@ class Main {
 	 * Executes the main application and wrap it into a response for the client.
 	 */
   private function exec() {
+		$route = Route::getRoute();
 
   }
 }

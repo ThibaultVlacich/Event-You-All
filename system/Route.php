@@ -58,7 +58,7 @@ class Route {
 	 *
 	 * @return array The route
 	 */
-	public static function route() {
+	public static function getRoute() {
 		$route = self::$route;
 		if (!empty($route)) {
 			return $route;
