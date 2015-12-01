@@ -1,0 +1,100 @@
+/*-----general-----*/
+* {
+  box-sizing: border-box;
+}
+a:focus {
+	outline: none;
+}
+img {
+	border: none;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+html {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 0.75em;
+}
+body {
+  margin: 0;
+  padding: O;
+  //background-color: #E0E0E0;
+  background-color: white;
+}
+
+/*-----header-----*/
+.fluid-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  //max-width: 1000px;
+  position: relative;
+}
+header {
+  background: rgba(255, 255, 255, 0.4);
+}
+.logo{
+    display: block;
+    margin: 0 auto;
+    width:267px;
+}
+nav.main-navigation {
+  background: #CC0033;
+  color: white;
+  height: 50px;
+}
+nav.main-navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+}
+nav.main-navigation ul li {
+  float: left;
+  height: 50px;
+}
+nav.main-navigation ul li.search {
+  float: right;
+  margin-right: 10px;
+}
+nav.main-navigation ul li.search p {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+nav.main-navigation ul li.search button {
+  background: transparent;
+  border: 0;
+  font-size: 1.2em;
+}
+nav.main-navigation ul li.search input[type="search"] {
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 1.2em;
+}
+nav.main-navigation ul li a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+nav.main-navigation ul li a:hover {
+  background: white;
+  color: #CC0033;
+}
+nav.main-navigation ul::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
