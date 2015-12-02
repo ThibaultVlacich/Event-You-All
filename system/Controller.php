@@ -16,7 +16,10 @@ abstract class Controller {
 	 */
 	 protected $model;
 
-	 function __construct() {
+	 /**
+	  * Execute the asked method of the Controller
+		*/
+	 public final function render() {
 		 $route = Route::getRoute();
 
 		 $module = isset($route['params'][0]) ? $route['params'][0] : $this->default_module;

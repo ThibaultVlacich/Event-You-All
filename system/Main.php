@@ -100,6 +100,8 @@ class Main {
 						$controller->setModel(new $model_class());
 					}
 				}
+
+				$controller->render();
 			}
 		}
   }
