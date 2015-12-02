@@ -20,11 +20,21 @@ class Main {
 	 * Class constructor
 	 */
 	public function __construct() {
+		// Load the config files
+		$this->loadConfigs();
+
 		// Initializing the route
 		$this->route();
 
 		// Executes the application
 		$this->exec();
+	}
+
+	/**
+ 	 * Loads WConfig
+ 	 */
+	private function loadConfigs() {
+		Config::load('config', CONFIG_DIR.'config.php', 'php');
 	}
 
 	/**
