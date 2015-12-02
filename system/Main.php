@@ -5,6 +5,9 @@
 
 defined('EUA_VERSION') or die('Access denied');
 
+
+require_once SYS_DIR.'Controller.php';
+
 /**
  * Main is the main class that the application launches at start-up.
  *
@@ -65,6 +68,30 @@ class Main {
   private function exec() {
 		$route = Route::getRoute();
 
+		$app = isset($route['app']) ? $route['app'] : Config::get('app.default');
+		$app_dir = APPS_DIR.$route['app'].DS;
+
+		if (is_dir($app_dir)) {
+			include_once $app_dir.'controller.php';
+
+			$app_name_clear = str_replace(' ', '', ucwords(preg_replace('#[^a-zA-Z]+#', ' ', $route['app'])));
+			$app_class = $app_name_clear.'Controller';
+
+			if (class_exists($app_class) && get_parent_class($app_class) == 'Controller') {
+				$controller = new $app_class();
+
+				// Instantiate Model if exists
+				if (file_exists($app_dir.'model.php')) {
+					include_once $app_dir.'model.php';
+
+					$model_class = str_replace('Controller', 'Model', $app_class);
+
+					if (class_exists($model_class)) {
+						$controller->setModel(new $model_class());
+					}
+				}
+			}
+		}
   }
 }
 
