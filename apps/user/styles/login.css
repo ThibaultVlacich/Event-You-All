@@ -1,0 +1,73 @@
+div.app-user-login {
+  width: 500px;
+  margin: 0 auto;
+  border: 1 px solid #E0E0E0;
+  border-radius: 5px;
+}
+
+div.app-user-login h2 {
+  width:60%;
+  margin:0 auto;
+}
+
+
+label
+{   width:50%;
+    display:inline-block;
+}
+
+#MotdePasse
+{
+    width:50%;
+    display:inline-block;
+    margin-top:20px
+}
+
+.links {
+    margin-top: 30px;
+}
+
+.oublimdp
+{
+    float: left;
+}
+
+.register {
+    float: right;
+}
+
+.Seconnecter
+{
+    margin-top:20px;
+}
+
+#MotdePasse,#Mail
+{
+    width:30%;
+}
+
+.corpsconnexion
+{
+    border:1px black solid;
+    padding:2%;
+}
+
+h1
+{
+    font-weight : normal;
+    color : white;
+    border : 1px black solid;
+    background-color: #CC0033;
+    padding-left:2%;
+    padding-right:2%
+}
+
+footer
+{
+    margin-top: 10%
+}
+
+.main-navigation
+{
+    margin-bottom:10%
+}
