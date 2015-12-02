@@ -38,39 +38,39 @@ class Main {
 	}
 
 	/**
-		 * Initializes the route.
-		 * Prevents browser from trying to load a physical file.
-		 */
-		private function route() {
-			Route::init();
-			// Checks if the browser tried to load a physical file
-			$error = false;
-			$query = Route::getQuery();
-			$length = strlen($query);
-			if (substr($query, $length-3, 1) == '.') {
-				$ext = substr($query, $length-2, 2);
-				if ($ext == 'js') {
-					$error = true;
-				}
-			} else if (substr($query, $length-4, 1) == '.') {
-				$ext = substr($query, $length-3, 3);
-				if (in_array($ext, array('css', 'png', 'jpg', 'gif', 'ico', 'svg', 'eot', 'ttf'))) {
-					$error = true;
-				}
-			} else if (substr($query, $length-5, 1) == '.') {
-				$ext = substr($query, $length-4, 4);
-				if (in_array($ext, array('jpeg', 'woff'))) {
-					$error = true;
-				}
+	 * Initializes the route.
+	 * Prevents browser from trying to load a physical file.
+	 */
+	private function route() {
+		Route::init();
+		// Checks if the browser tried to load a physical file
+		$error = false;
+		$query = Route::getQuery();
+		$length = strlen($query);
+		if (substr($query, $length-3, 1) == '.') {
+			$ext = substr($query, $length-2, 2);
+			if ($ext == 'js') {
+				$error = true;
 			}
-			if ($error) {
-				$route = Route::getRoute();
-				if ($route['app'] != 'media') {
-					header('HTTP/1.0 404 Not Found');
-					//Note::error(404, WLang::get('error_404'), 'die');
-				}
+		} else if (substr($query, $length-4, 1) == '.') {
+			$ext = substr($query, $length-3, 3);
+			if (in_array($ext, array('css', 'png', 'jpg', 'gif', 'ico', 'svg', 'eot', 'ttf'))) {
+				$error = true;
+			}
+		} else if (substr($query, $length-5, 1) == '.') {
+			$ext = substr($query, $length-4, 4);
+			if (in_array($ext, array('jpeg', 'woff'))) {
+				$error = true;
 			}
 		}
+		if ($error) {
+			$route = Route::getRoute();
+			if ($route['app'] != 'media') {
+				header('HTTP/1.0 404 Not Found');
+				//Note::error(404, WLang::get('error_404'), 'die');
+			}
+		}
+	}
 
   /**
 	 * Executes the main application and wrap it into a response for the client.
