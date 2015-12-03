@@ -29,6 +29,7 @@ require_once 'paths.php';
  require_once SYS_DIR.'Route.php';
  require_once SYS_DIR.'Config.php';
  require_once SYS_DIR.'Request.php';
+ require_once SYS_DIR.'Tools.php';
  require_once SYS_DIR.'Main.php';
 
 /**
