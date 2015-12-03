@@ -43,7 +43,7 @@ class UserController extends Controller {
 		}
 
 		if ($this->session->isConnected()) {
-			//header('Location: '. $redirect);
+			return array('errors' => array('Vous êtes déjà connecté !'));
 		}
 
 		// Vars given to trigger login process?
