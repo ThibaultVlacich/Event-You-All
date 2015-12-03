@@ -1,0 +1,93 @@
+div.app-user {
+  width: 400px;
+  margin: 50px auto;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+
+div.app-user h2 {
+  margin: 0;
+  padding: 10px;
+  color: white;
+  background-color: #CC0033;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+div.app-user div.form {
+  padding: 10px 20px;
+}
+
+div.app-user div.form span.required {
+  color: #CC0033;
+  font-size: bold;
+}
+
+div.app-user div.form label {
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+div.app-user div.form div.checkbox label {
+  width: auto;
+  display: inline-block;
+}
+
+div.app-user div.form input, div.app-user div.form select {
+  width: 100%;
+  display: block;
+  min-height: 34px;
+  padding: 7px 8px;
+  font-size: 13px;
+  color: #333;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  transition: all 0.15s ease-in-out;
+}
+
+div.app-user div.form input:focus,div.app-user div.form select:focus {
+  border-color: #CC0033;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(204, 0, 51, 0.6);
+}
+
+div.app-user div.form div.checkbox input {
+  width: auto;
+  display: inline-block;
+  min-height: 0px;
+  padding: 0;
+  box-shadow: none;
+}
+
+div.app-user div.form input.submit {
+  transition: all 0.3s ease;
+}
+
+div.app-user div.form input.submit:hover {
+  color: white;
+  background-color: #CC0033;
+}
+
+div.app-user div.form .links {
+    margin: 30px 0 10px 0;
+}
+
+div.app-user div.form .links::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+div.app-user div.form .links .oublimdp {
+    float: left;
+}
+
+div.app-user div.form .links .register {
+    float: right;
+}
