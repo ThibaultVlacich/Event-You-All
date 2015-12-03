@@ -106,6 +106,6 @@ class UserController extends Controller {
 		header('Location: '.Route::getDir());
 	}
   }
-}
+
 
 ?>

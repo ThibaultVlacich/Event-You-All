@@ -42,7 +42,27 @@ class EventsModel {
       }
 
   	}
-	public function createevent(){
+	/*
+	 *Create event in database
+	
+	*/
+	public function createevent()
+	{
+		if (!in_array(null,$data,true))
+		{
+			
+			$req=$bdd->prepare('INSERT INTO events (nom,mail,theme,type,date_de,time_de,date_fi,time_fi,nbpl,price,mcef,priv,gpadm,padm,telorg,
+			blist,norg,nentr,partn,weborg,reg,adr,code_p,ville,pays,descript,bann,comm,nott,sujet,condi)
+			    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+			$data=Request::getAssoc(array('nom','mail','theme','type','date_de','time_de',
+			'date_fi','time_fi','nbpl','price','mclef','priv','gpadm','padm','telorg',
+			'blist','norg','nentr','partn','weborg','reg'
+			,'adr','code_p','ville','pays','descript'
+			,'bann','comm','nott','sujet','condi'))
+			
+		}
+	}
+		/*
 	 if ( isset($_POST['nom']) and isset($_POST['mail']) and isset($_POST['theme'])
 			and isset($_POST['type']) and isset($_POST['date_de']) and isset($_POST['time_de'])
 		and isset($_POST['date_fi']) and isset($_POST['time_fi']) and isset($_POST['nbpl']) and isset($_POST['price'])
@@ -65,8 +85,8 @@ class EventsModel {
 		}
 		else{
 			//echo('Erreur de Merde !');
-		}
- }
+		}*/
+
 
 }
 
