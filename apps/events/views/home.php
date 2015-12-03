@@ -34,7 +34,7 @@
      <section>
          <ul>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -49,22 +49,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
-                 </div>
-                 <div class="event_text">
-                    <h2>Nom</h2>
-                    <p>Description</p>
-                    <p>Lieu</p>
-                    <p>Date</p>
-                    <div class="liens_ima">
-                        <a href="home.html" ><img src="<?php echo Config::get('config.base') ; ?>/apps/events/<?php echo Config::get('config.base') ; ?>/apps/events/images/coeur.png" alt="like" class="coeur"></a>
-                        <a href="home.html" ><img src="<?php echo Config::get('config.base') ; ?>/apps/events/images/croix.png" alt="add" class="croix"></a>
-                    </div>
-                    <img src="<?php echo Config::get('config.base') ; ?>/apps/events/images/triangle rot.png" alt="fleche" class="fleche">
-                 </div>
-             </li>
-             <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -79,7 +64,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -94,7 +79,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -109,7 +94,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -124,7 +109,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -139,7 +124,22 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg">
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 </div>
+                 <div class="event_text">
+                    <h2>Nom</h2>
+                    <p>Description</p>
+                    <p>Lieu</p>
+                    <p>Date</p>
+                    <div class="liens_ima">
+                        <a href="home.html" ><img src="<?php echo Config::get('config.base') ; ?>/apps/events/images/coeur.png" alt="like" class="coeur"></a>
+                        <a href="home.html" ><img src="<?php echo Config::get('config.base') ; ?>/apps/events/images/croix.png" alt="add" class="croix"></a>
+                    </div>
+                    <img src="<?php echo Config::get('config.base') ; ?>/apps/events/images/triangle rot.png" alt="fleche" class="fleche">
+                 </div>
+             </li>
+             <li>
+                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
