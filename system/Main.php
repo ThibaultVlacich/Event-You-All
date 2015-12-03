@@ -27,6 +27,9 @@ class Main {
 		// Initializing the route
 		$this->route();
 
+		// Initializing sessions
+		$this->setupSession();
+
 		// Executes the application
 		$this->exec();
 	}
@@ -72,6 +75,20 @@ class Main {
 			}
 		}
 	}
+
+
+		/**
+		 * Initializes session and check the flood condition
+		 */
+		private function setupSession() {
+			// Instanciates it
+			$session = System::getSession();
+
+			// Anti-flood checking
+			if (!$session->check_flood()) {
+				$_POST = array();
+			}
+		}
 
   /**
 	 * Executes the main application and wrap it into a response for the client.
