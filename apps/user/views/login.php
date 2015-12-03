@@ -4,7 +4,7 @@
     <form id="Connexion" method="post" action="<?php echo Config::get('config.base'); ?>/user/login">
       <div>
         <label for="email">Email</label><input name="email" id="email" type="text" required /><br/>
-        <label for="password">Mot de Passe</label><input id="password" type="password" required /><br/>
+        <label for="password">Mot de Passe</label><input name="password" id="password" type="password" required /><br/>
         <input type="submit" value="Se Connecter" class="submit" />
       </div>
     </form>
