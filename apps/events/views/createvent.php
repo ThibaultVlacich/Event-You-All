@@ -17,7 +17,7 @@ A faire : - changer le lien html vers connexion
         <section class="blocinscri">
             <form method='post' action='http://localhost/Event-You-All/events/result_cr_event' >
                 <h2>Créer un nouvel événement</h2>
-              <div class="create_part">
+              <div class="create_part" class="r1">
                 <h3>1-A propos de l'événement</h3>
                 
                 <div class="centre">
