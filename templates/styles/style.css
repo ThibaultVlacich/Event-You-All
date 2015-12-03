@@ -53,6 +53,17 @@ div.main-head header {
   position: relative;
 }
 
+div.main-head header .socials {
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+div.main-head header .socials .fa {
+  margin: 50px 10px;
+  margin-bottom: 0;
+  font-size: 50px;
 }
 
 div.main-head header .logo{
