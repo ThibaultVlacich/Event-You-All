@@ -8,9 +8,6 @@ class UserView extends View {
   public function login() {
     $this->setTemplate('/apps/user/views/login.php');
   }
-  public function detail() {
-    $this->setTemplate('/apps/events/views/Page_evenement.php');
-  }
 }
 
 ?>
