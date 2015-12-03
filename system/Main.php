@@ -96,13 +96,13 @@ class Main {
   private function exec() {
 		$route = Route::getRoute();
 
-		$app = isset($route['app']) ? $route['app'] : Config::get('app.default');
-		$app_dir = APPS_DIR.$route['app'].DS;
+		$app = !empty($route['app']) ? $route['app'] : Config::get('config.defaultapp');
+		$app_dir = APPS_DIR.$app.DS;
 
-		if (is_dir($app_dir)) {
+		if (is_dir($app_dir) && file_exists($app_dir.'controller.php')) {
 			include_once $app_dir.'controller.php';
 
-			$app_name_clear = str_replace(' ', '', ucwords(preg_replace('#[^a-zA-Z]+#', ' ', $route['app'])));
+			$app_name_clear = str_replace(' ', '', ucwords(preg_replace('#[^a-zA-Z]+#', ' ', $app)));
 			$app_class = $app_name_clear.'Controller';
 
 			if (class_exists($app_class) && get_parent_class($app_class) == 'Controller') {

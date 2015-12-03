@@ -32,8 +32,6 @@ abstract class Controller {
 	 public final function execute($module = '', $params = array()) {
 		 if(method_exists($this, $module)) {
 			 return $this->$module($params);
-		 } else if (!empty($this->default_module) && method_exists($this, $this->default_module)) {
-			 return $this->$default_module($params);
 		 }
 	 }
 

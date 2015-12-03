@@ -2,6 +2,7 @@
 
 $config = array(
   'base'        => 'http://localhost/Event-You-All',
+  'defaultapp'  => 'events',
   'site_title'  => 'Event-You-All',
   'description' => '',
   'lang'        => 'fr_FR',
