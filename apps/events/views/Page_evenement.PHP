@@ -1,49 +1,11 @@
-<!Doctype html>
-<html lang="en">
-    <head>
-        <title>Page événement</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="cssPageevenement.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="home.css">
-    </head>
-    <body>
-        <div class="fluid-wrapper">
-    <header>
-      <div class="socials"></div>
-      <img src="logo.png" alt="Event-You-All logo" class="logo">
-      <div class="login"></div>
-    </header>
-    <nav class="main-navigation">
-      <ul>
-        <li><a href="home.html">Accueil</a></li>
-        <li><a href="home.html">Thèmes</a></li>
-        <li><a href="home.html">Articles</a></li>
-        <li><a href="home.html">Forum</a></li>
-        <li class="search">
-          <form action="/search" method="POST">
-            <p>
-              <button type="submit" name="submit">
-                <i class="fa fa-search"></i>
-              </button>
-              <input type="search" name="search" id="search" placeholder="Recherche">
-            </p>
-          </form>
-        </li>
-      </ul>
-    </nav>
-    <div class="slider">
 
-    </div>
-            
-  </div>
         <img src="http://www.institut-de-france.fr/sites/institut-de-france.fr/files/styles/diaporama/public/institut_900_320.jpg?itok=MAo-_W0J" id="imgevent" alt="image évènement"/>
     <section id="taille">
         <h1 id="titre">Visite à l'académie francaise</h1>
         <section class="infoinitial">
             <div class="debutfin">
                 <p>
-                    Début : xx/xx/xxxx                   
+                    Début : xx/xx/xxxx
                 </p>
                 <p>
                     Fin : xx/xx/xxxx
@@ -122,7 +84,7 @@ Le Rapport de 1990 sur les rectifications orthographiques préconise la régular
                     S'incrire
                 </a>
             </div>
-            </li>        
+            </li>
             <li><div class="bouton">
                 <a href="TJRPAS.com">
                     Ajouter aux favoris
@@ -139,7 +101,7 @@ Le Rapport de 1990 sur les rectifications orthographiques préconise la régular
             </ul>
             <div>
                 <p class="note">
-                    Note moyenne : 
+                    Note moyenne :
                 </p>
                 <div class="bouton">
                 <a href="rhnzearazer" class="badge">

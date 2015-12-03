@@ -11,7 +11,8 @@ class EventsController extends Controller {
    function login() {
      return array('pseudo' => 'lol');
    }
-
+ function detail() {
+  }
   /**
 	 * The Signup action allows a user to register a new account.
 	 *
