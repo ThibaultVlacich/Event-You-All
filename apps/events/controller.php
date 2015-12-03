@@ -13,6 +13,9 @@ class EventsController extends Controller {
    }
  function detail() {
   }
+  
+ function create() {
+  }
   /**
 	 * The Signup action allows a user to register a new account.
 	 *
