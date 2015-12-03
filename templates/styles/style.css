@@ -22,7 +22,7 @@ html {
   padding: 0;
   color: black;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 0.75em;
+  font-size: 0.8em;
 }
 body {
   margin: 0;
@@ -31,26 +31,74 @@ body {
   background-color: white;
 }
 
-/*-----header-----*/
 .fluid-wrapper {
   margin: 0 auto;
   width: 100%;
   //max-width: 1000px;
   position: relative;
 }
-header {
-  background: rgba(255, 255, 255, 0.4);
+
+/*
+ * Main header
+ */
+div.main-head {
+  background: rgba(255, 255, 255, 0.7);
+  height: 150px;
 }
-.logo{
+
+div.main-head header {
+  max-width: 1200px;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+}
+
+}
+
+div.main-head header .logo{
     display: block;
     margin: 0 auto;
-    width:267px;
+    height: 150px;
 }
+
+div.main-head header .login {
+  height: 150px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+div.main-head header .login a.button {
+  text-decoration: none;
+  display: inline-block;
+  width: 125px;
+  text-align: center;
+  height: 34px;
+  margin: 58px 5px;
+  margin-bottom: 0;
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  color: #333;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.15s ease-in-out;
+}
+
+div.main-head header .login a.button:hover {
+  color: white;
+  background-color: #CC0033;
+  border-color: #CC0033;
+}
+
 nav.main-navigation {
   background: #CC0033;
   color: white;
   height: 50px;
 }
+
 nav.main-navigation ul {
   list-style-type: none;
   margin: 0 auto;
@@ -58,14 +106,17 @@ nav.main-navigation ul {
   padding: 0;
   height: 50px;
 }
+
 nav.main-navigation ul li {
   float: left;
   height: 50px;
 }
+
 nav.main-navigation ul li.search {
   float: right;
   margin-right: 10px;
 }
+
 nav.main-navigation ul li.search p {
   border: 1px solid white;
   background-color: white;
@@ -73,18 +124,21 @@ nav.main-navigation ul li.search p {
   margin: 9px;
   padding: 5px;
 }
+
 nav.main-navigation ul li.search button {
   background: transparent;
   color: black;
   border: 0;
   font-size: 1.2em;
 }
+
 nav.main-navigation ul li.search input[type="search"] {
   border: 0;
   background: transparent;
   color: black;
   font-size: 1.2em;
 }
+
 nav.main-navigation ul li a {
   display: block;
   height: 50px;
@@ -97,10 +151,12 @@ nav.main-navigation ul li a {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
 nav.main-navigation ul li a:hover {
   background: white;
   color: #CC0033;
 }
+
 nav.main-navigation ul::after {
   content: " ";
   display: block;

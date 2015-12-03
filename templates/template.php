@@ -4,19 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Event-You-All | Home page</title>
-  <link rel="stylesheet" href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo Config::get('config.base') ; ?>/librairies/normalize/normalize.css">
-  <link rel="stylesheet" href="<?php echo Config::get('config.base') ; ?>/templates/styles/style.css">
+  <link href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo Config::get('config.base') ; ?>/librairies/normalize/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo Config::get('config.base') ; ?>/templates/styles/style.css" rel="stylesheet" type="text/css" />
   <?php echo $app_rendered['css']; ?>
 </head>
 
 <body>
   <div class="fluid-wrapper">
-    <header>
-      <div class="socials"></div>
-      <img src="<?php echo Config::get('config.base') ;?>/templates/images/header/logo.png" alt="Event-You-All logo" class="logo">
-      <div class="login"></div>
-    </header>
+    <div class="main-head">
+      <header>
+        <div class="socials">
+        </div>
+        <img src="<?php echo Config::get('config.base') ;?>/templates/images/header/logo.png" alt="Event-You-All logo" class="logo">
+        <?php
+          $session = System::getSession();
+        ?>
+        <div class="login<?php $session->isConnected() ? ' connected' : ''; ?>">
+          <?php
+            if ($session->isConnected()) {
+          ?>
+            Bienvenue <?php echo $_SESSION['nickname']; ?>
+            <br><br>
+            <a href="<?php echo Config::get('config.base'); ?>/user/my_account">Mon compte</a> - <a href="<?php echo Config::get('config.base'); ?><?php echo Config::get('config.base'); ?>/user/logout">Se déconnecter</a>
+          <?php
+            } else {
+          ?>
+            <a href="<?php echo Config::get('config.base'); ?>/user/login" class="button">Se connecter</a>
+            <a href="<?php echo Config::get('config.base'); ?>/user/register" class="button">S'inscrire</a>
+          <?php
+            }
+          ?>
+        </div>
+      </header>
+    </div>
     <nav class="main-navigation">
       <ul>
         <li><a href="<?php echo Config::get('config.base') ;?>">Accueil</a></li>
