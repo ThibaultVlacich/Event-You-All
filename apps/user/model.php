@@ -6,8 +6,6 @@ class UserModel {
 
   public function __construct() {
     $this->db = System::getDb();
-
-    //$this->db->declareTable('users');
   }
 
 

@@ -56,8 +56,8 @@ abstract class Controller {
 		$render = $this->view->render($module, $model);
 
 		// Get needed CSSs and JSs
-		$css = $this->view->getGlobalVars('css');
-		$js = $this->view->getGlobalVars('js');
+		$css = $this->view->getGlobalVar('css');
+		$js = $this->view->getGlobalVar('js');
 
 		return array(
 			'css' => $css,

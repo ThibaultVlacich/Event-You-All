@@ -95,19 +95,6 @@ class View {
 		}
 	}
 
-  public function getGlobalVars($stack_name) {
-    $data = '';
-
-    foreach (self::$global_vars as $stack => $values) {
-    	$var = $this->getGlobalVar($stack);
-    	if (!empty($var)) {
-    		$data .= $var;
-    	}
-    }
-
-    return $data;
-  }
-
   /**
 	 * Renders the view
    *
