@@ -84,13 +84,13 @@ A faire : - changer le lien html vers connexion
                         <label for='nbpl'>Capacité*  </label>
                          </div>
                     <div class="fill">
-                        <input type="number" name="nbpl" id="nbpl" required min="2" step="10" placeholder="10">
+                        <input type="number" name="nbpl" id="nbpl" required min="2" placeholder="10">
                     </div>
                          <div class="label">
                         <label for='price'>Prix (euros)*  </label>
                          </div>
                     <div class="fill">
-                        <input type="number" name="price" id="price" required min="0" step="10" placeholder="0">
+                        <input type="number" name="price" id="price" required min="0" placeholder="0">
                    
                     </div>
                         <div class="label">
