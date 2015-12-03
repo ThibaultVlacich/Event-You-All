@@ -43,9 +43,7 @@ class UserController extends Controller {
 		}
 
 		if ($this->session->isConnected()) {
-			$this->setHeader('Location', $redirect);
-
-			return Note::error('user_already_connected', 'No need to access to the login form since you are already connected.');
+			//header('Location: '. $redirect);
 		}
 
 		// Vars given to trigger login process?
@@ -57,15 +55,15 @@ class UserController extends Controller {
 		if (!in_array(null, $data, true)) {
 			$data += Request::getAssoc(array('remember', 'time'));
 
-			if (!empty($data['nickname']) && !empty($data['password'])) {
+			if (!empty($data['email']) && !empty($data['password'])) {
 				// User asks to be auto loged in => change the cookie lifetime to WSession::REMEMBER_TIME
 				$remember_time = !empty($data['remember']) ? Session::REMEMBER_TIME : abs(intval($data['time'])) * 60;
 
 				// Start login process
-				switch ($this->session->createSession($data['nickname'], $data['password'], $remember_time)) {
+				switch ($this->session->createSession($data['email'], $data['password'], $remember_time)) {
 					case Session::LOGIN_SUCCESS:
 						// Update activity
-						$this->model->updateLastActivity($_SESSION['userid']);
+						//$this->model->updateLastActivity($_SESSION['userid']);
 
 						if (empty($_COOKIE['wsid'])) {
 							array_push($errors, 'Les cookies ne sont pas acceptés par votre navigateur !');
@@ -79,11 +77,11 @@ class UserController extends Controller {
 						array_push($errors, 'Nombre de tentatives de connexion maximale atteinte ! Ré-essayez plus tard !');
 						break;
 					case 0:
-						array_push($errors, 'Erreur inconnue lors de la connexion');
+						array_push($errors, 'Couple Login / Mot de passe incorrect.');
 						break;
 				}
 			} else {
-				array_push($errors, 'Couple Login / Mot de passe incorrect');
+				array_push($errors, 'Les champs requis n\'ont pas été rensignés.');
 			}
 		}
 
@@ -112,7 +110,7 @@ class UserController extends Controller {
 	 * @return array Data given
 	 */
 	protected function register() {
-		$data = Request::getAssoc(array('nickname', 'password', 'password_conf', 'email', 'firstname', 'lastname', 'newsletter'));
+		$data = Request::getAssoc(array('nickname', 'password', 'password_confirm', 'email', 'firstname', 'lastname', 'cgu'));
 
 		if (!in_array(null, $data, true)) {
 			$errors = array();
@@ -124,7 +122,7 @@ class UserController extends Controller {
 
 			// Matching passwords
 			if (!empty($data['password'])) {
-				if ($data['password'] === $data['password_conf']) {
+				if ($data['password'] === $data['password_confirm']) {
 					$data['password'] = sha1($data['password']);
 				} else {
 					$errors[] = 'Les mots de passe saisis ne concordent pas.';
@@ -153,9 +151,11 @@ class UserController extends Controller {
 			} else {
 				return array('data' => $data, 'errors' => $errors);
 			}
-		}
+		} else if(Request::getMethod() == 'POST') {
+      return array('data' => $data, 'errors' => array('Tous les champs requis n\'ont pas été renseignés'));
+    }
 
-		return array('data' => $data);
+		return array('data' => $data, 'errors' => array());
 	}
 }
 

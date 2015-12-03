@@ -70,22 +70,21 @@ class UserModel {
    */
   public function createUser(array $data) {
     $prep = $this->db->prepare('
-      INSERT INTO users(nickname, password, firstname, lastname, date_naissance, date_inscription, sex, email, telephone, access, adresse, code_postal, ville)
-      VALUES (:nickname, :password, :firstname, :lastname, :date_naissance, :date_inscription, :sex, :email, :telephone, :access, :adresse, :code_postal, :ville)
+      INSERT INTO users(nickname, email, password, firstname, lastname, date_naissance, date_inscription, sex, telephone, access, adresse, code_postal, ville)
+      VALUES (:nickname, :email, :password, :firstname, :lastname, :date_naissance, NOW(), :sex, :telephone, :access, :adresse, :code_postal, :ville)
     ');
 
-    $prep->bindParam(':nickname', $data['pseudonyme']);
+    $prep->bindParam(':nickname', $data['nickname']);
+    $prep->bindParam(':email', $data['email']);
     $prep->bindParam(':password', $data['password']);
     $prep->bindParam(':firstname', $data['firstname']);
     $prep->bindParam(':lastname', $data['lastname']);
     $prep->bindParam(':date_naissance', $date['date_naissance']);
-    $prep->bindParam(':date_inscription', $date['date_inscription']);
     $prep->bindParam(':sex', $data['sex']);
-    $prep->bindParam(':email', $data['email']);
     $prep->bindParam(':telephone', $data['telephone']);
-    $prep->bindParam(':access', 1);
+    $prep->bindParam(':access', $data['access'], PDO::PARAM_INT);
     $prep->bindParam(':adresse', $data['adresse']);
-    $prep->bindParam(':code_postale', $date['code_postale']);
+    $prep->bindParam(':code_postal', $date['code_postal']);
     $prep->bindParam(':ville', $date['ville']);
 
     if ($prep->execute()) {
@@ -105,7 +104,7 @@ class UserModel {
    */
   public function matchUser($nickname, $password) {
     $prep = $this->db->prepare('
-      SELECT id, nickname, password, email, firstname, lastname, country, access
+      SELECT id, nickname, password, email, firstname, lastname, pays, access
       FROM users
       WHERE (nickname = :nickname OR email = :nickname) AND password = :password
     ');

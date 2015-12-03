@@ -1,6 +1,22 @@
 <div class="app-user app-user-register">
   <h2>Inscription</h2>
   <div class="form">
+    <?php
+      if (!empty($model['errors'])) {
+    ?>
+    <div class="errors">
+      <i class="fa fa-exclamation-triangle"></i>
+      <ul>
+      <?php
+        foreach ($model['errors'] as $error) {
+          echo '<li>'.$error.'</li>';
+        }
+      ?>
+      </ul>
+    </div>
+    <?php
+      }
+    ?>
     <form id="register" method="post" action="<?php echo Config::get("config.base"); ?>/user/register">
       <div>
         <label for="nickname">Pseudonyme <span class="required">*</span></label> <input type="text" name="nickname" id="nickname" required />
