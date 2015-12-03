@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller {
+class EventsController extends Controller {
   var $default_module = 'lol';
 
   /**

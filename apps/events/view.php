@@ -1,6 +1,6 @@
 <?php
 
-class UserView extends View {
+class EventsView extends View {
   function __construct() {
       $this->assign('css', Config::get('config.base').'/apps/user/styles/login.css');
   }

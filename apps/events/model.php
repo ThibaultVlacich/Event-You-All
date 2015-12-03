@@ -1,6 +1,6 @@
 <?php
 
-class UserModel {
+class EventsModel {
 
   protected $db;
 
