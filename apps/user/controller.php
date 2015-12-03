@@ -68,23 +68,22 @@ class UserController extends Controller {
 						$this->model->updateLastActivity($_SESSION['userid']);
 
 						if (empty($_COOKIE['wsid'])) {
-							array_push($errors, 'user_cookie_not_accepted');
+							array_push($errors, 'Les cookies ne sont pas acceptés par votre navigateur !');
 							$cookie = false;
 						} else {
 							// Redirect
-							array_push($errors, 'user_login_success');
-							$this->setHeader('Location', $redirect);
+							header('Location: '.$redirect);
 						}
 						break;
 					case Session::LOGIN_MAX_ATTEMPT_REACHED:
-						array_push($errors, 'user_login_max_attempt');
+						array_push($errors, 'Nombre de tentatives de connexion maximale atteinte ! Ré-essayez plus tard !');
 						break;
 					case 0:
-						array_push($errors, 'user_login_error');
+						array_push($errors, 'Erreur inconnue lors de la connexion');
 						break;
 				}
 			} else {
-				array_push($errors, 'user_bad_data');
+				array_push($errors, 'Couple Login / Mot de passe incorrect');
 			}
 		}
 

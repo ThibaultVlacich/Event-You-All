@@ -14,7 +14,7 @@
       ?>
       </ul>
     </div>
-  <?php
+    <?php
       }
     ?>
     <form id="Connexion" method="post" action="<?php echo Config::get('config.base'); ?>/user/login">
