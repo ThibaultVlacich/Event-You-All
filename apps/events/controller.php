@@ -1,45 +1,28 @@
 <?php
 
 class EventsController extends Controller {
-  var $default_module = 'lol';
+  var $default_module = 'index';
 
-  /**
-	 * The Signup action allows a user to register a new account.
-	 *
-	 * @return array Data given
-	 */
-   function login() {
-     return array('pseudo' => 'lol');
-   }
  function detail() {
-  }
-  
- function create() {
-  }
- function index() {
-  }
- function result_cr_event(){
-	 $this->model->createevent();
- }
-  /**
-	 * The Signup action allows a user to register a new account.
-	 *
-	 * @return array Data given
-	 */
-  function signup() {
 
-    $data = Request::getAssoc(array('pseudonyme', 'password', 'password_confirm', 'firstname', 'lastname', 'date_naissance', 'date_inscription', 'sex', 'email', 'telephone', 'access', 'adresse', 'code_postal', 'ville'));
+ }
+
+  function create() {
+    $data = Request::getAssoc(array('nom','mail','theme','type','date_de','time_de',
+    'date_fi','time_fi','nbpl','price','mclef','priv','gpadm','padm','telorg',
+    'blist','norg','nentr','partn','weborg','reg'
+    ,'adr','code_p','ville','pays','descript'
+    ,'bann','comm','nott','sujet','condi'));
 
     if (!in_array(null, $data, true)) {
-      $errors = array();
-
-      if($data['password'] == $data['password_confirm']) {
-        $data['password'] = sha1($data['password']);
-      }
-    } else {
-      include 'views/signup.php';
+      $this->model->createEvent($data);
     }
-  }
+ }
+
+ function index() {
+
+ }
+
 }
 
 ?>

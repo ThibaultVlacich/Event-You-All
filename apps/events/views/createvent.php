@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<!--
-A faire : - changer le lien html vers connexion
-          - inserrer la page dans le design du site (header, footer) et centrer le block
-          - mettre un espace plus large entre deux trucs sur la même ligne
--->
-<html>
-    <head>
-        <title>Event-You-All /Creation événement</title> <!-- changer le / en baton droit -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="createvent.css"/>
-    </head>
-    
-    <body>
-        <!--haut page-->
         <section class="blocinscri">
             <form method='post' action='http://localhost/Event-You-All/events/result_cr_event' >
                 <h2>Créer un nouvel événement</h2>
               <div class="create_part" class="r1">
                 <h3>1-A propos de l'événement</h3>
-                
+
                 <div class="centre">
-                    
+
                         <div class="label">
                             <label for='nom'>Nom*  </label>
                         </div>
@@ -66,7 +50,7 @@ A faire : - changer le lien html vers connexion
                     <br>
                     <!--les champs ne marchent pas pour firefox d'où le placeholder...-->
                          <div class="label">
-                        <label for='date_de'>Début*  </label> 
+                        <label for='date_de'>Début*  </label>
                          </div>
                     <div class="fill">
                         <input type="date" name="date_de" id="date_de" required placeholder="dd/mm/yyyy">
@@ -91,7 +75,7 @@ A faire : - changer le lien html vers connexion
                          </div>
                     <div class="fill">
                         <input type="number" name="price" id="price" required min="0" placeholder="0">
-                   
+
                     </div>
                         <div class="label">
                             <label for='mclef'>Mots clefs  </label>
@@ -100,8 +84,8 @@ A faire : - changer le lien html vers connexion
                         <input type='text' name='mclef' id='mclef' maxlength="100" placeholder="motclef1, motclef2, motclef3...">
                     </div>
                     <br>
-                    <p><input type='checkbox' name='priv' id='priv'/> 
-                        
+                    <p><input type='checkbox' name='priv' id='priv'/>
+
                      <label for='priv'>Privé</label></p>
                 </div>
                 <br>
@@ -109,14 +93,14 @@ A faire : - changer le lien html vers connexion
                 <div class="create_part2">
                     <h3>2-Paramètres d'inscription (si événement privé)</h3>
                 <div class="centre">
-                    
+
                         <div class="label">
                             <label for='gpadm'>Groupes admis  </label>
                         </div>
                     <div class="fill">
                         <input type='text' name='gpadm' id='gpadm'  placeholder="groupe1, groupe2, groupe3...">
                     </div>
-                    
+
                         <div class="label">
                             <label for='padm'>Personnes admises  </label>
                         </div>
@@ -129,7 +113,7 @@ A faire : - changer le lien html vers connexion
                  <div class="create_part">
                     <h3>3-Black list</h3>
                 <div class="centre">
-                    
+
                         <div class="label">
                             <label for='blist'>Personnes non admises  </label>
                         </div>
@@ -142,34 +126,34 @@ A faire : - changer le lien html vers connexion
                  <div class="create_part2">
                     <h3>4-Organisateur</h3>
                 <div class="centre">
-                    
+
                         <div class="label">
                                 <label for='norg'>Nom des organisateurs  </label>
                         </div>
                     <div class="fill">
                         <input type='text' name='norg' id='norg' placeholder="organisateur1, organisateur2, organisateur3...">
                     </div>
-                    
+
                         <div class="label">
                                 <label for='telorg'>Telephone  </label>
                         </div>
                     <div class="fill">
                         <input type='tel' name='telorg' id='telorg' placeholder="04 68 55 39 19">
                     </div>
-                    
+
                         <div class="label">
                                 <label for='nentr'>Entreprise  </label>
                         </div>
                     <div class="fill">
                         <input type='text' name='nentr' id='nentr' placeholder="nom_entreprise">
-                    </div>                    
+                    </div>
                         <div class="label">
                                 <label for='partn'>Partenaires et Sponsors </label>
                         </div>
                     <div class="fill">
                         <input type='text' name='partn' id='partn' placeholder="partenaire1, partenaire2, sponsor1...">
                     </div>
-                    
+
                         <div class="label">
                                 <label for='weborg'>Site internet </label>
                         </div>
@@ -191,7 +175,7 @@ A faire : - changer le lien html vers connexion
                                 <option value='r2'>R2</option>
                         </select>
                     </div>
-                    
+
                         <div class="label">
                                 <label for='adr'>Adresse*  </label>
                         </div>
@@ -199,7 +183,7 @@ A faire : - changer le lien html vers connexion
                         <input type='text' name='adr' id='adr' required placeholder="14 rue event">
                     </div>
                          <div class="label">
-                        <label for='code_p'>Code postal*  </label> 
+                        <label for='code_p'>Code postal*  </label>
                          </div>
                     <div class="fill">
                         <input type="text" name="code_p" id="code_p" required minlength=5 maxlength="5" placeholder="00000">
@@ -225,33 +209,33 @@ A faire : - changer le lien html vers connexion
                  <div class="create_part2">
                     <h3>6-Page de l'événement</h3>
                 <div class="centre">
-                    
-                    
-                        
+
+
+
                             <label for='descript'>Description  </label>
-                        
-                        
-                    
-                        
+
+
+
+
                             <br>
-                        
+
                         <textarea required name="descript" rows=10 cols=100>Bla bla bla </textarea>
-                        
+
                     <br>
-                        
+
                             <label for='bann'>Bannière  </label>
-                        
-                        
+
+
                         <input required type="file" id="bann" name="bann">
                         <p class='gauche'>Dimensions : 400px*900px</p>
-                        
+
                         <!--mettre les vrais dimensions-->
-                    
-                    <p><input type='checkbox' name='comm' id='infom' checked/> 
-                     <label for='comm'>Autoriser les commentaires</label>                       
-                     <input type='checkbox' name='nott' id='infom' checked/> 
+
+                    <p><input type='checkbox' name='comm' id='infom' checked/>
+                     <label for='comm'>Autoriser les commentaires</label>
+                     <input type='checkbox' name='nott' id='infom' checked/>
                      <label for='nott'>Autoriser les notations</label>
-                    <input type='checkbox' name='sujet' id='infom' checked/> 
+                    <input type='checkbox' name='sujet' id='infom' checked/>
                      <label for='sujet'>Créer un sujet dans le forum</label></p>
                 </div>
                 <br>
@@ -259,25 +243,22 @@ A faire : - changer le lien html vers connexion
                  <div class="create_part">
                     <h3>7-Invitation à l'événement</h3>
                 <div class="centre">
-                    
+
                         <div class="label">
                             <label for='invitm'>Envoyer un e-mail d'invitation à  </label>
                         </div>
                         <br>
                         <textarea name="invitm" rows=10 cols=100>invite@gmail.com, invite3@gmail.com ...</textarea>
-                    
+
                 </div>
                  </div>
-                 <p><input type='checkbox' name='condi' id='condi' required/> 
+                 <p><input type='checkbox' name='condi' id='condi' required/>
                      <label for='condi'>J'accepte les conditions d'utilisation du site... *</label></p>
                  <br>
                  <p class="gauche">* : champs obligatoires</p>
                  <!--Mettre différentes fonctions à chaque bouton -->
-                 <p><input id="bouton" type='submit' value='Envoyer'/> 
+                 <p><input id="bouton" type='submit' value='Envoyer'/>
                     <input id="bouton" type='submit' value='Enregistrer sans sauvegarder'/>
                     <input id="bouton" type='submit' value='Annuler'/></p>
             </form>
         </section>
-        <!--bas page-->
-    </body>
-</html>
