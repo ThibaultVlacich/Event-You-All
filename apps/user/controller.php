@@ -105,7 +105,58 @@ class UserController extends Controller {
 
 		header('Location: '.Route::getDir());
 	}
-  }
+
+  /**
+	 * The Register action allows a user to register a new account.
+	 *
+	 * @return array Data given
+	 */
+	protected function register() {
+		$data = Request::getAssoc(array('nickname', 'password', 'password_conf', 'email', 'firstname', 'lastname', 'newsletter'));
+
+		if (!in_array(null, $data, true)) {
+			$errors = array();
+
+			// Check nickname availability
+			if (($e = $this->model->checkNickname($data['nickname'])) !== true) {
+				$errors[] = $e;
+			}
+
+			// Matching passwords
+			if (!empty($data['password'])) {
+				if ($data['password'] === $data['password_conf']) {
+					$data['password'] = sha1($data['password']);
+				} else {
+					$errors[] = 'Les mots de passe saisis ne concordent pas.';
+				}
+			} else {
+				$errors[] = 'Aucun mot de passe n\'a été saisi.';
+			}
+
+			// Email availability
+			if (($e = $this->model->checkEmail($data['email'])) !== true) {
+				$errors[] = $e;
+			}
+
+			// Default access (0: simple user)
+			$data['access'] = 0;
+
+			if (empty($errors)) {
+				// Configure user
+				$user_id = $this->model->createUser($data);
+
+				if ($user_id !== false) {
+					return WNote::success('user_register_success', WLang::get('user_register_success'));
+				} else {
+					WNote::error('user_register_failure', WLang::get('user_register_failure'));
+				}
+			} else {
+				return array('data' => $data, 'errors' => $errors);
+			}
+		}
+
+		return array('data' => $data);
+	}
 }
 
 ?>
