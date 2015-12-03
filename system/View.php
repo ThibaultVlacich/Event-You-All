@@ -95,6 +95,19 @@ class View {
 		}
 	}
 
+  public function getGlobalVars($stack_name) {
+    $data = '';
+
+    foreach (self::$global_vars as $stack => $values) {
+    	$var = $this->getGlobalVar($stack);
+    	if (!empty($var)) {
+    		$data .= $var;
+    	}
+    }
+
+    return $data;
+  }
+
   /**
 	 * Renders the view
    *
@@ -113,14 +126,6 @@ class View {
 		if (empty($this->templateFile)) {
 			// A View cannot be empty
 			return '';
-		}
-
-		// Treat global vars
-		foreach (self::$global_vars as $stack => $values) {
-			$data = $this->getGlobalVar($stack);
-			if (!empty($data)) {
-				//$this->tpl->assign($stack, $data, true);
-			}
 		}
 
     ob_start();

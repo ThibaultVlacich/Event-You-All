@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Event-You-All | Home page</title>
-  <link rel="stylesheet" href="<?php echo Config::get('config.base') ;?>/librairies/font-awesome-4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo Config::get('config.base') ;?>/librairies/normalize/normalize.css">
-  <link rel="stylesheet" href="<?php echo Config::get('config.base') ;?>/templates/styles/style.css">
+  <link rel="stylesheet" href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo Config::get('config.base') ; ?>/librairies/normalize/normalize.css">
+  <link rel="stylesheet" href="<?php echo Config::get('config.base') ; ?>/templates/styles/style.css">
+  <?php echo $app_rendered['css']; ?>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         </li>
       </ul>
     </nav>
-<?php echo $app_rendered; ?>
+    <?php echo $app_rendered['tpl']; ?>
     <footer>
       <nav class="main-navigation">
       <ul>
@@ -59,5 +60,6 @@
     </nav>
     </footer>
   </div>
+  <?php echo $app_rendered['js']; ?>
 </body>
 </html>

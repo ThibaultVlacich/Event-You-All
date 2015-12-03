@@ -46,11 +46,24 @@ abstract class Controller {
 		$route = Route::getRoute();
 		$params = $route['params'];
 
+		// Extract the name of the module from the parameters
 		$module = isset($params[0]) ? $params[0] : $this->default_module;
 
+		// Execute the model
 		$model = $this->execute($module, $params);
 
-		return $this->view->render($module, $model);
+		// Render the view
+		$render = $this->view->render($module, $model);
+
+		// Get needed CSSs and JSs
+		$css = $this->view->getGlobalVars('css');
+		$js = $this->view->getGlobalVars('js');
+
+		return array(
+			'css' => $css,
+			'js'  => $js,
+			'tpl' => $render
+		);
 	}
 
 	/**
