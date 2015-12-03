@@ -35,7 +35,9 @@
         </li>
       </ul>
     </nav>
-    <?php echo $app_rendered['tpl']; ?>
+    <section class="main-content">
+      <?php echo $app_rendered['tpl']; ?>
+    </section>
     <footer>
       <nav class="main-navigation">
       <ul>
