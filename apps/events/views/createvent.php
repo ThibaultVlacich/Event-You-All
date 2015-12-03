@@ -15,7 +15,7 @@ A faire : - changer le lien html vers connexion
     <body>
         <!--haut page-->
         <section class="blocinscri">
-            <form method='post' action='truc.php' >
+            <form method='post' action='http://localhost/Event-You-All/events/result_cr_event' >
                 <h2>Créer un nouvel événement</h2>
               <div class="create_part">
                 <h3>1-A propos de l'événement</h3>

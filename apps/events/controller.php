@@ -16,6 +16,9 @@ class EventsController extends Controller {
   
  function create() {
   }
+ function result_cr_event(){
+	 $this->model->createevent();
+ }
   /**
 	 * The Signup action allows a user to register a new account.
 	 *

@@ -15,6 +15,10 @@ class EventsView extends View {
     $this->setTemplate('/apps/events/views/createvent.php');
 	$this->assign('css', Config::get('config.base').'/apps/events/styles/createvent.css');
   }
+   public function result_cr_event(){
+	$this->setTemplate('/apps/events/views/createventre.php');
+	 
+ }
 }
 
 ?>
