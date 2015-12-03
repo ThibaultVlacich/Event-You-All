@@ -16,6 +16,8 @@ class EventsController extends Controller {
   
  function create() {
   }
+ function index() {
+  }
  function result_cr_event(){
 	 $this->model->createevent();
  }
