@@ -68,17 +68,21 @@ nav.main-navigation ul li.search {
 }
 nav.main-navigation ul li.search p {
   border: 1px solid white;
+  background-color: white;
   border-radius: 5px;
+  margin: 9px;
+  padding: 5px;
 }
 nav.main-navigation ul li.search button {
   background: transparent;
+  color: black;
   border: 0;
   font-size: 1.2em;
 }
 nav.main-navigation ul li.search input[type="search"] {
   border: 0;
   background: transparent;
-  color: white;
+  color: black;
   font-size: 1.2em;
 }
 nav.main-navigation ul li a {
