@@ -7,6 +7,7 @@ defined('EUA_VERSION') or die('Access denied');
 
 
 require_once SYS_DIR.'Controller.php';
+require_once SYS_DIR.'View.php';
 
 /**
  * Main is the main class that the application launches at start-up.
@@ -101,7 +102,22 @@ class Main {
 					}
 				}
 
-				$controller->render();
+				// Instantiate View if exists
+				if (file_exists($app_dir.'view.php')) {
+					include_once $app_dir.'view.php';
+
+					$view_class = str_replace('Controller', 'View', $app_class);
+
+					if (class_exists($view_class) && get_parent_class($view_class) == 'View') {
+						$controller->setView(new $view_class());
+					}
+				}
+
+				// Render the app
+				$app_rendered = $controller->render();
+
+				// Now render it in the global template
+				include_once TEMPLATES_DIR.'template.php';
 			}
 		}
   }

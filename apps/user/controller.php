@@ -9,7 +9,7 @@ class UserController extends Controller {
 	 * @return array Data given
 	 */
    function login() {
-     include 'views/login.php';
+     return array('pseudo' => 'lol');
    }
 
   /**

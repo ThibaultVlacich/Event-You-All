@@ -1,7 +1,7 @@
 <?php
 
 $config = array(
-  'base'        => 'https://localhost/Event-You-All/',
+  'base'        => 'http://localhost/Event-You-All/',
   'site_title'  => 'Event-You-All',
   'description' => '',
   'lang'        => 'fr_FR',

@@ -17,19 +17,41 @@ abstract class Controller {
 	 protected $model;
 
 	 /**
-	  * Execute the asked method of the Controller
+		* @var mixed View class to retrieve application's data from the database
 		*/
-	 public final function render() {
-		 $route = Route::getRoute();
+		protected $view;
 
-		 $module = isset($route['params'][0]) ? $route['params'][0] : $this->default_module;
-
+	 /**
+	  * Execute the asked method of the Controller
+		*
+		*	@param $module string Name of the module to execute
+		* @param $params array List of the paramameters
+		*
+		* @return array
+		*/
+	 public final function execute($module = '', $params = array()) {
 		 if(method_exists($this, $module)) {
-			 call_user_func(array($this, $module));
+			 return $this->$module($params);
 		 } else if (!empty($this->default_module) && method_exists($this, $this->default_module)) {
-			 call_user_func(array($this, $this->default_module));
+			 return $this->$default_module($params);
 		 }
 	 }
+
+	 /**
+	  * Render the template
+		*
+		* @return string content of the rendered app
+		*/
+	public final function render() {
+		$route = Route::getRoute();
+		$params = $route['params'];
+
+		$module = isset($params[0]) ? $params[0] : $this->default_module;
+
+		$model = $this->execute($module, $params);
+
+		return $this->view->render($module, $model);
+	}
 
 	/**
 	 * Defines a new model for this controller
@@ -46,6 +68,23 @@ abstract class Controller {
 	 */
 	public function getModel() {
 		return $this->model;
+	}
+
+	/**
+	 * Defines a new view for this controller
+	 */
+	public function setView($view) {
+		unset($this->view);
+		$this->view = $view;
+	}
+
+	/**
+	 * Get the view defined for this application
+	 *
+	 * @return Object
+	 */
+	public function getView() {
+		return $this->view;
 	}
 }
 ?>
