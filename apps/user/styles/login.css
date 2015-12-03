@@ -54,6 +54,12 @@ div.app-user-login div.login-form .links {
     margin-top: 30px;
 }
 
+div.app-user-login div.login-form .links::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
 div.app-user-login div.login-form .links .oublimdp {
     float: left;
 }
