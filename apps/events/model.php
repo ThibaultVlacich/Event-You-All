@@ -58,7 +58,7 @@ class EventsModel {
 			'date_fi','time_fi','nbpl','price','mclef','priv','gpadm','padm','telorg',
 			'blist','norg','nentr','partn','weborg','reg'
 			,'adr','code_p','ville','pays','descript'
-			,'bann','comm','nott','sujet','condi'))
+			,'bann','comm','nott','sujet','condi'));
 			
 		}
 	}
