@@ -1,35 +1,111 @@
 <?php
 
 class UserController extends Controller {
+  /*
+	 * @var Instance of WSession
+	 */
+	private $session;
+
   var $default_module = 'lol';
 
   /**
-	 * The Signup action allows a user to register a new account.
-	 *
-	 * @return array Data given
+	 * UserController's constructor to initialize $session.
 	 */
-   function login() {
-     return array('pseudo' => 'lol');
-   }
+	public function __construct() {
+		$this->session = System::getSession();
+	}
 
   /**
-	 * The Signup action allows a user to register a new account.
+	 * The Login action allows a user to connect to his account.
 	 *
-	 * @return array Data given
+	 * @param array $params Redirect is expected in this array
+	 * @return array Model containing the redirect link
 	 */
-  function signup() {
+	protected function login($params) {
+		// Find redirect URL
+		$referer = Route::getReferer();
+		$redirect_request = Request::get('redirect');
 
-    $data = Request::getAssoc(array('pseudonyme', 'password', 'password_confirm', 'firstname', 'lastname', 'date_naissance', 'date_inscription', 'sex', 'email', 'telephone', 'access', 'adresse', 'code_postal', 'ville'));
+		if (empty($params[0])) {
+			$route = Route::getRoute();
 
-    if (!in_array(null, $data, true)) {
-      $errors = array();
+			if (!empty($redirect_request)) {
+				$redirect = $redirect_request;
+			} else if ($route['app'] != 'user') { // Login form loaded from an external application
+				$redirect = Route::getDir().Route::getQuery();
+			} else if (strpos($referer, 'user') === false) {
+				$redirect = $referer;
+			} else {
+				$redirect = Route::getDir();
+			}
+		} else {
+			$redirect = $params[0];
+		}
 
-      if($data['password'] == $data['password_confirm']) {
-        $data['password'] = sha1($data['password']);
-      }
-    } else {
-      include 'views/signup.php';
-    }
+		if ($this->session->isConnected()) {
+			$this->setHeader('Location', $redirect);
+
+			return Note::error('user_already_connected', 'No need to access to the login form since you are already connected.');
+		}
+
+		// Vars given to trigger login process?
+		$data = Request::getAssoc(array('email', 'password'));
+
+    $cookie = true; // cookies accepted by browser?
+    $errors = array();
+
+		if (!in_array(null, $data, true)) {
+			$data += Request::getAssoc(array('remember', 'time'));
+
+			if (!empty($data['nickname']) && !empty($data['password'])) {
+				// User asks to be auto loged in => change the cookie lifetime to WSession::REMEMBER_TIME
+				$remember_time = !empty($data['remember']) ? Session::REMEMBER_TIME : abs(intval($data['time'])) * 60;
+
+				// Start login process
+				switch ($this->session->createSession($data['nickname'], $data['password'], $remember_time)) {
+					case Session::LOGIN_SUCCESS:
+						// Update activity
+						$this->model->updateLastActivity($_SESSION['userid']);
+
+						if (empty($_COOKIE['wsid'])) {
+							array_push($errors, 'user_cookie_not_accepted');
+							$cookie = false;
+						} else {
+							// Redirect
+							array_push($errors, 'user_login_success');
+							$this->setHeader('Location', $redirect);
+						}
+						break;
+					case Session::LOGIN_MAX_ATTEMPT_REACHED:
+						array_push($errors, 'user_login_max_attempt');
+						break;
+					case 0:
+						array_push($errors, 'user_login_error');
+						break;
+				}
+			} else {
+				array_push($errors, 'user_bad_data');
+			}
+		}
+
+		return array(
+			'redirect' => $redirect,
+      'errors'   => $errors
+		);
+	}
+	/**
+	 * Logout action handler.
+	 *
+	 * @return array Success note
+	 */
+	protected function logout() {
+		if ($this->session->isConnected()) {
+			// Destroy the session of the user
+			$this->session->closeSession();
+		}
+
+		header('Location: '.Route::getDir());
+	}
   }
 }
 
