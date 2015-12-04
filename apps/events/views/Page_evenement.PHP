@@ -40,7 +40,7 @@ Le Rapport de 1990 sur les rectifications orthographiques préconise la régular
             </div>
         </section>
             <div>
-                <img src="petite_salle_institut.jpg" alt="diapo de photo" class="image"/>
+                <img src="<?php echo Config::get('config.base'); ?>/apps/events/images/petite_salle_institut.jpg" alt="diapo de photo" class="image"/>
             </div>
         <div class="adresse">
                 <h2>
@@ -123,6 +123,7 @@ Le Rapport de 1990 sur les rectifications orthographiques préconise la régular
             <div class="bouton" id="lire">
             <a href="zaerhzaeurhn">Lire plus  </a>
             </div>
+            <div style="clear:both;"></div>
         </section>
         </section>
     </body>

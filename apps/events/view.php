@@ -2,7 +2,7 @@
 
 class EventsView extends View {
   function __construct() {
-      
+
   }
 
   public function login() {
@@ -20,9 +20,9 @@ class EventsView extends View {
     $this->setTemplate('/apps/events/views/home.php');
 	$this->assign('css', Config::get('config.base').'/apps/events/styles/home.css');
   }
-   public function result_cr_event(){
+   public function create_confirm(){
 	$this->setTemplate('/apps/events/views/createventre.php');
-	 
+
  }
 }
 
