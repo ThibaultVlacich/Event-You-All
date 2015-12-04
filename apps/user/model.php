@@ -63,6 +63,26 @@ class UserModel {
   }
 
   /**
+	 * Retrieves informations about for specific user.
+	 *
+	 * @param int $user_id ID of the user
+	 * @return array Information about the user
+	 */
+	public function getUser($user_id) {
+		$prep = $this->db->prepare('
+			SELECT id, nickname, password, email, firstname, lastname, access
+			FROM users
+			WHERE id = :userid
+		');
+
+		$prep->bindParam(':userid', $user_id, PDO::PARAM_INT);
+
+		$prep->execute();
+
+		return $prep->fetch(PDO::FETCH_ASSOC);
+	}
+
+  /**
    * Creates a user in the database.
    *
    * @param array $data

@@ -70,7 +70,7 @@ class UserController extends Controller {
 							$cookie = false;
 						} else {
 							// Redirect
-							header('Location: '.$redirect);
+							return array('success' => true);
 						}
 						break;
 					case Session::LOGIN_MAX_ATTEMPT_REACHED:
