@@ -2,7 +2,7 @@
 
 class UserController extends Controller {
   /*
-	 * @var Instance of WSession
+	 * @var Instance of Session
 	 */
 	private $session;
 
@@ -56,7 +56,7 @@ class UserController extends Controller {
 			$data += Request::getAssoc(array('remember', 'time'));
 
 			if (!empty($data['email']) && !empty($data['password'])) {
-				// User asks to be auto loged in => change the cookie lifetime to WSession::REMEMBER_TIME
+				// User asks to be auto loged in => change the cookie lifetime to Session::REMEMBER_TIME
 				$remember_time = !empty($data['remember']) ? Session::REMEMBER_TIME : abs(intval($data['time'])) * 60;
 
 				// Start login process
