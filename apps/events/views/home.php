@@ -34,7 +34,7 @@
      <section>
          <ul>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://dedalesonore.fr/wp-content/uploads/2012/10/Foule.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -49,7 +49,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://www.mondebuzz.com/wp-content/uploads/2015/01/les-15-plus-belles-salles-de-cinema-au-monde-22.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -64,7 +64,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://www.virusphoto.com/attachment.php?attachmentid=90245&stc=1&d=1253145009)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -79,7 +79,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://www.delumiereetdevent.com/expolucernaire1.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -94,7 +94,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://www.libertebonhomme.fr/files/2014/10/Image-16.png)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -109,7 +109,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://artension.um2d.com/wp-content/uploads/2011/08/galerie-Templon.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
@@ -124,7 +124,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.idealgourmet.fr/images/organiser_evenement_lyon.jpg)">
+                 <div class="image" style="background-image:url(http://media.ville-gif.fr/uploads/RTEmagicC_main_chef_orchestre.jpg.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
