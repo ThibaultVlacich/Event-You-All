@@ -4,7 +4,7 @@
     <?php
       if (!empty($model['errors'])) {
     ?>
-    <div class="errors">
+    <div class="note error">
       <i class="fa fa-exclamation-triangle"></i>
       <ul>
       <?php

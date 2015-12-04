@@ -178,3 +178,47 @@ section.main-content {
   margin: 0 auto;
   max-width: 1200px;
 }
+
+/*
+ * Error and warning messages
+ */
+ div.note {
+   width: 100%;
+   color: white;
+   margin: 10px 0;
+   padding: 15px;
+   border-radius: 5px;
+ }
+
+ div.note.error {
+   background-color: #CC0033;
+ }
+
+ div.note.success {
+   background-color: #1fa67a;
+ }
+
+ div.note .fa {
+   font-size: 3em;
+   display: inline-block;
+   vertical-align: middle;
+ }
+
+ div.note ul {
+   display: inline-block;
+   vertical-align: middle;
+   list-style: none;
+   margin: 0;
+   margin-left: 20px;
+   padding: 0;
+ }
+
+ div.note ul li {
+   padding: 5px;
+ }
+
+ div.note ul li .fa {
+   font-size: 1em;
+   display: inline-block;
+   vertical-align: middle;
+ }

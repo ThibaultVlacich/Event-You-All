@@ -14,30 +14,6 @@ div.app-user h2 {
   border-top-right-radius: 5px;
 }
 
-div.app-user div.errors {
-  width: 100%;
-  color: white;
-  margin: 10px 0;
-  padding: 15px;
-  background-color: #CC0033;
-  border-radius: 5px;
-}
-
-div.app-user div.errors .fa {
-  font-size: 3em;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-div.app-user div.errors ul {
-  display: inline-block;
-  vertical-align: middle;
-  list-style: none;
-  margin: 0;
-  margin-left: 20px;
-  padding: 0;
-}
-
 div.app-user div.form {
   padding: 10px 20px;
 }
