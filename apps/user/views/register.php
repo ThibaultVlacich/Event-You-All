@@ -2,6 +2,24 @@
   <h2>Inscription</h2>
   <div class="form">
     <?php
+      if (isset($model['success']) && $model['success'] === true) {
+    ?>
+    <div class="note success">
+      <i class="fa fa-spin fa-spinner"></i>
+      <ul>
+        <li>Bienvenue <strong><?php echo $model['data']['nickname']; ?></strong>. Votre compte a été créé avec succès !</li>
+        <li>Vous allez être redirigé dans 5 secondes.</li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      setTimeout(function() {
+        window.location = '<?php echo Config::get('config.base'); ?>';
+      }, 5000);
+    </script>
+    <?php
+        return;
+      }
+
       if (!empty($model['errors'])) {
     ?>
     <div class="note error">

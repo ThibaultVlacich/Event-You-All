@@ -19,8 +19,7 @@
     <?php
         return;
       }
-    ?>
-    <?php
+
       if (!empty($model['errors'])) {
     ?>
     <div class="note error">

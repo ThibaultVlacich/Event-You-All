@@ -144,9 +144,9 @@ class UserController extends Controller {
 				$user_id = $this->model->createUser($data);
 
 				if ($user_id !== false) {
-					return WNote::success('user_register_success', WLang::get('user_register_success'));
+					return array('data' => $data, 'success' => true);
 				} else {
-					WNote::error('user_register_failure', WLang::get('user_register_failure'));
+					return array('data' => $data, 'errors' => array('Une erreur inconnue est survenue durant l\'inscription'));
 				}
 			} else {
 				return array('data' => $data, 'errors' => $errors);
