@@ -48,9 +48,6 @@ class Route {
 			self::$query = $split_query[0];
 			self::$queryString = $split_query[1];
 		}
-
-		// Loading route config values
-		//Config::load('route', SYS_DIR.'config'.DS.'route.php', 'php');
 	}
 
 	/**
@@ -74,22 +71,6 @@ class Route {
 			$clean_query = self::$query;
 		}
 		$clean_query = rtrim($clean_query, '/');
-
-		// Checking the existence of a custom route
-		/*$custom_routes = Config::get('route.custom');
-		if (isset($custom_routes[$clean_query])) {
-			$route = self::parseURL($custom_routes[$clean_query]);
-			$route['mode'] = $mode;
-		} else if (empty($route['app'])) {
-			// Use default route
-			if ($route['admin']) {
-				$route = self::parseURL(Config::get('route.default_admin'));
-			} else {
-				$route = self::parseURL(Config::get('route.default_front'));
-			}
-
-			$route['mode'] = $mode;
-		}*/
 
 		self::$route = $route;
 
@@ -130,8 +111,7 @@ class Route {
 
 						$app = array_shift($params);
 						if (!empty($app)) {
-							// In the app, to trigger an admin app, the app must be equal to "admin/news"
-							$route['app'] = 'admin/'.$app;
+							$route['app'] = $app;
 						}
 					} else {
 						$route['app'] = $app;
@@ -236,42 +216,6 @@ class Route {
 		}
 
 		return '';
-	}
-
-	/**
-	 * Defines a custom route to redirect to a specific application.
-	 *
-	 * <code>Route::defineCustomRoute('test', 'news/see/13');</code>
-	 *
-	 * @param  string  $uri         The custom route to catch
-	 * @param  array   $redirection Redirection URI
-	 * @return boolean true if the redirection was applied
-	 */
-	public static function defineCustom($uri, $redirection) {
-		$uri = trim($uri, '/');
-		if (!empty($uri)) {
-			Config::set('route.custom.'.$uri, $redirection);
-			Config::save('route');
-
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Deletes a custom route.
-	 *
-	 * @param string $uri The custom route to remove
-	 */
-	public static function deleteCustom($uri) {
-		$uri = trim($uri, '/');
-		if (!empty($uri) && !is_null(Config::get('route.custom.'.$uri))) {
-			$custom_routes = Config::get('route.custom');
-			unset($custom_routes[$uri]);
-			Config::set('route.custom', $custom_routes);
-			Config::save('route');
-		}
 	}
 }
 
