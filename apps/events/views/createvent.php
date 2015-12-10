@@ -127,26 +127,7 @@
                     <h3>4-Organisateur</h3>
                 <div class="centre">
 
-                        <div class="label">
-                                <label for='norg'>Nom des organisateurs  </label>
-                        </div>
-                    <div class="fill">
-                        <input type='text' name='norg' id='norg' placeholder="organisateur1, organisateur2, organisateur3...">
-                    </div>
-
-                        <div class="label">
-                                <label for='telorg'>Telephone  </label>
-                        </div>
-                    <div class="fill">
-                        <input type='tel' name='telorg' id='telorg' placeholder="04 68 55 39 19">
-                    </div>
-
-                        <div class="label">
-                                <label for='nentr'>Entreprise  </label>
-                        </div>
-                    <div class="fill">
-                        <input type='text' name='nentr' id='nentr' placeholder="nom_entreprise">
-                    </div>
+                       
                         <div class="label">
                                 <label for='partn'>Partenaires et Sponsors </label>
                         </div>
@@ -232,7 +213,9 @@
                         <!--mettre les vrais dimensions-->
 
                     <p>
-                     <label for='sujet'>Créer un sujet dans le forum</label></p>
+					<input type='checkbox' name='sujet' id='sujet'/>
+                     <label for='sujet'>Créer un sujet dans le forum</label>
+					 </p>
                 </div>
                 <br>
                 </div>
