@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 10 Décembre 2015 à 10:46
+-- Généré le :  Jeu 10 Décembre 2015 à 11:27
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `evenement_types` (
 CREATE TABLE IF NOT EXISTS `faq` (
   `id` int(11) NOT NULL,
   `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `reponse` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `reponse` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -223,6 +223,19 @@ CREATE TABLE IF NOT EXISTS `newsletter_abonnes` (
   `id` int(11) NOT NULL,
   `id_newsletter` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notation`
+--
+
+CREATE TABLE IF NOT EXISTS `notation` (
+  `id` int(11) NOT NULL,
+  `id_evenement` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `note` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
