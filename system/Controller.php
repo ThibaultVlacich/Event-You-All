@@ -22,11 +22,11 @@ abstract class Controller {
 	protected $view;
 
 	/**
-	 * @var int Level Access of the module
+	 * @var array Access levels of each module of the app
 	 *
-	 * By default, everybody has access
+	 * By default, everybody has access to all modules of the app
 	 */
-	protected $access = 0;
+	protected $access = array();
 
 	 /**
 	  * Execute the asked method of the Controller
@@ -42,18 +42,23 @@ abstract class Controller {
 		 }
 	 }
 
-	 /**
-	  * Render the template
-		*
-		* @return string content of the rendered app
-		*/
+	/**
 	 * Render the template
+	 *
+	 * @return string content of the rendered app
+	 * @return false if user has no access
+	 */
 	public final function render() {
 		$route = Route::getRoute();
 		$params = $route['params'];
 
 		// Extract the name of the module from the parameters
 		$module = isset($params[0]) ? $params[0] : $this->default_module;
+
+		// Check if user has access
+		if (!$this->hasAccess($module)) {
+			return false;
+		}
 
 		// Execute the model
 		$model = $this->execute($module, $params);
@@ -67,9 +72,10 @@ abstract class Controller {
 		$js = $this->view->getGlobalVar('js');
 
 		return array(
-			'css' => $css,
-			'js'  => $js,
-			'tpl' => $render
+			'title' => $title,
+			'css'   => $css,
+			'js'    => $js,
+			'tpl'   => $render
 		);
 	}
 
@@ -105,6 +111,37 @@ abstract class Controller {
 	 */
 	public function getView() {
 		return $this->view;
+	}
+
+	/**
+	 * Check wether or not the current user has access to the asked module
+	 *
+	 * @param string $module Module to trader_stoch
+	 * @return bool True if the user has access, false if not
+	 */
+	public function hasAccess($module) {
+		$session = System::getSession();
+
+		$module_level = $this->getAccessLevel($module);
+		$user_level = $session->isConnected() ? $_SESSION['access'] : 0;
+
+		return $user_level >= $module_level;
+	}
+
+	/**
+	 * Set the level needed to access the module
+	 */
+	public function setAccessLevel($module, $level) {
+		$this->access[$module] = $level;
+	}
+
+	/**
+	 * Get the level needed to access the module
+	 *
+	 * @return Int
+	 */
+	public function getAccessLevel($module) {
+		return isset($this->access[$module]) ? $this->access[$module] : 0;
 	}
 }
 ?>

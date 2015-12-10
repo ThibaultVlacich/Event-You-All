@@ -141,28 +141,7 @@ class Session {
 		$_SESSION['email']     = $data['email'];
 		$_SESSION['firstname'] = $data['firstname'];
 		$_SESSION['lastname']  = $data['lastname'];
-		$_SESSION['access_string'] = $data['access'];
-
-		if (empty($data['access'])) {
-			$_SESSION['access'] = '';
-		} else if ($data['access'] == 'all') {
-			$_SESSION['access'] = 'all';
-		} else {
-			$_SESSION['access'] = array();
-
-			foreach (explode(',', $data['access']) as $access) {
-				$first_bracket = strpos($access, '[');
-
-				if ($first_bracket !== false) {
-					$app_name = substr($access, 0, $first_bracket);
-					$permissions = substr($access, $first_bracket+1, -1);
-
-					if (!empty($permissions)) {
-						$_SESSION['access'][$app_name] = explode('|', $permissions);
-					}
-				}
-			}
-		}
+		$_SESSION['access']    = $data['access'];
 
 		// Next checking time
 		$_SESSION['token_expiration'] = time() + self::TOKEN_EXPIRATION;
