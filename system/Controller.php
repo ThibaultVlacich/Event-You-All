@@ -114,7 +114,7 @@ abstract class Controller {
 	}
 
 	/**
-	 * Check wether or not the current user has access to the asked module
+	 * Check whether or not the current user has access to the asked module
 	 *
 	 * @param string $module Module to trader_stoch
 	 * @return bool True if the user has access, false if not
