@@ -12,11 +12,8 @@ class EventsController extends Controller {
  }
 
  function create_confirm() {
-   $data = Request::getAssoc(array('nom','date_de','time_de',
-   'date_fi','time_fi','nbpl','price',
-   'reg'
-   ,'adr','code_p','ville','pays','descript'
-   ,'bann','comm','nott','sujet','condi'));
+   $data = Request::getAssoc(array('nom','date_debut','date_fin','capacite','prix','prive',
+      'site_web','region','adresse','code_postal','ville,pays','description','banniere','mot_clef'))
 
    if (!in_array(null, $data, true)) {
      $this->model->createEvent($data);

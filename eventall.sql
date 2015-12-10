@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 10 Décembre 2015 à 11:27
+-- Généré le :  Jeu 10 Décembre 2015 à 11:56
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -68,7 +68,10 @@ CREATE TABLE IF NOT EXISTS `evenements` (
   `code_postal` int(11) NOT NULL,
   `ville` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `banniere` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `mot_clef` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `mot_clef` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `site_web` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `region` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pays` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -107,6 +110,18 @@ CREATE TABLE IF NOT EXISTS `evenement_photo` (
   `id_evenement` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement_sponsors`
+--
+
+CREATE TABLE IF NOT EXISTS `evenement_sponsors` (
+  `id` int(11) NOT NULL,
+  `id_evenement` int(11) NOT NULL,
+  `id_sponsor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -236,6 +251,17 @@ CREATE TABLE IF NOT EXISTS `notation` (
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `note` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sponsors`
+--
+
+CREATE TABLE IF NOT EXISTS `sponsors` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
