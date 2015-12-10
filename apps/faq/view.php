@@ -10,7 +10,7 @@ defined('EUA_VERSION') or die('Access denied');
 
 // -> Need to replace here "Default" by the name of the app (capitalized)
 // This file is not needed
-class DefaultView extends View {
+class FaqView extends View {
   function __construct() {
     // Here assign CSSs/JSs for all the app
     // EX : $this->assign('css', Config::get('config.base').'/apps/user/styles/style.css');
@@ -22,7 +22,7 @@ class DefaultView extends View {
     // EX : $this->assign('css', Config::get('config.base').'/apps/user/styles/style.css');
 
     // The assign the view for the module
-    $this->setTemplate('/apps/NAMEOFTHEAPP/views/VIEW.php');
+    $this->setTemplate('/apps/faq/views/view.php');
   }
 }
 

@@ -9,7 +9,7 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 // -> Need to replace here "Default" by the name of the app (capitalized)
-class DefaultController extends Controller {
+class FaqtController extends Controller {
   // Optional
   var $default_module = 'name of the module';
 
