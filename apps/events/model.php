@@ -22,7 +22,7 @@ class EventsModel {
 		  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     ');
 
-    // 
+    // remettre les bons champs (ceux du formulaire que l'on recupere et les date modifiées)
     $prep->bindParam(1, $data['nom']);
     $prep->bindParam(2, $data['date_debut']);
     $prep->bindParam(3, $data['date_fin']);

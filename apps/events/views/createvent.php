@@ -231,11 +231,7 @@
 
                         <!--mettre les vrais dimensions-->
 
-                    <p><input type='checkbox' name='comm' id='infom' checked/>
-                     <label for='comm'>Autoriser les commentaires</label>
-                     <input type='checkbox' name='nott' id='infom' checked/>
-                     <label for='nott'>Autoriser les notations</label>
-                    <input type='checkbox' name='sujet' id='infom' checked/>
+                    <p>
                      <label for='sujet'>Créer un sujet dans le forum</label></p>
                 </div>
                 <br>
