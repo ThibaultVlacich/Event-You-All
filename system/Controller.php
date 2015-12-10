@@ -28,15 +28,15 @@ abstract class Controller {
 	 */
 	protected $access = array();
 
-	 /**
-	  * Execute the asked method of the Controller
-		*
-		*	@param $module string Name of the module to execute
-		* @param $params array List of the paramameters
-		*
-		* @return array
-		*/
-	 public final function execute($module = '', $params = array()) {
+	/**
+	 * Execute the asked method of the Controller
+	 *
+	 *	@param $module string Name of the module to execute
+	 * @param $params array List of the paramameters
+	 *
+	 * @return array
+	 */
+	public final function execute($module = '', $params = array()) {
 		 if(method_exists($this, $module)) {
 			 return $this->$module($params);
 		 }
