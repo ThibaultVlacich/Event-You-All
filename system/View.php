@@ -20,6 +20,7 @@ class View {
 	 * @var array Global variables with a special treatment like "css" and "js"
 	 */
 	private static $global_vars = array(
+		'title'   => '',
 		'css'     => array(),
 		'js'      => array()
 	);

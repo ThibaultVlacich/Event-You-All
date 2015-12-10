@@ -14,12 +14,19 @@ abstract class Controller {
 	/**
 	 * @var mixed Model class to retrieve application's data from the database
 	 */
-	 protected $model;
+	protected $model;
 
-	 /**
-		* @var mixed View class to retrieve application's data from the database
-		*/
-		protected $view;
+	/**
+	 * @var mixed View class to retrieve application's data from the database
+	 */
+	protected $view;
+
+	/**
+	 * @var int Level Access of the module
+	 *
+	 * By default, everybody has access
+	 */
+	protected $access = 0;
 
 	 /**
 	  * Execute the asked method of the Controller
@@ -40,6 +47,7 @@ abstract class Controller {
 		*
 		* @return string content of the rendered app
 		*/
+	 * Render the template
 	public final function render() {
 		$route = Route::getRoute();
 		$params = $route['params'];
@@ -54,6 +62,7 @@ abstract class Controller {
 		$render = $this->view->render($module, $model);
 
 		// Get needed CSSs and JSs
+		$title = $this->view->getGlobalVar('title');
 		$css = $this->view->getGlobalVar('css');
 		$js = $this->view->getGlobalVar('js');
 
