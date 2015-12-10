@@ -2,8 +2,8 @@
 /**
  * Database.php
  */
- 
 defined('EUA_VERSION') or die('Access denied');
+
 /**
  * Database manages all database interactions.
  *
@@ -24,10 +24,12 @@ class Database extends PDO {
 		if (!class_exists('PDO')) {
 			throw new Exception("Database::__construct(): Class PDO not found.");
 		}
+
 		try {
 			@parent::__construct($dsn, $user, $password);
 		} catch (PDOException $e) {
 			$message = utf8_encode($e->getMessage());
+
 			throw new Exception($message);
 		}
 	}
@@ -43,25 +45,35 @@ class Database extends PDO {
 	 */
 	public function insertInto($table, $fields, $data) {
 		$req = 'INSERT INTO `'.$table.'`(';
+
 		foreach ($fields as $key) {
 			$req .= $key.', ';
 		}
+
 		if (count($fields) >= 1) {
 			$req = substr($req, 0, -2);
 		}
+
 		$req .= ') VALUES (';
+
 		foreach ($fields as $key) {
 			$req .= ':'.$key.', ';
 		}
+
 		if (count($fields) >= 1) {
 			$req = substr($req, 0, -2);
 		}
+
 		$req .= ')';
+
 		$prep = $this->prepare($req);
+
 		foreach ($fields as $key) {
 			$data[$key] = isset($data[$key]) ? $data[$key] : '';
+      
 			$prep->bindParam(':'.$key, $data[$key]);
 		}
+
 		if ($prep->execute()) {
 			return $this->lastInsertId();
 		} else {
@@ -81,18 +93,25 @@ class Database extends PDO {
 	 */
 	public function update($table, $fields, $data, $cond = '1') {
 		$req = 'UPDATE `'.$table.'` SET ';
+
 		foreach ($fields as $key) {
 			$req .= $key.' = :'.$key.', ';
 		}
+
 		if (count($fields) >= 1) {
 			$req = substr($req, 0, -2);
 		}
+
 		$req .= ' WHERE '.$cond;
+
 		$prep = $this->prepare($req);
+
 		foreach ($fields as $key) {
 			$data[$key] = isset($data[$key]) ? $data[$key] : '';
+
 			$prep->bindParam(':'.$key, $data[$key]);
 		}
+
 		return $prep->execute();
 	}
 }

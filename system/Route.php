@@ -2,7 +2,6 @@
 /**
  * Route.php
  */
-
 defined('EUA_VERSION') or die('Access denied');
 
 /**

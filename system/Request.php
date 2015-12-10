@@ -3,6 +3,7 @@
  * Request.php
  */
 defined('EUA_VERSION') or die('Access denied');
+
 /**
  * Request manages all input variables.
  *
@@ -15,10 +16,12 @@ class Request {
 	 * @var array Contains all checked variables to avoid infinite loop
 	 */
 	private static $checked = array();
+
 	/**
 	 * @var bool Variable to lock all read/write actions on the input values. Default values will be sent.
 	 */
 	private static $lock = false;
+
 	/**
 	 * Returns the values of all variables with name in $names sent by $hash method
 	 *
@@ -57,19 +60,23 @@ class Request {
 				$hash = 'REQUEST';
 				break;
 		}
+
 		if (is_array($names)) {
 			// Going through the asked values in order to returns the array
 			$result = array();
+
 			foreach ($names as $name) {
 				$value = self::getValue($data, $name, isset($default[$name]) ? $default[$name] : null, $hash);
 				$result[] = $value;
 				$result[$name] = $value;
 			}
+
 			return $result;
 		} else {
 			return self::getValue($data, $names, $default, $hash);
 		}
 	}
+
 	/**
 	 * Returns an associative array of values in which keys are the $names
 	 *
@@ -99,14 +106,18 @@ class Request {
 				$hash = 'REQUEST';
 				break;
 		}
+
 		// Going through the asked values in order to returns the array
 		$result = array();
+
 		foreach ($names as $name) {
 			$value = self::getValue($data, $name, isset($default[$name]) ? $default[$name] : null, $hash);
 			$result[$name] = $value;
 		}
+
 		return $result;
 	}
+
 	/**
 	 * Returns the checked value associated to $name
 	 *
@@ -121,6 +132,7 @@ class Request {
 		if (self::$lock) {
 			return $default;
 		}
+
 		if (isset(self::$checked[$hash.$name])) {
 			// Directly get the verifed variable in data
 			return $data[$name];
@@ -132,6 +144,7 @@ class Request {
 				// Use default
 				$data[$name] = self::filter($default);
 			}
+
 			// Variable is verified
 			if (isset($data[$name])) {
 				self::$checked[$hash.$name] = true;
@@ -141,6 +154,7 @@ class Request {
 			}
 		}
 	}
+
 	/**
 	 * Sets a request value
 	 *
@@ -155,12 +169,15 @@ class Request {
 		if (self::$lock) {
 			return null;
 		}
+
 		// Check if overwriting is allowed
 		if (!$overwrite && array_key_exists($name, $_REQUEST)) {
 			return $_REQUEST[$name];
 		}
+
 		// Stores previous value
 		$previous = array_key_exists($name, $_REQUEST) ? $_REQUEST[$name] : null;
+
 		switch (strtoupper($hash)) {
 			case 'GET':
 				$_GET[$name] = $value;
@@ -181,9 +198,12 @@ class Request {
 				$_REQUEST[$name] = $value;
 				break;
 		}
+
 		self::$checked[$hash.$name] = true;
+
 		return $previous;
 	}
+
 	/**
 	 * Returns the filtered variable after a tiny security check
 	 *
@@ -216,20 +236,24 @@ class Request {
 				}
 			}, $variable);
 		}
+
 		return $variable;
 	}
+
 	/**
 	 * Stops all read/write actions on the Request variables.
 	 */
 	public static function lock() {
 		self::$lock = true;
 	}
+
 	/**
 	 * Allows all read/write actions on the Request variables.
 	 */
 	public static function unlock() {
 		self::$lock = false;
 	}
+	
 	/**
 	 * Retrieves the HTTP Method used by the client.
 	 *

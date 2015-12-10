@@ -25,6 +25,7 @@ class Tools {
 			'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY'
 		);
 	}
+	
 	/**
 	 * Verifies whether a string is a valid email.
 	 *
@@ -34,6 +35,7 @@ class Tools {
 	public static function isEmail($string) {
 		return (!empty($string) && preg_match('#^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$#i', $string));
 	}
+
 	/**
 	 * Transforms a string into HTTP request
 	 *
@@ -44,8 +46,10 @@ class Tools {
 		if (!empty($url) && strpos($url, 'http') === false) {
 			return 'http://'.$url;
 		}
+
 		return $url;
 	}
+
 	/**
 	 * Move elements in array
 	 *
