@@ -19,25 +19,26 @@ class EventsModel {
 		$prep = $this->db->prepare('
       INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
       site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef)
-		  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		  VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
+      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef)
     ');
 
-    // remettre les bons champs (ceux du formulaire que l'on recupere et les date modifiées)
-    $prep->bindParam(1, $data['nom']);
-    $prep->bindParam(2, $data['date_debut']);
-    $prep->bindParam(3, $data['date_fin']);
-    $prep->bindParam(4, $data['capacite']);
-    $prep->bindParam(5, $data['prix']);
-    $prep->bindParam(6, $data['prive']);
-    $prep->bindParam(7, $data['site_web']);
-    $prep->bindParam(8, $data['region']);
-    $prep->bindParam(9, $data['adresse']);
-    $prep->bindParam(10, $data['code_postal']);
-    $prep->bindParam(11, $data['ville']);
-    $prep->bindParam(12, $data['pays']);
-    $prep->bindParam(13, $data['description']);
-    $prep->bindParam(14, $data['banniere']);
-    $prep->bindParam(15, $data['mot_clef']);
+    // remettre les bons champs (ceux du formulaire que l'on recupere et les date modifiées)  
+	$prep->bindParam(':nom', $data['nom']);
+    $prep->bindParam(':date_debut', $date_debut);
+    $prep->bindParam(':date_fin', $date_fin);
+    $prep->bindParam(':capacite', $data['nbpl']);
+    $prep->bindParam(':prix', $data['price']);
+    $prep->bindParam(':prive', $date['priv']);
+    $prep->bindParam(':site_web', $data['weborg']);
+    $prep->bindParam(':region', $data['reg']);
+	$prep->bindParam(':adresse', $data['adr']);
+	$prep->bindParam(':code_postal', $data['code_p']);
+	$prep->bindParam(':ville', $data['ville']);
+	$prep->bindParam(':pays', $data['pays']);
+	$prep->bindParam(':description', $data['descript']);
+	$prep->bindParam(':banniere', $data['bann']);
+	$prep->bindParam(':mot_clef', $data['mclef']);
 
 
     if ($prep->execute()) {
