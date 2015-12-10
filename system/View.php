@@ -37,6 +37,7 @@ class View {
 			$this->templateFile = $file;
 		}
 	}
+
 	/**
 	 * Returns the template file configured for the current view
 	 *
@@ -65,11 +66,6 @@ class View {
 	 * Global vars are not erased. If two different values are assigned to a same global var,
 	 * they will stack in an array.
 	 *
-	 * For instance, $css and $js are considered as global vars since they will be automaticly
-	 * inserted in a <script> or <link> html tag.
-	 * $this->assign('css', 'style.css');
-	 * {$css} will be replaced by <link href="THEMES_DIR/style.css" rel="stylesheet" type="text/css" />
-	 *
 	 * @param string $stack_name stack name
 	 * @return string variable value
 	 */
@@ -85,12 +81,14 @@ class View {
 					$css .= '<link href="'.$file.'" rel="stylesheet" type="text/css" />'."\n";
 				}
 				return $css;
+
 			case 'js':
 				$script = '';
 				foreach (self::$global_vars['js'] as $file) {
 					$script .= '<script type="text/javascript" src="'.$file.'"></script>'."\n";
 				}
 				return $script;
+			
 			default:
 				return self::$global_vars[$stack_name];
 		}

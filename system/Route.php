@@ -33,6 +33,7 @@ class Route {
 
 		// $_SERVER['REQUEST_URI'] contains the full URL of the page
 		$dir = self::getDir();
+
 		if ($dir != '/') {
 			self::$query = str_replace($dir, '', $_SERVER['REQUEST_URI']);
 		}
@@ -43,6 +44,7 @@ class Route {
 
 		// Extract query string
 		$split_query = explode('?', self::$query);
+
 		if (count($split_query) > 1) {
 			self::$query = $split_query[0];
 			self::$queryString = $split_query[1];
@@ -56,20 +58,14 @@ class Route {
 	 */
 	public static function getRoute() {
 		$route = self::$route;
+
 		if (!empty($route)) {
 			return $route;
 		}
 
 		$route = self::parseURL(self::$query);
-		$mode = $route['mode'];
 
-		// Remove the mode from the URL
-		if ($route['mode'] != '') {
-			$clean_query = str_replace($route['mode'].'/', '', self::$query);
-		} else {
-			$clean_query = self::$query;
-		}
-		$clean_query = rtrim($clean_query, '/');
+		$clean_query = rtrim(self::$query, '/');
 
 		self::$route = $route;
 
@@ -80,13 +76,12 @@ class Route {
 	 * Parses a URL to a route format.
 	 *
 	 * @param string $url A web page URL such as "news/see/13/"
-	 * @return array URL translated into a route ["app", "params", "mode", "admin"]
+	 * @return array URL translated into a route ["app", "params", "admin"]
 	 */
 	public static function parseURL($url) {
 		$route = array(
 			'app'    => '',
 			'params' => array(),
-			'mode'   => '',
 			'admin'  => false
 		);
 
@@ -95,11 +90,6 @@ class Route {
 
 			if (!empty($url)) {
 				$params = explode('/', $url);
-
-				// Extract the mode if exists
-				if (isset($params[0]) && in_array($params[0], array('m', 'v', 'mv', 'o'))) {
-					$route['mode'] = array_shift($params);
-				}
 
 				// Extract the app
 				$app = array_shift($params);

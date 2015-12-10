@@ -46,15 +46,19 @@ class Request {
 			case 'GET':
 				$data = &$_GET;
 				break;
+
 			case 'POST':
 				$data = &$_POST;
 				break;
+
 			case 'FILES':
 				$data = &$_FILES;
 				break;
+
 			case 'COOKIE':
 				$data = &$_COOKIE;
 				break;
+
 			default:
 				$data = &$_REQUEST;
 				$hash = 'REQUEST';
@@ -80,7 +84,7 @@ class Request {
 	/**
 	 * Returns an associative array of values in which keys are the $names
 	 *
-	 * @see WRequest::get()
+	 * @see Request::get()
 	 * @param array  $names   variable names
 	 * @param mixed  $default optional default values
 	 * @param string $hash    name of the method used to send
@@ -92,15 +96,19 @@ class Request {
 			case 'GET':
 				$data = &$_GET;
 				break;
+
 			case 'POST':
 				$data = &$_POST;
 				break;
+
 			case 'FILES':
 				$data = &$_FILES;
 				break;
+
 			case 'COOKIE':
 				$data = &$_COOKIE;
 				break;
+
 			default:
 				$data = &$_REQUEST;
 				$hash = 'REQUEST';
@@ -183,17 +191,21 @@ class Request {
 				$_GET[$name] = $value;
 				$_REQUEST[$name] = $value;
 				break;
+
 			case 'POST':
 				$_POST[$name] = $value;
 				$_REQUEST[$name] = $value;
 				break;
+
 			case 'COOKIE':
 				$_COOKIE[$name] = $value;
 				$_REQUEST[$name] = $value;
 				break;
+
 			case 'FILES':
 				$_FILES[$name] = $value;
 				break;
+
 			default:
 				$_REQUEST[$name] = $value;
 				break;
@@ -253,7 +265,7 @@ class Request {
 	public static function unlock() {
 		self::$lock = false;
 	}
-	
+
 	/**
 	 * Retrieves the HTTP Method used by the client.
 	 *
