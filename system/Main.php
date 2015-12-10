@@ -70,6 +70,7 @@ class Main {
 				$error = true;
 			}
 		}
+
 		if ($error) {
 			$route = Route::getRoute();
 
@@ -87,11 +88,6 @@ class Main {
 	private function setupSession() {
 		// Instanciates it
 		$session = System::getSession();
-
-		// Anti-flood checking
-		if (!$session->check_flood()) {
-			$_POST = array();
-		}
 	}
 
   /**

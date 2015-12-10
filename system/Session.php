@@ -5,7 +5,7 @@
 defined('EUA_VERSION') or die('Access denied');
 
 /**
- * Session manages all session variables and anti flood system.
+ * Session manages all session variables.
  *
  * @package System
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
@@ -17,11 +17,6 @@ class Session {
 	 * @type int
 	 */
 	const REMEMBER_TIME = 604800; // 1 week
-
-	/**
-	 * Minimum time between two POST requests
-	 */
-	const FLOOD_TIME = 2;
 
 	/**
 	 * Time before the session expires (seconds)
@@ -228,72 +223,6 @@ class Session {
 		}
 
 		return sha1($string);
-	}
-
-	/**
-	 * Anti-flood method
-	 *
-	 * Checking the $_POST content to avoid multiple and repeating similar form submissions.
-	 *
-	 * @return boolean true if flood detected, false otherwise
-	 */
-	public function check_flood() {
-		if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
-			$flood = true;
-
-			// Referer checking
-			if (empty($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST']) === false) {
-				header('location: '.Route::getBase());
-
-				$flood = false;
-			}
-			// Last request checking
-			else if (!empty($_SESSION['last_query']) && md5(serialize($_POST)) == $_SESSION['last_query']) {
-				WNote::info('flood_duplicate', WLang::get('info_flood_duplicate'));
-
-				$flood = false;
-			}
-			// Flood time limit checking
-			else if (empty($_SESSION['access'][0]) && !empty($_SESSION['flood_time']) && $_SESSION['flood_time'] > time()) {
-				$exceptions = array('user');
-
-				$route = Route::route();
-
-				// Applications in $exceptions will bypass the flood checking
-				if (!in_array($route['app'], $exceptions)) {
-					WNote::info('flood_wait', WLang::get('info_flood_wait', self::FLOOD_TIME));
-
-					$flood = false;
-				}
-			}
-
-			// Updating flood variables
-			$_SESSION['last_query'] = md5(serialize($_POST));
-
-			// Updating flood time at shutdown to let less priorized script using this variable
-			register_shutdown_function(array($this, 'upgrade_flood'), time() + self::FLOOD_TIME + 1);
-
-			return $flood;
-		} else {
-			// Creating SESSION variable $flood_time
-			if (!isset($_SESSION['flood_time'])) {
-				$_SESSION['flood_time'] = 0;
-			}
-
-			// Void last request
-			$_SESSION['last_query'] = '';
-		}
-
-		return true;
-	}
-
-	/**
-	 * Updates flood time.
-	 *
-	 * @param int $limit timestamp limit
-	 */
-	public function upgrade_flood($limit) {
-		$_SESSION['flood_time'] = $limit;
 	}
 
 	/**
