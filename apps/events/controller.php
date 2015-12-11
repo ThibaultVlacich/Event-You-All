@@ -20,7 +20,6 @@ class EventsController extends Controller {
 
    if (isset($params[0])) {
      $event_id = $params[0];
-
      // Récupérer l'evenement lié depuis le model
      // TODO
      $data = $this->model->getEvent($event_id);
