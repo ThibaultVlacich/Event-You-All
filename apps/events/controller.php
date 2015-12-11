@@ -11,7 +11,19 @@ defined('EUA_VERSION') or die('Access denied');
 class EventsController extends Controller {
   var $default_module = 'index';
 
- function detail() {
+ function detail(array $params) {
+
+   if (isset($params[0])) {
+     $event_id = $params[0];
+
+     // Récupérer l'evenement lié depuis le model
+     // TODO
+     $data = $this->model->getEvent($event_id);
+
+     // Retourner les infos récupérées
+     // NB : Dans le fichier view, on accès à cet array retourné via $model
+     return $data;
+   }
 
  }
 
@@ -27,7 +39,7 @@ class EventsController extends Controller {
      $data+=Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
 
      $date_debut=$data['date_de'].' '.$data['time_de'];
-  	 $date_fin=$data['date_fi'].' '.$data['time_fi'];
+     $date_fin=$data['date_fi'].' '.$data['time_fi'];
 
      $data['priv'] = false;
 
