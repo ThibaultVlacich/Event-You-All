@@ -293,24 +293,25 @@ CREATE TABLE `types` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Structure de la table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `utilisateur` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `pseudonyme` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `date_naissance` date NOT NULL,
-  `date_inscription` datetime NOT NULL,
-  `sexe` enum('m','f','nsp','') COLLATE utf8_unicode_ci NOT NULL,
+  `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `telephone` int(11) NOT NULL,
-  `niveau_acces` int(11) NOT NULL,
-  `adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `code_postal` int(11) NOT NULL,
-  `ville` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `sex` enum('m','f','ns') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `zip_code` int(11) DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `register_date` datetime DEFAULT NULL,
+  `access` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
