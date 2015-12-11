@@ -19,8 +19,9 @@ class EventsController extends Controller {
 //modifier date...
    if (!in_array(null, $data, true)) {
    	 $data+=Request::getAssoc(array('bann','sujet','mclef','weborg'));
-	 $date_debut=$data['date_de'].$data['time_de'];
-	 $date_fin=$data['date_fi'].$data['time_fi'];
+	 $date_debut=$data['date_de'].''.$data['time_de'];
+	 echo $date_debut;
+	 $date_fin=$data['date_fi'].''.$data['time_fi'];
      $this->model->createEvent($data);
    }
  }
