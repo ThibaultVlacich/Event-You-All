@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
-CREATE TABLE IF NOT EXISTS `articles` (
+CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `contenu` text COLLATE utf8_unicode_ci NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 -- Structure de la table `badges`
 --
 
-CREATE TABLE IF NOT EXISTS `badges` (
+CREATE TABLE `badges` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `badges` (
 -- Structure de la table `contact_admin`
 --
 
-CREATE TABLE IF NOT EXISTS `contact_admin` (
+CREATE TABLE `contact_admin` (
   `id` int(11) NOT NULL,
   `id_expediteur` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `contact_admin` (
 -- Structure de la table `evenements`
 --
 
-CREATE TABLE IF NOT EXISTS `evenements` (
+CREATE TABLE `evenements` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -92,10 +92,10 @@ CREATE TABLE IF NOT EXISTS `evenements` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement_genres`
+-- Structure de la table `evenements_genres`
 --
 
-CREATE TABLE IF NOT EXISTS `evenement_genres` (
+CREATE TABLE `evenements_genres` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
   `id_genre` int(11) NOT NULL
@@ -104,10 +104,23 @@ CREATE TABLE IF NOT EXISTS `evenement_genres` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement_participant`
+-- Structure de la table `evenements_notes`
 --
 
-CREATE TABLE IF NOT EXISTS `evenement_participant` (
+CREATE TABLE `evenements_notes` (
+  `id` int(11) NOT NULL,
+  `id_evenement` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `note` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenements_participants`
+--
+
+CREATE TABLE `evenements_participants` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -117,10 +130,10 @@ CREATE TABLE IF NOT EXISTS `evenement_participant` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement_photo`
+-- Structure de la table `evenements_photos`
 --
 
-CREATE TABLE IF NOT EXISTS `evenement_photo` (
+CREATE TABLE `evenements_photos` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -130,10 +143,10 @@ CREATE TABLE IF NOT EXISTS `evenement_photo` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement_sponsors`
+-- Structure de la table `evenements_sponsors`
 --
 
-CREATE TABLE IF NOT EXISTS `evenement_sponsors` (
+CREATE TABLE `evenements_sponsors` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
   `id_sponsor` int(11) NOT NULL
@@ -142,10 +155,10 @@ CREATE TABLE IF NOT EXISTS `evenement_sponsors` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement_types`
+-- Structure de la table `evenements_types`
 --
 
-CREATE TABLE IF NOT EXISTS `evenement_types` (
+CREATE TABLE `evenements_types` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
   `id_type` int(11) NOT NULL
@@ -157,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `evenement_types` (
 -- Structure de la table `faq`
 --
 
-CREATE TABLE IF NOT EXISTS `faq` (
+CREATE TABLE `faq` (
   `id` int(11) NOT NULL,
   `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `reponse` text COLLATE utf8_unicode_ci NOT NULL
@@ -169,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `faq` (
 -- Structure de la table `forum_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_categories` (
+CREATE TABLE `forum_categories` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -180,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 -- Structure de la table `forum_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_messages` (
+CREATE TABLE `forum_messages` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
   `id_topic` int(11) NOT NULL,
@@ -195,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `forum_messages` (
 -- Structure de la table `forum_topics`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_topics` (
+CREATE TABLE `forum_topics` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
   `id_categorie` int(11) NOT NULL,
@@ -210,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
 -- Structure de la table `genres`
 --
 
-CREATE TABLE IF NOT EXISTS `genres` (
+CREATE TABLE `genres` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -221,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `genres` (
 -- Structure de la table `groupes`
 --
 
-CREATE TABLE IF NOT EXISTS `groupes` (
+CREATE TABLE `groupes` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -236,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `groupes` (
 -- Structure de la table `newsletters`
 --
 
-CREATE TABLE IF NOT EXISTS `newsletters` (
+CREATE TABLE `newsletters` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `contenu` text COLLATE utf8_unicode_ci NOT NULL,
@@ -246,10 +259,10 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `newsletter_abonnes`
+-- Structure de la table `newsletters_abonnes`
 --
 
-CREATE TABLE IF NOT EXISTS `newsletter_abonnes` (
+CREATE TABLE `newsletters_abonnes` (
   `id` int(11) NOT NULL,
   `id_newsletter` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL
@@ -258,23 +271,10 @@ CREATE TABLE IF NOT EXISTS `newsletter_abonnes` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notation`
---
-
-CREATE TABLE IF NOT EXISTS `notation` (
-  `id` int(11) NOT NULL,
-  `id_evenement` int(11) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
-  `note` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `sponsors`
 --
 
-CREATE TABLE IF NOT EXISTS `sponsors` (
+CREATE TABLE `sponsors` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `sponsors` (
 -- Structure de la table `types`
 --
 
-CREATE TABLE IF NOT EXISTS `types` (
+CREATE TABLE `types` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -316,10 +316,10 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur_badge`
+-- Structure de la table `utilisateurs_badges`
 --
 
-CREATE TABLE IF NOT EXISTS `utilisateur_badge` (
+CREATE TABLE `utilisateurs_badges` (
   `id` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `id_badge` int(11) NOT NULL,
@@ -329,10 +329,10 @@ CREATE TABLE IF NOT EXISTS `utilisateur_badge` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur_groupes`
+-- Structure de la table `utilisateurs_groupes`
 --
 
-CREATE TABLE IF NOT EXISTS `utilisateur_groupes` (
+CREATE TABLE `utilisateurs_groupes` (
   `id` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `id_groupe` int(11) NOT NULL,
