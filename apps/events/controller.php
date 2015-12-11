@@ -14,11 +14,12 @@ class EventsController extends Controller {
  function create_confirm() {
    $data = Request::getAssoc(array('nom','date_de','time_de',
    'date_fi','time_fi','nbpl','price','reg'
-   ,'adr','code_p','ville','pays','descript','priv'));
+   ,'adr','code_p','ville','pays','descript'));
    
 //modifier date...
+	print_r($data);
    if (!in_array(null, $data, true)) {
-   	 $data+=Request::getAssoc(array('bann','sujet','mclef','weborg'));
+   	 $data+=Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
 	 $date_debut=$data['date_de'].''.$data['time_de'];
 	 $date_fin=$data['date_fi'].''.$data['time_fi'];
 	 //no empty 
@@ -30,6 +31,7 @@ class EventsController extends Controller {
 		 {
 	 $data['priv'] = true;
 	 }
+	 
 	 $data['date_de'] = $date_debut;
 	 $data['date_fi'] = $date_fin;
      $this->model->createEvent($data);
