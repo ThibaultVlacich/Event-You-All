@@ -90,8 +90,8 @@ class UserModel {
    */
   public function createUser(array $data) {
     $prep = $this->db->prepare('
-      INSERT INTO users(nickname, email, password, firstname, lastname, date_naissance, date_inscription, sex, telephone, access, adresse, code_postal, ville)
-      VALUES (:nickname, :email, :password, :firstname, :lastname, :date_naissance, NOW(), :sex, :telephone, :access, :adresse, :code_postal, :ville)
+      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, country)
+      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :country)
     ');
 
     $prep->bindParam(':nickname', $data['nickname']);
@@ -99,13 +99,11 @@ class UserModel {
     $prep->bindParam(':password', $data['password']);
     $prep->bindParam(':firstname', $data['firstname']);
     $prep->bindParam(':lastname', $data['lastname']);
-    $prep->bindParam(':date_naissance', $date['date_naissance']);
-    $prep->bindParam(':sex', $data['sex']);
-    $prep->bindParam(':telephone', $data['telephone']);
-    $prep->bindParam(':access', $data['access'], PDO::PARAM_INT);
-    $prep->bindParam(':adresse', $data['adresse']);
-    $prep->bindParam(':code_postal', $date['code_postal']);
-    $prep->bindParam(':ville', $date['ville']);
+    $prep->bindParam(':phone', $data['phone']);
+    $prep->bindParam(':adress', $data['adress']);
+    $prep->bindParam(':zip_code', $date['zip_code']);
+    $prep->bindParam(':city', $date['city']);
+    $prep->bindParam(':country', $data['country']);
 
     if ($prep->execute()) {
       return $this->db->lastInsertId();
@@ -124,7 +122,7 @@ class UserModel {
    */
   public function matchUser($nickname, $password) {
     $prep = $this->db->prepare('
-      SELECT id, nickname, password, email, firstname, lastname, pays, access
+      SELECT id, nickname, password, email, firstname, lastname, access
       FROM users
       WHERE (nickname = :nickname OR email = :nickname) AND password = :password
     ');

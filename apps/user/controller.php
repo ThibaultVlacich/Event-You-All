@@ -6,8 +6,6 @@ class UserController extends Controller {
 	 */
 	private $session;
 
-  var $default_module = 'lol';
-
   /**
 	 * UserController's constructor to initialize $session.
 	 */
@@ -136,10 +134,8 @@ class UserController extends Controller {
 				$errors[] = $e;
 			}
 
-			// Default access (0: simple user)
-			$data['access'] = 0;
-
 			if (empty($errors)) {
+				$data += Request::getAssoc(array('adress', 'zip_code', 'city', 'country', 'phone'));
 				// Configure user
 				$user_id = $this->model->createUser($data);
 

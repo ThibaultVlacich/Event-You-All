@@ -44,7 +44,7 @@
         <label for="password">Mot de passe <span class="required">*</span></label> <input type="password" name="password" id="password" required />
         <label for="password_confirm">Confirmation mot de passe <span class="required">*</span></label> <input type="password" name="password_confirm" id="password_confirm" required />
         <label for="adress">Adresse</label> <input type="text" name="adress" id="adress" />
-        <label for="zipcode">Code postal</label> <input type="text" name="zipcode" id="zipcode" maxlength="5" />
+        <label for="zip_code">Code postal</label> <input type="text" name="zip_code" id="zip_code" maxlength="5" />
         <label for="city">Ville</label> <input type="text" name="city" id="city" />
         <label for="country">Pays</label>
         <select name="pays" id="pays" >
