@@ -11,6 +11,11 @@ defined('EUA_VERSION') or die('Access denied');
 class EventsController extends Controller {
   var $default_module = 'index';
 
+  var $access = array(
+    'create'         => 1,
+    'create_confirm' => 1
+  );
+
  function detail(array $params) {
 
    if (isset($params[0])) {
