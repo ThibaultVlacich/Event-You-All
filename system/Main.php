@@ -33,7 +33,7 @@ class Main {
 	}
 
 	/**
- 	 * Loads WConfig
+ 	 * Loads Configs
  	 */
 	private function loadConfigs() {
 		Config::load('config', CONFIG_DIR.'config.php', 'php');
@@ -83,7 +83,7 @@ class Main {
 
 
 	/**
-	 * Initializes session and check the flood condition
+	 * Initializes session
 	 */
 	private function setupSession() {
 		// Instanciates it
