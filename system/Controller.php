@@ -141,7 +141,10 @@ abstract class Controller {
 	 * @return Int
 	 */
 	public function getAccessLevel($module) {
-		return isset($this->access[$module]) ? $this->access[$module] : 0;
+		$default_access = isset($this->access['all']) ? $this->access['all'] : 0;
+		$module_access  = isset($this->access[$module]) ? $this->access[$module] : 0;
+
+		return max($default_access, $module_access);
 	}
 }
 ?>
