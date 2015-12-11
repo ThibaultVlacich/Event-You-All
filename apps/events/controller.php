@@ -1,4 +1,12 @@
 <?php
+defined('EUA_VERSION') or die('Access denied');
+/**
+ * This is the Controller for the app "events".
+ *
+ * @package apps/events
+ * @author Louis Arbaretier <louis.arbaretier@isep.fr>
+ * @version 0.1.0-dev-11-12-2015
+ */
 
 class EventsController extends Controller {
   var $default_module = 'index';
@@ -12,28 +20,24 @@ class EventsController extends Controller {
  }
 
  function create_confirm() {
-   $data = Request::getAssoc(array('nom','date_de','time_de',
-   'date_fi','time_fi','nbpl','price','reg'
-   ,'adr','code_p','ville','pays','descript'));
-   
-//modifier date...
-	print_r($data);
+
+   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript'));
+
    if (!in_array(null, $data, true)) {
-   	 $data+=Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
-	 $date_debut=$data['date_de'].''.$data['time_de'];
-	 $date_fin=$data['date_fi'].''.$data['time_fi'];
-	 //no empty 
-	 if ($data['priv'] =="")
-	 {
-	 $data['priv'] = false;
-	 }
-	 else
-		 {
-	 $data['priv'] = true;
-	 }
-	 
-	 $data['date_de'] = $date_debut;
-	 $data['date_fi'] = $date_fin;
+     $data+=Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
+
+     $date_debut=$data['date_de'].' '.$data['time_de'];
+  	 $date_fin=$data['date_fi'].' '.$data['time_fi'];
+
+     $data['priv'] = false;
+
+     if (!empty($data['priv'])) {
+       $data['priv'] = true;
+     }
+
+     $data['date_de'] = $date_debut;
+     $data['date_fi'] = $date_fin;
+
      $this->model->createEvent($data);
    }
  }
