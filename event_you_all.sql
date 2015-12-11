@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 11 Décembre 2015 à 17:09
+-- Généré le :  Ven 11 Décembre 2015 à 17:24
 -- Version du serveur :  10.1.8-MariaDB
 -- Version de PHP :  5.6.14
 
@@ -305,11 +305,11 @@ CREATE TABLE `users` (
   `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   `sex` enum('m','f','ns') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
+  `zip_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
   `access` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
