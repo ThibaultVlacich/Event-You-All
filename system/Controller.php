@@ -49,7 +49,7 @@ abstract class Controller {
 	 * @return false if user has no access
 	 */
 	public final function render() {
-		$route = Route::getRoute();
+		$route  = Route::getRoute();
 		$params = $route['params'];
 
 		// Extract the name of the module from the parameters
@@ -71,8 +71,8 @@ abstract class Controller {
 
 		// Get needed CSSs and JSs
 		$title = $this->view->getGlobalVar('title');
-		$css = $this->view->getGlobalVar('css');
-		$js = $this->view->getGlobalVar('js');
+		$css   = $this->view->getGlobalVar('css');
+		$js    = $this->view->getGlobalVar('js');
 
 		return array(
 			'title' => $title,
@@ -87,6 +87,7 @@ abstract class Controller {
 	 */
 	public function setModel($model) {
 		unset($this->model);
+
 		$this->model = $model;
 	}
 
@@ -104,6 +105,7 @@ abstract class Controller {
 	 */
 	public function setView($view) {
 		unset($this->view);
+
 		$this->view = $view;
 	}
 
@@ -125,10 +127,10 @@ abstract class Controller {
 	public function hasAccess($module) {
 		$session = System::getSession();
 
-		$module_level = $this->getAccessLevel($module);
-		$user_level = $session->isConnected() ? $_SESSION['access'] : 0;
+		$required_level = $this->getAccessLevel($module);
+		$user_level     = $session->isConnected() ? $_SESSION['access'] : 0;
 
-		return $user_level >= $module_level;
+		return $user_level >= $required_level;
 	}
 
 	/**
@@ -144,10 +146,16 @@ abstract class Controller {
 	 * @return Int
 	 */
 	public function getAccessLevel($module) {
-		$default_access = isset($this->access['all']) ? $this->access['all'] : 0;
-		$module_access  = isset($this->access[$module]) ? $this->access[$module] : 0;
+		if (isset($this->access[$module])) {
+			// If an access level for the asked module is set, returns that value
+			return $this->access[$module];
+		} else if (isset($this->access['all'])) {
+			// Else, if a global access level for the app is set, returns that value
+			return $this->access['all'];
+		}
 
-		return max($default_access, $module_access);
+		// Default access value
+		return 0;
 	}
 }
 ?>
