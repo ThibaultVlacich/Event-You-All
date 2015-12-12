@@ -5,10 +5,10 @@
         <section class="infoinitial">
             <div class="debutfin">
                 <p>
-                    Début : xx/xx/xxxx
+                    Début : <?php echo($model['date_debut']); ?>
                 </p>
                 <p>
-                    Fin : xx/xx/xxxx
+                    Fin : <?php echo($model['date_fin']); ?>
                 </p>
             </div>
             <div class="statut">
@@ -23,10 +23,10 @@
             </div>
             <div class="placesprix">
                 <p>
-                    Nombre de places : xxxx
+                    Nombre de places : <?php echo($model['capacite']); ?>
                 </p>
                 <p>
-                    Prix : xxxx
+                    Prix : <?php echo($model['prix']); ?>
                 </p>
             </div>
         </section>
@@ -34,8 +34,7 @@
             <div class="description">
                 <h1>Description</h1>
                 <p>
-                    Dès la troisième édition de son dictionnaire (1740), l'Académie française indique l'orthographe événement. Lors de la septième édition (1878), l'Académie a rectifié l'accentuation de plusieurs mots pour suivre l'évolution phonétique de la langue : ainsi, collége et avénement ont été changés en collège et avènement. Toutefois, quelques mots, dont événement, n'ont pas été rectifiés, et cette orthographe est toujours utilisée au XXIe siècle1.
-Le Rapport de 1990 sur les rectifications orthographiques préconise la régularisation de tels mots2, et les dictionnaires, dès la fin du XXe siècle, encouragent l'orthographe évènement, quoique l'autre orthographe soit aussi mentionnée3,4,5. Toutefois ce rapport n'a jamais été entériné dans sa globalité par l'Académie française, bien au contraire. Celle-ci accepte toutefois la graphie évènement, mais estime que « la graphie ancienne événement n'est cependant pas considérée comme fautive, encore que rien ne la justifie plus »1. Les recommandations orthographiques, dont fait partie évènement, sont plus enseignées et connues dans d'autres pays francophones comme la Suisse ou la Belgique qu'en France, puisqu'elles n'ont jamais reçu de caractère officiel6.
+                    <?php echo($model['description']); ?>
                 </p>
             </div>
         </section>
@@ -47,7 +46,7 @@ Le Rapport de 1990 sur les rectifications orthographiques préconise la régular
                     Adresse
                 </h2>
                 <p>
-               18 rue blablaba Paris 75015
+               <?php echo($model['adresse']); ?>
                 </p>
             </div>
             <div class="text1">
@@ -69,7 +68,7 @@ Le Rapport de 1990 sur les rectifications orthographiques préconise la régular
                 <ul>
                 <li><h2>Site</h2>
                 <p class="site">
-                        xxxxxxxxx
+                        <?php echo($model['site_web']); ?>
                     </p></li>
                 <li><h2>Partenaire</h2>
                 <p class="partenaire">
