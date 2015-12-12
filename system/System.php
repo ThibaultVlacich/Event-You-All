@@ -57,7 +57,7 @@ class System {
 			$password = Config::get('database.pw');
 
 			if (empty($server) || empty($dbname) || empty($user)) {
-				Note::error('system_database_init', Lang::get('error_database_bad_credentials'), 'die');
+				die('Information is missing to connect to the database: please, check the server, or the database name or the user name in "system/config/database.php".');
 			}
 
 			self::$dbInstance = new Database($dsn, $user, $password);
