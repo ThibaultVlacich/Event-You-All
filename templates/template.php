@@ -77,6 +77,7 @@
     </nav>
     </footer>
   </div>
+  <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/librairies/jquery-2.1.4/jquery-2.1.4.min.js"></script>
   <?php echo $app_rendered['js']; ?>
 </body>
 </html>
