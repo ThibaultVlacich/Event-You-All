@@ -1,7 +1,7 @@
 
         <img src="http://www.institut-de-france.fr/sites/institut-de-france.fr/files/styles/diaporama/public/institut_900_320.jpg?itok=MAo-_W0J" id="imgevent" alt="image évènement"/>
     <section id="taille">
-        <h1 id="titre"><?php echo($model[2]); ?></h1>
+        <h1 id="titre"><?php echo($model['nom']); ?></h1>
         <section class="infoinitial">
             <div class="debutfin">
                 <p>

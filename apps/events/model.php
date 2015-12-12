@@ -54,9 +54,14 @@ class EventsModel {
     }
 	}
 	public function getEvent($event_id){
-		$prep = $this->db->prepare('SELECT * FROM evenements WHERE id='.$event_id.'');
-		$coco= $prep->fetch(PDO::FETCH_ASSOC);
-		return $coco;
+		$prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :event_id');
+
+		$prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+		$prep->execute();
+
+		$event = $prep->fetch(PDO::FETCH_ASSOC);
+
+		return $event;
 	}
 
 }
