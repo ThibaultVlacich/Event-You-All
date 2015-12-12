@@ -1,0 +1,92 @@
+#entete{
+    background: url(concert.jpg);
+    background-size:cover;
+    background-position:center;
+    height:400px;
+    width:100%;
+}
+h1{
+    color:white;
+    font-family:Trebuchet MS;
+    text-align: center;
+    padding-top: 350px;
+}
+#contenu{
+    margin:30px auto;
+    border: solid #CC0033 3px;
+}
+#description{
+    font-family:Trebuchet MS;
+    text-align: center;
+    color:#CC0033;
+}
+ul{
+    margin:auto;
+    text-align: center;
+}
+ul li{
+    display:inline-block;
+    margin-left:10px;
+    margin-right:10px;
+    font-family: Trebuchet MS;
+    color:#CC0033;
+}
+#avatar_organisateur{
+    height:70px;
+    width:70px;
+    border: solid black 2px;
+    border-radius:100px;
+    background:url(personnage%20logo.png);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: -20px;
+}
+.bouton a{
+    font-family: Trebuchet MS;
+    text-decoration: none;
+    background-color:#CC0033;
+    color:white;
+    border:solid #CC0033 10px;
+    border-radius:5px;
+}
+.bouton a:hover{
+    background-color:#999999;
+    border:solid #999999 10px;
+}
+#avis{
+    font-family: Trebuchet MS;
+    color: #CC0033;
+}
+.avatar{
+    height:40px;
+    width:40px;
+    border: solid black 2px;
+    border-radius:100px;
+    background:url(personnage%20logo.png);
+    background-size: cover;
+    background-position: center;
+    margin-left:5px;
+    margin-top: 5px;
+    position: absolute;
+}
+.commentaire{
+    margin-top:3px;
+    height:100px;
+    width:100%;
+    border:solid #CC0033 3px;
+    font-family: Trebuchet MS;
+    color:#CC0033;
+}
+.commentaire h4{
+    position: absolute;
+    margin-top: 55px;
+    margin-left: 5px;
+}
+.p_commentaire{
+    text-align: center;
+    margin-top:40px;
+}
+#Aj_com{
+    margin-top: 15px;
+}
+
