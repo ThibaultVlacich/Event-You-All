@@ -27,6 +27,7 @@ abstract class Controller {
 	 *
 	 * By default, it's app() itself
 	 */
+	protected $default_module;
 
 	/**
 	 * @var array Access levels of each module of the app
