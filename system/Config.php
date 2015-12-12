@@ -25,11 +25,6 @@ class Config {
 	private static $files = array();
 
 	/**
-	 * @var array Stores modified configurations
-	 */
-	private static $modified = array();
-
-	/**
 	 * Returns a configuration value.
 	 *
 	 * @param  string $path     configuration path
@@ -59,32 +54,6 @@ class Config {
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Assign a configuration value to a path.
-	 *
-	 * @param  string $path   configuration path
-	 * @param  mixed  $value  configuration value
-	 * @return mixed  configuration value
-	 */
-	public static function set($path, $value) {
-		$nodes = explode('.', $path);
-		$config = &self::$configs;
-		$path_count = sizeof($nodes)-1;
-
-		for ($i = 0; $i < $path_count; $i++) {
-			if (!isset($config[$nodes[$i]])) {
-				$config[$nodes[$i]] = array();
-			}
-
-			$config = &$config[$nodes[$i]];
-		}
-
-		$config[$nodes[$i]] = $value;
-
-		// Notify configuration modification
-		array_push(self::$modified, $nodes[0]);
 	}
 
 	/**
@@ -135,34 +104,6 @@ class Config {
 		return true;
 	}
 
-	/**
-	 * Destroys a configuration value.
-	 *
-	 * @param string $path Configuration's path
-	 */
-	public static function clear($path) {
-		$nodes = explode('.', $path);
-		$config = &self::$configs;
-		$path_count = sizeof($nodes)-1;
-		$exists = true;
-
-		for ($i = 0; $i < $path_count; $i++) {
-			if (isset($config[$nodes[$i]])) {
-				$config = &$config[$nodes[$i]];
-			} else {
-				$exists = false;
-				break;
-			}
-		}
-
-		if ($exists) {
-			unset($config[$nodes[$i]]);
-		}
-
-		// Notifying configuration modification
-		array_push(self::$modified, $nodes[0]);
-	}
-	
 	/**
 	 * Unloads a configuration.
 	 *
