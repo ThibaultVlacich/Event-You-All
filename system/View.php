@@ -55,7 +55,11 @@ class View {
 	 */
 	public function assign($name, $value) {
 		if (!empty($name) && !empty($value)) {
-			self::$global_vars[$name][] = $value;
+			if($name == 'css' || $name == 'js') {
+				self::$global_vars[$name][] = $value;
+			} else {
+				self::$global_vars[$name] = $value;
+			}
 		}
 	}
 
@@ -88,7 +92,7 @@ class View {
 					$script .= '<script type="text/javascript" src="'.$file.'"></script>'."\n";
 				}
 				return $script;
-			
+
 			default:
 				return self::$global_vars[$stack_name];
 		}
