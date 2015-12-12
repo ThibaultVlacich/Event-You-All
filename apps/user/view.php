@@ -10,6 +10,8 @@ class UserView extends View {
   }
 
   public function register() {
+    $this->assign('js', Config::get('config.base').'/apps/user/scripts/register.js');
+
     $this->setTemplate('/apps/user/views/register.php');
   }
 }

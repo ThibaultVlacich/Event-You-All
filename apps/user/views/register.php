@@ -62,7 +62,7 @@
         </div>
         <p>* : champs obligatoires</p>
 
-        <input type="submit" value="S'inscrire" class="submit" />
+        <input type="submit" value="S'inscrire" class="submit" id="submit" />
       </div>
     </form>
   </div>
