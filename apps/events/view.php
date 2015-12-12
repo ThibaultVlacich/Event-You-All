@@ -10,8 +10,10 @@ defined('EUA_VERSION') or die('Access denied');
 
 class EventsView extends View {
   public function detail() {
-    $this->setTemplate('/apps/events/views/Page_evenement.php');
-  	$this->assign('css', Config::get('config.base').'/apps/events/styles/cssPageevenement.css');
+    $this->setTemplate('/apps/events/views/detail.php');
+
+  	$this->assign('css', Config::get('config.base').'/apps/events/styles/detail.css');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/detail.js');
   }
 
   public function create() {

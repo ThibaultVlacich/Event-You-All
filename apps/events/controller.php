@@ -23,6 +23,10 @@ class EventsController extends Controller {
      // Récupérer l'evenement lié depuis le model
      $data = $this->model->getEvent($event_id);
 
+     $date_debut_timestamp = strtotime($data['date_debut']);
+     $data['date_debut'] = date('D. d F Y', $date_debut_timestamp);
+     $data['heure_debut'] = date('h:i', $date_debut_timestamp);
+
      // Retourner les infos récupérées
      return $data;
    }

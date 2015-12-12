@@ -1,0 +1,176 @@
+/**
+ * App events : detail page
+ */
+
+div.app-events-detail {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+/**
+ * Main banner
+ */
+div.app-events-detail div.banner {
+  z-index: -60;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+div.app-events-detail div.banner img {
+  width: 100%;
+}
+
+/**
+ * Event wrapper
+ */
+div.app-events-detail div.event-wrapper {
+ margin-right: -15px;
+ margin-left: -15px;
+}
+div.app-events-detail div.event-wrapper:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+div.app-events-detail div.event-wrapper section {
+  background: white;
+  border: 1px solid #EAEAEA;
+  margin: 15px 0;
+  padding: 15px;
+}
+div.app-events-detail div.event-wrapper section h2.title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #CC0033;
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+/**
+ * Left column
+ */
+div.app-events-detail div.event-wrapper div.event-main {
+  width: 66.66666667%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/**
+ * Details of the event
+ */
+
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .poster {
+  width: 33.33333333%;
+  float: left;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details {
+  width: 66.66666667%;
+  float: left;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .fa-li {
+  color: #CC0033;
+}
+
+/**
+ * Map
+ */
+
+div.app-events-detail div.event-wrapper div.event-main section.event-map img.map {
+  width: 100%;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-map div.adresse-container:before {
+  position: absolute;
+  top: 4px;
+  display: block;
+  font-family: FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 200%;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f041";
+  left: -40px;
+  color: #CC0033;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-map div.adresse-container {
+  margin: 15px 0;
+  margin-left: 40px;
+  position: relative;
+}
+
+/**
+ * Description
+ */
+
+div.app-events-detail div.event-wrapper div.event-main section.description p {
+  text-align: justify;
+}
+
+/**
+ * Right column
+ */
+div.app-events-detail div.event-wrapper aside.event-column {
+  width: 33.33333333%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+div.app-events-detail div.event-wrapper aside.event-column div.register {
+  text-align: center;
+}
+div.app-events-detail div.event-wrapper aside.event-column div.register a {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #CC0033;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+div.app-events-detail div.event-wrapper aside.event-column div.register a:hover {
+  background-color: #a50029;
+  border-color: rgba(0, 0, 0, 0.5);
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons {
+  text-align: center;
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a {
+  display: inline-block;
+  width: 40px;
+  padding: 6px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-twitter {
+  background-color: #55acee;
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-facebook {
+  background-color: #3b5998;
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-google-plus {
+  background-color: #dd4b39;
+}

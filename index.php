@@ -17,6 +17,11 @@ define('EUA_VERSION', '0.1.0-dev');
 error_reporting(E_ALL);
 
 /**
+ * Set locale to fr_FR
+ */
+setlocale(LC_ALL, 'fr_FR');
+
+/**
  * Files paths
  */
 require_once 'paths.php';
