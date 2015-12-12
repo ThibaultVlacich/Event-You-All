@@ -3,6 +3,7 @@
  * Controller.php
  */
 defined('EUA_VERSION') or die('Access denied');
+
 /**
  * Controller is the base class that will be inherited by all the applications.
  *
@@ -20,6 +21,12 @@ abstract class Controller {
 	 * @var mixed View class to retrieve application's data from the database
 	 */
 	protected $view;
+
+	/**
+	 * @var string Default module to execute when accessing /app/
+	 *
+	 * By default, it's app() itself
+	 */
 
 	/**
 	 * @var array Access levels of each module of the app
@@ -51,6 +58,11 @@ abstract class Controller {
 	public final function render() {
 		$route  = Route::getRoute();
 		$params = $route['params'];
+
+		// If there is not default module set, set it to the name of the app
+		if (empty($this->default_module)) {
+			$this->default_module = $route['app'];
+		}
 
 		// Extract the name of the module from the parameters
 		$module = isset($params[0]) ? $params[0] : $this->default_module;
