@@ -93,7 +93,20 @@
       <section class="block">
         <h2 class="title">Participer à cet événement</h2>
         <div class="register">
-          <a href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
+          <?php
+            $session = System::getSession();
+
+            if($session->isConnected()) {
+          ?>
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
+          <?php
+            } else {
+          ?>
+          <a class="button disabled">S'inscrire à l'événement</a>
+          <p><a href="<?php echo Config::get('config.base'); ?>/user/login">Connectez-vous</a> pour pouvoir vous inscrire à cet événement !</p>
+          <?php
+            }
+          ?>
         </div>
       </section>
       <section class="block">

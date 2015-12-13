@@ -145,7 +145,7 @@ div.app-events-detail div.event-wrapper aside.event-column {
 div.app-events-detail div.event-wrapper aside.event-column div.register {
   text-align: center;
 }
-div.app-events-detail div.event-wrapper aside.event-column div.register a {
+div.app-events-detail div.event-wrapper aside.event-column div.register a.button {
   display: inline-block;
   margin: 10px 0;
   padding: 10px 15px;
@@ -155,9 +155,20 @@ div.app-events-detail div.event-wrapper aside.event-column div.register a {
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: all ease-in-out 0.15s;
 }
-div.app-events-detail div.event-wrapper aside.event-column div.register a:hover {
+div.app-events-detail div.event-wrapper aside.event-column div.register a.button:hover {
   background-color: #a50029;
   border-color: rgba(0, 0, 0, 0.5);
+}
+div.app-events-detail div.event-wrapper aside.event-column div.register a.button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+div.app-events-detail div.event-wrapper aside.event-column div.register a.button.disabled:hover {
+  background-color: #CC0033;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+div.app-events-detail div.event-wrapper aside.event-column div.register p {
+  text-align: justify;
 }
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons {
   text-align: center;
