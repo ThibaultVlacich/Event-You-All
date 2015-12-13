@@ -25,7 +25,6 @@
   <div class="event-wrapper">
     <div class="event-main">
       <section class="event-detail-infos">
-        <h2 class="title">Informations</h2>
         <div class="poster">
           <img src="<?php echo $model['poster']; ?>" alt="<?php echo $model['nom']; ?>" />
         </div>
