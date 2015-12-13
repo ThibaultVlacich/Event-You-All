@@ -3,14 +3,13 @@
  */
 
 div.app-events-detail {
-  max-width: 1000px;
-  margin: 0 auto;
-  font-size: 1.2em;
+  font-size: 16px;
 }
 
 /**
  * Main banner
  */
+
 div.app-events-detail div.banner {
   z-index: -60;
   position: absolute;
@@ -21,17 +20,19 @@ div.app-events-detail div.banner {
   max-height: 500px;
   overflow: hidden;
 }
-
 div.app-events-detail div.banner img {
   width: 100%;
+  margin-top: -15%;
 }
 
 /**
  * Event wrapper
  */
+
 div.app-events-detail div.event-wrapper {
- margin-right: -15px;
- margin-left: -15px;
+  margin-top: 325px;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 div.app-events-detail div.event-wrapper:after {
   display: table;
@@ -59,6 +60,7 @@ div.app-events-detail div.event-wrapper section h2.title {
 /**
  * Left column
  */
+
 div.app-events-detail div.event-wrapper div.event-main {
   width: 66.66666667%;
   float: left;
@@ -79,12 +81,27 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
   width: 33.33333333%;
   float: left;
 }
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .poster img {
+  width: 100%;
+}
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details {
   width: 66.66666667%;
+  padding: 0 15px;
   float: left;
 }
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .fa-li {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details h2.nom {
   color: #CC0033;
+  font-weight: normal;
+  font-size: 36px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .fa-ul li {
+  margin-top: 5px;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .fa-ul li .fa-li {
+  color: #CC0033;
+  top: 0;
 }
 
 /**
@@ -94,19 +111,11 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
 div.app-events-detail div.event-wrapper div.event-main section.event-map img.map {
   width: 100%;
 }
-div.app-events-detail div.event-wrapper div.event-main section.event-map div.adresse-container:before {
+div.app-events-detail div.event-wrapper div.event-main section.event-map div.adresse-container .fa {
   position: absolute;
-  top: 4px;
   display: block;
-  font-family: FontAwesome;
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-weight: normal;
   font-size: 200%;
-  line-height: 1;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f041";
-  left: -40px;
+  left: -30px;
   color: #CC0033;
 }
 div.app-events-detail div.event-wrapper div.event-main section.event-map div.adresse-container {
@@ -126,6 +135,7 @@ div.app-events-detail div.event-wrapper div.event-main section.description p {
 /**
  * Right column
  */
+
 div.app-events-detail div.event-wrapper aside.event-column {
   width: 33.33333333%;
   float: left;
@@ -138,11 +148,12 @@ div.app-events-detail div.event-wrapper aside.event-column div.register {
 div.app-events-detail div.event-wrapper aside.event-column div.register a {
   display: inline-block;
   margin: 10px 0;
-  padding: 10px;
+  padding: 10px 15px;
   text-decoration: none;
   color: #fff;
   background-color: #CC0033;
-  border-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
 }
 div.app-events-detail div.event-wrapper aside.event-column div.register a:hover {
   background-color: #a50029;
@@ -164,13 +175,26 @@ div.app-events-detail div.event-wrapper aside.event-column .share-buttons a {
   cursor: pointer;
   color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a:hover {
+  border-color: rgba(0, 0, 0, 0.5);
 }
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-twitter {
   background-color: #55acee;
 }
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-twitter:hover {
+  background-color: #2f9bed;
+}
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-facebook {
   background-color: #3b5998;
 }
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-facebook:hover {
+  background-color: #264b99;
+}
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-google-plus {
   background-color: #dd4b39;
+}
+div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-google-plus:hover {
+  background-color: #de3721;
 }

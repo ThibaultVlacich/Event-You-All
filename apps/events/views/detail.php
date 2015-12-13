@@ -18,9 +18,36 @@
         <div class="details">
           <h2 class="nom"><?php echo $model['nom']; ?></h2>
           <ul class="fa-ul">
-            <li><i class="fa fa-li fa-calendar-o"></i> Le <?php echo $model['date_debut']; ?></li>
-            <li><i class="fa fa-li fa-clock-o"></i> &Agrave; <?php echo $model['heure_debut']; ?></li>
+            <li>
+              <i class="fa fa-li fa-calendar-o"></i>
+              <?php
+                if (( !empty($model['date_debut']) && empty($model['date_fin']) ) || ( !empty($model['date_debut']) && !empty($model['date_fin']) && $model['date_debut'] == $model['date_fin'] )) {
+              ?>
+                Le <?php echo $model['date_debut']; ?>
+              <?php
+            } else if ( !empty($model['date_debut']) && !empty($model['date_fin']) && $model['date_debut'] != $model['date_fin'] ) {
+              ?>
+                Du <?php echo $model['date_debut']; ?> au <?php echo $model['date_fin']; ?>
+              <?php
+                }
+              ?>
+            </li>
+            <li>
+              <i class="fa fa-li fa-clock-o"></i>
+              <?php
+                if (( !empty($model['heure_debut']) && empty($model['heure_fin']) ) || ( !empty($model['heure_debut']) && !empty($model['heure_fin']) && $model['heure_debut'] == $model['heure_fin'] )) {
+              ?>
+                &Agrave; <?php echo $model['heure_debut']; ?>
+              <?php
+                } else if ( !empty($model['heure_debut']) && !empty($model['heure_fin']) && $model['heure_debut'] != $model['heure_fin'] ) {
+              ?>
+                De <?php echo $model['heure_debut']; ?> &agrave; <?php echo $model['heure_fin']; ?>
+              <?php
+                }
+              ?>
+            </li>
             <li><i class="fa fa-li fa-money"></i> <?php echo $model['prix']; ?>&nbsp;€</li>
+            <li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places</li>
           </ul>
         </div>
       </section>
@@ -34,6 +61,7 @@
           <img src="https://maps.googleapis.com/maps/api/staticmap?language=fr&amp;size=600x185&amp;scale=2&amp;zoom=15&amp;markers=<?php echo $adresse_encoded; ?>" class="map" alt="" />
         </a>
         <div class="adresse-container">
+          <i class="fa fa-map-marker"></i>
           <?php echo $model['adresse']; ?><br>
           <?php echo $model['code_postal'].' '.$model['ville']; ?>
         </div>
