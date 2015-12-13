@@ -21,7 +21,9 @@ class EventsController extends Controller {
    if (isset($params[0])) {
      $event_id = $params[0];
      // Récupérer l'evenement lié depuis le model
-     $data = $this->model->getEvent($event_id);
+     if (!($data = $this->model->getEvent($event_id))) {
+       return array();
+     }
 
      if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {
        $date_debut_timestamp = strtotime($data['date_debut']);

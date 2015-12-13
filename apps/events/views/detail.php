@@ -1,5 +1,19 @@
 <div class="app-events app-events-detail">
   <?php
+    if (empty($model)) {
+      // No event based on asked id
+  ?>
+  <div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+      <li>L'événement demandé n'existe pas !</li>
+    </ul>
+  </div>
+  <?php
+      return;
+    }
+  ?>
+  <?php
   if (!empty($model['banniere'])) {
   ?>
   <div class="banner">
