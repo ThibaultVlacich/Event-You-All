@@ -23,11 +23,11 @@ class EventsModel {
    * @param array $data
    * @return mixed ID of the event just created or false on failure
    */
-	public function createEvent(array $data) {
-		$prep = $this->db->prepare('
+   public function createEvent(array $data) {
+     $prep = $this->db->prepare('
       INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
       site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef)
-		  VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
+      VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
       :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef)
     ');
 
@@ -52,18 +52,18 @@ class EventsModel {
     } else {
       return false;
     }
-	}
+  }
 
-	public function getEvent($event_id) {
-		$prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :event_id');
+  public function getEvent($event_id) {
+    $prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :event_id');
 
-		$prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
-		$prep->execute();
+    $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $prep->execute();
 
-		$event = $prep->fetch(PDO::FETCH_ASSOC);
+    $event = $prep->fetch(PDO::FETCH_ASSOC);
 
-		return $event;
-	}
+    return $event;
+  }
 
   public function getArticlesForEvent($event_id) {
     $prep = $this->db->prepare('SELECT * FROM articles WHERE id_evenement = :event_id');
