@@ -21,7 +21,7 @@ class ArticleView extends View {
 
   //page de confirmation à faire
   public function create_confirm(){
-    $this->setTemplate('/apps/events/views/createventre.php');
+    $this->setTemplate('/apps/article/views/creatart.php');
  }
 }
 

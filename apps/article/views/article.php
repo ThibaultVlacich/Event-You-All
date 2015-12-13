@@ -7,10 +7,10 @@
     </head>
     <body>
         <div id="entete">
-            <h1>Super Concert</h1>
+            <h1><?php echo $model['nom']; ?></h1>
         </div>
         <div id="contenu">
-            <p id="description">Les productions allemandes nous ont très peu habitués à des succès commerciaux internationaux et encore moins dans le registre métal. Mis à part Kraftwerk et KMFDM, rien ni personne outre-Rhin n'était venu titiller sérieusement nos oreilles... jusqu'à l'apparition, en 1995, de Rammstein. Composé de six Berlinois, Rammstein défraye la chronique dès son premier album « Herzeleid ». Effrayant et sauvage mélange de métal indus, de techno et d'hymnes gothiques agrémenté d'un chant en allemand, le groupe ne laisse personne indifférent. Leurs textes ambigus et leurs shows apocalyptiques entraînent à la fois les meilleurs éloges comme les pires foudres des critiques du monde entier. Mais quoi qu'il en soit, le public, lui, suit et leur premier jet est consacré album de platine dans plusieurs pays d'Europe. En 1997, Flake (claviers), Oliver (basse), Christoph (batterie), Paul (guitare), Richard (guitare) et Till (chant) enfoncent le clou avec « Sehnsucht », qui est propulsé quasi immédiatement disque de platine en Allemagne, mais surtout aux Etats-Unis. C'est une consécration pour le groupe, qui rafle par la même occasion une kyrielle de récompenses et autres Awards. S'ensuivent de nombreuses participations à divers projets : présence au festival itinérant « Family Values Tour » avec Korn et Limp Bizkit, participation à la B.O.F du film « Lost Highway » de David Lynch, intervention en tant qu'invité de prestige sur la tournée de Kiss, remix de Korn, Faith No More et Rob Zombie, etc. Rammstein s'affirme de plus en plus comme l'un des incontournables de la scène métal mondiale.</p>
+            <p id="description"><?php echo $model['contenu']; ?></p>
         </div>
         <ul>
             <li><div id=avatar_organisateur></div></li>

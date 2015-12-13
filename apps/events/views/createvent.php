@@ -237,7 +237,7 @@
                  <p class="gauche">* : champs obligatoires</p>
                  <!--Mettre différentes fonctions à chaque bouton -->
                  <p><input id="bouton" type='submit' value='Envoyer'/>
-                    <input id="bouton" type='submit' value='Enregistrer sans sauvegarder'/>
+                    <input id="bouton" type='submit' value='Enregistrer sans publier'/>
                     <input id="bouton" type='submit' value='Annuler'/></p>
             </form>
         </section>

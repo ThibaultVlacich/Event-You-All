@@ -14,7 +14,7 @@ A faire : - changer le lien html vers connexion
         <!--haut page-->
         <!-- pb : lorsqu'on réduit la fenêtre les champs -->
         <section class="blocinscri">
-            <form method='post' action='truc.php' >
+            <form method='post' action='http://localhost/Event-You-All/article/create_confirm' >
                 <h2>Ecrire un article</h2>
                 <h3>1-A propos de l'Article</h3>
                 <div class="centre">

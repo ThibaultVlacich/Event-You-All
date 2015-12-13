@@ -21,9 +21,9 @@ class ArticleController extends Controller {
  function detail(array $params) {
 
    if (isset($params[0])) {
-     $event_id = $params[0];
+     $article_id = $params[0];
      // Récupérer l'evenement lié depuis le model
-     $data = $this->model->getEvent($event_id);
+     $data = $this->model->getArticle($article_id);
 
      // Retourner les infos récupérées
      return $data;
@@ -37,22 +37,11 @@ class ArticleController extends Controller {
 
  function create_confirm() {
 
-   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript'));
+   $data = Request::getAssoc(array('nom','corps'));
 
    if (!in_array(null, $data, true)) {
-     $data+=Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
+     $data+=Request::getAssoc(array('bann','mclef'));
 
-     $date_debut=$data['date_de'].' '.$data['time_de'];
-     $date_fin=$data['date_fi'].' '.$data['time_fi'];
-
-     $data['priv'] = false;
-
-     if (!empty($data['priv'])) {
-       $data['priv'] = true;
-     }
-
-     $data['date_de'] = $date_debut;
-     $data['date_fi'] = $date_fin;
 
      $this->model->createEvent($data);
    }

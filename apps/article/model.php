@@ -27,27 +27,12 @@ class ArticleModel {
    */
 	public function createEvent(array $data) {
 		$prep = $this->db->prepare('
-      INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
-      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef)
-		  VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef)
+      INSERT INTO articles (nom,contenu)
+		  VALUES (:nom,:contenu)
     ');
 
     $prep->bindParam(':nom', $data['nom']);
-    $prep->bindParam(':date_debut', $data['date_de']);
-    $prep->bindParam(':date_fin', $data['date_fi']);
-    $prep->bindParam(':capacite', $data['nbpl']);
-    $prep->bindParam(':prix', $data['price']);
-    $prep->bindParam(':prive', $data['priv']);
-    $prep->bindParam(':site_web', $data['weborg']);
-    $prep->bindParam(':region', $data['reg']);
-    $prep->bindParam(':adresse', $data['adr']);
-    $prep->bindParam(':code_postal', $data['code_p']);
-    $prep->bindParam(':ville', $data['ville']);
-    $prep->bindParam(':pays', $data['pays']);
-    $prep->bindParam(':description', $data['descript']);
-    $prep->bindParam(':banniere', $data['bann']);
-    $prep->bindParam(':mot_clef', $data['mclef']);
+    $prep->bindParam(':contenu', $data['corps']);
 
     if ($prep->execute()) {
       return $this->db->lastInsertId();
@@ -55,15 +40,15 @@ class ArticleModel {
       return false;
     }
 	}
-	public function getEvent($event_id){
-		$prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :event_id');
+	public function getArticle($article_id){
+		$prep = $this->db->prepare('SELECT * FROM articles WHERE id = :article_id');
 
-		$prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+		$prep->bindParam(':article_id', $article_id, PDO::PARAM_INT);
 		$prep->execute();
 
-		$event = $prep->fetch(PDO::FETCH_ASSOC);
+		$article = $prep->fetch(PDO::FETCH_ASSOC);
 
-		return $event;
+		return $article;
 	}
 
 }
