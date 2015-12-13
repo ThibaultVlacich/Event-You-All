@@ -19,7 +19,7 @@ $(function() {
     if ($this.hasClass('fa-facebook')) {
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '', 'width=500, height=250, top=' + top + ', left=' + left);
     } else if ($this.hasClass('fa-twitter')) {
-      window.open('https://twitter.com/share?url=' + encodeURIComponent(window.location.href) + '&amp;via=FreenewsActu&amp;text=' + encodeURIComponent($this.attr('data-text')), '', 'width=500, height=250, top=' + top + ', left=' + left);
+      window.open('https://twitter.com/share?url=' + encodeURIComponent(window.location.href) + '&amp;text=' + encodeURIComponent($this.attr('data-text')), '', 'width=500, height=250, top=' + top + ', left=' + left);
     } else if ($this.hasClass('fa-google-plus')) {
       window.open('http://plus.google.com/share?url=' + encodeURIComponent(window.location.href), '', 'width=500, height=250, top=' + top + ', left=' + left);
     }
