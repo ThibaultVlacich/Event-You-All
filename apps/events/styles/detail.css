@@ -156,7 +156,7 @@ div.app-events-detail div.event-wrapper aside.event-column div.register a.button
   transition: all ease-in-out 0.15s;
 }
 div.app-events-detail div.event-wrapper aside.event-column div.register a.button:hover {
-  background-color: #a50029;
+  background-color: #880000;
   border-color: rgba(0, 0, 0, 0.5);
 }
 div.app-events-detail div.event-wrapper aside.event-column div.register a.button.disabled {

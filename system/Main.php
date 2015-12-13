@@ -96,9 +96,9 @@ class Main {
   private function exec() {
 		$route = Route::getRoute();
 
-		$app = !empty($route['app']) ? $route['app'] : Config::get('config.defaultapp');
+		$admin = $route['admin'] == 1;
 
-		$admin = $route['admin'] === 1;
+		$app = !empty($route['app']) ? $route['app'] : ($admin ? Config::get('config.defaultadminapp') : Config::get('config.defaultapp'));
 
 		// Calculates app's directory and class name
 		if ($admin) {
@@ -113,10 +113,7 @@ class Main {
 
 		if (is_dir($app_dir) && file_exists($app_dir.'controller.php')) {
 
-			include_once $app_dir.'controller.php';
-
-			$app_name_clear = str_replace(' ', '', ucwords(preg_replace('#[^a-zA-Z]+#', ' ', $app)));
-			$app_class = $app_name_clear.'Controller';
+			include_once $app_dir.'controller.php';	
 
 			if (class_exists($app_class) && get_parent_class($app_class) == 'Controller') {
 				$controller = new $app_class();
@@ -147,7 +144,7 @@ class Main {
 				$app_rendered = $controller->render();
 
 				// Now render it in the global template
-				include_once TEMPLATES_DIR.'template.php';
+				include_once TEMPLATES_DIR.'template'.($admin ? '_admin' : '').'.php';
 			}
 		}
   }

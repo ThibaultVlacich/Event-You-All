@@ -24,6 +24,12 @@ class System {
 	private static $dbInstance;
 
 	/**
+	 * @var Stores the application list
+	 * @static
+	 */
+	private static $apps_list = array();
+
+	/**
 	 * Returns current session or creates it if it doesn't exist yet
 	 * @return Session returns current session
 	 */
@@ -66,6 +72,33 @@ class System {
 		}
 
 		return self::$dbInstance;
+	}
+
+	/**
+	 * Returns a list of applications that contains a main.php file in their front directory
+	 *
+	 * @return array Array of string containing app's name
+	 */
+	public static function getAppsList() {
+		if (empty(self::$apps_list)) {
+			$apps = glob(APPS_DIR.'*', GLOB_ONLYDIR);
+			
+			foreach ($apps as $appDir) {
+				if ($appDir != '.' && $appDir != '..') {
+					// Check front
+					if (file_exists($appDir.DS.'controller.php')) {
+						self::$apps_list[] = basename($appDir);
+					}
+
+					// Check admin
+					if (file_exists($appDir.DS.'admin'.DS.'controller.php')) {
+						self::$apps_list[] = 'admin/'.basename($appDir);
+					}
+				}
+			}
+		}
+
+		return self::$apps_list;
 	}
 }
 

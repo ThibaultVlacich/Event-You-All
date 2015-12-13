@@ -65,6 +65,24 @@ class EventsModel {
     return $event;
   }
 
+  /**
+   * Obtenir la liste des événements
+   */
+  public function getEvents($from, $number, $order = 'date_debut', $asc = true) {
+    $prep = $this->db->prepare('
+      SELECT *
+      FROM evenements
+      ORDER BY '.$order.' '.($asc ? 'ASC' : 'DESC').'
+      LIMIT :from, :number
+    ');
+
+    $prep->bindParam(':from', $from, PDO::PARAM_INT);
+    $prep->bindParam(':number', $number, PDO::PARAM_INT);
+    $prep->execute();
+
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function getArticlesForEvent($event_id) {
     $prep = $this->db->prepare('SELECT * FROM articles WHERE id_evenement = :event_id');
 
