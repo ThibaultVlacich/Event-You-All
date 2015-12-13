@@ -1,19 +1,19 @@
 <?php
 
 class UserController extends Controller {
-  /*
+	/**
 	 * @var Instance of Session
 	 */
 	private $session;
 
-  /**
+	/**
 	 * UserController's constructor to initialize $session.
 	 */
 	public function __construct() {
 		$this->session = System::getSession();
 	}
 
-  /**
+	/**
 	 * The Login action allows a user to connect to his account.
 	 *
 	 * @param array $params Redirect is expected in this array
@@ -47,8 +47,8 @@ class UserController extends Controller {
 		// Vars given to trigger login process?
 		$data = Request::getAssoc(array('email', 'password'));
 
-    $cookie = true; // cookies accepted by browser?
-    $errors = array();
+		$cookie = true; // cookies accepted by browser?
+		$errors = array();
 
 		if (!in_array(null, $data, true)) {
 			$data += Request::getAssoc(array('remember', 'time'));
@@ -85,9 +85,10 @@ class UserController extends Controller {
 
 		return array(
 			'redirect' => $redirect,
-      'errors'   => $errors
+			'errors'   => $errors
 		);
 	}
+
 	/**
 	 * Logout action handler.
 	 *
@@ -102,7 +103,7 @@ class UserController extends Controller {
 		header('Location: '.Route::getDir());
 	}
 
-  /**
+	/**
 	 * The Register action allows a user to register a new account.
 	 *
 	 * @return array Data given
@@ -148,8 +149,8 @@ class UserController extends Controller {
 				return array('data' => $data, 'errors' => $errors);
 			}
 		} else if(Request::getMethod() == 'POST') {
-      return array('data' => $data, 'errors' => array('Tous les champs requis n\'ont pas été renseignés'));
-    }
+			return array('data' => $data, 'errors' => array('Tous les champs requis n\'ont pas été renseignés'));
+		}
 
 		return array('data' => $data, 'errors' => array());
 	}
