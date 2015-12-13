@@ -88,6 +88,29 @@
         </p>
       </section>
       <?php } ?>
+      <section class="event-news">
+        <h2 class="title">Articles</h2>
+        <?php
+        if (isset($model['articles']) && !empty($model['articles'])) {
+          foreach ($model['articles'] as $article) {
+        ?>
+        <article>
+          <h3><?php echo $article['nom']; ?></h3>
+          <p>
+            <?php echo $article['contenu']; ?>
+          </p>
+        </article>
+        <?php
+          }
+        } else {
+        ?>
+          <p>
+            Aucun article n'a encoré été ajouté pour cet événement !
+          </p>
+        <?php
+        }
+        ?>
+      </section>
     </div>
     <aside class="event-column">
       <section class="block">

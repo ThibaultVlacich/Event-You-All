@@ -13,7 +13,7 @@
     </div>
     <script type="text/javascript">
       setTimeout(function() {
-        window.location = '<?php echo Config::get('config.base'); ?>';
+        window.location = '<?php echo isset($model['redirect']) ? $model['redirect'] : Config::get('config.base'); ?>';
       }, 5000);
     </script>
     <?php

@@ -53,7 +53,8 @@ class EventsModel {
       return false;
     }
 	}
-	public function getEvent($event_id){
+
+	public function getEvent($event_id) {
 		$prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :event_id');
 
 		$prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
@@ -63,6 +64,15 @@ class EventsModel {
 
 		return $event;
 	}
+
+  public function getArticlesForEvent($event_id) {
+    $prep = $this->db->prepare('SELECT * FROM articles WHERE id_evenement = :event_id');
+
+    $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $prep->execute();
+
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
 
 }
 

@@ -43,6 +43,9 @@ class EventsController extends Controller {
        $data['heure_fin'] = null;
      }
 
+     // Get linked articles
+     $data['articles'] = $this->model->getArticlesForEvent($data['id']);
+
      // Retourner les infos récupérées
      return $data;
    }
