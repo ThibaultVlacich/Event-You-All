@@ -16,7 +16,7 @@ class DefaultModel {
     $this->db = System::getDb();
   }
 
-   Then add methods (can be named whatever you want)
+   //Then add methods (can be named whatever you want)
   public function getFaq($faq_id) {
     $QW = $this->db->prepare('SELECT * FROM faq ');
 
