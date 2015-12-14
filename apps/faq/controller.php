@@ -12,9 +12,10 @@ class FaqController extends Controller {
   var $default_module = 'index';
 
   public function index(array $params) {
-
+    //recuperer données de model TO DO
+    $quest=$this->model->getFaq();
     // Need to return an array of datas
-    return array();
+    return $quest;
   }
 }
 

@@ -16,10 +16,9 @@ class FaqModel {
   }
 
   // Then add methods (can be named whatever you want)
-  public function getFaq($faq_id) {
+  public function getFaq() {
     $prep = $this->db->prepare('SELECT * FROM faq');
 
-    $prep->bindParam(':faq_id', $faq_id, PDO::PARAM_INT);
     $prep->execute();
 
     return $prep->fetch(PDO::FETCH_ASSOC);
