@@ -173,6 +173,13 @@ nav.main-navigation ul::after {
   clear: both;
 }
 
+/*
+ * Hide mobile menu by default
+ */
+nav.main-navigation .mobile {
+  display: none;
+}
+
 section.main-content {
   margin: 0 auto;
   max-width: 1200px;

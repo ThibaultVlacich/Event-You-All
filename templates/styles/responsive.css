@@ -1,0 +1,113 @@
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+
+
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.main-head header .socials {
+    display: none;
+  }
+
+  div.main-head header .login {
+    display: none;
+  }
+
+  nav.main-navigation ul {
+    display: none;
+  }
+
+  nav.main-navigation .mobile {
+    display: block;
+    position: relative;
+  }
+
+  nav.main-navigation .mobile:after {
+    display: block;
+    content: ' ';
+    clear: both;
+  }
+
+  nav.main-navigation .mobile i.fa {
+    font-size: 21px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: relative;
+  }
+
+  nav.main-navigation .mobile i.fa.active {
+    background-color: #800020;
+  }
+
+  nav.main-navigation .mobile i.hamburger {
+    float: left;
+  }
+
+  nav.main-navigation .mobile i.search, nav.main-navigation .mobile i.login {
+    float: right;
+  }
+
+  nav.main-navigation .mobile ul, nav.main-navigation .mobile div.mobile-search {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background-color: #f2f2f2;
+  }
+
+  nav.main-navigation .mobile ul.active, nav.main-navigation .mobile div.mobile-search.active {
+    display: block;
+  }
+
+  nav.main-navigation .mobile ul li {
+    width: 100%;
+    height: 50px;
+    float: none;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #2f4154;
+    text-transform: uppercase;
+  }
+
+  nav.main-navigation .mobile ul li a {
+    color: #8b8b8b;
+  }
+
+  nav.main-navigation .mobile div.mobile-search p {
+    margin: 0;
+    padding: 0;
+  }
+
+  nav.main-navigation .mobile div.mobile-search p input {
+    padding: 9px 8px;
+    outline: 0;
+    border: 0;
+    font-size: 16px;
+    line-height: 50px;
+    background: transparent;
+    float: left;
+    color: #8b8b8b;
+  }
+
+  nav.main-navigation .mobile div.mobile-search p button {
+    border: 0;
+    background: transparent;
+    float: right;
+    padding: 9px 8px;
+    font-size: 13px;
+    color: #8b8b8b;
+  }
+}
