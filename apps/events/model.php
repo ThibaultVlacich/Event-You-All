@@ -68,7 +68,7 @@ class EventsModel {
   /**
    * Obtenir la liste des événements
    */
-  public function getEvents($from, $number, $order = 'date_debut', $asc = true) {
+  public function getEvents($from = 0, $number = 9999999, $order = 'date_debut', $asc = true) {
     $prep = $this->db->prepare('
       SELECT *
       FROM evenements

@@ -62,10 +62,10 @@ class EventsController extends Controller {
    $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript'));
 
    if (!in_array(null, $data, true)) {
-     $data+=Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
+     $data += Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
 
-     $date_debut=$data['date_de'].' '.$data['time_de'];
-     $date_fin=$data['date_fi'].' '.$data['time_fi'];
+     $date_debut = $data['date_de'].' '.$data['time_de'];
+     $date_fin = $data['date_fi'].' '.$data['time_fi'];
 
      $data['priv'] = false;
 
@@ -81,7 +81,33 @@ class EventsController extends Controller {
  }
 
  function index() {
+   $data = $this->model->getEvents();
 
+   $events = array();
+
+   foreach ($data as $event) {
+     if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
+       $date_debut_timestamp = strtotime($event['date_debut']);
+       $event['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
+       $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
+     } else {
+       $event['date_debut'] = null;
+       $event['heure_debut'] = null;
+     }
+
+     if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
+       $date_fin_timestamp = strtotime($event['date_fin']);
+       $event['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
+       $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
+     } else {
+       $event['date_fin'] = null;
+       $event['heure_fin'] = null;
+     }
+
+     $events[] = $event;
+   }
+
+   return $events;
  }
 
 }

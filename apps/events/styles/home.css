@@ -7,6 +7,7 @@ div.app-events-home {
   border-width: 1px;
   border-color: rgb(166, 166, 166);
   border-style: solid;
+  background-color: white;
 }
 
 /* Extra small devices (phones, less than 768px) */
@@ -97,7 +98,7 @@ div.search_h:hover {
 
 /*----resultat event----*/
 
-section ul {
+div.app-events-home section ul {
   list-style-type: none;
   margin: 0 auto;
   padding: 5px;
@@ -106,7 +107,7 @@ section ul {
 
 /*pour mettre ce qui suit après les elements flottants*/
 
-section::after {
+div.app-events-home section::after {
   content: " ";
   display: block;
   clear: both;
@@ -114,7 +115,7 @@ section::after {
 
 /*gestion des blocks (taille, ecritures, images...) */
 
-section ul li {
+div.app-events-home section ul li {
   float: left;
   margin: 10px;
   width: calc(50% - 20px);
@@ -122,53 +123,66 @@ section ul li {
 }
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
-  section ul li {
+  div.app-events-home section ul li {
     float: left;
     margin: 10px;
     width: calc(100% - 20px);
     position: relative;
   }
 }
-section ul li div.event_text {
+div.app-events-home section ul li div.event_text {
   float: left;
   width: 50%;
-  height: 155px;
+  height: 200px;
   background: #CC0033;
 }
-section ul li div p {
+div.app-events-home section ul li div p {
   padding-left: 5px;
   font-size: 11px;
   color: white;
   font-weight: bold;
 }
-section ul li div h2 {
-  padding-left: 50px;
-  font-size: 12px;
+div.app-events-home section ul li div h2 {
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+  padding-left: 5px;
+  font-size: 18px;
   color: white;
   font-weight: bold;
 }
-section ul li .image {
+div.app-events-home section ul li .image {
   float: left;
   width: 50%;
-  height: 155px;
-  background-size: cover;
-  background-position: center;
+  height: 200px;
+  overflow: hidden;
 }
-section ul .liens_ima {
+div.app-events-home section ul li .image img {
+  width: 100%;
+}
+div.app-events-home section ul .liens_ima {
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
-section ul .coeur {
+div.app-events-home section ul .coeur {
   margin-right: 10px;
   height: 20px;
 }
-section ul .croix {
+div.app-events-home section ul .croix {
   height: 20px;
 }
-section ul .fleche {
+div.app-events-home section ul .fleche {
   position: absolute;
   height: 30px;
   top: 0px;
   left: calc(50% - 23px);
+}
+div.app-events-home section ul li a.link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
