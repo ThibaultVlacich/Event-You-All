@@ -59,8 +59,8 @@
                 }
               ?>
             </li>
-            <li><i class="fa fa-li fa-money"></i> <?php echo $model['prix']; ?>&nbsp;€</li>
-            <li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places</li>
+            <?php if ($model['prix'] > 0) { ?><li><i class="fa fa-li fa-money"></i> <?php echo $model['prix']; ?>&nbsp;€</li><?php } ?>
+            <?php if ($model['capacite'] > 0) { ?><li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places</li><?php } ?>
           </ul>
         </div>
       </section>
