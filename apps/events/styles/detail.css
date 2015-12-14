@@ -34,6 +34,16 @@ div.app-events-detail div.event-wrapper {
   margin-right: -15px;
   margin-left: -15px;
 }
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-detail div.event-wrapper {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 15px;
+  }
+}
+
 div.app-events-detail div.event-wrapper:after {
   display: table;
   content: " ";
@@ -68,6 +78,15 @@ div.app-events-detail div.event-wrapper div.event-main {
   padding-left: 15px;
 }
 
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-detail div.event-wrapper div.event-main {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
 /**
  * Details of the event
  */
@@ -89,6 +108,17 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
   padding: 0 15px;
   float: left;
 }
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .poster {
+    width: 100%;
+  }
+  div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details {
+    width: 100%;
+  }
+}
+
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details h2.nom {
   color: #CC0033;
   font-weight: normal;
@@ -142,6 +172,16 @@ div.app-events-detail div.event-wrapper aside.event-column {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-detail div.event-wrapper aside.event-column {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
 div.app-events-detail div.event-wrapper aside.event-column div.register {
   text-align: center;
 }
