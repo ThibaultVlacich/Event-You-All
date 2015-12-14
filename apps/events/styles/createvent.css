@@ -1,10 +1,10 @@
 body{
     margin:0;
 }
-h2{
+.blocinscri h2{
     color:rgb(119,119,119);
 }
-h3{
+.blocinscri h3{
     color:#CC0033;
     border-bottom: 1px solid #CC0033;
 }
@@ -46,7 +46,7 @@ span.required {
     display:inline-block;
     width:78%;
 }
-label {
+.blocinscri label {
     display:inline-block;
     margin-top:30px;
     color:black;
