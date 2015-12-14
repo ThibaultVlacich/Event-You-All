@@ -18,7 +18,7 @@ A faire : - changer le lien html vers connexion
                  <p><input id="bouton" type='submit' value='Si vous ne trouvez pas de réponses à votre question, contactez nous'/></p>
             </form>
             <section>
-                <p class="question"> <?php echo($model)?></p>
+                <p class="question"> <?php echo $quest ; ?></p>
                 <p class="réponse">Utilisez la barre de recherche ci-dessus ou utilisez la page recherche avancée</p>
             </section>
             <section>
