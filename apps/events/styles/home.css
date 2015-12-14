@@ -67,9 +67,11 @@ div.search_h select {
   -webkit-appearance: none;
   border-radius: 5px;
 }
+
 div.search_h input[type="date"] {
   -webkit-appearance: none;
 }
+
 div.search_h input[type="submit"] {
   color: white;
   background-color: #CC0033;
@@ -80,6 +82,17 @@ div.search_h input[type="submit"] {
 select option:disabled {
   height: 0px;
   visibility: hidden;
+}
+div.search_h:hover {
+  width: 80%;
+  border: 3px #CC0033 solid;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius:5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: white;
 }
 
 /*----resultat event----*/

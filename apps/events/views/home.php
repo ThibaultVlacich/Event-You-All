@@ -64,7 +64,7 @@
                  </div>
              </li>
              <li>
-                 <div class="image" style="background-image:url(http://www.virusphoto.com/attachment.php?attachmentid=90245&stc=1&d=1253145009)">
+                 <div class="image" style="background-image:url(http://business.orsud.com/wp-content/uploads/2013/04/Evenements.jpg)">
                  </div>
                  <div class="event_text">
                     <h2>Nom</h2>
