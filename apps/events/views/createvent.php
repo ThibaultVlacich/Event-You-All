@@ -7,13 +7,13 @@
                 <div class="centre">
 
                         <div class="label">
-                            <label for='nom'>Nom*  </label>
+                            <label for='nom'>Nom<span class="required">*</span>  </label>
                         </div>
                     <div class="fill">
                         <input type='text' name='nom' id='nom' maxlength="12" required placeholder="ex : Mon evenement">
                     </div>
                         <div class="label">
-                        <label for='mail'>Theme*  </label>
+                        <label for='mail'>Theme<span class="required">*</span>  </label>
                         </div>
                     <div class="fill">
                         <select  name='theme' id='theme'>
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                          <div class="label">
-                        <label for='type'>Type*  </label>
+                        <label for='type'>Type<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <select  name='type' id='type'>
@@ -50,14 +50,14 @@
                     <br>
                     <!--les champs ne marchent pas pour firefox d'où le placeholder...-->
                          <div class="label">
-                        <label for='date_de'>Début*  </label>
+                        <label for='date_de'>Début<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <input type="date" name="date_de" id="date_de" required placeholder="dd/mm/yyyy">
                         <input type="time" name="time_de" id="time_de" required placeholder="hh/mm">
                     </div>
                          <div class="label">
-                        <label for='date_fi'>Fin*  </label>
+                        <label for='date_fi'>Fin<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <input type="date" name="date_fi" id="date_fi" required placeholder="dd/mm/yyyy">
@@ -65,13 +65,13 @@
                     </div>
                     <br>
                          <div class="label">
-                        <label for='nbpl'>Capacité*  </label>
+                        <label for='nbpl'>Capacité<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <input type="number" name="nbpl" id="nbpl" required min="2" placeholder="10">
                     </div>
                          <div class="label">
-                        <label for='price'>Prix (euros)*  </label>
+                        <label for='price'>Prix (euros)<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <input type="number" name="price" id="price" required min="0" placeholder="0">
@@ -148,7 +148,7 @@
                     <h3>5-Lieu</h3>
                 <div class="centre">
                          <div class="label">
-                        <label for='reg'>Région*  </label>
+                        <label for='reg'>Région<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <select  name='reg' id='reg'>
@@ -158,25 +158,25 @@
                     </div>
 
                         <div class="label">
-                                <label for='adr'>Adresse*  </label>
+                                <label for='adr'>Adresse<span class="required">*</span>  </label>
                         </div>
                     <div class="fill">
                         <input type='text' name='adr' id='adr' required placeholder="14 rue event">
                     </div>
                          <div class="label">
-                        <label for='code_p'>Code postal*  </label>
+                        <label for='code_p'>Code postal<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <input type="text" name="code_p" id="code_p" required minlength=5 maxlength="5" placeholder="00000">
                     </div>
                          <div class="label">
-                        <label for='ville'>Ville*  </label>
+                        <label for='ville'>Ville<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <input type="text" name="ville" id="ville" required placeholder="Paris">
                     </div>
                          <div class="label">
-                        <label for='pays'>Pays*  </label>
+                        <label for='pays'>Pays<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <select  name='pays' id='reg'>
@@ -207,7 +207,7 @@
                             <label for='bann'>Bannière  </label>
 
 
-                        <input required type="file" id="bann" name="bann">
+                        <input type="file" id="bann" name="bann">
                         <p class='gauche'>Dimensions : 400px*900px</p>
 
                         <!--mettre les vrais dimensions-->
@@ -232,9 +232,9 @@
                 </div>
                  </div>
                  <p><input type='checkbox' name='condi' id='condi' required/>
-                     <label for='condi'>J'accepte les conditions d'utilisation du site... *</label></p>
+                     <label for='condi'>J'accepte les conditions d'utilisation du site... <span class="required">*</span></label></p>
                  <br>
-                 <p class="gauche">* : champs obligatoires</p>
+                 <p class="gauche"><span class="required">*</span> : champs obligatoires</p>
                  <!--Mettre différentes fonctions à chaque bouton -->
                  <p><input id="bouton" type='submit' value='Envoyer'/>
                     <input id="bouton" type='submit' value='Enregistrer sans publier'/>

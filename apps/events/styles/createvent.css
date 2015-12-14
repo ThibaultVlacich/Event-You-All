@@ -16,6 +16,10 @@ div.create_part2{
     background-color:whitesmoke;
     padding:10px;
 }
+span.required {
+  color: #CC0033;
+  font-size: bold;
+}
 
 .centre {
     position:relative;
