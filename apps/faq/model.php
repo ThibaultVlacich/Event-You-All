@@ -15,6 +15,7 @@ class FaqModel {
     $this->db = System::getDb();
   }
 
+  // Then add methods (can be named whatever you want)
   public function getFaq($faq_id) {
     $prep = $this->db->prepare('SELECT * FROM faq WHERE id = :faq_id');
 
