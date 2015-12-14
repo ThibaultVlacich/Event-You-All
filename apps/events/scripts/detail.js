@@ -4,6 +4,11 @@ $(function() {
     $('div.app-events-detail div.event-wrapper').css('margin-top', ($(this).parent().height() - 175) + 'px');
   });
 
+  // If no banner, remove the margin
+  if (!$('div.app-events-detail div.banner').length) {
+    $('div.app-events-detail div.event-wrapper').css('margin-top', '0px');
+  }
+
   var $share_buttons = $('.share-buttons');
 
   // No need to execute the rest of this script if this element does not exist.
