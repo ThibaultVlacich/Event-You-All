@@ -1,20 +1,17 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the Controller for the app "NAME OF THE APP".
+ * This is the Controller for the app faq.
  *
- * @package apps/nameoftheapp
- * @author Name of the author <author@isep.fr>
- * @version 0.1.0-dev-dd-mm-yyyy
+ * @package apps/faq
+ * @author Alexandre Gay <alexandre.gay@isep.fr>
+ * @version 0.1.0-dev-14-12-2015
  */
 
-// -> Need to replace here "Default" by the name of the app (capitalized)
-class FaqtController extends Controller {
-  // Optional
-  var $default_module = 'name of the module';
+class FaqController extends Controller {
+  var $default_module = 'index';
 
-  // Method for the module
-  public function module(array $params) {
+  public function index(array $params) {
 
     // Need to return an array of datas
     return array();

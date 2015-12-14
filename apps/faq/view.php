@@ -1,15 +1,13 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the View for the app "NAME OF THE APP".
+ * This is the View for the app faq.
  *
- * @package apps/nameoftheapp
- * @author Name of the author <author@isep.fr>
- * @version 0.1.0-dev-dd-mm-yyyy
+ * @package apps/faq
+ * @author Alexandre Gay <alexandre.gay@isep.fr>
+ * @version 0.1.0-dev-14-12-2015
  */
 
-// -> Need to replace here "Default" by the name of the app (capitalized)
-// This file is not needed
 class FaqView extends View {
   function __construct() {
     // Here assign CSSs/JSs for all the app
@@ -17,7 +15,7 @@ class FaqView extends View {
   }
 
   // Method for the module
-  public function module() {
+  public function index() {
     // Here assign CSSs/JSs for that method
     // EX : $this->assign('css', Config::get('config.base').'/apps/user/styles/style.css');
 

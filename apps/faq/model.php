@@ -1,29 +1,27 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the Model for the app "NAME OF THE APP".
+ * This is the Model for the app faq.
  *
- * @package apps/nameoftheapp
- * @author Name of the author <author@isep.fr>
- * @version 0.1.0-dev-dd-mm-yyyy
+ * @package apps/faq
+ * @author Alexandre Gay <alexandre.gay@isep.fr>
+ * @version 0.1.0-dev-14-12-2015
  */
 
-// -> Need to replace here "Default" by the name of the app (capitalized)
-class DefaultModel {
+class FaqModel {
   protected $db;
 
   public function __construct() {
     $this->db = System::getDb();
   }
 
-   Then add methods (can be named whatever you want)
   public function getFaq($faq_id) {
-    $QW = $this->db->prepare('SELECT * FROM faq ');
+    $prep = $this->db->prepare('SELECT * FROM faq WHERE id = :faq_id');
 
-    $QW->bindParam(':faq_id', $faq_id, PDO::PARAM_INT);
-    $QW->execute();
+    $prep->bindParam(':faq_id', $faq_id, PDO::PARAM_INT);
+    $prep->execute();
 
-    return $QW->fetchAll(PDO::FETCH_ASSOC);
+    return $prep->fetch(PDO::FETCH_ASSOC);
   }
 }
 
