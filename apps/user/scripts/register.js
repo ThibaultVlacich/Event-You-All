@@ -23,9 +23,9 @@ $('#nickname, #firstname, #lastname, #email, #password, #password_confirm, #cgu'
       $submit_button    = $('#submit');
 
   if (
-    ($this.is($nickname) && $this.val().length > 3) ||
-    ($this.is($firstname) && $this.val().length > 3) ||
-    ($this.is($lastname) && $this.val().length > 3) ||
+    ($this.is($nickname) && $this.val().length >= 3) ||
+    ($this.is($firstname) && $this.val().length >= 3) ||
+    ($this.is($lastname) && $this.val().length >= 3) ||
     ($this.is($email) && validateEmail($this.val()))
   ) {
     $this.addClass('good').removeClass('error');
@@ -42,9 +42,9 @@ $('#nickname, #firstname, #lastname, #email, #password, #password_confirm, #cgu'
   }
 
   if (
-    $nickname.val().length > 3 &&
-    $firstname.val().length > 3 &&
-    $lastname.val().length > 3 &&
+    $nickname.val().length >= 3 &&
+    $firstname.val().length >= 3 &&
+    $lastname.val().length >= 3 &&
     validateEmail($email.val()) &&
     $password.val() == $password_confirm.val() &&
     $cgu_checkbox.is(':checked')
