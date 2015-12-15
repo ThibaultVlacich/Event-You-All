@@ -109,7 +109,7 @@ div.search_h{
     border-radius: 5px;
     margin-top: 300px;
     padding: 2px;
-  
+
 }
 div.search_h form{
     text-align: center;
@@ -126,7 +126,7 @@ section ul{
   padding: 0;
   height: 50px;
   //width:912px;
-  //calc(4*228px); 912 la taille de 4 elements 
+  //calc(4*228px); 912 la taille de 4 elements
 }
 section ul li{
   float: left;

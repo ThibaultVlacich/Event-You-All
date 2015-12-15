@@ -37,6 +37,7 @@
     <div class="slider">
 
     </div>
+    <section class="searchsection">
     <div class="search_h">
         <form method="post" action="truc.php">
             <input type="search" name="advancedsearch" id="advancedsearch" placeholder="Recherche">
@@ -64,18 +65,19 @@
                         <option value='photographie'>Photographie</option>
                         <option value='autres_i'>Autres</option>
             </select>
-            <input type="date" placeholder="Date">
+            <input type="date" placeholder="Date" id="date_event">
             <input type="submit" value="Recherche"><br/>
             <input type="text" placeholder="Organisateur" id="organisateur">
             <input type="int" placeholder="Prix minimum" id="prix_min">
-            <input type="int" placeholder="Nombre de personnes minimum" id='nbr_min_personnes'><br/>
+            <input type="int" placeholder="Nombre de places min" id='nbr_place_min'><br/>
             <input type="int" placeholder="Partenaires et sponsors" id="sponsors">
             <input type="int" placeholder="Prix maximum" id="prix_max">
-            <input type="int" placeholder="Nombre de personnes maximum" id="nbr_max_personnes"><br/>
+            <input type="int" placeholder="Nombre de places max" id="nbr_place_max"><br/>
             <input type="text" placeholder="Ville" id="city">
             <input type="text" placeholder="Code Postal" id="zip_code">
         </form>
     </div>
+  </section>
      <section>
          <ul>
              <li>
