@@ -21,7 +21,7 @@ class FaqModel {
 
     $prep->execute();
 
-    return $prep->fetch(PDO::FETCH_ASSOC);
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
   }
 }
 

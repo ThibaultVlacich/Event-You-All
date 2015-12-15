@@ -21,6 +21,7 @@ class FaqView extends View {
 
     // The assign the view for the module
     $this->setTemplate('/apps/faq/views/index.php');
+    $this->assign('css', Config::get('config.base').'/apps/faq/styles/faq.css');
   }
 }
 
