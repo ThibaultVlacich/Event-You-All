@@ -70,7 +70,7 @@ class UserModel {
 	 */
 	public function getUser($user_id) {
 		$prep = $this->db->prepare('
-			SELECT id, nickname, password, email, firstname, lastname, access
+			SELECT *
 			FROM users
 			WHERE id = :userid
 		');

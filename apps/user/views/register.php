@@ -54,7 +54,7 @@
         <label for="phone">Telephone</label><input type="text" name="phone" id="phone" />
         <div class="checkbox">
           <input type="checkbox" name="newsletter" id="newsletter" checked />
-          <label for="newsletter">J'accepte de recevoir les newsletter par mail</label>
+          <label for="newsletter">J'accepte de recevoir les newsletters par mail</label>
         </div>
         <div class="checkbox">
           <input type="checkbox" name="cgu" id="cgu" required />
