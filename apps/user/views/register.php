@@ -47,7 +47,7 @@
         <label for="zip_code">Code postal</label> <input type="text" name="zip_code" id="zip_code" maxlength="5" />
         <label for="city">Ville</label> <input type="text" name="city" id="city" />
         <label for="country">Pays</label>
-        <select name="pays" id="pays" >
+        <select name="country" id="country" >
           <option value="FR">France</option>
           <option value="CN">Canada</option>
         </select>
