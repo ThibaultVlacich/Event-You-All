@@ -1,0 +1,161 @@
+body {
+	font: 16px/1.5 sans-serif;
+	background-color:#FFF;
+}
+
+#container {
+	width: 940px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#content {
+	margin: 20px;
+}
+
+h1 {
+	font-size: 2em;
+	margin-bottom: 30px;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color: #fff;
+}
+
+#content a:link, #content a:visited, #content a:hover, #content a:active {
+	color: #ff5c43;
+}
+
+em {
+	font-style: italic;
+}
+
+#pages{
+    height: 18px;
+    margin: 5px auto 0;
+    width:150px;
+}
+
+.bullet {
+	background: url(http://s6.postimg.org/q72l69c0d/page_off.png) center center no-repeat;
+	display: block;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	margin-right: 5px;
+	float: left;
+}
+
+#ui-carousel-next, #ui-carousel-prev {
+	width: 60px;
+	height: 240px;
+	background: url(http://s6.postimg.org/i00y3tq8d/arrow_left.png) #fff center center no-repeat;
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: 100;
+}
+
+#ui-carousel-next {
+	right: 0;
+	background-image: url(http://s6.postimg.org/aghicmsr1/arrow_right.png);
+}
+
+#ui-carousel-prev {
+	left: 0;
+}
+
+#ui-carousel-next > span, #ui-carousel-prev > span {
+	display: none;
+}
+
+.slide {
+	margin: 0;
+	position: relative;
+}
+
+.slide  h1 {
+	font: 72px/1 Anton, sans-serif;
+	color: #ff5c43;
+	margin: 0;
+	padding: 0;
+}
+
+.slide  p {
+	font: 32px/1 Ubuntu, sans-serif;
+	color: #4d4d4d;
+	margin: 0;
+	padding: 0;
+}
+
+#slide01 > img {
+	position: absolute;
+	bottom: 35px;
+	left: 30px;
+}
+
+#slide01 > .text {
+	position: absolute;
+	left: 290px;
+	bottom: 35px;
+}
+
+#slide02 > img {
+	position: absolute;
+	bottom: 35px;
+	left: 30px;
+}
+
+#slide02 > .text {
+	position: absolute;
+	left: 290px;
+	bottom: 65px;
+}
+
+#slide03 > img {
+	position: absolute;
+	bottom: 25px;
+	left: 30px;
+}
+
+#slide03 > .text {
+	position: absolute;
+	left: 270px;
+	bottom: 25px;
+}
+
+#slide04 > img {
+	position: absolute;
+	bottom: 50px;
+	left: 60px;
+}
+
+#slide04 > .text {
+	position: absolute;
+	left: 290px;
+	bottom: 25px;
+}
+
+#slide05 > img {
+	position: absolute;
+	bottom: 35px;
+	left: 60px;
+}
+
+#slide05 > .text {
+	position: absolute;
+	left: 240px;
+	bottom: 35px;
+}
+
+#slide06 > img {
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+}
+
+#slide06 > .text {
+	position: absolute;
+	left: 290px;
+	bottom: 35px;
+}
