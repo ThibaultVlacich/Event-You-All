@@ -155,6 +155,14 @@ class UserController extends Controller {
 
 		return array('data' => $data, 'errors' => array());
 	}
+	
+	public function profil(array $params) {
+		$id_user = intval($params[0]);
+		
+		$data = $this->model->getUser($id_user);
+		
+		return $data;
+	}
 }
 
 ?>

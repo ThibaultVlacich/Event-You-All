@@ -14,6 +14,10 @@ class UserView extends View {
 
     $this->setTemplate('/apps/user/views/register.php');
   }
+  
+  public function profil(){
+	  $this->setTemplate('/apps/user/views/profil.php');
+  }
 }
 
 ?>
