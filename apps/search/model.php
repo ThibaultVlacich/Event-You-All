@@ -1,10 +1,10 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the Model for the app "NAME OF THE APP".
+ * This is the Model for the app "Search".
  *
  * @package apps/nameoftheapp
- * @author Name of the author <author@isep.fr>
+ * @author Hugo Michard <hugomichard@isep.fr>
  * @version 0.1.0-dev-dd-mm-yyyy
  */
 

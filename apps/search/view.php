@@ -1,10 +1,10 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the View for the app "NAME OF THE APP".
+ * This is the View for the app "Search".
  *
  * @package apps/nameoftheapp
- * @author Name of the author <author@isep.fr>
+ * @author Hugo Michard <hugomichard@isep.fr>
  * @version 0.1.0-dev-dd-mm-yyyy
  */
 
@@ -15,13 +15,14 @@ class SearchView extends View {
     $this->assign('css',Config::get('config.base').'/apps/search/styles/style.css');
   }
 
+
   // Method for the module
   public function search() {
     // Here assign CSSs/JSs for that method
-    // EX : $this->assign('css', Config::get('config.base').'/apps/user/styles/style.css');
-    
+    $this->assign('css',Config::get('config.base').'/apps/search/styles/style.css');
+
     // The assign the view for the module
-    $this->setTemplate('/apps/NAMEOFTHEAPP/views/VIEW.php');
+    $this->setTemplate('/apps/search/views/VIEW.php');
   }
 
 
