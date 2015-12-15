@@ -41,7 +41,9 @@ class ArticleController extends Controller {
    if (!in_array(null, $data, true)) {
      $data += Request::getAssoc(array('bann','mclef'));
 
-     $this->model->createEvent($data);
+     $id_article = $this->model->createEvent($data);
+	 
+	 return array('id' => $id_article);
    }
  }
 

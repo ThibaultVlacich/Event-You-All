@@ -48,7 +48,7 @@ class EventsModel {
     $prep->bindParam(':mot_clef', $data['mclef']);
 
     if ($prep->execute()) {
-      return $this->db->lastInsertId();
+      return $this->db->lastInsertId('id');
     } else {
       return false;
     }

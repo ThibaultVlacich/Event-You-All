@@ -76,7 +76,9 @@ class EventsController extends Controller {
      $data['date_de'] = $date_debut;
      $data['date_fi'] = $date_fin;
 
-     $this->model->createEvent($data);
+     $id_event = $this->model->createEvent($data);
+	 
+	 return array('id' => $id_event);
    }
  }
 
