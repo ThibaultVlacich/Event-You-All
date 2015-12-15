@@ -4,6 +4,11 @@
 }
 a {
   color: #CC0033;
+  text-decoration: none;
+}
+a:hover {
+  color: #880000;
+  text-decoration: underline;
 }
 a:focus {
 	outline: none;

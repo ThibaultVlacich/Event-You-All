@@ -77,7 +77,7 @@ class EventsController extends Controller {
      $data['date_fi'] = $date_fin;
 
      $id_event = $this->model->createEvent($data);
-	 
+
 	 return array('id' => $id_event);
    }
  }
@@ -90,7 +90,7 @@ class EventsController extends Controller {
    foreach ($data as $event) {
      if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
        $date_debut_timestamp = strtotime($event['date_debut']);
-       $event['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
+       $event['date_debut'] = strftime('%d %b. %Y', $date_debut_timestamp);
        $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
      } else {
        $event['date_debut'] = null;
@@ -99,7 +99,7 @@ class EventsController extends Controller {
 
      if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
        $date_fin_timestamp = strtotime($event['date_fin']);
-       $event['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
+       $event['date_fin'] = strftime('%d %b. %Y', $date_fin_timestamp);
        $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
      } else {
        $event['date_fin'] = null;
