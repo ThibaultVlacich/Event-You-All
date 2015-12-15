@@ -10,7 +10,7 @@
                             <label for='nom'>Nom<span class="required">*</span>  </label>
                         </div>
                     <div class="fill">
-                        <input type='text' name='nom' id='nom' maxlength="12" required placeholder="ex : Mon evenement">
+                        <input type='text' name='nom' id='nom'  required placeholder="ex : Mon evenement">
                     </div>
                         <div class="label">
                         <label for='mail'>Theme<span class="required">*</span>  </label>

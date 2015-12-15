@@ -8,7 +8,7 @@
                         <div class="label">
                             <label for='nom'>Nom*  </label>
                         </div>
-                        <input type='text' name='nom' id='nom' maxlength="12" required placeholder="ex : Mon evenement">
+                        <input type='text' name='nom' id='nom' required placeholder="ex : Mon evenement">
                     </div>
                     <div class="long">
                         <div class="label">
