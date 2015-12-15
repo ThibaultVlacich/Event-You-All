@@ -60,7 +60,7 @@ abstract class Controller {
 		$route  = Route::getRoute();
 		$params = $route['params'];
 
-		// If there is not default module set, set it to the name of the app
+		// If there is no default module set, set it to the name of the app
 		if (empty($this->default_module)) {
 			$this->default_module = $route['app'];
 		}
