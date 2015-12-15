@@ -39,7 +39,7 @@ abstract class Controller {
 	/**
 	 * Execute the asked method of the Controller
 	 *
-	 *	@param $module string Name of the module to execute
+	 * @param $module string Name of the module to execute
 	 * @param $params array List of the paramameters
 	 *
 	 * @return array
@@ -48,7 +48,7 @@ abstract class Controller {
 		 if(method_exists($this, $module)) {
 			 return $this->$module($params);
 		 }
-	 }
+	}
 
 	/**
 	 * Render the template
