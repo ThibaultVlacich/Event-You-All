@@ -26,11 +26,15 @@ class EventsModel {
    public function createEvent(array $data) {
      $prep = $this->db->prepare('
       INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
-      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef)
+      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef,id_createur)
       VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef)
+      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef,:creator)
     ');
-
+	//prend l'id utilisateur
+	$session = System::getSession();
+	if ($session->isConnected()) {
+	$user_id = $_SESSION['userid'];
+	}
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':date_debut', $data['date_de']);
     $prep->bindParam(':date_fin', $data['date_fi']);
@@ -46,6 +50,7 @@ class EventsModel {
     $prep->bindParam(':description', $data['descript']);
     $prep->bindParam(':banniere', $data['bann']);
     $prep->bindParam(':mot_clef', $data['mclef']);
+	$prep->bindParam(':creator',$user_id);
 
     if ($prep->execute()) {
 	  $idevent=$this->db->lastInsertId('id');
@@ -101,6 +106,15 @@ class EventsModel {
 
   public function getArticlesForEvent($event_id) {
     $prep = $this->db->prepare('SELECT * FROM articles WHERE id_evenement = :event_id');
+
+    $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $prep->execute();
+
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
+   public function getCreatorForEvent($event_id) {
+    $prep = $this->db->prepare('SELECT * FROM users WHERE id = :event_id');
 
     $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
     $prep->execute();
