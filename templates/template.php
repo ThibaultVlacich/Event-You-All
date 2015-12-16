@@ -22,7 +22,9 @@
           <a href="https://facebook.com/Event-You-All"><i class="fa fa-facebook-square"></i></a>
           <a href="https://twitter.com/Event-You-All"><i class="fa fa-twitter-square"></i></a>
         </div>
-        <img src="<?php echo Config::get('config.base') ;?>/templates/images/header/logo.png" alt="Event-You-All logo" class="logo">
+        <a href="<?php echo Config::get('config.base'); ?>">
+          <img src="<?php echo Config::get('config.base') ;?>/templates/images/header/logo.png" alt="Event-You-All logo" class="logo">
+        </a>
         <?php
           $session = System::getSession();
         ?>
