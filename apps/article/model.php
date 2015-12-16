@@ -24,10 +24,11 @@ class ArticleModel {
    * @return mixed ID of the article just created or false on failure
    */
    public function createEvent(array $data) {
-    $prep = $this->db->prepare('INSERT INTO articles (nom,contenu) VALUES (:nom,:contenu)');
+    $prep = $this->db->prepare('INSERT INTO articles (nom,contenu,id_evenement) VALUES (:nom,:contenu,:event)');
 
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':contenu', $data['corps']);
+	$prep->bindParam(':event', $data['arti']);
 
     if ($prep->execute()) {
       return $this->db->lastInsertId();
@@ -45,6 +46,17 @@ class ArticleModel {
     $article = $prep->fetch(PDO::FETCH_ASSOC);
 
     return $article;
+  }
+  
+  public function getUserEvents($user_id){
+    $prep = $this->db->prepare('SELECT * FROM evenements WHERE id_createur = :user_id');
+
+    $prep->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $prep->execute();
+
+    $events = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    return $events;
   }
 }
 
