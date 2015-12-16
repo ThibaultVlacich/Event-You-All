@@ -62,6 +62,12 @@
             <?php if ($model['prix'] > 0) { ?><li><i class="fa fa-li fa-money"></i> <?php echo $model['prix']; ?>&nbsp;€</li><?php } ?>
             <?php if ($model['capacite'] > 0) { ?><li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places</li><?php } ?>
           </ul>
+          <div class="description">
+            <h2 class="title">Description</h2>
+            <p>
+              <?php echo $model['description']; ?>
+            </p>
+          </div>
         </div>
       </section>
       <?php
@@ -81,12 +87,6 @@
       </section>
       <?php } ?>
       <?php if(!empty($model['description'])) { ?>
-      <section class="description">
-        <h2 class="title">Description</h2>
-        <p>
-          <?php echo $model['description']; ?>
-        </p>
-      </section>
       <?php } ?>
       <section class="event-news">
         <h2 class="title">Articles</h2>
