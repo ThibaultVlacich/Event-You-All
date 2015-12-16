@@ -18,20 +18,20 @@
                     <div class="fill">
                         <select  name='theme' id='theme'>
                             <optgroup label='Musique'/>
-                                <option value='classique'>Classique</option>
-                                <option value='metal'>Metal</option>
-                                <option value='rock'>Rock</option>
-                                <option value='autres_m'>Autres</option>
+                                <option value=1>Classique</option>
+                                <option value=2>Metal</option>
+                                <option value=3>Rock</option>
+                                <option value=4>Autres</option>
                             <optgroup label='Cinema'/>
-                                <option value='action'>Action</option>
-                                <option value='thriller'>Thriller</option>
-                                <option value='familial'>Familial</option>
-                                <option value='comedie'>Comedie</option>
-                                <option value='autres_c'>Autres</option>
+                                <option value=5>Action</option>
+                                <option value=6>Thriller</option>
+                                <option value=7>Familial</option>
+                                <option value=8>Comedie</option>
+                                <option value=9>Autres</option>
                             <optgroup label='Image'/>
-                                <option value='peinture'>Peinture</option>
-                                <option value='photographie'>Photographie</option>
-                                <option value='autres_i'>Autres</option>
+                                <option value=10>Peinture</option>
+                                <option value=11>Photographie</option>
+                                <option value=12>Autres</option>
                         </select>
                     </div>
                          <div class="label">
@@ -39,12 +39,12 @@
                          </div>
                     <div class="fill">
                         <select  name='type' id='type'>
-                                <option value='expo'>Exposition</option>
-                                <option value='projection'>Projection</option>
-                                <option value='conf'>Conference</option>
-                                <option value='concert'>Concert</option>
-                                <option value='projection'>Projection</option>
-                                <option value='autres_ty'>Autres</option>
+                                <option value=1>Exposition</option>
+                                <option value=2>Projection</option>
+                                <option value=3>Conference</option>
+                                <option value=4>Concert</option>
+                                <option value=5>Projection</option>
+                                <option value=5>Autres</option>
                         </select>
                     </div>
                     <br>

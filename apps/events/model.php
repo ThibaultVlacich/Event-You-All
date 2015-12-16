@@ -48,7 +48,23 @@ class EventsModel {
     $prep->bindParam(':mot_clef', $data['mclef']);
 
     if ($prep->execute()) {
-      return $this->db->lastInsertId('id');
+	  $idevent=$this->db->lastInsertId('id');
+	  //lier le type de l'event
+	  $otherprep = $this->db->prepare('
+      INSERT INTO evenements_types (id_evenement,id_type)
+      VALUES (:id_ev,:id_ty)');
+	  $otherprep->bindParam(':id_ev', $idevent);
+      $otherprep->bindParam(':id_ty', $data['type']);
+	  $otherprep->execute();
+	  //lier le theme de l'event
+	  $otherprep2 = $this->db->prepare('
+      INSERT INTO evenements_genres (id_evenement,id_genre)
+      VALUES (:id_ev,:id_ge)');
+	  $otherprep2->bindParam(':id_ev', $idevent);
+      $otherprep2->bindParam(':id_ge', $data['theme']);
+	  $otherprep2->execute();
+	  
+      return $idevent;
     } else {
       return false;
     }

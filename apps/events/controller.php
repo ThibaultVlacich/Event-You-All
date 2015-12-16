@@ -59,7 +59,7 @@ class EventsController extends Controller {
 
  function create_confirm() {
 
-   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript'));
+   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
 
    if (!in_array(null, $data, true)) {
      $data += Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
@@ -68,9 +68,15 @@ class EventsController extends Controller {
      $date_fin = $data['date_fi'].' '.$data['time_fi'];
 
      $data['priv'] = false;
-
+//évite les bugs liés au fait d'avoir des champs nuls
      if (!empty($data['priv'])) {
        $data['priv'] = true;
+     }
+	 if (empty($data['bann'])) {
+       $data['bann'] = '';
+     }
+	 if (empty($data['mclef'])) {
+       $data['mclef'] = '';
      }
 
      $data['date_de'] = $date_debut;
