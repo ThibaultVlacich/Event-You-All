@@ -12,7 +12,7 @@ defined('EUA_VERSION') or die('Access denied');
  * @version 0.1.0-dev-01.12.2015
  */
 class Request {
-	 /**
+	/**
 	 * @var array Contains all checked variables to avoid infinite loop
 	 */
 	private static $checked = array();
