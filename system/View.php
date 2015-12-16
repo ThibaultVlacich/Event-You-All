@@ -11,7 +11,7 @@ defined('EUA_VERSION') or die('Access denied');
  * @version 0.1.0-dev-03-12-2015
  */
 class View {
-  /**
+	/**
 	 * @var string Template file to be used when the view will be rendered
 	 */
 	private $templateFile = '';
@@ -25,7 +25,7 @@ class View {
 		'js'      => array()
 	);
 
-  /**
+	/**
 	 * Sets the file that will be used for template compiling
 	 *
 	 * @param string $file file that will be used for template compiling
@@ -47,7 +47,7 @@ class View {
 		return $this->templateFile;
 	}
 
-  /**
+	/**
 	 * Assigns a list of variables whose names are in $names to their $values
 	 *
 	 * @param mixed $names  variable names
@@ -98,19 +98,19 @@ class View {
 		}
 	}
 
-  /**
+	/**
 	 * Renders the view
-   *
-   * @param $module string Name of the module to render
-   * @param $model array Calculated model of the app
+	 *
+	 * @param $module string Name of the module to render
+	 * @param $model array Calculated model of the app
 	 *
 	 * @return string The rendered string of the view
 	 */
 	public function render($module = '', $model = array()) {
-    // Execute the module method of the view, if it exists
-    if (method_exists($this, $module)) {
-      $this->$module();
-    }
+		// Execute the module method of the view, if it exists
+		if (method_exists($this, $module)) {
+			$this->$module();
+		}
 
 		// Check template file
 		if (empty($this->templateFile)) {
@@ -118,11 +118,11 @@ class View {
 			return '';
 		}
 
-    ob_start();
+		ob_start();
 
-    include_once ROOT_PATH.$this->templateFile;
+		include_once ROOT_PATH.$this->templateFile;
 
-    $this->rendered_string = ob_get_clean();
+		$this->rendered_string = ob_get_clean();
 
 		return $this->rendered_string;
 	}
