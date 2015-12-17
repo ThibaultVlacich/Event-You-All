@@ -70,7 +70,7 @@ class UserModel {
 	 */
 	public function getUser($user_id) {
 		$prep = $this->db->prepare('
-			SELECT id, nickname, password, email, firstname, lastname, access
+			SELECT *
 			FROM users
 			WHERE id = :userid
 		');
@@ -101,8 +101,8 @@ class UserModel {
     $prep->bindParam(':lastname', $data['lastname']);
     $prep->bindParam(':phone', $data['phone']);
     $prep->bindParam(':adress', $data['adress']);
-    $prep->bindParam(':zip_code', $date['zip_code']);
-    $prep->bindParam(':city', $date['city']);
+    $prep->bindParam(':zip_code', $data['zip_code']);
+    $prep->bindParam(':city', $data['city']);
     $prep->bindParam(':country', $data['country']);
 
     if ($prep->execute()) {

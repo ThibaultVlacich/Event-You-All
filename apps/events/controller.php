@@ -46,6 +46,8 @@ class EventsController extends Controller {
 
      // Get linked articles
      $data['articles'] = $this->model->getArticlesForEvent($data['id']);
+	 // Get creator's name
+	 $data['creatorname'] = $this->model->getCreatorForEvent($data['id']);
 
      // Retourner les infos récupérées
      return $data;
@@ -59,7 +61,7 @@ class EventsController extends Controller {
 
  function create_confirm() {
 
-   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript'));
+   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
 
    if (!in_array(null, $data, true)) {
      $data += Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
@@ -68,15 +70,23 @@ class EventsController extends Controller {
      $date_fin = $data['date_fi'].' '.$data['time_fi'];
 
      $data['priv'] = false;
-
+//évite les bugs liés au fait d'avoir des champs nuls
      if (!empty($data['priv'])) {
        $data['priv'] = true;
+     }
+	 if (empty($data['bann'])) {
+       $data['bann'] = '';
+     }
+	 if (empty($data['mclef'])) {
+       $data['mclef'] = '';
      }
 
      $data['date_de'] = $date_debut;
      $data['date_fi'] = $date_fin;
 
-     $this->model->createEvent($data);
+     $id_event = $this->model->createEvent($data);
+
+	 return array('id' => $id_event);
    }
  }
 
@@ -88,7 +98,7 @@ class EventsController extends Controller {
    foreach ($data as $event) {
      if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
        $date_debut_timestamp = strtotime($event['date_debut']);
-       $event['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
+       $event['date_debut'] = strftime('%d %b. %Y', $date_debut_timestamp);
        $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
      } else {
        $event['date_debut'] = null;
@@ -97,7 +107,7 @@ class EventsController extends Controller {
 
      if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
        $date_fin_timestamp = strtotime($event['date_fin']);
-       $event['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
+       $event['date_fin'] = strftime('%d %b. %Y', $date_fin_timestamp);
        $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
      } else {
        $event['date_fin'] = null;

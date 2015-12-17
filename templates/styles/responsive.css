@@ -1,17 +1,22 @@
 /* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
+  section.main-content {
+    width: 1200px;
+  }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
-
+  section.main-content {
+    width: 970px;
+  }
 }
 
 /* Small devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-
-
+  section.main-content {
+    width: 750px;
+  }
 }
 
 /* Extra small devices (phones, less than 768px) */

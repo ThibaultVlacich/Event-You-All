@@ -151,3 +151,8 @@ section ul li .image{
     background-size: cover;
     background-position: center;
 }
+
+#prix_mini, #prix_max, #organisateur, #nbr_min_personnes, #nbr_max_personnes, #sponsors, #city, #zip_code
+{
+  margin : 5px;
+}

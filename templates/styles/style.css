@@ -4,6 +4,11 @@
 }
 a {
   color: #CC0033;
+  text-decoration: none;
+}
+a:hover {
+  color: #880000;
+  text-decoration: underline;
 }
 a:focus {
 	outline: none;
@@ -33,7 +38,6 @@ body {
 .fluid-wrapper {
   margin: 0 auto;
   width: 100%;
-  //max-width: 1000px;
   position: relative;
 }
 
@@ -182,7 +186,9 @@ nav.main-navigation .mobile {
 
 section.main-content {
   margin: 0 auto;
-  max-width: 1200px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 /*

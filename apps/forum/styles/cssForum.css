@@ -1,0 +1,76 @@
+#haut{
+    width:100%;
+    background-color: #CC0033;
+    align-content: center;
+}
+#haut div{
+  margin-left: auto;
+  margin-right: auto;
+}
+ul .enteteforum
+{
+  display: inline-block;
+  margin-right: 30px;
+  color : white;
+  line-height: 50px;
+  padding: 0 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+ul .enteteforum:hover
+{
+    color:#CC0033;
+    background-color: white;
+}
+
+tr:nth-child(2n)
+{
+    background-color:rgb(235,235,235);
+}
+#Trier{
+    margin-top: 10px;
+}
+table{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.sujet{
+    width:200px;
+    height:45px;
+}
+.admin{
+    width:150px;
+}
+.event{
+    width:300px;
+}
+.date{
+    width:110px;
+}
+.dernier_com{
+    width:110px;
+}
+.vues{
+    width:110px;
+}
+.com{
+    width:110px;
+}
+#num_page{
+    margin-bottom: 10px;
+}
+#num_page td{
+    height:20px;
+    width:20px;
+    text-align: center;
+    border: solid #CC0033 2px;
+}
+a{
+    text-decoration: none;
+}

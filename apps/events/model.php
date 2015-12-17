@@ -26,11 +26,15 @@ class EventsModel {
    public function createEvent(array $data) {
      $prep = $this->db->prepare('
       INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
-      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef)
+      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef,id_createur)
       VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef)
+      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef,:creator)
     ');
-
+	//prend l'id utilisateur
+	$session = System::getSession();
+	if ($session->isConnected()) {
+	$user_id = $_SESSION['userid'];
+	}
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':date_debut', $data['date_de']);
     $prep->bindParam(':date_fin', $data['date_fi']);
@@ -46,9 +50,26 @@ class EventsModel {
     $prep->bindParam(':description', $data['descript']);
     $prep->bindParam(':banniere', $data['bann']);
     $prep->bindParam(':mot_clef', $data['mclef']);
+	$prep->bindParam(':creator',$user_id);
 
     if ($prep->execute()) {
-      return $this->db->lastInsertId();
+	  $idevent=$this->db->lastInsertId('id');
+	  //lier le type de l'event
+	  $otherprep = $this->db->prepare('
+      INSERT INTO evenements_types (id_evenement,id_type)
+      VALUES (:id_ev,:id_ty)');
+	  $otherprep->bindParam(':id_ev', $idevent);
+      $otherprep->bindParam(':id_ty', $data['type']);
+	  $otherprep->execute();
+	  //lier le theme de l'event
+	  $otherprep2 = $this->db->prepare('
+      INSERT INTO evenements_genres (id_evenement,id_genre)
+      VALUES (:id_ev,:id_ge)');
+	  $otherprep2->bindParam(':id_ev', $idevent);
+      $otherprep2->bindParam(':id_ge', $data['theme']);
+	  $otherprep2->execute();
+	  
+      return $idevent;
     } else {
       return false;
     }
@@ -85,6 +106,15 @@ class EventsModel {
 
   public function getArticlesForEvent($event_id) {
     $prep = $this->db->prepare('SELECT * FROM articles WHERE id_evenement = :event_id');
+
+    $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $prep->execute();
+
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+  
+   public function getCreatorForEvent($event_id) {
+    $prep = $this->db->prepare('SELECT * FROM users WHERE id = :event_id');
 
     $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
     $prep->execute();

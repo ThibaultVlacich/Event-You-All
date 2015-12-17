@@ -112,10 +112,11 @@ class UserController extends Controller {
 		$data = Request::getAssoc(array('nickname', 'password', 'password_confirm', 'email', 'firstname', 'lastname', 'cgu'));
 
 		if (!in_array(null, $data, true)) {
+			$data += Request::getAssoc(array('adress','zip_code','city','country','phone','newsletter'));
 			$errors = array();
 
 			// Check nickname availability
-			if (($e = $this->model->checkNickname($data['nickname'])) !== true) {
+			if (($e = $this->model->checkNickname($data['nickname'])) !==	 true) {
 				$errors[] = $e;
 			}
 
@@ -153,6 +154,14 @@ class UserController extends Controller {
 		}
 
 		return array('data' => $data, 'errors' => array());
+	}
+	
+	public function profil(array $params) {
+		$id_user = intval($params[0]);
+		
+		$data = $this->model->getUser($id_user);
+		
+		return $data;
 	}
 }
 

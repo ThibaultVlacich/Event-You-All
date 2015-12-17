@@ -90,10 +90,10 @@ class Main {
 		$session = System::getSession();
 	}
 
-  /**
+  	/**
 	 * Executes the main application and wrap it into a response for the client.
 	 */
-  private function exec() {
+	private function exec() {
 		$route = Route::getRoute();
 
 		$admin = $route['admin'] == 1;
@@ -147,7 +147,7 @@ class Main {
 				include_once TEMPLATES_DIR.'template'.($admin ? '_admin' : '').'.php';
 			}
 		}
-  }
+	}
 }
 
 ?>

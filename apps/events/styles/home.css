@@ -1,188 +1,104 @@
-/*Section*/
-
 div.app-events-home {
-  margin-top: 415px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: rgb(166, 166, 166);
-  border-style: solid;
-  background-color: white;
+  margin: 20px 0;
 }
 
-/* Extra small devices (phones, less than 768px) */
-@media only screen and (max-width: 768px) {
-  div.app-events-home {
-    margin-top: 215px;
-  }
-
-}
-
-/*-----slider-----*/
-
-div.slider {
-  z-index: -50;
+div.app-events-home div.slideshow {
+  z-index: -60;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   height: 600px;
-  background-image: url(http://blogs.paris.fr/unitedstatesofparis/files/2014/09/Soir%C3%A9e-The-Underwater-2-les-myst%C3%A8res-des-fonds-marins-by-Agence-Wato-We-are-the-Oracle-%C3%A9v%C3%A9nement-clubbing-nuit-Piscine-Pailleron-photo-by-United-States-of-Paris.jpg);
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
 }
 
-/* Extra small devices (phones, less than 768px) */
-@media only screen and (max-width: 768px) {
-  div.slider {
-    height: 400px;
-  }
+div.app-events-home div.slideshow div.slidesjs-container {
+  height: 600px;
 }
 
-/*-----barre recherche-----*/
-
-div.search_h {
-  width: 80%;
-  border: 2px #CC0033 solid;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 5px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: white;
-}
-div.search_h form {
-  text-align: center;
-}
-div.search_h form input {
-  margin: 0 10px
-}
-div.search_h form select {
-  margin: 0 10px
-}
-div.search_h select {
-  color: black;
-  border: 1px solid black;
-  background-color: white;
-  -webkit-appearance: none;
-  border-radius: 5px;
+div.app-events-home ul.events {
+  list-style: none;
+  margin: 0 -15px;
+  margin-top: 415px;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 
-div.search_h input[type="date"] {
-  -webkit-appearance: none;
-}
-
-div.search_h input[type="submit"] {
-  color: white;
-  background-color: #CC0033;
-  border: 1px solid black;
-  -webkit-appearance: none;
-  border-radius: 5px;
-}
-select option:disabled {
-  height: 0px;
-  visibility: hidden;
-}
-div.search_h:hover {
-  width: 80%;
-  border: 3px #CC0033 solid;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius:5px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: white;
-}
-
-/*----resultat event----*/
-
-div.app-events-home section ul {
-  list-style-type: none;
-  margin: 0 auto;
-  padding: 5px;
-  height: 50px;
-}
-
-/*pour mettre ce qui suit après les elements flottants*/
-
-div.app-events-home section::after {
-  content: " ";
+div.app-events-home ul.events:after {
+  content: ' ';
   display: block;
   clear: both;
 }
 
-/*gestion des blocks (taille, ecritures, images...) */
-
-div.app-events-home section ul li {
-  float: left;
-  margin: 10px;
-  width: calc(50% - 20px);
+div.app-events-home ul.events li {
   position: relative;
+  float: left;
+  margin: 15px 0;
+  padding: 0 15px;
+  width: 33.33333333%;
+  height: 200px;
 }
-/* Extra small devices (phones, less than 768px) */
-@media only screen and (max-width: 768px) {
-  div.app-events-home section ul li {
-    float: left;
-    margin: 10px;
-    width: calc(100% - 20px);
-    position: relative;
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  div.app-events-home ul.events li {
+    width: 50%;
   }
 }
-div.app-events-home section ul li div.event_text {
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-home ul.events li {
+    width: 100%;
+  }
+}
+
+div.app-events-home ul.events li:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+div.app-events-home ul.events li div.poster {
   float: left;
-  width: 50%;
-  height: 200px;
-  background: #CC0033;
-}
-div.app-events-home section ul li div p {
-  padding-left: 5px;
-  font-size: 11px;
-  color: white;
-  font-weight: bold;
-}
-div.app-events-home section ul li div h2 {
-  margin: 0;
-  padding: 0;
-  padding-top: 5px;
-  padding-left: 5px;
-  font-size: 18px;
-  color: white;
-  font-weight: bold;
-}
-div.app-events-home section ul li .image {
-  float: left;
-  width: 50%;
+  width: 35%;
   height: 200px;
   overflow: hidden;
 }
-div.app-events-home section ul li .image img {
+
+div.app-events-home ul.events li div.poster img {
+  display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-div.app-events-home section ul .liens_ima {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+
+div.app-events-home ul.events li div.caption {
+  float: left;
+  width: 65%;
+  height: 200px;
+  padding: 10px;
+  background: #CC0033;
+  color: white;
 }
-div.app-events-home section ul .coeur {
-  margin-right: 10px;
-  height: 20px;
+
+span.theme {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  background-color: #880000;
 }
-div.app-events-home section ul .croix {
-  height: 20px;
+
+div.app-events-home ul.events li div.caption h2 {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 18px;
 }
-div.app-events-home section ul .fleche {
-  position: absolute;
-  height: 30px;
-  top: 0px;
-  left: calc(50% - 23px);
-}
-div.app-events-home section ul li a.link {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+
+div.app-events-home ul.events li div.caption h2 a {
+  color: white;
 }

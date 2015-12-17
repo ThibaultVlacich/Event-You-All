@@ -23,7 +23,10 @@ class EventsView extends View {
 
   public function index() {
     $this->setTemplate('/apps/events/views/home.php');
+
     $this->assign('css', Config::get('config.base').'/apps/events/styles/home.css');
+    $this->assign('js', Config::get('config.base').'/librairies/jquery.slides.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/home.js');
   }
 
   public function create_confirm(){
