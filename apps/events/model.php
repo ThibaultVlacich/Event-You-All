@@ -26,9 +26,9 @@ class EventsModel {
    public function createEvent(array $data) {
      $prep = $this->db->prepare('
       INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
-      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef,id_createur)
+      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef,id_createur,poster)
       VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef,:creator)
+      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef,:creator,:poster)
     ');
 	//prend l'id utilisateur
 	$session = System::getSession();
@@ -49,6 +49,7 @@ class EventsModel {
     $prep->bindParam(':pays', $data['pays']);
     $prep->bindParam(':description', $data['descript']);
     $prep->bindParam(':banniere', $data['bann']);
+    $prep->bindParam(':poster', $data['poster']);
     $prep->bindParam(':mot_clef', $data['mclef']);
 	$prep->bindParam(':creator',$user_id);
 
