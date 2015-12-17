@@ -16,146 +16,144 @@ class EventsController extends Controller {
     'create_confirm' => 1
   );
 
- function detail(array $params) {
+  function detail(array $params) {
+    if (isset($params[0])) {
+      $event_id = intval($params[0]);
 
-   if (isset($params[0])) {
-     $event_id = intval($params[0]);
+      // Récupérer l'evenement lié depuis le model
+      if (!($data = $this->model->getEvent($event_id))) {
+        return array();
+      }
 
-     // Récupérer l'evenement lié depuis le model
-     if (!($data = $this->model->getEvent($event_id))) {
-       return array();
-     }
+      if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {
+        $date_debut_timestamp = strtotime($data['date_debut']);
+        $data['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
+        $data['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
+      } else {
+        $data['date_debut'] = null;
+        $data['heure_debut'] = null;
+      }
 
-     if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {
-       $date_debut_timestamp = strtotime($data['date_debut']);
-       $data['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
-       $data['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
-     } else {
-       $data['date_debut'] = null;
-       $data['heure_debut'] = null;
-     }
+      if (!empty($data['date_fin']) && $data['date_fin'] != '0000-00-00 00:00:00') {
+        $date_fin_timestamp = strtotime($data['date_fin']);
+        $data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
+        $data['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
+      } else {
+        $data['date_fin'] = null;
+        $data['heure_fin'] = null;
+      }
 
-     if (!empty($data['date_fin']) && $data['date_fin'] != '0000-00-00 00:00:00') {
-       $date_fin_timestamp = strtotime($data['date_fin']);
-       $data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
-       $data['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
-     } else {
-       $data['date_fin'] = null;
-       $data['heure_fin'] = null;
-     }
+      // Get linked articles
+      $data['articles'] = $this->model->getArticlesForEvent($data['id']);
+	    // Get creator's name
+	    $data['creatorname'] = $this->model->getCreatorForEvent($data['id']);
 
-     // Get linked articles
-     $data['articles'] = $this->model->getArticlesForEvent($data['id']);
-	 // Get creator's name
-	 $data['creatorname'] = $this->model->getCreatorForEvent($data['id']);
+      // Retourner les infos récupérées
+      return $data;
+    }
+  }
 
-     // Retourner les infos récupérées
-     return $data;
-   }
+  function create() {
 
- }
+  }
 
- function create() {
+  function create_confirm() {
+    $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
 
- }
+    if (!in_array(null, $data, true)) {
+      $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
 
- function create_confirm() {
+      $maxwidth = 100000;
+      $maxheight = 100000;
+      $banner = Request::get('bann', null, 'FILES');
+      $message_erreur = '';
 
+      if(!empty($banner['name'])) {
+        if(!$banner['error']) {
+          $new_file_name = $banner['name'];
 
+          move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
 
-   $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
-
-   if (!in_array(null, $data, true)) {
-     $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
-//ajouter bannière
-        //definition des limitations
-        $maxwidth=100000;
-        $maxheight=100000;
-        $banner = Request::get('bann', null, 'FILES');
-        $message_erreur='';
-        if(!empty($banner['name'])) {
-            if(!$banner['error']) {
-                $new_file_name = $banner['name'];
-                
-                move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
-                
-                $data['bann'] = $new_file_name;
-            }
-            else{$message_erreur='Problème de Serveur';}
+          $data['bann'] = $new_file_name;
+        } else{
+          $message_erreur='Problème de Serveur';
         }
-       $data['message']=$message_erreur;
-//ajouter poster
-        //definition des limitations
-        $maxwidth=100000;
-        $maxheight=100000;
-        $poster = Request::get('poster', null, 'FILES');
-        $message_erreur='';
-        if(!empty($poster['name'])) {
-            if(!$poster['error']) {
-                $new_file_name = $poster['name'];
-                
-                move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
-                
-                $data['poster'] = $new_file_name;
-            }
-            else{$message_erreur='Problème de Serveur';}
+      }
+
+      $data['message'] = $message_erreur;
+
+      $poster = Request::get('poster', null, 'FILES');
+
+      $message_erreur = '';
+
+      if(!empty($poster['name'])) {
+        if(!$poster['error']) {
+          $new_file_name = $poster['name'];
+
+          move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+
+          $data['poster'] = $new_file_name;
+        } else{
+          $message_erreur='Problème de Serveur';
         }
-       $data['message']=$message_erreur;
+      }
 
-     $date_debut = $data['date_de'].' '.$data['time_de'];
-     $date_fin = $data['date_fi'].' '.$data['time_fi'];
+      $data['message']=$message_erreur;
 
-     $data['priv'] = false;
-//évite les bugs liés au fait d'avoir des champs nuls
-     if (!empty($data['priv'])) {
-       $data['priv'] = true;
-     }
-	 if (empty($data['bann'])) {
-       $data['bann'] = '';
-     }
-	 if (empty($data['mclef'])) {
-       $data['mclef'] = '';
-     }
+      $date_debut = $data['date_de'].' '.$data['time_de'];
+      $date_fin = $data['date_fi'].' '.$data['time_fi'];
 
-     $data['date_de'] = $date_debut;
-     $data['date_fi'] = $date_fin;
+      $data['priv'] = false;
 
-     $id_event = $this->model->createEvent($data);
+      if (!empty($data['priv'])) {
+        $data['priv'] = true;
+      }
 
-	 return array('id' => $id_event);
-   }
- }
+	    if (empty($data['bann'])) {
+        $data['bann'] = '';
+      }
 
- function index() {
-   $data = $this->model->getEvents();
+      if (empty($data['mclef'])) {
+        $data['mclef'] = '';
+      }
 
-   $events = array();
+      $data['date_de'] = $date_debut;
+      $data['date_fi'] = $date_fin;
 
-   foreach ($data as $event) {
-     if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
-       $date_debut_timestamp = strtotime($event['date_debut']);
-       $event['date_debut'] = strftime('%d %b. %Y', $date_debut_timestamp);
-       $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
-     } else {
-       $event['date_debut'] = null;
-       $event['heure_debut'] = null;
-     }
+      $id_event = $this->model->createEvent($data);
 
-     if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
-       $date_fin_timestamp = strtotime($event['date_fin']);
-       $event['date_fin'] = strftime('%d %b. %Y', $date_fin_timestamp);
-       $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
-     } else {
-       $event['date_fin'] = null;
-       $event['heure_fin'] = null;
-     }
+	    return array('id' => $id_event);
+    }
+  }
 
-     $events[] = $event;
-   }
+  function index() {
+    $data = $this->model->getEvents();
 
-   return $events;
- }
+    $events = array();
 
+    foreach ($data as $event) {
+      if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
+        $date_debut_timestamp = strtotime($event['date_debut']);
+        $event['date_debut'] = strftime('%d %b. %Y', $date_debut_timestamp);
+        $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
+      } else {
+        $event['date_debut'] = null;
+        $event['heure_debut'] = null;
+      }
+
+      if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
+        $date_fin_timestamp = strtotime($event['date_fin']);
+        $event['date_fin'] = strftime('%d %b. %Y', $date_fin_timestamp);
+        $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
+      } else {
+        $event['date_fin'] = null;
+        $event['heure_fin'] = null;
+      }
+
+      $events[] = $event;
+    }
+
+    return $events;
+  }
 }
-
 ?>
