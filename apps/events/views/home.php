@@ -3,6 +3,8 @@
     <img src="http://blogs.paris.fr/unitedstatesofparis/files/2014/09/Soir%C3%A9e-The-Underwater-2-les-myst%C3%A8res-des-fonds-marins-by-Agence-Wato-We-are-the-Oracle-%C3%A9v%C3%A9nement-clubbing-nuit-Piscine-Pailleron-photo-by-United-States-of-Paris.jpg" alt="">
     <img src="http://www.104.fr/data/classes/evenement/evenement_392_image.jpg" alt="">
   </div>
+  <a class="fa fa-chevron-left slidesjs-previous slidesjs-navigation" href="#" title="Précédent"></a>
+  <a class="fa fa-chevron-right slidesjs-next slidesjs-navigation" href="#" title="Suivant"></a>
   <ul class="events">
     <?php foreach($model as $event) { ?>
       <li>
