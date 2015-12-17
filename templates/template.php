@@ -107,13 +107,13 @@
     <footer>
       <nav class="main-navigation">
       <ul>
-        <li><a href="home.html">Accueil</a></li>
-        <li><a href="home.html">Thèmes</a></li>
-        <li><a href="home.html">Articles</a></li>
-        <li><a href="home.html">Forum</a></li>
-        <li><a href="home.html">FAQ</a></li>
-        <li><a href="home.html">Contact</a></li>
-        <li><a href="home.html">A propos de nous</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>">Accueil</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>/events/themes">Thèmes</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>/articles">Articles</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>/forum">Forum</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>/faq">FAQ</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>/contact">Contact</a></li>
+        <li><a href="<?php echo Config::get('config.base') ; ?>/about">A propos de nous</a></li>
       </ul>
     </nav>
     </footer>
