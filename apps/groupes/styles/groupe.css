@@ -1,0 +1,224 @@
+/**
+ * App groupes : detail page
+ */
+
+div.app-groupes-detail {
+  font-size: 16px;
+}
+
+/**
+ * Main banner
+ */
+
+div.app-groupes-detail div.banner {
+  z-index: -60;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+}
+div.app-groupes-detail div.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/**
+ * Event wrapper
+ */
+
+div.app-groupes-detail div.groupe-wrapper {
+  margin-top: 325px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-groupes-detail div.groupe-wrapper {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 15px;
+  }
+}
+
+div.app-groupes-detail div.groupe-wrapper:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+div.app-groupes-detail div.groupe-wrapper section {
+  background: white;
+  border: 1px solid #EAEAEA;
+  margin: 15px 0;
+  padding: 15px;
+}
+div.app-groupes-detail div.groupe-wrapper section h2.title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #CC0033;
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+/**
+ * Left column
+ */
+
+div.app-groupes-detail div.groupe-wrapper div.groupe-main {
+  width: 66.66666667%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-groupes-detail div.groupe-wrapper div.groupe-main {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/**
+ * Details of the event
+ */
+
+div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+div.app-groupes-detail div.event-wrapper div.event-main section.groupes-detail-infos .poster {
+  width: 33.33333333%;
+  float: left;
+}
+div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .poster img {
+  width: 100%;
+}
+div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .details {
+  width: 66.66666667%;
+  padding: 0 15px;
+  float: left;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .poster {
+    width: 100%;
+  }
+  div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .details {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .details h2.nom {
+  color: #CC0033;
+  font-weight: normal;
+  font-size: 36px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .details .fa-ul li {
+  margin-top: 5px;
+}
+div.app-groupes-detail div.groupe-wrapper div.groupe-main section.groupes-detail-infos .details .fa-ul li .fa-li {
+  color: #CC0033;
+  top: 0;
+}
+/**
+ * Right column
+ */
+
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column {
+  width: 33.33333333%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-groupes-detail div.groupe-wrapper aside.groupe-column {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column div.register {
+  text-align: center;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column div.register a.button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #CC0033;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column div.register a.button:hover {
+  background-color: #880000;
+  border-color: rgba(0, 0, 0, 0.5);
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column div.register a.button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column div.register a.button.disabled:hover {
+  background-color: #CC0033;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column div.register p {
+  text-align: justify;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons {
+  text-align: center;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a {
+  display: inline-block;
+  width: 40px;
+  padding: 6px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a.fa-twitter {
+  background-color: #55acee;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a.fa-twitter:hover {
+  background-color: #2f9bed;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a.fa-facebook {
+  background-color: #3b5998;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a.fa-facebook:hover {
+  background-color: #264b99;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a.fa-google-plus {
+  background-color: #dd4b39;
+}
+div.app-groupes-detail div.groupe-wrapper aside.groupe-column .share-buttons a.fa-google-plus:hover {
+  background-color: #de3721;
+}
