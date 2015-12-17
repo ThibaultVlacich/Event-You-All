@@ -13,10 +13,12 @@ A faire : - changer le lien html vers connexion
     <body>
         <!--haut page-->
         <section class="blocinscri">
-            <h2>FAQ</h2>
-            <form method='post' action='pagecontacte.php' >
+            <h2>F.A.Q</h2>
+
+
+          <!-- <form method='post' action='pagecontacte.php' >
                  <p><input id="bouton" type='submit' value='Si vous ne trouvez pas de réponses à votre question, contactez nous'/></p>
-            </form>
+            </form> -->
           <?php  foreach($model as $QW) { ?>
             <section class="inpair">
                 <p class="question"> <?php echo $QW['question']; ?></p>
@@ -25,6 +27,9 @@ A faire : - changer le lien html vers connexion
 
 
           <?php } ?>
+          <a href="pagecontacte.php" class="button">Contactez nous</a>
+          
+
           </section>
         <!--bas page-->
     </body>

@@ -40,6 +40,8 @@ label {
 h2{
   font-size: 300%;
   text-align: center;
+  color: rgb(119,119,119);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 
 
 }
@@ -61,4 +63,21 @@ section.inpair:nth-child(odd){
 .reponse{
     color: rgb(70,70,70);
     font-weight: bold;
+}
+
+
+.button{
+  float:right;
+  padding: 1%;
+  background: #CC0033;
+  color : white;
+  transition: all 0.15s ease-in-out;
+  border-radius: 4px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+
+}
+
+.button:hover {
+  background: white;
+  color: #CC0033;
 }
