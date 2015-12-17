@@ -3,7 +3,6 @@ div.app-events-home {
 }
 
 div.app-events-home div.slideshow {
-  z-index: -60;
   position: absolute;
   top: 0;
   left: 0;
@@ -14,8 +13,25 @@ div.app-events-home div.slideshow {
 }
 
 div.app-events-home div.slideshow div.slidesjs-container {
+  z-index: -60;
   height: 600px;
 }
+
+div.app-events-home div.slideshow .slidesjs-navigation {
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  text-decoration: none;
+}
+
+div.app-events-home div.slideshow .slidesjs-navigation.slidesjs-previous {
+  left: 10px;
+}
+
+div.app-events-home div.slideshow .slidesjs-navigation.slidesjs-next {
+  right: 10px;
+}
+
 
 div.app-events-home ul.events {
   list-style: none;
