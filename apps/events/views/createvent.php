@@ -1,5 +1,5 @@
         <section class="blocinscri">
-            <form method='post' action='http://localhost/Event-You-All/events/create_confirm' >
+            <form method='post' action='<?php echo Config::get('config.base'); ?>/events/create_confirm' enctype="multipart/form-data">
                 <h2>Créer un nouvel événement</h2>
               <div class="create_part" class="r1">
                 <h3>1-A propos de l'événement</h3>
