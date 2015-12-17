@@ -1,14 +1,13 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the Model for the app "NAME OF THE APP".
+ * This is the Model for the app "groupes".
  *
- * @package apps/nameoftheapp
- * @author Name of the author <author@isep.fr>
- * @version 0.1.0-dev-dd-mm-yyyy
+ * @package apps/groupes
+ * @author Alexis Dahan <alexis.dahan@isep.fr>
+ * @version 0.1.0-dev-17-12-2015
  */
 
-// -> Need to replace here "Default" by the name of the app (capitalized)
 class GroupesModel {
   protected $db;
 
