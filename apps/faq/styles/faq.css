@@ -1,7 +1,9 @@
-//parfait !!!!!!
+
 .blocinscri form {
-    width:80%;
+    width:100%;
     margin: auto;
+}
+
 }
 .centre {
     position:relative;
@@ -33,11 +35,30 @@ label {
     display:inline-block;
     margin-top:30px;
     //width:8%;
-    
+
+}
+h2{
+  font-size: 300%;
+  text-align: center;
+
+
+}
+section.inpair{
+  height: 100%;
+
+}
+section.inpair:nth-child(odd){
+
+
 }
 .question{
+    color: #cc0033;
     font-weight:bold;
+    font-size: 200%;
+    border-bottom: 4px solid #cc0033;
+    border-radius: 2px;
 }
-.answer{
-    color:grey;
+.reponse{
+    color: rgb(70,70,70);
+    font-weight: bold;
 }

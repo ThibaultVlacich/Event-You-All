@@ -17,19 +17,15 @@ A faire : - changer le lien html vers connexion
             <form method='post' action='pagecontacte.php' >
                  <p><input id="bouton" type='submit' value='Si vous ne trouvez pas de réponses à votre question, contactez nous'/></p>
             </form>
-            <section>
-                <p class="question"> <?php echo $quest ; ?></p>
-                <p class="réponse">Utilisez la barre de recherche ci-dessus ou utilisez la page recherche avancée</p>
+          <?php  foreach($model as $QW) { ?>
+            <section class="inpair">
+                <p class="question"> <?php echo $QW['question']; ?></p>
+                <p class="reponse"><?php echo $QW['reponse']; ?></p>
             </section>
-            <section>
-                <p class="question">Comment accéder à la page recherche avancée ?</p>
-                <p class="réponse">Sous la barre de recherche, cliquez sur le lien "recherche avancée" </p>
-            </section>
-            <section>
-                <p class="question">J'ai un problème avec mon php, css et html... que faire ?</p>
-                <p class="réponse">Demande à Thibault </p>
-            </section>
-        </section>
+
+
+          <?php } ?>
+          </section>
         <!--bas page-->
     </body>
 </html>
