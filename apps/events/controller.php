@@ -61,10 +61,46 @@ class EventsController extends Controller {
 
  function create_confirm() {
 
+
+
    $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
 
    if (!in_array(null, $data, true)) {
-     $data += Request::getAssoc(array('bann','sujet','mclef','weborg','priv'));
+     $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
+//ajouter bannière
+        //definition des limitations
+        $maxwidth=100000;
+        $maxheight=100000;
+        $banner = Request::get('bann', null, 'FILES');
+        $message_erreur='';
+        if(!empty($banner['name'])) {
+            if(!$banner['error']) {
+                $new_file_name = $banner['name'];
+                
+                move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+                
+                $data['bann'] = $new_file_name;
+            }
+            else{$message_erreur='Problème de Serveur';}
+        }
+       $data['message']=$message_erreur;
+//ajouter poster
+        //definition des limitations
+        $maxwidth=100000;
+        $maxheight=100000;
+        $poster = Request::get('poster', null, 'FILES');
+        $message_erreur='';
+        if(!empty($poster['name'])) {
+            if(!$poster['error']) {
+                $new_file_name = $poster['name'];
+                
+                move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+                
+                $data['poster'] = $new_file_name;
+            }
+            else{$message_erreur='Problème de Serveur';}
+        }
+       $data['message']=$message_erreur;
 
      $date_debut = $data['date_de'].' '.$data['time_de'];
      $date_fin = $data['date_fi'].' '.$data['time_fi'];
