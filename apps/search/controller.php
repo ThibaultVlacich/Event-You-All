@@ -26,11 +26,12 @@ class SearchController extends Controller {
     if(isset($search) && !empty($search)) {
         $results = $this->model->basicsearchindatabase($search);//Function defined in model
         return $results;
-        
+
 }
     else {
       //Error if nothing has been typed in by the user
-      return array('error' => "Veuillez insérer un mot-clef s'il vous plaît !")}
+      return array("error" => "Veuillez insérer un mot-clef s'il vous plaît !");
+    }
     return array();
   }
 }

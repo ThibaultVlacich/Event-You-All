@@ -41,14 +41,14 @@
   </section>
      <section>
          <ul>
-           <?php foreach($model as $unresults) { ?>
+           <?php foreach($model as $value) { ?>
              <li>
-                 <div class="image"><?php echo $unresults['poster']; ?>
+                 <div class="image"><?php echo $value['poster']; ?>
                  </div>
                  <div class="event_text">
-                    <p><?php echo $unresults['nom']; ?></p>
-                    <p><?php echo $unresults['ville']; ?></p>
-                    <p><?php echo $unresults['date_debut']; ?></p>
+                    <p><?php echo $value['nom']; ?></p>
+                    <p><?php echo $value['ville']; ?></p>
+                    <p><?php echo $value['date_debut']; ?></p>
                  </div>
              </li>
           <?php } ?>

@@ -34,32 +34,29 @@ class SearchModel {
           AND sponsors.id = evenements_sponsors.id_sponsor
 
     ');
+      }
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
       $prep = $this->db->prepare('
         SELECT nom, ville, date_debut,poster  FROM evenements WHERE
-            nom LIKE %:search%
+            nom LIKE :search
         OR  date_debut = :search
-        OR  description LIKE %:search%
-        OR  adresse LIKE %:search%
-        OR  ville LIKE %:search%
-        OR  mot_clef LIKE %:search%
-        OR  region LIKE %:search%
-        OR  pays LIKE %:search%
+        OR  description LIKE :search
+        OR  adresse LIKE :search
+        OR  ville LIKE :search
+        OR  mot_clef LIKE :search
+        OR  region LIKE :search
+        OR  pays LIKE :search
         ORDER BY ville
       ');
 
-      $prep->bindParam(':search',$search);
+      $filtered = '%'.$search['search'].'%';
+
+      $prep->bindParam(':search',$filtered);
 
       $prep->execute();
-
-      $nb_resultats=mysql_num_rows($prep);
-
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
   }
-
-  // Then add methods (can be named whatever you want)
-}
-
 ?>

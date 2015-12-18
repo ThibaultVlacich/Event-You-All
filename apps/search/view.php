@@ -20,7 +20,7 @@ class SearchView extends View {
   // Method for the module
   public function basicsearch() {
     // Here assign CSSs/JSs for that method
-    $this->assign('css',Config::get('config.base').'/apps/search/styles/style.css');
+    $this->assign('css',Config::get('config.base').'/apps/search/styles/search.css');
 
     // The assign the view for the module
     $this->setTemplate('/apps/search/views/search.php');
