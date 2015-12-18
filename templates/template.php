@@ -53,7 +53,7 @@
         <li><a href="<?php echo Config::get('config.base') ;?>/news">Articles</a></li>
         <li><a href="<?php echo Config::get('config.base') ;?>/forum">Forum</a></li>
         <li class="search">
-          <form action="/search" method="POST">
+          <form action="<?php echo Config::get('config.base'); ?>/search/basicsearch" method="GET">
             <p>
               <button type="submit" name="submit">
                 <i class="fa fa-search"></i>
@@ -90,7 +90,7 @@
           ?>
         </ul>
         <div class="mobile-search">
-          <form action="/search" method="POST">
+          <form action="<?php echo Config::get('config.base'); ?>/search/basicsearch" method="GET">
             <p>
               <input type="search" name="search" id="search" placeholder="Recherche...">
               <button type="submit" name="submit">
