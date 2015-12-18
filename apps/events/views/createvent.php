@@ -215,7 +215,7 @@
                         <label for='poster'>Poster  </label>
 
 
-                        <input type="file" id="poster" name="poster">
+                        <input required type="file" id="poster" name="poster">
                         <p class='gauche'>Dimensions : 400px*900px</p>
 
                         <!--mettre les vrais dimensions-->

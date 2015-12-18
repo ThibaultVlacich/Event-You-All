@@ -45,8 +45,8 @@ class EventsController extends Controller {
 
       // Get linked articles
       $data['articles'] = $this->model->getArticlesForEvent($data['id']);
-	    // Get creator's name
-	    $data['creatorname'] = $this->model->getCreatorForEvent($data['id']);
+	  // Get creator's name
+	  $data['creatorname'] = $this->model->getCreatorForEvent($data['id']);
 
       // Retourner les infos récupérées
       return $data;
@@ -86,7 +86,7 @@ class EventsController extends Controller {
 
                     move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
 
-                    $data['bann'] = $new_file_name;
+                    $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
                 } else {
                     $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
                 }
@@ -115,7 +115,7 @@ class EventsController extends Controller {
 
                     move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
 
-                    $data['bann'] = $new_file_name;
+                    $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
                 } else {
                     $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
                 }
