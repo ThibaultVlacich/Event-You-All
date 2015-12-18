@@ -31,10 +31,6 @@ div.app-contact div.form label {
   font-weight: bold;
 }
 
-div.app-contact div.form div.checkbox label {
-  width: auto;
-  display: inline-block;
-}
 
 div.app-contact div.form input, div.app-contact div.form select {
   width: 100%;
@@ -52,54 +48,45 @@ div.app-contact div.form input, div.app-contact div.form select {
   transition: all 0.15s ease-in-out;
 }
 
-div.app-user div.form input.error {
+div.app-contact div.form input.error {
   border-color: #CC0033;
 }
 
-div.app-user div.form input.good {
+div.app-contact div.form input.good {
   border-color: #1fa67a;
 }
 
-div.app-user div.form div.checkbox input {
-  width: auto;
-  display: inline-block;
-  min-height: 0px;
-  padding: 0;
-  box-shadow: none;
-}
 
-div.app-user div.form input.submit {
+
+div.app-contact div.form input.sent {
   transition: all 0.3s ease;
 }
 
-div.app-user div.form input.submit:hover {
+div.app-contact div.form input.sent:hover {
   color: white;
   background-color: #CC0033;
 }
 
-div.app-user div.form input.submit:disabled {
+div.app-contact div.form input.sent:disabled {
   opacity: 0.5;
 }
 
-div.app-user div.form input.submit:disabled:hover {
+div.app-contact div.form input.sent:disabled:hover {
   color: #333;
   background-color: #fff;
 }
 
-div.app-user div.form .links {
+div.app-contact div.form .links {
     margin: 30px 0 10px 0;
 }
 
-div.app-user div.form .links::after {
+div.app-contact div.form .links::after {
   content: ' ';
   display: block;
   clear: both;
 }
 
-div.app-user div.form .links .oublimdp {
-    float: left;
-}
 
-div.app-user div.form .links .register {
+div.app-contact div.form .links .contact {
     float: right;
 }

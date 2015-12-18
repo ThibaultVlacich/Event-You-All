@@ -1,39 +1,52 @@
 <?php
+/**
+ * This is the Model for the app faq.
+ *
+ * @package apps/faq
+ * @author Alexandre Gay <alexandre.gay@isep.fr>
+ * @version 0.1.0-dev-18-12-2015
+ */
 
-class UserModel {
+defined('EUA_VERSION') or die('Access denied');
 
-  protected $db;
-
-  public function __construct() {
-    $this->db = System::getDb();
-  }
+class ContactModel {
 
   /**
-   * Checks whether a nickname is valid and available
+   * Checks whether a nickname is valid
    *
    * @param string $nickname
    * @return mixed true if valid or error string
    */
-  public function checkNickname($nickname) {
-    if (empty($nickname) || strlen($nickname) < 3 || strlen($nickname) > 200) {
-      return 'Le pseudonyme n\'est pas assez long.';
-    } else if (!Tools::isEmail($nickname) && preg_match('#[\.]+#', $nickname)) {
-      return 'Le pseudonyme contient des caractères incorrects.';
+  public function checkLastName($lastname) {
+    if (empty($lastname) || strlen($lastname) < 1 || strlen($lastname) > 40) {
+      return 'Le nom n\'est pas assez long.';
+    } else if (!Tools::isEmail($lastname) && preg_match('#[\.]+#', $lastInsertIdname)) {
+      return 'Le nom contient des caractères incorrects.';
+    }
+  }
+
+  public function checkFirstName($firstname) {
+    if (empty($firstname) || strlen($firstname) < 1 || strlen($firstname) > 40) {
+      return 'Le prénom n\'est pas assez long.';
+    } else if (!Tools::isEmail($firstname) && preg_match('#[\.]+#', $firstInsertIdname)) {
+      return 'Le prénom contient des caractères incorrects.';
+    }
+  }
+
+  public function checkSubject($subject) {
+    if (empty($subject) || strlen($subject) < 2 ) {
+      return 'Le sujet n\'est pas assez long.';
+    } else if (strlen($subject) > 200) {
+      return 'Le sujet est trop long.';
+    }
     }
 
-    $prep = $this->db->prepare('
-      SELECT * FROM users WHERE nickname LIKE :nickname
-    ');
-
-    $prep->bindParam(':nickname', $nickname);
-
-    $prep->execute();
-
-    if ($prep->rowCount() == 0) {
-      return true;
-    } else {
-      return 'Ce pseudonyme est déjà utilisé.';
-    }
+    public function checkMessage($message) {
+      if (empty($message) || strlen($message) < 2 ) {
+        return 'Le sujet n\'est pas assez long.';
+      } else if (strlen($message) > 2000) {
+        return 'Le message est trop long.';
+      }
   }
 
   /**
@@ -46,94 +59,9 @@ class UserModel {
     if (!Tools::isEmail($email)) {
       return 'L\'email saisi est invalide.';
     }
-
-    $prep = $this->db->prepare('
-      SELECT * FROM users WHERE email LIKE :email
-    ');
-
-    $prep->bindParam(':email', $email);
-
-    $prep->execute();
-
-    if ($prep->rowCount() == 0) {
-      return true;
-    } else {
-      return 'L\'email saisi est déjà utilisé.';
-    }
   }
 
-  /**
-	 * Retrieves informations about for specific user.
-	 *
-	 * @param int $user_id ID of the user
-	 * @return array Information about the user
-	 */
-	public function getUser($user_id) {
-		$prep = $this->db->prepare('
-			SELECT *
-			FROM users
-			WHERE id = :userid
-		');
 
-		$prep->bindParam(':userid', $user_id, PDO::PARAM_INT);
-
-		$prep->execute();
-
-		return $prep->fetch(PDO::FETCH_ASSOC);
-	}
-
-  /**
-   * Creates a user in the database.
-   *
-   * @param array $data
-   * @return mixed ID of the user just created or false on failure
-   */
-  public function createUser(array $data) {
-    $prep = $this->db->prepare('
-      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, country)
-      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :country)
-    ');
-
-    $prep->bindParam(':nickname', $data['nickname']);
-    $prep->bindParam(':email', $data['email']);
-    $prep->bindParam(':password', $data['password']);
-    $prep->bindParam(':firstname', $data['firstname']);
-    $prep->bindParam(':lastname', $data['lastname']);
-    $prep->bindParam(':phone', $data['phone']);
-    $prep->bindParam(':adress', $data['adress']);
-    $prep->bindParam(':zip_code', $data['zip_code']);
-    $prep->bindParam(':city', $data['city']);
-    $prep->bindParam(':country', $data['country']);
-
-    if ($prep->execute()) {
-      return $this->db->lastInsertId();
-    } else {
-      return false;
-    }
-
-  }
-
-  /**
-   * Finds a user in the database matching with $nickname and $password.
-   *
-   * @param string $nickname
-   * @param string $password
-   * @return array Information of the users found
-   */
-  public function matchUser($nickname, $password) {
-    $prep = $this->db->prepare('
-      SELECT id, nickname, password, email, firstname, lastname, access
-      FROM users
-      WHERE (nickname = :nickname OR email = :nickname) AND password = :password
-    ');
-
-    $prep->bindParam(':nickname', $nickname);
-    $prep->bindParam(':password', $password);
-
-    $prep->execute();
-
-    return $prep->fetch(PDO::FETCH_ASSOC);
-  }
 
 }
 
