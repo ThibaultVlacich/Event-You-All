@@ -16,6 +16,17 @@ class GroupesModel {
   }
 
   // Then add methods (can be named whatever you want)
+  
+  public function takeData($id){
+	  $prep = $this->db->prepare('
+      SELECT nom FROM groupes WHERE id = :id
+    ');
+
+    $prep->bindParam(':id', $id);
+
+    $prep->execute();
+ return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 }
 
 ?>

@@ -1,58 +1,22 @@
-
+/*genreral conteneur*/
 .blocinscri form {
     width:100%;
     margin: auto;
 }
 
-}
-.centre {
-    position:relative;
-    width:80%;
-    margin: auto;
-}
-
-.plusieurs{
-    display:inline-block;
-}
-
-.long{
-    height:;
-    width: 100%
-}
-.label{
-    display:inline-block;
-    width: 20%;
-}
-.long input{
-    display:inline-block;
-    width:78%;
-}
-
-.gauche{
-    font-size:small;
-}
-label {
-    display:inline-block;
-    margin-top:30px;
-    //width:8%;
-
-}
+/*Title*/
 h2{
   font-size: 300%;
   text-align: center;
   color: rgb(119,119,119);
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-
-
 }
-section.inpair{
+
+/*question answer*/
+section.QW{
   height: 100%;
-
 }
-section.inpair:nth-child(odd){
 
-
-}
 .question{
     color: #cc0033;
     font-weight:bold;
@@ -60,21 +24,28 @@ section.inpair:nth-child(odd){
     border-bottom: 4px solid #cc0033;
     border-radius: 2px;
 }
+
 .reponse{
     color: rgb(70,70,70);
     font-weight: bold;
 }
 
+/*conteneur button*/
+.conteneur{
+  text-align: right;
+  margin-bottom: 2%;
 
+}
+
+/*button time transition slower for nice effect*/
 .button{
-  float:right;
+
   padding: 1%;
   background: #CC0033;
   color : white;
   transition: all 0.15s ease-in-out;
   border-radius: 4px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-
 }
 
 .button:hover {

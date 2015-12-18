@@ -11,7 +11,7 @@ defined('EUA_VERSION') or die('Access denied');
 class FaqView extends View {
   function __construct() {
     // Here assign CSSs/JSs for all the app
-    // EX : $this->assign('css', Config::get('config.base').'/apps/user/styles/style.css');
+    $this->assign('css', Config::get('config.base').'/apps/faq/styles/faq.css');
   }
 
   // Method for the module
@@ -21,7 +21,7 @@ class FaqView extends View {
 
     // The assign the view for the module
     $this->setTemplate('/apps/faq/views/index.php');
-    $this->assign('css', Config::get('config.base').'/apps/faq/styles/faq.css');
+
   }
 }
 

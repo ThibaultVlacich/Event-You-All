@@ -115,6 +115,7 @@
       </section>
     </div>
     <aside class="event-column">
+    <!--Participer si pas créateur-->
       <section class="block">
         <h2 class="title">Participer à cet événement</h2>
         <div class="register">
