@@ -43,7 +43,8 @@
          <ul>
            <?php foreach($model as $value) { ?>
              <li>
-                 <div class="image"><?php echo $value['poster']; ?>
+                 <div class="image">
+                   <img src="<?php echo $value['poster']; ?>" alt = "poster de l'événement"/>
                  </div>
                  <div class="event_text">
                     <p><?php echo $value['nom']; ?></p>
