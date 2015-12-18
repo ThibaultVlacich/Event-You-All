@@ -82,6 +82,10 @@ div.main-head header .login {
   right: 0;
 }
 
+div.main-head header .login.connected {
+  padding: 50px;
+}
+
 div.main-head header .login a.button {
   text-decoration: none;
   display: inline-block;

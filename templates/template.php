@@ -28,13 +28,14 @@
         <?php
           $session = System::getSession();
         ?>
-        <div class="login<?php $session->isConnected() ? ' connected' : ''; ?>">
+        <div class="login<?php echo $session->isConnected() ? ' connected' : ''; ?>">
           <?php
             if ($session->isConnected()) {
           ?>
             Bienvenue <?php echo $_SESSION['nickname']; ?>
             <br><br>
             <a href="<?php echo Config::get('config.base'); ?>/user/my_account">Mon compte</a> - <a href="<?php echo Config::get('config.base'); ?>/user/logout">Se déconnecter</a>
+            <?php if($_SESSION['access'] == 3) { ?><br><a href="<?php echo Config::get('config.base'); ?>/admin">Accéder à l'administration</a><?php } ?>
           <?php
             } else {
           ?>
@@ -80,6 +81,7 @@
             <li>Bienvenue <?php echo $_SESSION['nickname']; ?></li>
             <li><a href="<?php echo Config::get('config.base'); ?>/user/my_account">Mon compte</a></li>
             <li><a href="<?php echo Config::get('config.base'); ?>/user/logout">Se déconnecter</a></li>
+            <?php if($_SESSION['access'] == 3) { ?><li><a href="<?php echo Config::get('config.base'); ?>/admin">Administration</a></li><?php } ?>
           <?php
             } else {
           ?>
