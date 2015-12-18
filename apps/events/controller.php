@@ -60,45 +60,73 @@ class EventsController extends Controller {
   function create_confirm() {
     $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
 
+    $errors = array();
+    
     if (!in_array(null, $data, true)) {
       $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
 
       $maxwidth = 100000;
+      $minwidth = 0;
       $maxheight = 100000;
+      $minheight = 0;
       $banner = Request::get('bann', null, 'FILES');
       $message_erreur = '';
 
       if(!empty($banner['name'])) {
         if(!$banner['error']) {
-          $new_file_name = $banner['name'];
+            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+            //1. strrchr renvoie l'extension avec le point (« . »).
+            //2. substr(chaine,1) ignore le premier caractère de chaine.
+            //3. strtolower met l'extension en minuscules.
+            $extension_upload = strtolower(  substr(  strrchr($banner['name'], '.')  ,1)  );
+            if ( in_array($extension_upload,$extensions_valides) ){
+                $sizeimage=getimagesize($banner['tmp_name']);
+                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
+                    $new_file_name = $banner['name'];
 
-          move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+                    move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
 
-          $data['bann'] = $new_file_name;
+                    $data['bann'] = $new_file_name;
+                } else {
+                    $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
+                }
+            } else {
+             $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+            }
         } else{
-          $message_erreur='Problème de Serveur';
+            $errors += array('Problème de Serveur');
         }
       }
-
-      $data['message'] = $message_erreur;
 
       $poster = Request::get('poster', null, 'FILES');
 
-      $message_erreur = '';
 
       if(!empty($poster['name'])) {
         if(!$poster['error']) {
-          $new_file_name = $poster['name'];
+            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+            //1. strrchr renvoie l'extension avec le point (« . »).
+            //2. substr(chaine,1) ignore le premier caractère de chaine.
+            //3. strtolower met l'extension en minuscules.
+            $extension_upload = strtolower(  substr(  strrchr($poster['name'], '.')  ,1)  );
+            if ( in_array($extension_upload,$extensions_valides) ){
+                $sizeimage=getimagesize($poster['tmp_name']);
+                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
+                    $new_file_name = $poster['name'];
 
-          move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+                    move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
 
-          $data['poster'] = $new_file_name;
+                    $data['bann'] = $new_file_name;
+                } else {
+                    $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
+                }
+            } else {
+             $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+            }
         } else{
-          $message_erreur='Problème de Serveur';
+            $errors += array('Problème de Serveur');
         }
       }
 
-      $data['message']=$message_erreur;
 
       $date_debut = $data['date_de'].' '.$data['time_de'];
       $date_fin = $data['date_fi'].' '.$data['time_fi'];
@@ -122,7 +150,7 @@ class EventsController extends Controller {
 
       $id_event = $this->model->createEvent($data);
 
-	    return array('id' => $id_event);
+	    return array('id' => $id_event, 'error' => $errors);
     }
   }
 

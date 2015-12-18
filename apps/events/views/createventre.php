@@ -1,5 +1,10 @@
 <?php
-//if (!$model['message']==''){echo($model['message']);return;}
+if (!empty($model['error'])) {
+    echo('Erreur : ');
+    print_r($model['error']);
+return;
+}
+
 ?>
 <div class="note success">
     <i class="fa fa-spin fa-spinner"></i>
