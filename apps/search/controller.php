@@ -13,10 +13,19 @@ class SearchController extends Controller {
   var $search_module = 'search';
 
   //In case of an advanced research
-  public function searchavance() {
-    $data+=Request::getAssoc(array('advancedsearch','region','theme','date_event','organisateur',
-    'prix_min','nbr_place_min','sponsors','prix_max','nbr_place_max','city','zip_code'));
-    // Need to return an array of datas
+  public function advancedsearch() {
+    $advancedsearch=Request::getAssoc(array('advancedsearch','region','theme','date_event','organisateur',
+    'prix_min','nbr_place_min','sponsors','prix_max','nbr_place_max','city','zip_code','type'));
+    if(isset($advancedsearch) && !empty($advancedsearch)){
+      $advancedresults = $this->model->advancedsearchindatabase($advancedsearch);//function defined in model
+      return $advancedresults;
+    }
+
+    //Error if nothing has been selected by the user
+    else{
+      return array('error' => 'Veuillez remplir au minimum un champ avant de lancer la recherche');
+    }
+
     return array();
   }
 
