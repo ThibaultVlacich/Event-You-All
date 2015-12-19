@@ -1,13 +1,7 @@
     <section class="searchsection">
     <div class="search_h">
         <form method="GET" action="truc.php">
-            <input type="search" name="advancedsearch" id="advancedsearch" placeholder="Recherche">
-             <select  name='region' id='region'>
-                <option selected disabled>Région</option>
-                <option value=''>Île-de-France</option>
-                <option value=''>Berry</option>
-
-            </select>
+            <input type="search" name="advancedsearch" id="advancedsearch" placeholder="Recherche"/>
              <select  name='theme' id='theme'>
                     <option selected disabled>Thème</option>
                     <optgroup label='Musique'/>
@@ -26,16 +20,27 @@
                         <option value='photographie'>Photographie</option>
                         <option value='autres_i'>Autres</option>
             </select>
-            <input type="date" placeholder="Date" id="date_event">
-            <input type="submit" value="Recherche"><br/>
-            <input type="text" placeholder="Organisateur" id="organisateur">
-            <input type="int" placeholder="Prix minimum" id="prix_min">
-            <input type="int" placeholder="Nombre de places min" id='nbr_place_min'><br/>
-            <input type="int" placeholder="Partenaires et sponsors" id="sponsors">
-            <input type="int" placeholder="Prix maximum" id="prix_max">
-            <input type="int" placeholder="Nombre de places max" id="nbr_place_max"><br/>
-            <input type="text" placeholder="Ville" id="city">
-            <input type="text" placeholder="Code Postal" id="zip_code">
+            <select name='type' id='type'>
+                    <option selected disabled>Type</option>
+                    <option value='concert'>Concert</option>
+                    <option value='plein-air'>Plein-air</option>
+                    <option value='visite'>Visite</option>
+            </select>
+            <input type="date" placeholder="Date" id="date_event"/>
+            <input type="submit" value="Recherche"/><br/>
+            <select  name='region' id='region'>
+               <option selected disabled>Région</option>
+               <option value=''>Île-de-France</option>
+               <option value=''>Berry</option>
+            </select>
+            <input type="text" placeholder="Ville" id="city"/>
+            <input type="text" placeholder="Code Postal" id="zip_code"/><br/>
+            <input type="text" placeholder="Organisateur" id="organisateur"/>
+            <input type="int" placeholder="Prix minimum" id="prix_min"/>
+            <input type="int" placeholder="Prix maximum" id="prix_max"/>
+            <input type="int" placeholder="Nombre de places min" id='nbr_place_min'/>
+            <input type="int" placeholder="Nombre de places max" id="nbr_place_max"/>
+            <input type="int" placeholder="Partenaires et sponsors" id="sponsors"><br/>
         </form>
     </div>
   </section>
@@ -43,8 +48,8 @@
          <ul>
            <?php foreach($model as $value) { ?>
              <li>
-                 <div class="image">
-                   <img src="<?php echo $value['poster']; ?>" alt = "poster de l'événement"/>
+                 <div class="poster_evenement">
+                   <img class='poster_evenement_image' src="<?php echo $value['poster']; ?>" alt = "poster de l'événement"/>
                  </div>
                  <div class="event_text">
                     <p><?php echo $value['nom']; ?></p>
