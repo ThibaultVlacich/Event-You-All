@@ -21,7 +21,7 @@ class DefaultView extends View {
     // Here assign CSSs/JSs for that method
     // EX : $this->assign('css', Config::get('config.base').'/apps/user/styles/style.css');
 
-    // The assign the view for the module
+    // Then assign the view for the module
     $this->setTemplate('/apps/NAMEOFTHEAPP/views/VIEW.php');
   }
 }
