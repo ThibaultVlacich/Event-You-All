@@ -14,10 +14,15 @@ class UserView extends View {
 
     $this->setTemplate('/apps/user/views/register.php');
   }
-  
+
   public function profil(){
 	  $this->setTemplate('/apps/user/views/profil.php');
   }
-}
 
+  public function oublimdp(){
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/mdpoubli.css');
+
+    $this->setTemplate('/apps/user/views/mdpoubli.php');
+  }
+}
 ?>
