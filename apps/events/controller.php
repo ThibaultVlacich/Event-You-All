@@ -45,8 +45,9 @@ class EventsController extends Controller {
 
       // Get linked articles
       $data['articles'] = $this->model->getArticlesForEvent($data['id']);
-	  // Get creator's name
-	  $data['creatorname'] = $this->model->getCreatorForEvent($data['id']);
+	  // Get creator's name and id
+	  $data['creator'] = $this->model->getCreatorForEvent($data['id']);
+      // Get user's id
 
       // Retourner les infos récupérées
       return $data;
