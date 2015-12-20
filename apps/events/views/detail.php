@@ -120,20 +120,25 @@
         <div class="register">
           <?php
             $session = System::getSession();
+
             if($session->isConnected()) {
-                $user_id = $_SESSION['userid'];
-                if (!$model['creator']['id']==$user_id){
-                    
+              // User is logged in
+              $user_id = $_SESSION['userid'];
+
+              if ($model['creator']['id'] == $user_id) {
+                // User is the creator
           ?>
-          <!--logged in not as creator-->
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">Modifier l'événement</a>
+          <?php
+              } else {
+                // User is not the creator
+          ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
           <?php
-                }else { ?>
-          <!--logged in as creator-->
-          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">Modifier l'événement</a>
-            <?php }} else {
+              }
+            } else {
+              // User is not logged in
           ?>
-          <!--not logged in-->
           <a class="button disabled">S'inscrire à l'événement</a>
           <p><a href="<?php echo Config::get('config.base'); ?>/user/login">Connectez-vous</a> pour pouvoir vous inscrire à cet événement !</p>
           <?php
