@@ -17,12 +17,36 @@ div.app-events-home div.slideshow div.slidesjs-container {
   height: 600px;
 }
 
+div.app-events-home div.slideshow div.slidesjs-container img {
+  height: 600px;
+  object-fit: cover;
+}
+
 div.app-events-home a.slidesjs-navigation {
   position: absolute;
   z-index: 99999;
   top: 375px;
   font-size: 50px;
   text-decoration: none;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-home div.slideshow {
+    height: 450px;
+  }
+
+  div.app-events-home div.slideshow div.slidesjs-container {
+    height: 450px;
+  }
+
+  div.app-events-home div.slideshow div.slidesjs-container img {
+    height: 450px;
+  }
+
+  div.app-events-home a.slidesjs-navigation {
+    top: 300px;
+  }
 }
 
 div.app-events-home a.slidesjs-navigation.slidesjs-previous {
@@ -40,6 +64,13 @@ div.app-events-home ul.events {
   padding: 0;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-home ul.events {
+    margin-top: 265px;
+  }
 }
 
 div.app-events-home ul.events:after {
