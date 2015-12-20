@@ -120,6 +120,10 @@
     </nav>
     </footer>
   </div>
+  <div id="cookie-notice">
+    Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site. Si vous continuez à utiliser ce dernier, nous considérerons que vous acceptez l'utilisation des cookies.
+    <a href="#" class="accept-button">Ok</a>
+  </div>
   <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/librairies/jquery-2.1.4/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/templates/scripts/global.js"></script>
   <?php echo $app_rendered['js']; ?>
