@@ -46,14 +46,14 @@ $(function() {
   // Bind the click action on the "Ok" button
   $cookieNotice.find('.accept-button').click(function(e) {
 
-    var currentTime		 = new Date(),
-			  expirationTime = new Date();
+    var currentTime    = new Date(),
+        expirationTime = new Date();
 
-		// set expiry time in seconds
-		expirationTime.setTime( parseInt( currentTime.getTime() ) + 2592000 * 1000 );
+    // set expiry time in seconds
+    expirationTime.setTime(parseInt(currentTime.getTime()) + 2592000 * 1000);
 
-		// set cookie
-		document.cookie = 'cookie_notice_accepted=true;expires=' + expirationTime.toGMTString() + ';';
+    // set cookie
+    document.cookie = 'cookie_notice_accepted=true;expires=' + expirationTime.toGMTString() + ';';
 
     // Remove the notice from the DOM
     $cookieNotice.remove();
