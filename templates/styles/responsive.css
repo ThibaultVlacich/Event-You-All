@@ -72,6 +72,7 @@
     left: 0;
     right: 0;
     background-color: #f2f2f2;
+    z-index: 9999;
   }
 
   nav.main-navigation .mobile ul.active, nav.main-navigation .mobile div.mobile-search.active {

@@ -24,7 +24,6 @@ div.app-events-home div.slideshow div.slidesjs-container img {
 
 div.app-events-home a.slidesjs-navigation {
   position: absolute;
-  z-index: 99999;
   top: 375px;
   font-size: 50px;
   text-decoration: none;
