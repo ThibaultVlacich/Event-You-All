@@ -14,64 +14,36 @@ class SearchModel {
   public function __construct() {
     $this->db = System::getDb();
   }
-//SQL request probleme
+//This function only consider the input advancedsearch and city and will have to be extended to consider the other inputs
   public function advancedsearchindatabase($advancedsearch) {
-    $prep = $this->db->prepare('
-      SELECT nom, ville, date_debut, poster FROM evenements,evenements_sponsors,evenements_photos,evenements_genres,users,sponsors,evenements_types,types
-      WHERE (   nom LIKE search  OR  description LIKE :search)
 
-          AND evenements.region = :region
-          AND evenements.code_postal = :zip_code
-          AND evenements.ville = :city
+    //SQL Initial Request (while have to be modified in case advancedresearch is empty)
+    $found1='
+    SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements
+    WHERE (evenements.nom LIKE :advancedsearch  OR  evenements.description LIKE :advancedsearch)
+    ';
 
-          AND evenements.date_debut = :date_event
+    //If city isn't empty, it must be considered in the SQL Request.
+    //My problem : DOESN'T WORK YET!
+    if(!is_null($advancedsearch['city'])){
+      $found2=$found1.'AND evenements.ville LIKE :city'; //add the end next part of the SQL request
+    }
+    else{
+      $found2=$found1;
+    }
 
-          AND evenements.prix >= :prix_min
-          AND evenements.prix <= :prix_max
+    //Sends back the final sql request
+    $prep = $this->db->prepare($found2);
 
-          AND evenements.capacite >= :nbr_place_min
-          AND evenements.capacite <= :nbr_place_max
+    $filteredadvancedsearch = '%'.$advancedsearch['advancedsearch'].'%';
 
-          AND (users.nickname = :organisateur OR users.firstname = :organisateur OR users.lastname = :organisateur)
-          AND users.id = evenements.id_createur
-
-
-          AND evenements_photos.id_evenement = evenements.id
-
-          AND sponsors.nom = :sponsors
-          AND evenements_sponsors.id_evenement = evenements.id
-          AND sponsors.id = evenements_sponsors.id_sponsor
-
-          AND genres.nom = :genre
-          AND evenements_genres.id_evenement = evenements.id
-          AND evenements_genre.id_genre = genres.id
-
-          AND types.nom = :type
-          AND evenements_types.id_type = types.id
-          AND evenements_types.id_evenement = evenements.id
-
-    ');
-
-    $filtered2 = '%'.$advancedsearch['advancedsearch'].'%';
-
-    $prep->bindParam(':search',$filtered2);
-    $prep->bindParam(':region',$advancedsearch['region']);
-    $prep->bindParam(':zip_code',$advancedsearch['zip_code']);
-    $prep->bindParam(':date_event',$advancedsearch['date_event']);
-    $prep->bindParam(':prix_max',$advancedsearch['prix_max']);
-    $prep->bindParam(':prix_min',$advancedsearch['prix_min']);
-    $prep->bindParam(':nbr_place_min',$advancedsearch['nbr_place_max']);
-    $prep->bindParam(':nbr_place_max',$advancedsearch['nbr_place_max']);
+    $prep->bindParam(':advancedsearch',$filteredadvancedsearch);
     $prep->bindParam(':city',$advancedsearch['city']);
-    $prep->bindParam(':organisateur',$advancedsearch['organisateur']);
-    $prep->bindParam(':sponsors',$advancedsearch['sponsors']);
-    $prep->bindParam(':genre',$advancedsearch['theme']);
-    $prep->bindParam(':type',$advancedsearch['type']);
 
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
 
-      }
+  }
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
