@@ -20,6 +20,10 @@ class EventsView extends View {
     $this->setTemplate('/apps/events/views/createvent.php');
     $this->assign('css', Config::get('config.base').'/apps/events/styles/createvent.css');
   }
+    public function modif() {
+    $this->setTemplate('/apps/events/views/modifevent.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/createvent.css');
+  }
 
   public function index() {
     $this->setTemplate('/apps/events/views/home.php');
@@ -31,6 +35,9 @@ class EventsView extends View {
 
   public function create_confirm(){
     $this->setTemplate('/apps/events/views/createventre.php');
+ }
+  public function modif_confirm(){
+    $this->setTemplate('/apps/events/views/modifsent.php');
  }
 }
 

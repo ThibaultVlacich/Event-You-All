@@ -128,7 +128,7 @@
               if ($model['creator']['id'] == $user_id) {
                 // User is the creator
           ?>
-          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">Modifier l'événement</a>
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'événement</a>
           <?php
               } else {
                 // User is not the creator
