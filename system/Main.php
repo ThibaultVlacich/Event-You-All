@@ -113,7 +113,7 @@ class Main {
 
 		if (is_dir($app_dir) && file_exists($app_dir.'controller.php')) {
 
-			include_once $app_dir.'controller.php';	
+			include_once $app_dir.'controller.php';
 
 			if (class_exists($app_class) && get_parent_class($app_class) == 'Controller') {
 				$controller = new $app_class();
@@ -139,14 +139,23 @@ class Main {
 						$controller->setView(new $view_class());
 					}
 				}
-
-				// Render the app
-				$app_rendered = $controller->render();
-
-				// Now render it in the global template
-				include_once TEMPLATES_DIR.'template'.($admin ? '_admin' : '').'.php';
 			}
+		} else {
+			// Load the 404 app
+			include_once APPS_DIR.'404'.DS.'controller.php';
+			include_once APPS_DIR.'404'.DS.'view.php';
+
+			$controller = new NotFoundController();
+			$view = new NotFoundView();
+
+			$controller->setView($view);
 		}
+
+		// Render the app
+		$app_rendered = $controller->render();
+
+		// Now render it in the global template
+		include_once TEMPLATES_DIR.'template'.($admin ? '_admin' : '').'.php';
 	}
 }
 
