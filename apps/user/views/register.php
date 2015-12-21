@@ -60,6 +60,7 @@
           <input type="checkbox" name="cgu" id="cgu" required />
           <label for="cgu">J'accepte les conditions d'utilisation du site <span class="required">*</span></label>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LdmkBMTAAAAABU9G3Fl_gyEIdFmxSmMv0RapZCs"></div>
         <p>* : champs obligatoires</p>
 
         <input type="submit" value="S'inscrire" class="submit" id="submit" />
