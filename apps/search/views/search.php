@@ -1,6 +1,6 @@
     <section class="searchsection">
     <div class="search_h">
-        <form method="GET" action="truc.php">
+        <form method="GET" action = "<?php echo Config::get('config.base'); ?>/search/advancedsearch">
             <input type="search" name="advancedsearch" id="advancedsearch" placeholder="Recherche"/>
              <select  name='theme' id='theme'>
                     <option selected disabled>Thème</option>
@@ -33,7 +33,7 @@
                <option value=''>Île-de-France</option>
                <option value=''>Berry</option>
             </select>
-            <input type="text" placeholder="Ville" id="city"/>
+            <input type="text" placeholder="Ville" id='city'/>
             <input type="text" placeholder="Code Postal" id="zip_code"/><br/>
             <input type="text" placeholder="Organisateur" id="organisateur"/>
             <input type="int" placeholder="Prix minimum" id="prix_min"/>
