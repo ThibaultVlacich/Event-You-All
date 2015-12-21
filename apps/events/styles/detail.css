@@ -237,6 +237,7 @@ div.app-events-detail div.event-wrapper aside.event-column .share-buttons a {
   color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: all ease-in-out 0.15s;
+  text-decoration: none;
 }
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons a:hover {
   border-color: rgba(0, 0, 0, 0.5);
