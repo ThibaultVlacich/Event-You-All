@@ -20,27 +20,27 @@
                         <option value='photographie'>Photographie</option>
                         <option value='autres_i'>Autres</option>
             </select>
-            <select name='type' id='type'>
+            <select name='type' id='type' name='type'>
                     <option selected disabled>Type</option>
                     <option value='concert'>Concert</option>
                     <option value='plein-air'>Plein-air</option>
                     <option value='visite'>Visite</option>
             </select>
-            <input type="date" placeholder="Date" id="date_event"/>
+            <input type="date" placeholder="Date" id="date_event" name='date'/>
             <input type="submit" value="Recherche"/><br/>
-            <select  name='region' id='region'>
+            <select  name='region' id='region' name = 'region'>
                <option selected disabled>Région</option>
                <option value=''>Île-de-France</option>
                <option value=''>Berry</option>
             </select>
-            <input type="text" placeholder="Ville" id='city'/>
-            <input type="text" placeholder="Code Postal" id="zip_code"/><br/>
-            <input type="text" placeholder="Organisateur" id="organisateur"/>
-            <input type="int" placeholder="Prix minimum" id="prix_min"/>
-            <input type="int" placeholder="Prix maximum" id="prix_max"/>
-            <input type="int" placeholder="Nombre de places min" id='nbr_place_min'/>
-            <input type="int" placeholder="Nombre de places max" id="nbr_place_max"/>
-            <input type="int" placeholder="Partenaires et sponsors" id="sponsors"><br/>
+            <input type="text" placeholder="Ville" id='city' name = 'city'/>
+            <input type="text" placeholder="Code Postal" id="zip_code" name = 'zip_code'/><br/>
+            <input type="text" placeholder="Organisateur" id="organisateur" name = 'organisateur'/>
+            <input type="int" placeholder="Prix minimum" id="prix_min" name = 'prix_min'/>
+            <input type="int" placeholder="Prix maximum" id="prix_max" name='prix_max'/>
+            <input type="int" placeholder="Nombre de places min" id='nbr_place_min' name = 'nbr_place_min'/>
+            <input type="int" placeholder="Nombre de places max" id="nbr_place_max" name = 'nbr_place_max'/>
+            <input type="int" placeholder="Partenaires et sponsors" id="sponsors" name = 'sponsors'><br/>
         </form>
     </div>
   </section>
