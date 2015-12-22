@@ -17,6 +17,8 @@ class SearchModel {
 //This function only consider the input advancedsearch and city and will have to be extended to consider the other inputs
   public function advancedsearchindatabase($advancedsearch) {
     //found will be having the SQL Request
+
+    $filteredadvancedsearch = '%'.$advancedsearch['advancedsearch'].'%';
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
     if(!empty($advancedsearch['advancedsearch'])){
@@ -205,8 +207,6 @@ class SearchModel {
 
     //Sends back the final sql request
     $prep = $this->db->prepare($found11);
-
-    $filteredadvancedsearch = '%'.$advancedsearch['advancedsearch'].'%'
 
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
