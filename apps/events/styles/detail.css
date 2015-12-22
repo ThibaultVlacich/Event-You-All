@@ -136,20 +136,44 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
   top: 0;
 }
 
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p {
   text-align: justify;
   overflow: hidden;
   max-height: 150px;
   position: relative;
 }
 
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description:after {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p.visible {
+  max-height: 999999px;
+}
+
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p:after {
   content: ' ';
   display: block;
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 40px;
   background: linear-gradient(to top, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0));
+}
+
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p.visible:after {
+  display: none;
+}
+
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description a.readmore {
+  display: none;
+  float: right;
+  margin-top: -10px;
+  padding: 5px 10px;
+  color: white;
+  background-color: #CC0033;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.1s ease-in-out;
+}
+
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description a.readmore:hover {
+  background-color: #880000;
 }
 
 /**

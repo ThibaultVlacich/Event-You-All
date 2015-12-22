@@ -68,6 +68,7 @@
             <p>
               <?php echo $model['description']; ?>
             </p>
+            <a href="#" class="readmore">En lire <i class="fa fa-plus"></i></a>
           </div>
           <?php } ?>
         </div>

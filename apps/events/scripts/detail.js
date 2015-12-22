@@ -9,6 +9,38 @@ $(function() {
     $('div.app-events-detail div.event-wrapper').css('margin-top', '0px');
   }
 
+  // Handle "read more" button in description
+  var $description           = $('.details .description'),
+      $description_paragraph = $description.find('p'),
+      $description_readmore  = $description.find('a.readmore');
+
+  if ($description_paragraph.prop('scrollHeight') > $description_paragraph.height()) {
+    // Content of the description does not fit his container
+    // Show the read more button
+    $description_readmore.show();
+
+    $description_readmore.click(function(e) {
+      // On click on the "Read More" button, make visible or not the whole description
+      $description_paragraph.toggleClass('visible');
+
+      if ($description_paragraph.hasClass('visible')) {
+        $(this).html('En lire <i class="fa fa-minus"></i>');
+      } else {
+        $(this).html('En lire <i class="fa fa-plus"></i>');
+      }
+
+      // Prevent default behavior of the button
+      e.preventDefault();
+      return false;
+    });
+  } else {
+    // Remove the read more button from the DOM
+    $description_readmore.remove();
+
+    // Ensure all the description is fully visible
+    $description_paragraph.addClass('visible');
+  }
+
   var $share_buttons = $('.share-buttons');
 
   // No need to execute the rest of this script if this element does not exist.
