@@ -103,3 +103,7 @@ div.app-user div.form .links .oublimdp {
 div.app-user div.form .links .register {
     float: right;
 }
+
+div.app-user div.form div.g-recaptcha {
+  margin: 10px 0;
+}

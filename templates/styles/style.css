@@ -1,37 +1,29 @@
-/*-----general-----*/
+/**
+ * General styles
+ */
 
 * {
   box-sizing: border-box;
 }
-a {
+body {
+  color: black;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 0.8em;
+}
+a, a:focus {
   color: #CC0033;
   text-decoration: none;
+  outline: none;
 }
 a:hover {
   color: #880000;
   text-decoration: underline;
 }
-a:focus {
-  outline: none;
-}
-img {
-  border: none;
-}
-input:focus, select:focus, textarea:focus, button:focus {
-  outline: none;
-}
-html {
-  margin: 0;
-  padding: 0;
-  color: black;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 0.8em;
-}
-body {
-  margin: 0;
-  padding: O;
-  background-color: #f8f8f8;
-}
+
+/**
+ * Fluid wrapper
+ */
+
 .fluid-wrapper {
   margin: 0 auto;
   width: 100%;
@@ -100,6 +92,11 @@ div.main-head header .login a.button:hover {
   background-color: #CC0033;
   border-color: #CC0033;
 }
+
+/**
+ * Main Navigation
+ */
+
 nav.main-navigation {
   background: #CC0033;
   color: white;
@@ -168,6 +165,11 @@ nav.main-navigation ul::after {
 nav.main-navigation .mobile {
   display: none;
 }
+
+/**
+ * Main content wrapper
+ */
+
 section.main-content {
   margin: 0 auto;
   width: 100%;
@@ -242,7 +244,6 @@ div.note ul li .fa {
   color: white;
   padding: 20px 0;
 }
-
 #cookie-notice .accept-button {
   display: inline-block;
   margin-left: 10px;

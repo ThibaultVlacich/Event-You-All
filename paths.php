@@ -31,7 +31,7 @@ define('CONFIG_DIR', ROOT_PATH.'system'.DS.'config'.DS);
 /**
  * Libraries location
  */
-define('LIBS_DIR', ROOT_PATH.'libraries'.DS);
+define('LIBS_DIR', ROOT_PATH.'librairies'.DS);
 
 /**
  * Applications location

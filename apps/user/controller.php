@@ -109,11 +109,21 @@ class UserController extends Controller {
 	 * @return array Data given
 	 */
 	protected function register() {
-		$data = Request::getAssoc(array('nickname', 'password', 'password_confirm', 'email', 'firstname', 'lastname', 'cgu'));
+		$data = Request::getAssoc(array('nickname', 'password', 'password_confirm', 'email', 'firstname', 'lastname', 'cgu', 'g-recaptcha-response'));
 
 		if (!in_array(null, $data, true)) {
 			$data += Request::getAssoc(array('adress','zip_code','city','country','phone','newsletter'));
 			$errors = array();
+
+			// Check Captcha
+			require LIBS_DIR.'ReCaptcha'.DS.'autoload.php';
+
+			$recaptcha = new \ReCaptcha\ReCaptcha('6LdmkBMTAAAAAKRjvJVIrAsNbiTUJpFk3IdC7LXt');
+			$resp = $recaptcha->verify($data['g-recaptcha-response'], Session::getIP());
+
+			if (!$resp->isSuccess()) {
+			  $errors[] = 'Captcha incorrect !';
+			}
 
 			// Check nickname availability
 			if (($e = $this->model->checkNickname($data['nickname'])) !==	 true) {
