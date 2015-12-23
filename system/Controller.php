@@ -68,8 +68,10 @@ abstract class Controller {
 		// Extract the name of the module from the parameters
 		$module = isset($params[0]) ? $params[0] : $this->default_module;
 
-		// Remove the first param
-		array_shift($params);
+		// Remove the first param if its the module name
+		if (isset($param[0]) && $params[0] == $module) {
+			array_shift($params);
+		}
 
 		// Check if user has access
 		if (!$this->hasAccess($module)) {
