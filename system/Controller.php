@@ -69,7 +69,7 @@ abstract class Controller {
 		$module = isset($params[0]) ? $params[0] : $this->default_module;
 
 		// Remove the first param if its the module name
-		if (isset($param[0]) && $params[0] == $module) {
+		if (isset($params[0]) && $params[0] == $module) {
 			array_shift($params);
 		}
 
