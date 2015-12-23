@@ -178,6 +178,7 @@ class SearchModel {
       ');
 
       $filtered = '%'.$search['search'].'%';
+      $prep->bindParam(':search',$filtered);
 
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
