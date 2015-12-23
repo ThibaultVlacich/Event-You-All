@@ -10,7 +10,7 @@ defined('EUA_VERSION') or die('Access denied');
 
 class SearchController extends Controller {
   // Optional
-  var $search_module = 'search';
+  var $default_module = 'search';
 
   //In case of an advanced research
   public function advancedsearch() {
