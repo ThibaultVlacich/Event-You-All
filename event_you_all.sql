@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 13 Décembre 2015 à 13:28
+-- Généré le :  Mer 23 Décembre 2015 à 11:52
 -- Version du serveur :  10.1.8-MariaDB
 -- Version de PHP :  5.6.14
 
@@ -82,8 +82,8 @@ CREATE TABLE `evenements` (
   `adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `code_postal` int(11) NOT NULL,
   `ville` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `banniere` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `poster` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banniere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `poster` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mot_clef` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `site_web` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `region` varchar(255) COLLATE utf8_unicode_ci NOT NULL,

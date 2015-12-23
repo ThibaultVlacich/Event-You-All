@@ -7,7 +7,7 @@
   <title>
     <?php echo !empty($app_rendered['title']) ? $app_rendered['title'] : Config::get('config.site_title'); ?>
   </title>
-  <link href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/librairies/normalize/normalize.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/templates/styles/style.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/templates/styles/responsive.css" rel="stylesheet" type="text/css" />
