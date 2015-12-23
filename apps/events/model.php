@@ -90,10 +90,11 @@ class EventsModel {
   /**
    * Obtenir la liste des événements
    */
-  public function getEvents($from = 0, $number = 9999999, $order = 'date_debut', $asc = true) {
+  public function getEvents($from = 0, $number = 9999999, $order = 'date_debut', $asc = true, $where_clause = '') {
     $prep = $this->db->prepare('
       SELECT *
       FROM evenements
+      '.$where_clause.'
       ORDER BY '.$order.' '.($asc ? 'ASC' : 'DESC').'
       LIMIT :from, :number
     ');

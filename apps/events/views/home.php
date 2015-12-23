@@ -1,12 +1,15 @@
 <div class="app-events app-events-home">
-  <div class="slideshow">
-    <img src="http://blogs.paris.fr/unitedstatesofparis/files/2014/09/Soir%C3%A9e-The-Underwater-2-les-myst%C3%A8res-des-fonds-marins-by-Agence-Wato-We-are-the-Oracle-%C3%A9v%C3%A9nement-clubbing-nuit-Piscine-Pailleron-photo-by-United-States-of-Paris.jpg" alt="">
-    <img src="http://www.104.fr/data/classes/evenement/evenement_392_image.jpg" alt="">
+  <div class="slideshow-container">
+    <div class="slideshow">
+      <?php foreach($model['slideshow'] as $event) { ?>
+        <img src="<?php echo $event['banniere']; ?>" alt="<?php echo $event['nom']; ?>" />
+      <?php } ?>
+    </div>
+    <a class="fa fa-chevron-left slidesjs-previous slidesjs-navigation" href="#" title="Précédent"></a>
+    <a class="fa fa-chevron-right slidesjs-next slidesjs-navigation" href="#" title="Suivant"></a>
   </div>
-  <a class="fa fa-chevron-left slidesjs-previous slidesjs-navigation" href="#" title="Précédent"></a>
-  <a class="fa fa-chevron-right slidesjs-next slidesjs-navigation" href="#" title="Suivant"></a>
   <ul class="events">
-    <?php foreach($model as $event) { ?>
+    <?php foreach($model['events'] as $event) { ?>
       <li>
         <div class="poster">
           <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><img src="<?php echo $event['poster']; ?>" alt=""></a>
