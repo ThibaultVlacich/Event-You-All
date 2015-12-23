@@ -253,7 +253,7 @@
                             <label for='invitm'>Envoyer un e-mail d'invitation à  </label>
                         </div>
                         <br>
-                        <textarea name="invitm" rows=10 cols=100>invite@gmail.com, invite3@gmail.com ...</textarea>
+                        <textarea name="invitm" rows=10 cols=100 placeholder="invite@gmail.com, invite3@gmail.com ..."></textarea>
 
                 </div>
                  </div>
