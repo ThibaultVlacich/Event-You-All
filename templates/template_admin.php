@@ -6,7 +6,7 @@
   <title>
     <?php echo Config::get('config.site_title'); ?> - Administration
   </title>
-  <link href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/librairies/normalize/normalize.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/templates/styles/admin.css" rel="stylesheet" type="text/css" />
   <?php echo $app_rendered['css']; ?>
