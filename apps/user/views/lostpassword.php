@@ -1,4 +1,3 @@
-    <body>
         <section>
             <fieldset>
               <div class="form">
@@ -49,5 +48,3 @@
                 </form>
             </fieldset>
         </section>
-    </body>
-</html>
