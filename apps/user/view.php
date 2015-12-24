@@ -20,10 +20,11 @@ class UserView extends View {
 	  $this->setTemplate('/apps/user/views/profil.php');
   }
 
-  public function oublimdp(){
-    $this->assign('css',Config::get('config.base').'/apps/user/styles/mdpoubli.css');
+  public function lostpassword(){
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/lostpassword.css');
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/style.css');
 
-    $this->setTemplate('/apps/user/views/mdpoubli.php');
+    $this->setTemplate('/apps/user/views/lostpassword.php');
   }
 }
 ?>

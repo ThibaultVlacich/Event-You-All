@@ -135,26 +135,21 @@ class UserModel {
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function Mailindatabase($mail){
-      if (!Tools::isEmail($email)) {
-        return 'L\'email saisi est invalide.';
-      }
-      else{
+  public function checkMailindatabase($mail){
       $prep = $this->db->prepare('
         SELECT password FROM users WHERE email LIKE :email
       ');
 
-      $prep->bindParam(':email', $mail);
+      $prep->bindParam(':email', $mail['adressemail']);
 
       $prep->execute();
 
       if ($prep->rowCount() == 0) {
-        return 'Aucun utilisateur n\'emploie cet adresse mail !';
+        return array('the error is' => 'Aucun utilisateur n\'emploie cet adresse mail !', 'success' => false);
     }
       else {
-        return true;
+        return array('the error is' => 'none', 'success' => true);
       }
-    }
   }
 }
 ?>

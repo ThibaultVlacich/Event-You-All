@@ -1,13 +1,3 @@
-<!Doctype html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>
-            Oubli mdp
-        </title>
-        <link rel="stylesheet" href="cssMdpoubli.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
     <body>
         <section>
             <fieldset>
@@ -31,14 +21,14 @@
                     return;
                   }
 
-                  if (!empty($model['errors'])) {
+                  if (!empty($model['the error is'])) {
                 ?>
                 <div class="note error">
                   <i class="fa fa-exclamation-triangle"></i>
                   <ul>
                   <?php
-                    foreach ($model['errors'] as $error) {
-                      echo '<li>'.$error.'</li>';
+                   {
+                      echo '<li>'.$model['the error is'].'</li>';
                     }
                   ?>
                   </ul>
@@ -47,10 +37,10 @@
                   }
                 ?>
                 <legend>Mot de passe oublié</legend>
-                <form id="formulaire" method="GET" action="traitement.php">
+                <form id="formulaire" method="GET" action="<?php echo Config::get('config.base'); ?>/user/lostpassword">
                     <label for="adressemail">Mail :</label><input type="email" name="adressemail" id="adressemail" autofocus required/>
                     <br/>
-                    <label for="verif">Vérification Anti-Bot :</label><input type="text" id="verif" name="verif" required/>
+                    <label for="verif">Vérification Anti-Bot :</label><input type="text" id="verif" name="verif" />
                     <input class="envoyer" type="submit" value="Envoyer un nouveau mot de passe"/>
 
 

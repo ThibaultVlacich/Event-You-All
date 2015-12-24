@@ -176,11 +176,17 @@ class UserController extends Controller {
 
 
 //Function which enables us to get the forgiven password in the database
-	public function iduseroubli() {
+	public function lostpassword() {
 		$mail=Request::getAssoc(array('adressemail'));
 		if(isset($mail) && !empty($mail)) {
-			//check mail
-
+			$errors = $this->model->checkMailindatabase($mail);
+			if (($errors['success']) == true) {
+				//email needs to be sent here
+				return array('success' => true);
+			}
+			else {
+				return array('success' => false, 'errors' => $errors['the error is']);
+			}
 		}
 	}
 }
