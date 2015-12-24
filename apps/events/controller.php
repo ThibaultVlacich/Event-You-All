@@ -185,7 +185,7 @@ class EventsController extends Controller {
 
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
-
+      
       $data['priv'] = false;
 
       if (!empty($data['priv'])) {
@@ -200,9 +200,10 @@ class EventsController extends Controller {
         $data['mclef'] = '';
       }
 
-      $data['date_de'] = $date_debut;
-      $data['date_fi'] = $date_fin;
-
+      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
+      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
+      $data['date_de']=$date_debut;
+      $data['date_fi']=$date_fin;
       $id_event = $this->model->createEvent($data);
 
 	    return array('id' => $id_event, 'error' => $errors);
@@ -251,7 +252,7 @@ class EventsController extends Controller {
 
 
   function modif_confirm() {
-    $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
+    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de','date_fi_j','date_fi_m','date_fi_a','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
     echo '101 dalm';
     $errors = array();
 
@@ -315,8 +316,10 @@ class EventsController extends Controller {
       }
 
 
-      $date_debut = $data['date_de'].' '.$data['time_de'];
-      $date_fin = $data['date_fi'].' '.$data['time_fi'];
+      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
+      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
+      $data['date_de']=$date_debut;
+      $data['date_fi']=$date_fin;
 
       $data['priv'] = false;
 
