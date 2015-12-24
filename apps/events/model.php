@@ -36,7 +36,6 @@ class EventsModel {
 	  if ($session->isConnected()) {
 	    $user_id = $_SESSION['userid'];
 	  }
-
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':date_debut', $data['date_de']);
     $prep->bindParam(':date_fin', $data['date_fi']);
@@ -53,7 +52,7 @@ class EventsModel {
     $prep->bindParam(':banniere', $data['bann']);
     $prep->bindParam(':poster', $data['poster']);
     $prep->bindParam(':mot_clef', $data['mclef']);
-	  $prep->bindParam(':creator',$user_id);
+    $prep->bindParam(':creator',$user_id);
 
     if ($prep->execute()) {
 	    $idevent = $this->db->lastInsertId('id');
