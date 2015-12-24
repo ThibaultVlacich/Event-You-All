@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 23 Décembre 2015 à 11:52
--- Version du serveur :  10.1.8-MariaDB
--- Version de PHP :  5.6.14
+-- Généré le :  Jeu 24 Décembre 2015 à 22:11
+-- Version du serveur :  10.1.9-MariaDB
+-- Version de PHP :  7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -302,6 +302,7 @@ CREATE TABLE `users` (
   `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `firstname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
