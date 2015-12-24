@@ -193,5 +193,16 @@ class UserController extends Controller {
 			}
 		}
 	}
+	public function myprofil(array $params) {
+
+		$data = $this->model->getUser($user);
+
+		if(empty($data['photoprofil'])){
+			$data['photoprofil'] = 'images/photoinconnu.png';
+		}
+
+		return $data;
+	}
+
 }
 ?>

@@ -1,0 +1,113 @@
+h1
+{
+   border-collapse:collapse;
+   text-align: center;
+   margin-bottom:10%;
+}
+
+.photoperso
+{
+    box-shadow: 6px 6px 6px black ;
+    padding : 3px;
+    color : black;
+    text-decoration:none;
+    border: 1px solid black;
+}
+
+.LAPHOTO,.infoperso
+{
+    display:inline-block;
+}
+
+
+.Principal
+{
+    margin:10px
+}
+
+
+.nom, .prenom
+{
+    display:inline-block;
+}
+
+.prenom
+{
+    margin-left : 10%;
+}
+
+#LATOTALE
+{
+    margin : 0 auto;
+    width : 80%;
+}
+
+.infoperso
+{
+    margin-left : 15%;
+   vertical-align: top;
+}
+
+
+
+#adressephysique, #adressemail, #telephone
+{
+    border-collapse:collapse;
+    width:100%;
+
+}
+
+
+#adressephysique,#codepostal,#adressemail,#ville,#telephone,#pays
+{
+    margin-bottom:20px;
+    display:inline-block;
+}
+
+#ville,.prenom,#codepostal
+{
+  margin-left: 40px;
+}
+
+#interet
+{
+    display:inline-block;
+    margin-top:10px;
+}
+
+.infoperso2 label
+{
+    display:inline-block;
+    margin-bottom:10px;
+}
+
+#interet
+{
+    width:100%;
+}
+
+.affichage
+{
+    margin-top:3%;
+
+}
+
+.textlaissercommentaire
+{
+    width:100%;
+}
+
+.affichage input
+{
+    margin-left:8%;
+}
+
+
+
+.envoyer, .annuler
+{
+    width:20%;
+    display:inline-block;
+    margin-left : 15%;
+    margin-top:20px;
+}

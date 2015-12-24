@@ -16,14 +16,16 @@ class UserView extends View {
     $this->setTemplate('/apps/user/views/register.php');
   }
 
-  public function profil(){
-	  $this->setTemplate('/apps/user/views/profil.php');
-  }
-
   public function lostpassword(){
     $this->assign('css',Config::get('config.base').'/apps/user/styles/lostpassword.css');
 
     $this->setTemplate('/apps/user/views/lostpassword.php');
+  }
+
+  public function myprofil(){
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/myprofil.css');
+
+    $this->setTemplate('/apps/user/views/myprofil.php');
   }
 }
 ?>
