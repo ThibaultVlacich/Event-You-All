@@ -8,7 +8,8 @@
                 <div class="note success">
                   <i class="fa fa-spin fa-spinner"></i>
                   <ul>
-                    <li>L'opération s'est correctement déroulée. Un email contenant votre nouveau mot de passe a été envoyé à votre adresse mail !</li>
+                    <li>L'opération s'est correctement déroulée. </li>
+                    <li>Un email contenant votre nouveau mot de passe a été envoyé à votre adresse mail !</li>
                     <li>Vous allez être redirigé dans 5 secondes.</li>
                   </ul>
                 </div>

@@ -145,10 +145,10 @@ class UserModel {
       $prep->execute();
 
       if ($prep->rowCount() == 0) {
-        return array('the error is' => 'Aucun utilisateur n\'emploie cet adresse mail !', 'success' => false);
+        return array('errors' => 'Aucun utilisateur n\'emploie cet adresse mail !');
     }
       else {
-        return array('the error is' => 'none', 'success' => true);
+        return array();
       }
   }
 }

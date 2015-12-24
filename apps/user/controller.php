@@ -180,12 +180,13 @@ class UserController extends Controller {
 		$mail=Request::getAssoc(array('adressemail'));
 		if(isset($mail) && !empty($mail)) {
 			$errors = $this->model->checkMailindatabase($mail);
-			if (($errors['success']) == true) {
-				//email needs to be sent here
+			if (empty($errors['errors'])) {
+				//email is sent here
 				return array('success' => true);
+
 			}
 			else {
-				return array('success' => false, 'errors' => $errors['the error is']);
+				return array('success' => false, 'errors' => $errors['errors']);
 			}
 		}
 	}
