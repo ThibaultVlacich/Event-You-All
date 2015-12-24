@@ -21,14 +21,14 @@
                     return;
                   }
 
-                  if (!empty($model['the error is'])) {
+                  if (!empty($model['errors'])) {
                 ?>
                 <div class="note error">
                   <i class="fa fa-exclamation-triangle"></i>
                   <ul>
                   <?php
                    {
-                      echo '<li>'.$model['the error is'].'</li>';
+                      echo '<li>'.$model['errors'].'</li>';
                     }
                   ?>
                   </ul>
