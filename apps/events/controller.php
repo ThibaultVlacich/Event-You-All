@@ -200,8 +200,8 @@ class EventsController extends Controller {
         $data['mclef'] = '';
       }
 
-      $data['date_de'] = $date_debut;
-      $data['date_fi'] = $date_fin;
+      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
+      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
 
       $id_event = $this->model->createEvent($data);
 
@@ -251,7 +251,7 @@ class EventsController extends Controller {
 
 
   function modif_confirm() {
-    $data = Request::getAssoc(array('nom','date_de','time_de','date_fi','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
+    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de','date_fi_j','date_fi_m','date_fi_a','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
     echo '101 dalm';
     $errors = array();
 

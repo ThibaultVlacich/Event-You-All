@@ -71,17 +71,83 @@
                     <br>
                     <!--les champs ne marchent pas pour firefox d'où le placeholder...-->
                          <div class="label">
-                        <label for='date_de'>Début<span class="required">*</span>  </label>
+                        <label for='date_de_j'>Début<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
-                        <input type="date" name="date_de" id="date_de" required placeholder="dd/mm/yyyy">
+                    <select  name='date_de_j' id='date_de_j'>
+                    <?php
+                    for ($i = 1; $i <= 31; $i++) {
+                    echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
+                    ?>
+                        </select>
+                        <select  name='date_de_m' id='date_de_m'>
+                        <?php $months = array(
+                        1 => 'Janvier',
+                        2 => 'Février',
+                        3 => 'Mars',
+                        4 => 'Avril',
+                        5 => 'Mai',
+                        6 => 'Juin',
+                        7 => 'Juillet',
+                        8 => 'Août',
+                        9 => 'Septembre',
+                        10 => 'Octobre',
+                        11 => 'Novembre',
+                        12 => 'Décembre'
+                        );
+                                foreach ($months as $number => $month) {
+                                    echo '<option value="'.$number.'">'.$month.'</option>';
+                                                                        }
+                                                                        ?>
+                        </select>
+                        <select  name='date_de_a' id='date_de_a'>
+                                <option value=<?php echo date('Y');?>><?php echo date('Y');?></option>
+                                <option value=<?php echo date('Y')+1;?>><?php echo date('Y')+1;?></option>
+                                <option value=<?php echo date('Y')+2;?>><?php echo date('Y')+2;?></option>
+                        </select>
+
+                    <!--
+                        <input type="date" name="date_de" id="date_de" required placeholder="dd/mm/yyyy">-->
                         <input type="time" name="time_de" id="time_de" required placeholder="hh/mm">
                     </div>
                          <div class="label">
-                        <label for='date_fi'>Fin<span class="required">*</span>  </label>
+                        <label for='date_fi_j'>Fin<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
-                        <input type="date" name="date_fi" id="date_fi" required placeholder="dd/mm/yyyy">
+                    <select  name='date_fi_j' id='date_fi_j'>
+                    <?php
+                    for ($i = 1; $i <= 31; $i++) {
+                    echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
+                    ?>
+                        </select>
+                        <select  name='date_fi_m' id='date_fi_m'>
+                        <?php $months = array(
+                        1 => 'Janvier',
+                        2 => 'Février',
+                        3 => 'Mars',
+                        4 => 'Avril',
+                        5 => 'Mai',
+                        6 => 'Juin',
+                        7 => 'Juillet',
+                        8 => 'Août',
+                        9 => 'Septembre',
+                        10 => 'Octobre',
+                        11 => 'Novembre',
+                        12 => 'Décembre'
+                        );
+                              foreach ($months as $number => $month) {
+                                    echo '<option value="'.$number.'">'.$month.'</option>';
+                                                                        }
+                                                                        ?>
+                        </select>
+                        <select  name='date_fi_a' id='date_fi_a'>
+                                <option value=<?php echo date('Y');?>><?php echo date('Y');?></option>
+                                <option value=<?php echo date('Y')+1;?>><?php echo date('Y')+1;?></option>
+                                <option value=<?php echo date('Y')+2;?>><?php echo date('Y')+2;?></option>
+                        </select>
+                        <!--<input type="date" name="date_fi" id="date_fi" required placeholder="dd/mm/yyyy">-->
                         <input type="time" name="time_fi" id="time_fi" required placeholder="hh/mm">
                     </div>
                     <br>
