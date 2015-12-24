@@ -1,4 +1,12 @@
 <?php
+defined('EUA_VERSION') or die('Access denied');
+/**
+ * This is the Controller for the app "User".
+ *
+ * @package apps/user
+ * @author Thibault Vlacich <thibault.vlacich@isep.fr>
+ * @version 0.1.0-dev-03-12-2015
+ */
 
 class UserController extends Controller {
 	/**
@@ -175,26 +183,31 @@ class UserController extends Controller {
 	}
 
 
-//Function which enables us to get the forgiven password in the database
-	public function lostpassword() {
-		$mail=Request::getAssoc(array('adressemail'));
-		if(isset($mail) && !empty($mail)) {
-			$errors = $this->model->checkMailindatabase($mail);
-			if (empty($errors['errors'])) {
-				//email is sent here
-				$message = 'Bonjour, voici votre nouveau mot de passe sur Event-You-All : '.$errors['newpassword'].'. Nous vous conseillons de le changer le plus rapidement possible dans la section Modifier mon profil. A bientôt sur Event-You-All !';
-				mail('"'.$mail['adressemail'].'"','Event-You-All : Votre nouveau mot de passe', $message);
+	// Function which enables us to get the forgiven password in the database
+	public function passwordlost() {
+		$data = Request::getAssoc(array('email'));
+
+		if(!in_array(null, $data, true)) {
+			// Check if the asked user exists in database
+			$user = $this->model->checkIfMailIsInDatabase($data['email']);
+
+			if ($user) { // Yes, he exists
+				// Generate a new password
+				$newpassword = $this->model->generateNewPasswordForUser($user['id']);
+
+				// Send him the new password
+				$message = 'Bonjour, voici votre nouveau mot de passe sur Event-You-All : '.$newpassword.'. Nous vous conseillons de le changer le plus rapidement possible dans la section Modifier mon profil. A bientôt sur Event-You-All !';
+
+				mail($user['email'], 'Event-You-All : Votre nouveau mot de passe', $message, 'From: '.Config::get('config.email'));
 
 				return array('success' => true);
-
-			}
-			else {
-				return array('success' => false, 'errors' => $errors['errors']);
+			} else {
+				return array('success' => false, 'errors' => array('L\'utilisateur demandé n\'existe pas !'));
 			}
 		}
 	}
-	public function myprofil(array $params) {
 
+	public function myprofil(array $params) {
 		$data = $this->model->getUser($user);
 
 		if(empty($data['photoprofil'])){

@@ -1,4 +1,12 @@
 <?php
+defined('EUA_VERSION') or die('Access denied');
+/**
+ * This is the Model for the app "User".
+ *
+ * @package apps/user
+ * @author Thibault Vlacich <thibault.vlacich@isep.fr>
+ * @version 0.1.0-dev-03-12-2015
+ */
 
 class UserModel {
 
@@ -63,24 +71,24 @@ class UserModel {
   }
 
   /**
-	 * Retrieves informations about for specific user.
-	 *
-	 * @param int $user_id ID of the user
-	 * @return array Information about the user
-	 */
-	public function getUser($user_id) {
-		$prep = $this->db->prepare('
-			SELECT *
-			FROM users
-			WHERE id = :userid
-		');
+   * Retrieves informations about for specific user.
+   *
+   * @param int $user_id ID of the user
+   * @return array Information about the user
+   */
+  public function getUser($user_id) {
+    $prep = $this->db->prepare('
+      SELECT *
+      FROM users
+      WHERE id = :userid
+    ');
 
-		$prep->bindParam(':userid', $user_id, PDO::PARAM_INT);
+    $prep->bindParam(':userid', $user_id, PDO::PARAM_INT);
 
-		$prep->execute();
+    $prep->execute();
 
-		return $prep->fetch(PDO::FETCH_ASSOC);
-	}
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 
   /**
    * Creates a user in the database.
@@ -135,33 +143,30 @@ class UserModel {
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function checkMailindatabase($mail){
-      $prep = $this->db->prepare('
-        SELECT * FROM users WHERE email LIKE :email
-      ');
+  public function checkIfMailIsInDatabase($mail){
+    $prep = $this->db->prepare('SELECT * FROM users WHERE email LIKE :email');
 
-      $prep->bindParam(':email', $mail['adressemail']);
+    $prep->bindParam(':email', $mail);
 
-      $prep->execute();
+    $prep->execute();
 
-      if ($prep->rowCount() == 0) {
-        return array('errors' => 'Aucun utilisateur n\'emploie cet adresse mail !');
-    }
-      else {
-        $prep2 = $this->db->prepare('
-          UPDATE users SET password = :newpassword WHERE email LIKE :email'
-        );
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 
-        //This generates a new random password that will be sent back to the user.
-        $newpassword = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
+  public function generateNewPasswordForUser($user_id) {
+    $prep = $this->db->prepare('UPDATE users SET password = :newpassword WHERE id = :user_id');
 
-        $prep2->bindParam(':email',$mail['adressemail']);
-        $prep2->bindParam(':newpassword',$newpassword);
+    // This generates a new random password that will be sent back to the user.
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+    $newpassword = substr( str_shuffle( $chars ), 0, 8 );
+    $newpassword_hashed = sha1($newpassword);
 
-        $prep2->execute();
+    $prep->bindParam(':newpassword', $newpassword_hashed);
+    $prep->bindParam(':user_id', $user_id);
 
-        return array('newpassword' => $newpassword);
-      }
+    $prep->execute();
+
+    return $newpassword;
   }
 }
 ?>
