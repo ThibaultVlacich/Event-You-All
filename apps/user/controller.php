@@ -182,6 +182,9 @@ class UserController extends Controller {
 			$errors = $this->model->checkMailindatabase($mail);
 			if (empty($errors['errors'])) {
 				//email is sent here
+				$message = 'Bonjour, voici votre nouveau mot de passe sur Event-You-All : '.$errors['newpassword'].'. Nous vous conseillons de le changer le plus rapidement possible dans la section Modifier mon profil. A bientôt sur Event-You-All !';
+				mail('"'.$mail['adressemail'].'"','Event-You-All : Votre nouveau mot de passe', $message);
+
 				return array('success' => true);
 
 			}

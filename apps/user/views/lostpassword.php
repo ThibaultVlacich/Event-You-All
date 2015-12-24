@@ -16,7 +16,7 @@
                 <script type="text/javascript">
                   setTimeout(function() {
                     window.location = '<?php echo Config::get('config.base'); ?>';
-                  }, 5000);
+                  }, 5000000);
                 </script>
                 <?php
                     return;

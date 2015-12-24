@@ -137,7 +137,7 @@ class UserModel {
 
   public function checkMailindatabase($mail){
       $prep = $this->db->prepare('
-        SELECT password FROM users WHERE email LIKE :email
+        SELECT * FROM users WHERE email LIKE :email
       ');
 
       $prep->bindParam(':email', $mail['adressemail']);
@@ -148,7 +148,19 @@ class UserModel {
         return array('errors' => 'Aucun utilisateur n\'emploie cet adresse mail !');
     }
       else {
-        return array();
+        $prep2 = $this->db->prepare('
+          UPDATE users SET password = :newpassword WHERE email LIKE :email'
+        );
+
+        //This generates a new random password that will be sent back to the user.
+        $newpassword = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
+
+        $prep2->bindParam(':email',$mail['adressemail']);
+        $prep2->bindParam(':newpassword',$newpassword);
+
+        $prep2->execute();
+
+        return array('newpassword' => $newpassword);
       }
   }
 }
