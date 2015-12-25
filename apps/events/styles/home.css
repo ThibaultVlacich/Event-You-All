@@ -2,7 +2,7 @@ div.app-events-home {
   margin: 20px 0;
 }
 
-div.app-events-home div.slideshow {
+div.app-events-home div.slideshow-container div.slideshow {
   z-index: -60;
   position: absolute;
   top: 0;
@@ -13,47 +13,102 @@ div.app-events-home div.slideshow {
   overflow: hidden;
 }
 
-div.app-events-home div.slideshow div.slidesjs-container {
+div.app-events-home div.slideshow-container div.slideshow div.slidesjs-container {
   height: 600px;
 }
 
-div.app-events-home div.slideshow div.slidesjs-container img {
+div.app-events-home div.slideshow-container div.slideshow div.slidesjs-container img {
   height: 600px;
   object-fit: cover;
 }
 
-div.app-events-home a.slidesjs-navigation {
+div.app-events-home div.slideshow-container a.slidesjs-navigation {
   position: absolute;
   top: 375px;
   font-size: 50px;
   text-decoration: none;
 }
 
-/* Extra small devices (phones, less than 768px) */
-@media only screen and (max-width: 768px) {
-  div.app-events-home div.slideshow {
-    height: 450px;
-  }
-
-  div.app-events-home div.slideshow div.slidesjs-container {
-    height: 450px;
-  }
-
-  div.app-events-home div.slideshow div.slidesjs-container img {
-    height: 450px;
-  }
-
-  div.app-events-home a.slidesjs-navigation {
-    top: 300px;
-  }
-}
-
-div.app-events-home a.slidesjs-navigation.slidesjs-previous {
+div.app-events-home div.slideshow-container a.slidesjs-navigation.slidesjs-previous {
   left: 10px;
 }
 
-div.app-events-home a.slidesjs-navigation.slidesjs-next {
+div.app-events-home div.slideshow-container a.slidesjs-navigation.slidesjs-next {
   right: 10px;
+}
+
+div.app-events-home div.slideshow-container div.slideshow-details {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  height: 400px;
+}
+
+div.app-events-home div.slideshow-container div.slideshow-details div.slide {
+  display: none;
+}
+
+div.app-events-home div.slideshow-container div.slideshow-details div.slide a {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+div.app-events-home div.slideshow-container div.slideshow-details div.slide a div.caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-top: 300px;
+  width: 400px;
+  height: 100px;
+  padding: 10px;
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  div.app-events-home div.slideshow-container div.slideshow-details {
+    width: 1200px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  div.app-events-home div.slideshow-container div.slideshow-details {
+    width: 970px;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  div.app-events-home div.slideshow-container div.slideshow-details {
+    width: 750px;
+  }
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events-home div.slideshow-container div.slideshow {
+    height: 450px;
+  }
+
+  div.app-events-home div.slideshow-container div.slideshow div.slidesjs-container {
+    height: 450px;
+  }
+
+  div.app-events-home div.slideshow-container div.slideshow div.slidesjs-container img {
+    height: 450px;
+  }
+
+  div.app-events-home div.slideshow-container a.slidesjs-navigation {
+    top: 300px;
+  }
+
+  div.app-events-home div.slideshow-container div.slideshow-details {
+    height: 250px;
+    left: 0; right: 0;
+  }
+
+  div.app-events-home div.slideshow-container div.slideshow-details div.slide a div.caption {
+    margin-top: 150px;
+    width: 100%;
+  }
 }
 
 div.app-events-home ul.events {
@@ -136,6 +191,7 @@ span.theme {
   padding: 5px 10px;
   text-transform: uppercase;
   background-color: #880000;
+  color: white;
 }
 
 div.app-events-home ul.events li div.caption h2 {

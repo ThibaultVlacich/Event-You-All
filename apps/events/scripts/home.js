@@ -9,6 +9,17 @@ $(function() {
     navigation: {
       // Deactivate default navigation buttons, we are using our ones
       active: false
+    },
+    callback: {
+      loaded: function(number) {
+        $('.slideshow-details .slide-'+number).show();
+      },
+      complete: function(number) {
+        // Hide currently visible slide
+        $('.slideshow-details .slide').hide();
+        // Display the new slide
+        $('.slideshow-details .slide-'+number).fadeIn(100);
+      }
     }
   });
 });
