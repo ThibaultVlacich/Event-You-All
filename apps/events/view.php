@@ -18,7 +18,11 @@ class EventsView extends View {
 
   public function create() {
     $this->setTemplate('/apps/events/views/createvent.php');
+
     $this->assign('css', Config::get('config.base').'/apps/events/styles/createvent.css');
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
   }
     public function modif() {
     $this->setTemplate('/apps/events/views/modifevent.php');
