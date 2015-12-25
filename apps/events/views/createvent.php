@@ -2,7 +2,7 @@
   <form method="post" action="<?php echo Config::get('config.base'); ?>/events/create_confirm" enctype="multipart/form-data">
     <h2>Créer un nouvel événement</h2>
     <div class="create_part" class="r1">
-      <h3>1-A propos de l"événement</h3>
+      <h3>1-A propos de l'événement</h3>
 
       <div class="centre">
 
@@ -185,7 +185,7 @@
       <br>
     </div>
     <div class="create_part2">
-      <h3>2-Paramètres d"inscription (si événement privé)</h3>
+      <h3>2-Paramètres d'inscription (si événement privé)</h3>
       <div class="centre">
 
         <div class="label">
@@ -289,7 +289,7 @@
       <br>
     </div>
     <div class="create_part2">
-      <h3>6-Page de l"événement</h3>
+      <h3>6-Page de l'événement</h3>
       <div class="centre">
         <label for="descript">Description </label>
         <br>
@@ -316,11 +316,11 @@
       <br>
     </div>
     <div class="create_part">
-      <h3>7-Invitation à l"événement</h3>
+      <h3>7-Invitation à l'événement</h3>
       <div class="centre">
 
         <div class="label">
-          <label for="invitm">Envoyer un e-mail d"invitation à </label>
+          <label for="invitm">Envoyer un e-mail d'invitation à </label>
         </div>
         <br>
         <textarea name="invitm" rows=10 cols=100 placeholder="invite@gmail.com, invite3@gmail.com ..."></textarea>
@@ -329,7 +329,7 @@
     </div>
     <p>
       <input type="checkbox" name="condi" id="condi" required/>
-      <label for="condi">J"accepte les conditions d"utilisation du site...
+      <label for="condi">J'accepte les conditions d'utilisation du site...
         <span class="required">*</span>
       </label>
     </p>
