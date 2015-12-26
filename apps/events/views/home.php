@@ -28,26 +28,29 @@
     <a class="fa fa-chevron-right slidesjs-next slidesjs-navigation" href="#" title="Suivant"></a>
   </div>
   <?php } ?>
-  <ul class="events">
-    <?php foreach($model['events'] as $event) { ?>
-      <li>
-        <div class="poster">
-          <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><img src="<?php echo $event['poster']; ?>" alt=""></a>
-        </div>
-        <div class="caption">
-          <span class="theme">Concert</span>
-          <h2><a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><?php echo $event['nom']; ?></a></h2>
-          <?php
-            if (( !empty($event['date_debut']) && empty($event['date_fin']) ) || ( !empty($event['date_debut']) && !empty($event['date_fin']) && $event['date_debut'] == $event['date_fin'] )) {
-          ?>
-          <div class="date">Le <?php echo $event['date_debut']; ?></div>
-          <?php
-            } else if ( !empty($event['date_debut']) && !empty($event['date_fin']) && $event['date_debut'] != $event['date_fin'] ) {
-          ?>
-          <div class="date">Du <?php echo $event['date_debut']; ?> au <?php echo $event['date_fin']; ?></div>
-          <?php } ?>
-        </div>
-      </li>
-    <?php } ?>
-  </ul>
+  <div class="home-wrapper">
+    <h2 class="title">Les événements à venir</h2>
+    <ul class="events">
+      <?php foreach($model['events'] as $event) { ?>
+        <li>
+          <div class="poster">
+            <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><img src="<?php echo $event['poster']; ?>" alt=""></a>
+          </div>
+          <div class="caption">
+            <span class="theme">Concert</span>
+            <h3><a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><?php echo $event['nom']; ?></a></h3>
+            <?php
+              if (( !empty($event['date_debut']) && empty($event['date_fin']) ) || ( !empty($event['date_debut']) && !empty($event['date_fin']) && $event['date_debut'] == $event['date_fin'] )) {
+            ?>
+            <div class="date">Le <?php echo $event['date_debut']; ?></div>
+            <?php
+              } else if ( !empty($event['date_debut']) && !empty($event['date_fin']) && $event['date_debut'] != $event['date_fin'] ) {
+            ?>
+            <div class="date">Du <?php echo $event['date_debut']; ?> au <?php echo $event['date_fin']; ?></div>
+            <?php } ?>
+          </div>
+        </li>
+      <?php } ?>
+    </ul>
+  </div>
 </div>

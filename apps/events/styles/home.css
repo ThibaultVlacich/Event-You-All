@@ -61,6 +61,15 @@ div.app-events-home div.slideshow-container div.slideshow-details div.slide a di
   padding: 10px;
 }
 
+div.app-events-home div.slideshow-container div.slideshow-details div.slide a div.caption span.theme {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  background-color: #880000;
+  color: white;
+}
+
 /* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   div.app-events-home div.slideshow-container div.slideshow-details {
@@ -111,29 +120,45 @@ div.app-events-home div.slideshow-container div.slideshow-details div.slide a di
   }
 }
 
-div.app-events-home ul.events {
-  list-style: none;
+div.app-events-home div.home-wrapper {
   margin: 0 -15px;
   margin-top: 415px;
-  padding: 0;
   background-color: #fff;
   border: 1px solid #ddd;
 }
 
+div.app-events-home div.home-wrapper h2.title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #CC0033;
+  margin: 15px;
+  margin-bottom: 0;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+div.app-events-home div.home-wrapper ul.events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
-  div.app-events-home ul.events {
+  div.app-events-home div.home-wrapper {
     margin-top: 265px;
   }
 }
 
-div.app-events-home ul.events:after {
+div.app-events-home div.home-wrapper ul.events:after {
   content: ' ';
   display: block;
   clear: both;
 }
 
-div.app-events-home ul.events li {
+div.app-events-home div.home-wrapper ul.events li {
   position: relative;
   float: left;
   margin: 15px 0;
@@ -144,39 +169,39 @@ div.app-events-home ul.events li {
 
 /* Small devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  div.app-events-home ul.events li {
+  div.app-events-home div.home-wrapper ul.events li {
     width: 50%;
   }
 }
 
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
-  div.app-events-home ul.events li {
+  div.app-events-home div.home-wrapper ul.events li {
     width: 100%;
   }
 }
 
-div.app-events-home ul.events li:after {
+div.app-events-home div.home-wrapper ul.events li:after {
   content: ' ';
   display: block;
   clear: both;
 }
 
-div.app-events-home ul.events li div.poster {
+div.app-events-home div.home-wrapper ul.events li div.poster {
   float: left;
   width: 35%;
   height: 200px;
   overflow: hidden;
 }
 
-div.app-events-home ul.events li div.poster img {
+div.app-events-home div.home-wrapper ul.events li div.poster img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-div.app-events-home ul.events li div.caption {
+div.app-events-home div.home-wrapper ul.events li div.caption {
   float: left;
   width: 65%;
   height: 200px;
@@ -185,7 +210,7 @@ div.app-events-home ul.events li div.caption {
   color: white;
 }
 
-span.theme {
+div.app-events-home div.home-wrapper ul.events li div.caption span.theme {
   display: inline-block;
   margin-bottom: 5px;
   padding: 5px 10px;
@@ -194,13 +219,13 @@ span.theme {
   color: white;
 }
 
-div.app-events-home ul.events li div.caption h2 {
+div.app-events-home div.home-wrapper ul.events li div.caption h3 {
   margin: 0;
   margin-bottom: 10px;
   padding: 0;
   font-size: 18px;
 }
 
-div.app-events-home ul.events li div.caption h2 a {
+div.app-events-home div.home-wrapper ul.events li div.caption h3 a {
   color: white;
 }
