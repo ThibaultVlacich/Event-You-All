@@ -221,7 +221,7 @@ class EventsController extends Controller {
 
       if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {
         $date_debut_timestamp = strtotime($data['date_debut']);
-        $data['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
+        //$data['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
         $data['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
       } else {
         $data['date_debut'] = null;
@@ -230,7 +230,7 @@ class EventsController extends Controller {
 
       if (!empty($data['date_fin']) && $data['date_fin'] != '0000-00-00 00:00:00') {
         $date_fin_timestamp = strtotime($data['date_fin']);
-        $data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
+        //$data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
         $data['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
       } else {
         $data['date_fin'] = null;
@@ -247,13 +247,12 @@ class EventsController extends Controller {
     }
     else{echo false;}
   }
-}
 
 
 
-  function modif_confirm() {
+
+  function modif_confirm(array $params) {
     $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de','date_fi_j','date_fi_m','date_fi_a','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
-    echo '101 dalm';
     $errors = array();
 
     if (!in_array(null, $data, true)) {
@@ -316,8 +315,8 @@ class EventsController extends Controller {
       }
 
 
-      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
-      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
+      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
+      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
       $data['date_de']=$date_debut;
       $data['date_fi']=$date_fin;
 
@@ -337,9 +336,10 @@ class EventsController extends Controller {
 
       $data['date_de'] = $date_debut;
       $data['date_fi'] = $date_fin;
-      $id_event = $this->model->modifEvent($data);
+      $id_event = $this->model->modifEvent($data,intval($params[0]));
 
 	    return array('id' => $id_event, 'error' => $errors);
     }
   }
+}
 ?>

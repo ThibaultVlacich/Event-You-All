@@ -74,10 +74,15 @@
                         <label for='date_de_j'>Début<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
+                    <?php //echo $model['date_debut'];echo $model['date_fin']; ?>
                     <select  name='date_de_j' id='date_de_j'>
                     <?php
                     for ($i = 1; $i <= 31; $i++) {
+                        if ($i== substr($model['date_debut'], 8, -9) )
+                        {echo '<option selected value="'.$i.'">'.$i.'</option>';}
+                    else{
                     echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
                     }
                     ?>
                         </select>
@@ -97,19 +102,68 @@
                         12 => 'Décembre'
                         );
                                 foreach ($months as $number => $month) {
-                                    echo '<option value="'.$number.'">'.$month.'</option>';
+                                    if ($number==substr($model['date_debut'], 5, -12))
+                                    {
+                                        echo '<option selected value="'.$number.'">'.$month.'</option>';
+                                    }
+                                    else{
+                                        
+                                        echo '<option value="'.$number.'">'.$month.'</option>';
+                                    }
                                                                         }
                                                                         ?>
                         </select>
                         <select  name='date_de_a' id='date_de_a'>
-                                <option value=<?php echo date('Y');?>><?php echo date('Y');?></option>
-                                <option value=<?php echo date('Y')+1;?>><?php echo date('Y')+1;?></option>
-                                <option value=<?php echo date('Y')+2;?>><?php echo date('Y')+2;?></option>
+                                <?php
+                        //----------Année-----------------------
+                        $yearnear=false; //regarde si l'année entrée est dans les 3 années qui viennent
+                        $faryear=substr($model['date_debut'], 0, -15); //récupére l'annee de l'event
+                        for ($o = 0; $o <= 3; $o++) {
+                        $annee=date('Y')+$o;
+                        if ($o!=3)
+                        {
+                            if ($annee== $faryear )
+                            {
+                                $yearnear=true;
+                                echo '<option selected value="'.$annee.'">'.$annee.'</option>';
+                            }
+                            else{
+                                echo '<option value="'.$annee.'">'.$annee.'</option>';
+                            }
+                        }
+                        else{//si l'annee n'est pas comprise dans ce qui est proposée on créé une case pour l'entrée sinon on met rien
+                            if ($yearnear==false)
+                            {echo '<option selected value="'.$faryear.'">'.$faryear.'</option>';}
+                        }
+                        }
+                        ?>
                         </select>
-
-                    <!--
-                        <input type="date" name="date_de" id="date_de" required placeholder="dd/mm/yyyy">-->
-                        <input type="time" name="time_de" id="time_de" required placeholder="hh/mm">
+                        <?php echo' à ';?>
+                        <!--Heures et minutes-->
+                        <select  name='time_de_h' id='time_de_h'>
+                            <?php
+                            for ($i = 0; $i <= 24; $i++) {
+                                if ($i== substr($model['heure_debut'], 0, -3) )
+                                {echo '<option selected value="'.$i.'">'.$i.'</option>';}
+                            else{
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
+                        <?php echo':';?>
+                        <select  name='time_de_m' id='time_de_m'>
+                            <?php
+                            for ($i = 0; $i <= 3; $i++) {
+                                $minutes=$i*15;
+                                if ($minutes== substr($model['heure_debut'], 3, 0) )
+                                {echo '<option selected value="'.$minutes.'">'.$minutes.'</option>';}
+                            else{
+                            echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
                     </div>
                          <div class="label">
                         <label for='date_fi_j'>Fin<span class="required">*</span>  </label>
@@ -118,7 +172,11 @@
                     <select  name='date_fi_j' id='date_fi_j'>
                     <?php
                     for ($i = 1; $i <= 31; $i++) {
+                        if ($i== substr($model['date_fin'], 8, -9) )
+                        {echo '<option selected value="'.$i.'">'.$i.'</option>';}
+                    else{
                     echo '<option value="'.$i.'">'.$i.'</option>';
+                    }
                     }
                     ?>
                         </select>
@@ -137,18 +195,69 @@
                         11 => 'Novembre',
                         12 => 'Décembre'
                         );
-                              foreach ($months as $number => $month) {
-                                    echo '<option value="'.$number.'">'.$month.'</option>';
+                                foreach ($months as $number => $month) {
+                                    if ($number==substr($model['date_fin'], 5, -12))
+                                    {
+                                        echo '<option selected value="'.$number.'">'.$month.'</option>';
+                                    }
+                                    else{
+                                        
+                                        echo '<option value="'.$number.'">'.$month.'</option>';
+                                    }
                                                                         }
                                                                         ?>
                         </select>
                         <select  name='date_fi_a' id='date_fi_a'>
-                                <option value=<?php echo date('Y');?>><?php echo date('Y');?></option>
-                                <option value=<?php echo date('Y')+1;?>><?php echo date('Y')+1;?></option>
-                                <option value=<?php echo date('Y')+2;?>><?php echo date('Y')+2;?></option>
+                        <?php
+                        //----------Année-----------------------
+                        $yearnear=false; //regarde si l'année entrée est dans les 3 années qui viennent
+                        $faryear=substr($model['date_fin'], 0, -15); //récupére l'annee de l'event
+                        for ($o = 0; $o <= 3; $o++) {
+                        $annee=date('Y')+$o;
+                        if ($o!=3)
+                        {
+                            if ($annee== $faryear )
+                            {
+                                $yearnear=true;
+                                echo '<option selected value="'.$annee.'">'.$annee.'</option>';
+                            }
+                            else{
+                                echo '<option value="'.$annee.'">'.$annee.'</option>';
+                            }
+                        }
+                        else{//si l'annee n'est pas comprise dans ce qui est proposée on créé une case pour l'entrée sinon on met rien
+                            if ($yearnear==false)
+                            {echo '<option selected value="'.$faryear.'">'.$faryear.'</option>';}
+                        }
+                        }
+                        ?>
                         </select>
-                        <!--<input type="date" name="date_fi" id="date_fi" required placeholder="dd/mm/yyyy">-->
-                        <input type="time" name="time_fi" id="time_fi" required placeholder="hh/mm">
+                        <?php echo' à ';?>
+                        <!--Heures et minutes-->
+                        <select  name='time_fi_h' id='time_fi_h'>
+                            <?php
+                            for ($i = 0; $i <= 24; $i++) {
+                                if ($i== substr($model['heure_fin'], 0, -3) )
+                                {echo '<option selected value="'.$i.'">'.$i.'</option>';}
+                            else{
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
+                        <?php echo':';?>
+                        <select  name='time_fi_m' id='time_fi_m'>
+                            <?php
+                            for ($i = 0; $i <= 3; $i++) {
+                                $minutes=$i*15;
+                                if ($minutes== substr($model['heure_fin'], 3, 0) )
+                                {echo '<option selected value="'.$minutes.'">'.$minutes.'</option>';}
+                            else{
+                            echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
                     </div>
                     <br>
                          <div class="label">
