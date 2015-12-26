@@ -14,8 +14,10 @@
       <div class="slide slide-<?php echo $count; ?>">
         <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>">
           <div class="caption">
-            <span class="theme">Concert</span>
-            <h2><?php echo $event['nom']; ?></h2>
+            <div class="caption-wrapper">
+              <span class="theme">Concert</span>
+              <h2><?php echo $event['nom']; ?></h2>
+            </div>
           </div>
         </a>
       </div>
