@@ -123,12 +123,13 @@ class EventsModel {
   }
 
 
-public function modifEvent(array $data,$event_id) {
+public function modifEvent(array $data) {
+    $id_event=$data['id'];
     $prep = $this->db->prepare('
       UPDATE evenements (nom,capacite,prix,prive,
       site_web,region,adresse,code_postal,ville,pays,description,mot_clef)
       VALUES (:nom,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:mot_clef) WHERE id = :$event_id
+      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:mot_clef) WHERE id = :id_event
     ');
 
     $prep->bindParam(':nom', $data['nom']);

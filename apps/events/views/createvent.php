@@ -101,7 +101,32 @@
               <?php echo date('Y') + 2; ?>
             </option>
           </select>
-          <input type="time" name="time_de" id="time_de" required placeholder="hh/mm">
+          <?php echo' à ';?>
+                        <!--Heures et minutes-->
+                        <select  name='time_de_h' id='time_de_h'>
+                            <?php
+                            for ($i = 0; $i <= 24; $i++) {
+                                if ($i== substr($model['heure_debut'], 0, -3) )
+                                {echo '<option selected value="'.$i.'">'.$i.'</option>';}
+                            else{
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
+                        <?php echo':';?>
+                        <select  name='time_de_m' id='time_de_m'>
+                            <?php
+                            for ($i = 0; $i <= 3; $i++) {
+                                $minutes=$i*15;
+                                if ($minutes== substr($model['heure_debut'], 3, 0) )
+                                {echo '<option selected value="'.$minutes.'">'.$minutes.'</option>';}
+                            else{
+                            echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
         </div>
         <div class="label">
           <label for="date_fi_j">Fin
@@ -149,7 +174,32 @@
               <?php echo date('Y') + 2; ?>
             </option>
           </select>
-          <input type="time" name="time_fi" id="time_fi" required placeholder="hh/mm">
+          <?php echo' à ';?>
+                        <!--Heures et minutes-->
+                        <select  name='time_fi_h' id='time_fi_h'>
+                            <?php
+                            for ($i = 0; $i <= 24; $i++) {
+                                if ($i== substr($model['heure_debut'], 0, -3) )
+                                {echo '<option selected value="'.$i.'">'.$i.'</option>';}
+                            else{
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
+                        <?php echo':';?>
+                        <select  name='time_fi_m' id='time_fi_m'>
+                            <?php
+                            for ($i = 0; $i <= 3; $i++) {
+                                $minutes=$i*15;
+                                if ($minutes== substr($model['heure_fin'], 3, 0) )
+                                {echo '<option selected value="'.$minutes.'">'.$minutes.'</option>';}
+                            else{
+                            echo '<option value="'.$minutes.'">'.$minutes.'</option>';
+                            }
+                            }
+                            ?>
+                        </select>
         </div>
         <br>
         <div class="label">

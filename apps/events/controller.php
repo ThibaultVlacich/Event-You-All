@@ -115,8 +115,8 @@ class EventsController extends Controller {
   }
 
   function create_confirm() {
-    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de','date_fi_j','date_fi_m','date_fi_a','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
-    //print_r($data);
+    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de_h','time_de_m','date_fi_j','date_fi_m','date_fi_a','time_fi_h','time_fi_m','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
+    print_r($data);
     $errors = array();
 
     if (!in_array(null, $data, true)) {
@@ -182,9 +182,9 @@ class EventsController extends Controller {
         }
       }
 
-
-      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
-      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
+      print_r ($data);
+      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
+      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
       
       $data['priv'] = false;
 
@@ -200,8 +200,8 @@ class EventsController extends Controller {
         $data['mclef'] = '';
       }
 
-      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de'];
-      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi'];
+      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
+      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
       $data['date_de']=$date_debut;
       $data['date_fi']=$date_fin;
       $id_event = $this->model->createEvent($data);
@@ -252,7 +252,9 @@ class EventsController extends Controller {
 
 
   function modif_confirm(array $params) {
-    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de','date_fi_j','date_fi_m','date_fi_a','time_fi','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
+    if (isset($params[0])) {
+    $id_event = intval($params[0]);
+    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de_h','time_de_m','date_fi_j','date_fi_m','date_fi_a','time_fi_h','time_fi_m','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
     $errors = array();
 
     if (!in_array(null, $data, true)) {
@@ -336,9 +338,11 @@ class EventsController extends Controller {
 
       $data['date_de'] = $date_debut;
       $data['date_fi'] = $date_fin;
-      $id_event = $this->model->modifEvent($data,intval($params[0]));
+      $data['id'] = $id_event;
+      $id_event = $this->model->modifEvent($data);
 
 	    return array('id' => $id_event, 'error' => $errors);
+    }
     }
   }
 }
