@@ -121,18 +121,24 @@ class EventsModel {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
-
+  
+  public function getPosterBannerForEvent($event_id) {
+    $prep = $this->db->prepare('SELECT evenements.poster,evenements.banniere, evenements.id FROM evenements WHERE  evenements.id = '.$event_id.'');
+    $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 
 public function modifEvent(array $data) {
-    $id_event=$data['id'];
     $prep = $this->db->prepare('
-      UPDATE evenements (nom,capacite,prix,prive,
-      site_web,region,adresse,code_postal,ville,pays,description,mot_clef)
-      VALUES (:nom,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:mot_clef) WHERE id = :id_event
+      UPDATE evenements SET nom=:nom,capacite=:capacite,prix=:prix,prive=:prive,
+      site_web=:site_web,region=:region,adresse=:adresse,code_postal=:code_postal,ville=:ville,pays=:pays,description=:description,
+      mot_clef=:mot_clef,date_debut=:date_debut,date_fin=:date_fin,banniere=:banniere,poster=:poster WHERE id = :id_event
     ');
 
     $prep->bindParam(':nom', $data['nom']);
+    $prep->bindParam(':date_debut', $data['date_de']);
+    $prep->bindParam(':date_fin', $data['date_fi']);
     $prep->bindParam(':capacite', $data['nbpl']);
     $prep->bindParam(':prix', $data['price']);
     $prep->bindParam(':prive', $data['priv']);
@@ -144,6 +150,9 @@ public function modifEvent(array $data) {
     $prep->bindParam(':pays', $data['pays']);
     $prep->bindParam(':description', $data['descript']);
     $prep->bindParam(':mot_clef', $data['mclef']);
+    $prep->bindParam(':id_event', $data['id']);
+    $prep->bindParam(':banniere', $data['bann']);
+    $prep->bindParam(':poster', $data['poster']);
 //TO DO mofify poster and banner only if changed !
 //      modify date
     if ($prep->execute()) {
@@ -160,8 +169,7 @@ public function modifEvent(array $data) {
       $prep->bindParam(':id_ge', $data['theme']);
         $prep->execute();
 */
-        echo 'ok';
-      return $event_id;
+      return $data['id'];
     } else {
         echo 'non';
       return false;

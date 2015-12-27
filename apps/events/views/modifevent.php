@@ -138,7 +138,7 @@
                         }
                         ?>
                         </select>
-                        <?php echo' à ';?>
+                        à
                         <!--Heures et minutes-->
                         <select  name='time_de_h' id='time_de_h'>
                             <?php
@@ -151,7 +151,7 @@
                             }
                             ?>
                         </select>
-                        <?php echo':';?>
+                        :
                         <select  name='time_de_m' id='time_de_m'>
                             <?php
                             for ($i = 0; $i <= 3; $i++) {
@@ -232,7 +232,7 @@
                         }
                         ?>
                         </select>
-                        <?php echo' à ';?>
+                        à
                         <!--Heures et minutes-->
                         <select  name='time_fi_h' id='time_fi_h'>
                             <?php
@@ -245,7 +245,7 @@
                             }
                             ?>
                         </select>
-                        <?php echo':';?>
+                        :
                         <select  name='time_fi_m' id='time_fi_m'>
                             <?php
                             for ($i = 0; $i <= 3; $i++) {

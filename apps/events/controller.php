@@ -227,7 +227,6 @@ class EventsController extends Controller {
         $data['date_debut'] = null;
         $data['heure_debut'] = null;
       }
-
       if (!empty($data['date_fin']) && $data['date_fin'] != '0000-00-00 00:00:00') {
         $date_fin_timestamp = strtotime($data['date_fin']);
         //$data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
@@ -266,7 +265,7 @@ class EventsController extends Controller {
       $minheight = 0;
       $banner = Request::get('bann', null, 'FILES');
       $message_erreur = '';
-
+      $oldbannerposter=$this->model->getPosterBannerForEvent($id_event);
       if(!empty($banner['name'])) {
         if(!$banner['error']) {
             $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
@@ -288,6 +287,10 @@ class EventsController extends Controller {
         } else{
             $errors += array('Problème de Serveur');
         }
+      }
+      else{//prend ancienne banniere si aucune nouvelle entrée
+          $data['bann'] =$oldbannerposter['banniere'];
+          
       }
 
       $poster = Request::get('poster', null, 'FILES');
@@ -314,6 +317,9 @@ class EventsController extends Controller {
         } else{
             $errors += array('Problème de Serveur');
         }
+      }
+      else{//prend ancien poster si aucun nouveau entré
+          $data['poster'] =$oldbannerposter['poster'];
       }
 
 
