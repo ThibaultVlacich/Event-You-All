@@ -145,6 +145,30 @@ div.app-events-home div.home-wrapper h2.title {
   border-bottom: 1px solid #EAEAEA;
 }
 
+div.app-events-home div.home-wrapper div.search-form {
+  padding: 10px 0;
+  text-align: center;
+}
+
+div.app-events-home div.home-wrapper div.search-form select, div.app-events-home div.home-wrapper div.search-form input {
+  width: 200px;
+  height: 40px;
+}
+
+div.app-events-home div.home-wrapper div.search-form input[type="submit"] {
+  width: 150px;
+  border: 0;
+  background: #CC0033;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+div.app-events-home div.home-wrapper div.search-form input[type="submit"]:hover {
+  background: #880000;
+}
+
 div.app-events-home div.home-wrapper ul.events {
   list-style: none;
   margin: 0;

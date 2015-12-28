@@ -19,6 +19,12 @@ a:hover {
   color: #880000;
   text-decoration: underline;
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
 
 /**
  * Fluid wrapper

@@ -31,6 +31,21 @@
   </div>
   <?php } ?>
   <div class="home-wrapper">
+    <h2 class="title">Faire une recherche</h2>
+    <form action="<?php echo Config::get('config.base'); ?>/search" method="get">
+      <div class="search-form">
+        <select name="region">
+          <option disabled selected hidden>Région</option>
+          <option>Île-de-France</option>
+        </select>
+        <select name="theme">
+          <option disabled selected hidden>Thème</option>
+          <option>Concert</option>
+        </select>
+        <input type="date" name="date" placeholder="Date">
+        <input type="submit" value="Rechercher">
+      </div>
+    </form>
     <h2 class="title">Les événements à venir</h2>
     <ul class="events">
       <?php foreach($model['events'] as $event) { ?>
