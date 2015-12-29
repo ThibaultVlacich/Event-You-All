@@ -1,0 +1,42 @@
+.entete
+{
+    width:80%;
+}
+
+.normeforum, #recherche
+{
+    margin:5%;
+    padding:2px;
+    color:black;
+    text-decoration:none;
+    border:1px solid black;
+}
+
+.principal
+{
+    margin:2%;
+}
+
+#sujet,#commentaire
+{
+    width:100%;
+}
+
+
+.photoperso
+{
+    display:inline-block;
+    margin:15px;
+}
+
+.lier
+{
+    display:inline-block;
+    float:right;
+    margin:15px;
+}
+
+.valider
+{
+    margin-top: 15px;
+}
