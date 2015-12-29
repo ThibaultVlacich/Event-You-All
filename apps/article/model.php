@@ -24,11 +24,18 @@ class ArticleModel {
    * @return mixed ID of the article just created or false on failure
    */
    public function createEvent(array $data) {
-    $prep = $this->db->prepare('INSERT INTO articles (nom,contenu,id_evenement) VALUES (:nom,:contenu,:event)');
-
+    $prep = $this->db->prepare('INSERT INTO articles (nom,contenu,id_evenement,banniere,date_creation,id_createur) VALUES (:nom,:contenu,:event,
+    :banniere,:date_creation,:creator)');
+    
+    $creation=date("Y-m-d H:i:s");
+    $user_id = $_SESSION['userid'];
+    
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':contenu', $data['corps']);
-	$prep->bindParam(':event', $data['arti']);
+    $prep->bindParam(':event', $data['arti']);
+    $prep->bindParam(':banniere', $data['bann']);
+    $prep->bindParam(':date_creation', $creation);
+    $prep->bindParam(':creator',$user_id);
 
     if ($prep->execute()) {
       return $this->db->lastInsertId();

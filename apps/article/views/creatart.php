@@ -1,3 +1,10 @@
+<?php
+if (!empty($model['error'])) {
+    echo('Erreur : ');
+    print_r($model['error']);
+return;
+}
+?>
 <div class="note success">
 	<i class="fa fa-spin fa-spinner"></i>
 	<script type="text/javascript">
