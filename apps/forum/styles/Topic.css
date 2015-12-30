@@ -1,0 +1,64 @@
+#haut{
+    margin: auto;
+    text-align: center;
+}
+#haut li, #presentation li, #titre li{
+    display: inline-block;
+    margin-left: 30px;
+    vertical-align: text-top;
+}
+#tire{
+    text-align: center;
+    width :100%;
+}
+#titre h1{
+color:#cc0033;
+border-bottom:1px solid #cc0033;
+}
+#presentation{
+    margin: auto;
+    text-align: center;
+}
+.back1{
+  background-color: rgb(229,229,229);
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width:80%;
+  text-align: center;
+}
+.back2{
+  background-color: whitesmoke;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Trebuchet MS;
+  width:80%;
+  text-align: center;
+}
+.utilisateur{
+    width:150px;
+}
+.date{
+    width:150px;
+}
+#AJ_txt{
+    height:200px;
+    width:70%;
+    margin-left: 15%;
+    margin-right: auto;
+    margin-top: 50px;
+}
+#Envoi p{
+    margin-left:70%;
+}
+#num_page{
+    margin-left: auto;
+    margin-right: auto;
+}
+#num_page td{
+    height:20px;
+    width:20px;
+    text-align: center;
+    border: solid #CC0033 2px;
+}

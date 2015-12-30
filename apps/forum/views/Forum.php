@@ -9,8 +9,8 @@
   </div>
         <ul id="haut">
 
-            <li class="enteteforum"><a href="#" class="titreenteteforum">Créer un nouveau Topic</a></li>
-            <li class="enteteforum"><a href="#" class="titreenteteforum">Mes Topics</a></li>
+            <a href="#" class="titreenteteforum"><li class="enteteforum">Créer un nouveau Topic</li></a>
+            <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
             <li class="enteteforum"><form method="post" action="hey.php">
                 <label for="recherche" >Rechercher sur le forum</label>
                 <input type="search" placeholder="ex: Photographie" id="recherche" name="recherche"/>

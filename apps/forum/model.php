@@ -18,8 +18,8 @@ class ForumModel {
 
   public function createTopic(array $data) {
     $prep = $this->db->prepare('
-     INSERT INTO Forum (sujet,commentaire,venement,date_creation,id_creator)
-     VALUES (:sujet,:commentaire,:evenement,:date_creation,:administrateur)
+     INSERT INTO forum_topics (titre,description,date_creation,id_createur)
+     VALUES (:titre,:description,:date_creation,:administrateur)
    ');
 
    $session = System::getSession();
@@ -27,9 +27,8 @@ class ForumModel {
 	$user_id = $_SESSION['userid'];
   $date = DateTime::getTimestamp();
 }
-   $prep->bindParam(':sujet', $data['sujet']);
-   $prep->bindParam(':commentaire', $data['commentaire']);
-   $prep->bindParam(':evenement', $data['evenement']);
+   $prep->bindParam(':titre', $data['titre']);
+   $prep->bindParam(':description', $data['description']);
    $prep->bindParam(':date_creation', $date);
    $prep->bindParam(':administrateur', $user_id);
 
@@ -66,13 +65,11 @@ class ForumModel {
    return $prep->fetchAll(PDO::FETCH_ASSOC);
  }
  public function getCreatorForTopic($topic_id) {
-     $prep = $this->db->prepare('SELECT * FROM users WHERE id = :topic_id');
-
-     $prep->bindParam(':topic_id', $topic_id, PDO::PARAM_INT);
-     $prep->execute();
-
-     return $prep->fetchAll(PDO::FETCH_ASSOC);
-   }
+   $prep = $this->db->prepare('SELECT users.nickname, users.id FROM users INNER JOIN forum_topics ON  users.id = forum_topics.id_createur');
+   $prep->bindParam(':topic_id', $topic_id, PDO::PARAM_INT);
+   $prep->execute();
+   return $prep->fetch(PDO::FETCH_ASSOC);
+ }
 
   // Then add methods (can be named whatever you want)
 }

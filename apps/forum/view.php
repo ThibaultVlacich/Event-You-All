@@ -13,6 +13,10 @@ class ForumView extends View {
     $this->setTemplate('/apps/forum/views/createTopic.php');
     $this->assign('css', Config::get('config.base').'/apps/forum/styles/createTopic.css');
   }
+  public function Topic() {
+    $this->setTemplate('/apps/forum/views/Topic.php');
+    $this->assign('css', Config::get('config.base').'/apps/forum/styles/Topic.css');
+  }
 }
 
 ?>
