@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Forum accueil</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="cssForum.css"/>
-    </head>
-    <body>
+
   </div>
         <ul id="haut">
 
@@ -34,31 +27,12 @@
                     <th class="dateth">Date de création</th>
                 </tr>
             </thead>
+              <?php foreach($model['topics'] as $topic) { ?>
             <tr>
-                <td class="sujet">Sujet</td>
-                <td class="admin">Mr.a</td>
+                <td class="sujet"><?php echo $topic['titre']; ?></td>
+                <td class="admin"><?php echo $topic['administrateur'];?></td>
                 <td class="event">super concert</td>
-                <td class="date">10/11/2015</td>
+                <td class="date"><?php echo $topic['date_creation'];?></td>
             </tr>
-            <tr>
-                <td class="sujet">Sujet</td>
-                <td class="admin">Mr.a</td>
-                <td class="event">super concert</td>
-                <td class="date">10/11/2015</td>
-            </tr>
-            <tr>
-                <td class="sujet">Sujet</td>
-                <td class="admin">Mr.a</td>
-                <td class="event">super concert</td>
-                <td class="date">10/11/2015</td>
-            </tr>
+            <?php } ?>
         </table>
-        <table id="num_page">
-            <tr>
-                <td><a href="#">1</a></td>
-                <td><a href="#">2</a></td>
-                <td><a href="#">3</a></td>
-            </tr>
-        </table>
-    </body>
-</html>
