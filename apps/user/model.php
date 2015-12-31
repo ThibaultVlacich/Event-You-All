@@ -168,5 +168,89 @@ class UserModel {
 
     return $newpassword;
   }
+
+  public function changeprofil($modifications, $user_id) {
+     $changes = 'UPDATE users SET ';
+
+     if(!empty($modifications['photoprofil'])) {
+       $changes .= 'photoprofil = "'.addslashes($modifications['photoprofil']).'" ';
+     }
+
+     if(!empty($modifications['commentaire'])) {
+       if(strlen($changes)>16) {//the , is only add if a field has already been add to $changes.
+         $changes .=', ';
+       }
+       $changes .= 'commentaire = "'.addslashes($modifications['commentaire']).'" ';
+     }
+
+     if(!empty($modifications['profilprive'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'profilprive = "'.addslashes($modifications['profilprive']).'" ';
+     }
+
+     if(!empty($modifications['birthdate'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'birthdate = "'.intval($modifications['birthdate']).'" ';
+     }
+
+     if(!empty($modifications['sex'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'sex = "'.addslashes($modifications['sex']).'" ';
+     }
+
+     if(!empty($modifications['adress'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'adress = "'.addslashes($modifications['adress']).'" ';
+     }
+
+     if(!empty($modifications['country'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'country = "'.addslashes($modifications['country']).'" ';
+     }
+
+     if(!empty($modifications['zip_code'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'zip_code = "'.addslashes($modifications['zip_code']).'" ';
+     }
+
+     if(!empty($modifications['city'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'city = "'.addslashes($modifications['city']).'" ';
+     }
+
+     if(!empty($modifications['mail'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'email = "'.addslashes($modifications['mail']).'" ';
+     }
+
+     if(!empty($modifications['phone'])) {
+       if(strlen($changes)>16) {
+         $changes .=', ';
+       }
+       $changes .= 'phone = "'.addslashes($modifications['phone']).'" ';
+     }
+
+     $changes .= 'WHERE id = :id_user';
+
+     $prep = $this->db->prepare($changes) ;
+
+     $prep->execute();
+  }
 }
 ?>

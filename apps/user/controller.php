@@ -230,11 +230,12 @@ class UserController extends Controller {
 		}
 		$data = $this->model->getUser($user_id);
 
-		$modifications=Request::getAssoc(array('photoprofil','commentaire',''));
+		$modifications=Request::getAssoc(array('photoprofil','commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));
+		if(isset($modifications) && !empty($modifications)){
+			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
+		}
 
 		return $data;
-
 	}
-
 }
 ?>

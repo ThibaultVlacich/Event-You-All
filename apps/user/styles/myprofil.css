@@ -56,16 +56,17 @@ h1
 }
 
 
-#adressephysique,#codepostal,#adressemail,#ville,#telephone,#pays
+#adressephysique,.codepostal,#adressemail,.ville,#telephone,.pays
 {
     margin-bottom:20px;
     display:inline-block;
     margin-right: 10px;
 }
 
-#ville,.prenom,#codepostal
+.ville,.prenom,.codepostal
 {
   margin-left: 40px;
+  margin-top:10px;
 }
 
 #interet
