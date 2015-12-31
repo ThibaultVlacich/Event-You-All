@@ -15,7 +15,7 @@ class ContactView extends View {
   }
 
 
-  public function contact() {
+  public function Contact() {
     $this->assign('js', Config::get('config.base').'/apps/contact/scripts/contact.js');
     $this->assign('js', 'https://www.google.com/recaptcha/api.js');
 

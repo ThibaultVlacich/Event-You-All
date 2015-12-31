@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is the Controller for the app faq.
+ * This is the Controller for the app contact.
  *
  * @package apps/faq
  * @author Alexandre Gay <alexandre.gay@isep.fr>
@@ -9,7 +9,7 @@
  */
 
 class ContactController extends Controller {
-	
+
 	/**
 	 * @var Instance of Session
 	 */
