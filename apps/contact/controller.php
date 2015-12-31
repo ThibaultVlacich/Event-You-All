@@ -9,7 +9,7 @@
  */
 
 class ContactController extends Controller {
-	var $default_module = 'contact';
+	
 	/**
 	 * @var Instance of Session
 	 */
