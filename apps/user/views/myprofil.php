@@ -6,11 +6,10 @@
                         <p class="Principal">
                             <img class="photoinconnu" src="<?php echo $model['photoprofil']; ?>" alt="Photo d'inconnu"/>
                         </p>
-                        <p>
-                            <input type="file" name="photoperso" class="photoperso"/><br/>
-						</p>
-                        <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
-                            <textarea class="textlaissercommentaire" name="commentaire" id="commentaire"><?php echo $model['commentaire']; ?></textarea>
+                        <p><label class="laissercommentaire" for="commentaire">Voici le commentaire que vous avez laissé sur vous :</label><br/></p>
+            <?php echo $model['commentaire']; ?>
+                            <br/>
+                            <a class='updateprofil' href = 'updateProfil'>Modifier mon profil</a>
                 </div>
                 <div class="infoperso">
                     <div class="infoperso1">
