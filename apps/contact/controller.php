@@ -1,5 +1,5 @@
 <?php
-defined('EUA_VERSION') or die('Access denied');
+
 /**
  * This is the Controller for the app faq.
  *
@@ -9,7 +9,7 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class ContactController extends Controller {
-	var $default_module = 'index';
+	var $default_module = 'contact';
 	/**
 	 * @var Instance of Session
 	 */
