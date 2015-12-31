@@ -4,7 +4,7 @@
                 <section>
                 <div class="LAPHOTO">
                         <p class="Principal">
-                            <img class="photoinconnu" src="<?php echo $data['photoperso']; ?>" alt="Photo d'inconnu"/>
+                            <img class="photoinconnu" src="<?php echo $model['photoperso']; ?>" alt="Photo d'inconnu"/>
                         </p>
                         <p>
                             <input type="file" name="photoperso" class="photoperso"/><br/>
