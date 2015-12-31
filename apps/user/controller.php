@@ -216,7 +216,25 @@ class UserController extends Controller {
 			$data['profilprive'] = 'Profil Public';
 		}
 
+		if(empty($data['commentaire'])){
+			$data['commentaire'] = "Vous n'avez encore laissé aucun commentaire sur vous ! Pour entrer maintenant un commentaire, cliquez sur modifier mon profil.";
+		}
+
 		return $data;
 	}
+
+	public function updateProfil(array $params) {
+		$session = System::getSession();
+		if ($session->isConnected()){
+			$user_id = $_SESSION['userid'];
+		}
+		$data = $this->model->getUser($user_id);
+
+		$modifications=Request::getAssoc(array('photoprofil','commentaire',''));
+
+		return $data;
+
+	}
+
 }
 ?>
