@@ -14,8 +14,7 @@
                 </div>
                 <div class="infoperso">
                     <div class="infoperso1">
-                            <input type="checkbox" id="Profilprive" name="Profilprive"/>
-                            <label for="Profilprive">Profil privé</label><br/>
+                            <p id="Profilprive" name="Profilprive"><?php echo $model['profilprive']; ?></p><br/>
                             <p class="nom">Nom : <?php echo $model['lastname']; ?></p><p class="prenom">Prénom :
 							<?php echo $model['firstname'];?></p><p class="datedenaissance">Date de naissance : <?php echo $model['birthdate'];?></p>
                             <p id="sexe">Sexe :
@@ -24,7 +23,7 @@
                     </div>
                     <div class="infoperso2"><br/>
                                 <label for="adressephysique" id='adressephysique'>Adresse : </label><?php echo $model['adress'];?><br/>
-                                <label for='pays' id='pays'> Pays : </label>
+                                <label for='pays' id='pays'> Pays : </label><?php echo $model['country'];?>
                                 <label for="codepostal" id='codepostal'>Code Postal : </label><?php echo $model['zip_code'];?>
                                 <label for="Ville" id='ville'>Ville : </label><?php echo $model['city'];?><br/>
                                 <label for="adressemail" id='adressemail'>Mon Adresse Mail : </label><?php echo $model['email'];?><br/>
