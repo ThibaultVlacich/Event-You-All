@@ -7,7 +7,7 @@ $(function() {
       auto: true
     },
     navigation: {
-      // Deactivate default navigation buttons, we are using our ones
+      // Deactivate default navigation buttons, we are using our own ones
       active: false
     },
     callback: {
