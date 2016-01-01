@@ -207,7 +207,7 @@ class UserController extends Controller {
 		$data = $this->model->getUser($user_id);
 
 		if(empty($data['photoprofil'])){
-			$data['photoprofil'] = 'apps/user/images/photoinconnu.png';
+			$data['photoprofil'] = Config::get('config.base').'apps/user/images/photoinconnu.png';
 		}
 		if($data['profilprive'] == 1){
 			$data['profilprive'] = 'Profil Privé';
@@ -228,14 +228,12 @@ class UserController extends Controller {
 		if ($session->isConnected()){
 			$user_id = $_SESSION['userid'];
 		}
-		$data = $this->model->getUser($user_id);
 
 		$modifications=Request::getAssoc(array('photoprofil','commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));
 		if(isset($modifications) && !empty($modifications)){
 			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
 		}
 
-		return $data;
 	}
 }
 ?>
