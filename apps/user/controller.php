@@ -224,16 +224,42 @@ class UserController extends Controller {
 	}
 
 	public function updateProfil(array $params) {
+
 		$session = System::getSession();
+
 		if ($session->isConnected()){
+
 			$user_id = $_SESSION['userid'];
+
+			$data = $this->model->getUser($user_id);
+
+			if(empty($data['photoprofil'])){
+				$data['photoprofil'] = Config::get('config.base').'apps/user/images/photoinconnu.png';
+			}
+			if($data['profilprive'] == 1){
+				$data['profilprive'] = 'Profil Privé';
+			}
+			if($data['profilprive'] == 0){
+				$data['profilprive'] = 'Profil Public';
+			}
 		}
 
 		$modifications=Request::getAssoc(array('photoprofil','commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));
-		if(isset($modifications) && !empty($modifications)){
-			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
+
+		//checks that something has been modified
+		$isValid = false;
+		foreach ($modifications as $value) {
+			if($value !== null) {
+				$isValid = true;
+			}
 		}
 
+		if($isValid == true)	 {
+			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
+			return array('data' => $data, 'success' => true);
+		}
+		else{
+		return array('data' => $data, 'success' => false); }
 	}
 }
 ?>
