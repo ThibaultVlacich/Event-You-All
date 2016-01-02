@@ -26,6 +26,25 @@ class ForumController extends Controller {
         return array('topics' => $topics);
  }
 
+ function Topic(array $params){
+     $data = $this->model->getComments(0, 5, 'date', true);
+       foreach ($data as $comment) {
+         $date_timestamp = strtotime($comment['date']);
+         $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
+       }
+       $data = $this->model->getComments(0, 10);
+
+       $comments = array();
+
+       foreach ($data as $comment) {
+          $date_timestamp = strtotime($comment['date']);
+          $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
+
+          $comments[] = $comment;
+        }
+        return array('comments' => $comments);
+ }
+
  function create() {
 
  }
@@ -44,19 +63,6 @@ class ForumController extends Controller {
      return array ('id' => $id_topic);
    }
  }
- /*function Forum() {
-    $data = $this->model->getTopics();
-
-    $events = array();
-
-    foreach ($data as $event) {
-        $date_creation_timestamp = strtotime($event['date_creation']);
-        $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
-
-    $topics[]= $topic;
-  }
-
-  return $topics;*/
 }
 
 ?>

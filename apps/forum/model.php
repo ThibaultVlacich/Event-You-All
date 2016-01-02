@@ -25,8 +25,9 @@ class ForumModel {
    $session = System::getSession();
 	if ($session->isConnected()) {
 	$user_id = $_SESSION['userid'];
-  $date = DateTime::getTimestamp();
 }
+  $date = DateTime::getTimestamp();
+
    $prep->bindParam(':titre', $data['titre']);
    $prep->bindParam(':description', $data['description']);
    $prep->bindParam(':date_creation', $date);
@@ -38,7 +39,6 @@ class ForumModel {
      return false;
    }
  }
-
  public function getTopic($topic_id) {
    $prep = $this->db->prepare('SELECT * FROM forum_topics WHERE id = :topic_id');
 
@@ -70,6 +70,63 @@ class ForumModel {
    $prep->execute();
    return $prep->fetch(PDO::FETCH_ASSOC);
  }
+
+ public function addComment(array $data) {
+   $prep = $this->db->prepare('
+    INSERT INTO forum_messages (message,date,id_createur,id_topic)
+    VALUES (:message,:date,:id_createur,:id_topic)
+  ');
+
+  $session = System::getSession();
+ if ($session->isConnected()) {
+ $user_id = $_SESSION['userid'];
+}
+$date = DateTime::getTimestamp();
+
+
+  $prep->bindParam(':message', $data['message']);
+  $prep->bindParam(':date', $date);
+  $prep->bindParam(':id_createur',$user_id);
+
+  if ($prep->execute()) {
+    return $this->db->lastInsertId('id');
+  } else {
+    return false;
+  }
+}
+
+public function getComment($comment_id) {
+  $prep = $this->db->prepare('SELECT * FROM forum_messages WHERE id = :comment_id');
+
+  $prep->bindParam(':comment_id', $comment_id, PDO::PARAM_INT);
+  $prep->execute();
+
+  $comment = $prep->fetch(PDO::FETCH_ASSOC);
+
+  return $comment;
+}
+
+public function getComments($from = 0, $number = 9999999, $order = 'date', $asc = true) {
+  $prep = $this->db->prepare('
+    SELECT *
+    FROM forum_messages
+    ORDER BY '.$order.' '.($asc ? 'ASC' : 'DESC').'
+    LIMIT :from, :number
+  ');
+
+  $prep->bindParam(':from', $from, PDO::PARAM_INT);
+  $prep->bindParam(':number', $number, PDO::PARAM_INT);
+  $prep->execute();
+
+  return $prep->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function getCreatorForComments($comment_id) {
+  $prep = $this->db->prepare('SELECT users.nickname, users.id FROM users INNER JOIN forum_messages ON  users.id = forum_messages.id_createur WHERE forum_messages.id = :comment_id');
+  $prep->bindParam(':comment_id', $comment_id, PDO::PARAM_INT);
+  $prep->execute();
+  return $prep->fetch(PDO::FETCH_ASSOC);
+}
 
   // Then add methods (can be named whatever you want)
 }

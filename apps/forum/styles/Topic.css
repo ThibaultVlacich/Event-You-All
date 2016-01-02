@@ -3,9 +3,22 @@
     text-align: center;
 }
 #haut li, #presentation li, #titre li{
+    margin-top:30px;
     display: inline-block;
     margin-left: 30px;
-    vertical-align: text-top;
+    vertical-align: text-center;
+}
+#haut a {
+  background-color: white;
+  border: 1px solid #cc0033;
+  text-decoration: none;
+  color: black;
+  border-radius: 3px;
+}
+#haut a:hover{
+  background-color: #cc0033;
+  color: white;
+
 }
 #tire{
     text-align: center;
@@ -18,6 +31,18 @@ border-bottom:1px solid #cc0033;
 #presentation{
     margin: auto;
     text-align: center;
+}
+#presentation h3{
+  color:#cc0033;
+}
+.first_ligne{
+  background-color: rgb(229,229,229);
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width:80%;
+  text-align: center;
+  color:#cc0033;
 }
 .back1{
   background-color: rgb(229,229,229);
@@ -38,16 +63,21 @@ border-bottom:1px solid #cc0033;
 }
 .utilisateur{
     width:150px;
+    border-right: 1px solid #cc0033;
+
 }
 .date{
     width:150px;
+    border-right: 1px solid #cc0033;
 }
+
 #AJ_txt{
     height:200px;
     width:70%;
     margin-left: 15%;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 #Envoi p{
     margin-left:70%;
@@ -55,6 +85,7 @@ border-bottom:1px solid #cc0033;
 #num_page{
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
 }
 #num_page td{
     height:20px;
