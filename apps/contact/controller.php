@@ -1,7 +1,7 @@
 <?php
-defined('EUA_VERSION') or die('Access denied');
+
 /**
- * This is the Controller for the app faq.
+ * This is the Controller for the app contact.
  *
  * @package apps/faq
  * @author Alexandre Gay <alexandre.gay@isep.fr>
@@ -9,7 +9,7 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class ContactController extends Controller {
-	var $default_module = 'index';
+
 	/**
 	 * @var Instance of Session
 	 */

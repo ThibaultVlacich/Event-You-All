@@ -5,8 +5,8 @@
     height:400px;
     width:100%;
 }
-h1{
-    color:white;
+#entete h1{
+    color:gray;
     font-family:Trebuchet MS;
     text-align: center;
     padding-top: 350px;
@@ -20,11 +20,12 @@ h1{
     text-align: center;
     color:#CC0033;
 }
-ul{
+#signer {
     margin:auto;
     text-align: center;
+    padding-bottom: 50px;
 }
-ul li{
+#signer li{
     display:inline-block;
     margin-left:10px;
     margin-right:10px;

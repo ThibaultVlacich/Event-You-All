@@ -53,20 +53,20 @@ h1
 #adressephysique, #adressemail, #telephone
 {
     border-collapse:collapse;
-    width:100%;
-
 }
 
 
-#adressephysique,#codepostal,#adressemail,#ville,#telephone,#pays
+#adressephysique,.codepostal,#adressemail,.ville,#telephone,.pays
 {
     margin-bottom:20px;
     display:inline-block;
+    margin-right: 10px;
 }
 
-#ville,.prenom,#codepostal
+.ville,.prenom,.codepostal
 {
   margin-left: 40px;
+  margin-top:10px;
 }
 
 #interet
@@ -110,4 +110,21 @@ h1
     display:inline-block;
     margin-left : 15%;
     margin-top:20px;
+}
+
+.updateprofil
+{
+  color:black;
+  border : 1px black solid;
+  box-shadow: 1px 1px 1px black;
+  margin-top: 20px;
+  display : inline-block;
+  margin-bottom:20px;
+  border: 0;
+  background: #CC0033;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 6px 3px;
 }

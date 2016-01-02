@@ -174,15 +174,6 @@ class UserController extends Controller {
 		return array('data' => $data, 'errors' => array());
 	}
 
-	public function profil(array $params) {
-		$id_user = intval($params[0]);
-
-		$data = $this->model->getUser($id_user);
-
-		return $data;
-	}
-
-
 	// Function which enables us to get the forgiven password in the database
 	public function passwordlost() {
 		$data = Request::getAssoc(array('email'));
@@ -208,14 +199,67 @@ class UserController extends Controller {
 	}
 
 	public function myprofil(array $params) {
-		$data = $this->model->getUser($user);
+		//Takes user id
+		$session = System::getSession();
+	  if ($session->isConnected()) {
+	    $user_id = $_SESSION['userid'];
+	  }
+		$data = $this->model->getUser($user_id);
 
 		if(empty($data['photoprofil'])){
-			$data['photoprofil'] = 'images/photoinconnu.png';
+			$data['photoprofil'] = Config::get('config.base').'apps/user/images/photoinconnu.png';
+		}
+		if($data['profilprive'] == 1){
+			$data['profilprive'] = 'Profil Privé';
+		}
+		if($data['profilprive'] == 0){
+			$data['profilprive'] = 'Profil Public';
+		}
+
+		if(empty($data['commentaire'])){
+			$data['commentaire'] = "Vous n'avez encore laissé aucun commentaire sur vous ! Pour entrer maintenant un commentaire, cliquez sur modifier mon profil.";
 		}
 
 		return $data;
 	}
 
+	public function updateProfil(array $params) {
+
+		$session = System::getSession();
+
+		if ($session->isConnected()){
+
+			$user_id = $_SESSION['userid'];
+
+			$data = $this->model->getUser($user_id);
+
+			if(empty($data['photoprofil'])){
+				$data['photoprofil'] = Config::get('config.base').'apps/user/images/photoinconnu.png';
+			}
+			if($data['profilprive'] == 1){
+				$data['profilprive'] = 'Profil Privé';
+			}
+			if($data['profilprive'] == 0){
+				$data['profilprive'] = 'Profil Public';
+			}
+		}
+
+		$modifications=Request::getAssoc(array('photoprofil','commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));
+
+		//checks that something has been modified
+		$isValid = false;
+		foreach ($modifications as $value) {
+			if($value !== null) {
+				$isValid = true;
+			}
+		}
+
+		if($isValid == true)	 {
+			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
+			return array('data' => $data, 'success' => true);
+		}
+		else{
+		return array('data' => $data, 'success' => false); }
+	}
 }
 ?>

@@ -1,15 +1,25 @@
 <?php
+defined('EUA_VERSION') or die('Access denied');
+/**
+ * This is the View for the app "Contact".
+ *
+ * @package apps/user
+ * @author Alexandre Gay <alexandre.gay@isep.fr>
+ * @version 0.1.0-dev-31-12-2015
+ */
 
-class UserView extends View {
+class ContactView extends View {
   function __construct() {
     $this->assign('css', Config::get('config.base').'/apps/contact/styles/style.css');
-    $this->assign('js', Config::get('config.base').'/apps/contact/scripts/contact.js');
+
   }
 
 
-  public function contact() {
+  public function Contact() {
+    $this->assign('js', Config::get('config.base').'/apps/contact/scripts/contact.js');
+    $this->assign('js', 'https://www.google.com/recaptcha/api.js');
 
-    $this->setTemplate('/apps/contact/views/contact.php');
+    $this->setTemplate('/apps/contact/views/index.php');
   }
 
 
