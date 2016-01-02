@@ -1,6 +1,6 @@
 
         <ul id="haut">
-            <li><a href="#">Créer un nouveau Topic</a></li>
+            <li><a href="<?php echo Config::get('config.base');?>/forum/create">Créer un nouveau Topic</a></li>
             <li><a href="#">Mes Topics</a></li>
             <li><form method="post" action="hey.php">
                 <label for="recherche">Rechercher sur le forum</label>
