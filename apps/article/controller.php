@@ -86,7 +86,9 @@ class ArticleController extends Controller {
       }
       //----------------------------------------------------------------------------(fin banniere)
       
-      
+     if (empty($data['bann'])) {
+        $data['bann'] = '';
+      }
      $id_article = $this->model->createEvent($data);
 	 
 	 return array('id' => $id_article,'error' => $errors);

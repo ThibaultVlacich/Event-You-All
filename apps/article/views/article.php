@@ -1,4 +1,12 @@
-
+<?php
+  if (!empty($model['banniere'])) {
+  ?>
+  <div class="banner">
+    <img src="<?php echo $model['banniere']; ?>" alt="<?php echo $model['nom']; ?>" />
+  </div>
+  <?php
+  }
+  ?>
 <div id="entete">
   <h1>
     <?php echo $model['nom']; ?>
@@ -9,7 +17,7 @@
     <?php echo $model['contenu']; ?>
   </p>
 </div>
-<ul>
+<ul id="signer">
   <li>
     <div id=avatar_organisateur></div>
   </li>
@@ -28,22 +36,4 @@
   </li>
   <!--insérer note de l'auteur-->
 </ul>
-<h3 id=avis>Avis :</h3>
-<div class="commentaire">
-  <div class=avatar></div>
-  <h4>Mr.a</h4>
-  <p class="p_commentaire">Trop cool!!</p>
-</div>
-<div class="commentaire">
-  <div class=avatar></div>
-  <h4>Mr.b</h4>
-  <p class="p_commentaire">J'adore ce groupe il est vraiment trop super cool lolilol xptdr mdr</p>
-</div>
-<div class="commentaire">
-  <div class=avatar></div>
-  <h4>Mr.c</h4>
-  <p class="p_commentaire">oui</p>
-</div>
-<div class="bouton" id=Aj_com>
-  <a href="#">Ajouter un commentaire</a>
 </div>
