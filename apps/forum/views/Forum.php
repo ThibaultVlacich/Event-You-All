@@ -2,7 +2,7 @@
   </div>
         <ul id="haut">
 
-            <a href="#" class="titreenteteforum"><li class="enteteforum">Créer un nouveau Topic</li></a>
+            <a class="titreenteteforum" href="<?php echo Config::get('config.base'); ?>/forum/create"><li class="enteteforum">Créer un nouveau Topic</li></a>
             <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
             <li class="enteteforum"><form method="post" action="hey.php">
                 <label for="recherche" >Rechercher sur le forum</label>

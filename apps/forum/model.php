@@ -1,9 +1,9 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the Model for the app "NAME OF THE APP".
+ * This is the Model for the app "forum".
  *
- * @package apps/nameoftheapp
+ * @package apps/forum
  * @author Name of the author <author@isep.fr>
  * @version 0.1.0-dev-dd-mm-yyyy
  */
@@ -33,7 +33,7 @@ class ForumModel {
    $prep->bindParam(':administrateur', $user_id);
 
    if ($prep->execute()) {
-     return $this->db->lastInsertId();
+     return $this->db->lastInsertId('id');
    } else {
      return false;
    }
@@ -65,7 +65,7 @@ class ForumModel {
    return $prep->fetchAll(PDO::FETCH_ASSOC);
  }
  public function getCreatorForTopic($topic_id) {
-   $prep = $this->db->prepare('SELECT users.nickname, users.id FROM users INNER JOIN forum_topics ON  users.id = forum_topics.id_createur');
+   $prep = $this->db->prepare('SELECT users.nickname, users.id FROM users INNER JOIN forum_topics ON  users.id = forum_topics.id_createur WHERE forum_topics.id = :topic_id');
    $prep->bindParam(':topic_id', $topic_id, PDO::PARAM_INT);
    $prep->execute();
    return $prep->fetch(PDO::FETCH_ASSOC);

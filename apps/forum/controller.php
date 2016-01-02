@@ -8,22 +8,22 @@ class ForumController extends Controller {
 
  }
  function Forum(array $params){
-   if (isset($params[0])) {
-     $topic_id = intval($params[0]);
+     $data = $this->model->getTopics(0, 5, 'date_creation', true);
+       foreach ($data as $topic) {
+         $date_creation_timestamp = strtotime($topic['date_creation']);
+         $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
+       }
+       $data = $this->model->getTopics(0, 10);
 
-     // Récupérer l'evenement lié depuis le model
-     if (!($data = $this->model->getTopic($topic_id))) {
-       return array();
-     }
+       $topics = array();
 
-     if (!empty($data['date_creation'])) {
-       $date_debut_timestamp = strtotime($data['date_creation']);
-       $data['date_creation'] = strftime('%a. %d %b. %Y', $date_creation_timestamp);
-     }
-      $data['creatorname'] = $this->model->getCreatorForTopic($data['id']);
-     // Retourner les infos récupérées
-     return $data;
-   }
+       foreach ($data as $topic) {
+          $date_creation_timestamp = strtotime($topic['date_creation']);
+          $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
+
+          $topics[] = $topic;
+        }
+        return array('topics' => $topics);
  }
 
  function create() {
