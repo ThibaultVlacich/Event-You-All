@@ -16,7 +16,7 @@ class Session {
 	 * Default session life when the user asks to remember his account
 	 * @type int
 	 */
-	const REMEMBER_TIME = 604800; // 1 week
+	const REMEMBER_TIME = 60*60*24*7*4; // 1 month
 
 	/**
 	 * Time before the session expires (seconds)

@@ -9,6 +9,7 @@ body {
   background: #f5f5f5;
   color: #5f6b7b;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 14px;
 }
 a, a:focus {
   color: #CC0033;
@@ -120,17 +121,6 @@ a:hover {
 .col-menu .apps-menu li .app-actions li a:hover, .col-menu .apps-menu li .app-actions li.active a {
   background: #039be5;
 }
-.col-menu .logo-witypro {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 5px;
-  text-align: center;
-}
-.col-menu .logo-witypro img {
-  max-width: 100px;
-  margin: auto;
-}
 
 /**
  * Content column
@@ -186,13 +176,21 @@ a:hover {
 }
 .col-content .page-head .toolbar-box .btn {
   background: #880000;
-  border: none;
-  border-radius: 0;
   color: white;
-  border: 1px solid transparent;
+  display: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-color: transparent;
 }
-.col-content .page-head .toolbar-box .btn:hover, .col-content .page-head .toolbar-box .btn:focus {
-  border-color: white;
+@media (max-width: 992px) {
+  .col-content .page-head .toolbar-box .btn {
+    display: inline-block;
+  }
 }
 
 /* Userbox */
@@ -211,21 +209,12 @@ a:hover {
 
 /* Breadcrumb */
 
-.col-content .content .app-breadcrumb {
-  font-size: 1.2em;
-  color: #039be5;
-  margin-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-.col-content .content .app-head h1.app-title {
-  font-size: 2em;
-  color: #039be5;
+.col-content .content h1.app-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #CC0033;
   margin: 0 10px 20px 0;
   float: left;
-}
-.col-content .content .app-head .kpi-box {
-  padding-top: 5px;
 }
 
 /* Tables */

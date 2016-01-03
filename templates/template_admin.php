@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     <?php echo Config::get('config.site_title'); ?> - Administration
   </title>
@@ -30,7 +31,9 @@
   		if (substr($app, 0, 5) == 'admin') {
   			$app_name = substr($app, 6);
 
-  			$admin_apps[] = $app_name;
+        if ($app_name != 'board') {
+  			  $admin_apps[] = $app_name;
+        }
   		}
   	}
 
@@ -38,14 +41,14 @@
     ?>
     <ul class="apps-menu">
       <li<?php if($route['app'] == 'Board') { echo ' clas="active"'; } ?>>
-        <a href="/admin/board" class="app-link">
-          <span class="icon" style="background-image: url({$wity_base_url}apps/board/icon.png)"></span> Tableau de bord
+        <a href="<?php echo Config::get('config.base'); ?>/admin/board" class="app-link">
+          <span class="icon" style="background-image: url(<?php echo Config::get('config.base'); ?>/apps/board/icon.png)"></span> Tableau de bord
         </a>
       </li>
       <?php foreach ($admin_apps as $admin_app) { ?>
       <li<?php if($route['app'] == $admin_app) { echo ' clas="active"'; } ?>>
-        <a href="/admin<?php echo $admin_app; ?>/" class="app-link">
-          <span class="icon" style="background-image: url({$wity_base_url}apps/{$app}/icon.png)"></span> <?php echo ucfirst($admin_app); ?>
+        <a href="<?php echo Config::get('config.base'); ?>/admin/<?php echo $admin_app; ?>" class="app-link">
+          <span class="icon" style="background-image: url(<?php echo Config::get('config.base'); ?>/apps/<?php echo $admin_app; ?>/icon.png)"></span> <?php echo ucfirst($admin_app); ?>
         </a>
       </li>
       <?php } ?>
