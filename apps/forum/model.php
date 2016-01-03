@@ -81,12 +81,14 @@ class ForumModel {
  if ($session->isConnected()) {
  $user_id = $_SESSION['userid'];
 }
+//$topic_id = $this->db->get('SELECT forum_topics.id FROM forum_topics WHERE ') don't know what to put after WHERE to select the id of the page
 $date = DateTime::getTimestamp();
 
 
   $prep->bindParam(':message', $data['message']);
   $prep->bindParam(':date', $date);
   $prep->bindParam(':id_createur',$user_id);
+//  $prep->bindParam(':id_topic',$topic_id);
 
   if ($prep->execute()) {
     return $this->db->lastInsertId('id');

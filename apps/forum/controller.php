@@ -63,6 +63,20 @@ class ForumController extends Controller {
      return array ('id' => $id_topic);
    }
  }
+ function sent_comment() {
+
+   $data = Request::getAssoc(array('message','date','id_createur','id_topic'));
+
+   if (!in_array(null, $data, true)) {
+     $date = $data['date'];
+
+     $data['date'] = $date;
+
+
+     $this->model->Topic($data);
+     return array ('id' => $id_topic);
+   }
+ }
 }
 
 ?>

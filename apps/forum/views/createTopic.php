@@ -13,10 +13,6 @@
                 <h1>Ajouter un commentaire</h1>
                 <textarea required name='description' id="commentaire"></textarea><br/>
               </div>
-                <div class="lier">
-                    <label class="evenement" for="evenement">Lier à l'événement : </label>
-                    <input type="text" id="evenement" name="evenement">
-                </div><br/>
                 <input class="valider" type="submit" value="Créer le sujet">
                 <input class="Annuler" type="submit" value="Annuler">
         </section>

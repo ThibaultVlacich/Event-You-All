@@ -77,7 +77,6 @@ border-bottom:1px solid #cc0033;
     margin-left: 15%;
     margin-right: auto;
     margin-top: 20px;
-    margin-bottom: 30px;
 }
 #Envoi p{
     margin-left:70%;
@@ -86,10 +85,17 @@ border-bottom:1px solid #cc0033;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    margin-bottom: 30px;
 }
 #num_page td{
     height:20px;
     width:20px;
     text-align: center;
     border: solid #CC0033 2px;
+}
+#aj_com{
+  color: #cc0033;
+}
+.Envoyer{
+  margin-bottom: 10px;
 }

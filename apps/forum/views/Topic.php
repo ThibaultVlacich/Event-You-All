@@ -1,4 +1,3 @@
-
         <ul id="haut">
             <li><a href="<?php echo Config::get('config.base');?>/forum/create">Créer un nouveau Topic</a></li>
             <li><a href="#">Mes Topics</a></li>
@@ -67,5 +66,8 @@
                 <td><a href="#">3</a></td>
             </tr>
         </table>
-        <input id="AJ_txt" type="textarea" placeholder="Ajouter un commentaire"/>
+<form method="post" action="<?php echo Config::get('config.base'); ?>/forum/views/sent_comment" enctype="multipart/form-data">
+          <h3 id="aj_com">Ajouter un commentaire :</h3>
+          <textarea required name='message' id="commentaire"></textarea><br/>
         <input class="Envoyer" type="submit" value="Envoyer">
+</form>

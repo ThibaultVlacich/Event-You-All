@@ -1,3 +1,3 @@
 $(function() {
-  CKEDITOR.replace('description');
+  CKEDITOR.replace('message');
 });
