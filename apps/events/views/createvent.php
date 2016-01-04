@@ -295,9 +295,18 @@
           </label>
         </div>
         <div class="fill">
-          <select name="reg" id="reg">
-            <option value="r1">R1</option>
-            <option value="r2">R2</option>
+          <select  name='reg' id='reg'>
+						<?php
+							  foreach ($model['region'] as $event) {
+							?>
+							<option value=
+							<?php echo $event['id']?>
+							>
+							<?php echo $event['nom']?>
+							</option>
+							<?php
+							}
+							?>
           </select>
         </div>
 

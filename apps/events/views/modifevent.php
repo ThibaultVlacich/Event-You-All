@@ -349,10 +349,19 @@
                         <label for='reg'>Région<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
-                        <select  name='reg' id='reg'>
-                                <option value='r1'>R1</option>
-                                <option value='r2'>R2</option>
-                        </select>
+                      <select  name='reg' id='reg'>
+                                    <?php
+                                          foreach ($model['regionT'] as $event) {
+                                        ?>
+                                        <option value=
+                                        <?php if ($event['id']==$model['region']){echo $event['id'].' selected';}else{echo $event['id'];}?>
+                                        >
+                                        <?php echo $event['nom']?>
+                                        </option>
+                                        <?php
+                                        }
+                                        ?>
+          </select>
                     </div>
 
                         <div class="label">
