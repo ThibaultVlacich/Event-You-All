@@ -37,36 +37,37 @@
                         <label for='mail'>Theme<span class="required">*</span>  </label>
                         </div>
                     <div class="fill">
-                        <select  name='theme' id='theme' selected="selected" value=3>
-                            <optgroup label='Musique'/>
-                                <option value=1>Classique</option>
-                                <option value=2>Metal</option>
-                                <option value=3>Rock</option>
-                                <option value=4>Autres</option>
-                            <optgroup label='Cinema'/>
-                                <option value=5>Action</option>
-                                <option value=6>Thriller</option>
-                                <option value=7>Familial</option>
-                                <option value=8>Comedie</option>
-                                <option value=9>Autres</option>
-                            <optgroup label='Image'/>
-                                <option value=10>Peinture</option>
-                                <option value=11>Photographie</option>
-                                <option value=12>Autres</option>
-                        </select>
+                       <select  name='theme' id='theme'>
+                                        <?php
+                                              foreach ($model['genreT'] as $event) {
+                                            ?>
+                                            <option value=
+                                            <?php echo $event['id']?>
+                                            >
+                                            <?php echo $event['nom']?>
+                                            </option>
+                                            <?php
+                                            }
+                                            ?>
+                          </select>
                     </div>
                          <div class="label">
                         <label for='type'>Type<span class="required">*</span>  </label>
                          </div>
                     <div class="fill">
                         <select  name='type' id='type'>
-                                <option value=1>Exposition</option>
-                                <option value=2>Projection</option>
-                                <option value=3>Conference</option>
-                                <option value=4>Concert</option>
-                                <option value=5>Projection</option>
-                                <option value=5>Autres</option>
-                        </select>
+                                                <?php
+                                                      foreach ($model['typeT'] as $event) {
+                                                    ?>
+                                                    <option value=
+                                                    <?php echo $event['id']?>
+                                                    >
+                                                    <?php echo $event['nom']?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                         </select>
                     </div>
                     <br>
                     <!--les champs ne marchent pas pour firefox d'où le placeholder...-->

@@ -3,7 +3,7 @@
 $config = array(
   'base'            => 'http://localhost/Event-You-All',
   'defaultapp'      => 'events',
-  'defaultadminapp' => 'events',
+  'defaultadminapp' => 'board',
   'site_title'      => 'Event-You-All',
   'description'     => '',
   'lang'            => 'fr_FR',
