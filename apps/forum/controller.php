@@ -12,6 +12,7 @@ class ForumController extends Controller {
        foreach ($data as $topic) {
          $date_creation_timestamp = strtotime($topic['date_creation']);
          $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
+         $createur = $this->model->getCreatorForTopic($topic['id_createur']);
        }
        $data = $this->model->getTopics(0, 10);
 
@@ -23,26 +24,33 @@ class ForumController extends Controller {
 
           $topics[] = $topic;
         }
-        return array('topics' => $topics);
+        return array('topics' => $topics, 'createur'=>$createur['nickname']);
  }
 
  function Topic(array $params){
-     $data = $this->model->getComments(0, 5, 'date', true);
-       foreach ($data as $comment) {
+   if (isset($params[0])) {
+    $topic_id = intval($params[0]);
+    if (!($data = $this->model->getTopic($topic_id))) {
+      return array();
+    }
+
+     $data['comment'] = $this->model->getComments(0, 5, 'date', true);
+       foreach ($data['comment'] as $comment) {
          $date_timestamp = strtotime($comment['date']);
          $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
        }
-       $data = $this->model->getComments(0, 10);
+       $data['comment'] = $this->model->getComments(0, 10);
 
        $comments = array();
 
-       foreach ($data as $comment) {
+       foreach ($data['comment'] as $comment) {
           $date_timestamp = strtotime($comment['date']);
           $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
 
           $comments[] = $comment;
         }
-        return array('comments' => $comments);
+        return array($data,'comments' => $comments);
+ }
  }
 
  function create() {
@@ -51,15 +59,10 @@ class ForumController extends Controller {
 
  function create_confirm() {
 
-   $data = Request::getAssoc(array('sujet','administrateur','evenement','date_creation'));
+   $data = Request::getAssoc(array('titre','description'));
 
    if (!in_array(null, $data, true)) {
-     $date_creation = $data['date_creation'];
-
-     $data['date_creation'] = $date_creation;
-
-
-     $this->model->createTopic($data);
+     $id_topic = $this->model->createTopic($data);
      return array ('id' => $id_topic);
    }
  }

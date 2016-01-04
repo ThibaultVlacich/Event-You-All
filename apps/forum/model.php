@@ -19,19 +19,19 @@ class ForumModel {
   public function createTopic(array $data) {
     $prep = $this->db->prepare('
      INSERT INTO forum_topics (titre,description,date_creation,id_createur)
-     VALUES (:titre,:description,:date_creation,:administrateur)
+     VALUES (:titre,:description,:date_creation,:id_createur)
    ');
 
    $session = System::getSession();
 	if ($session->isConnected()) {
 	$user_id = $_SESSION['userid'];
 }
-  $date = DateTime::getTimestamp();
+  $date = date(time());
 
    $prep->bindParam(':titre', $data['titre']);
    $prep->bindParam(':description', $data['description']);
    $prep->bindParam(':date_creation', $date);
-   $prep->bindParam(':administrateur', $user_id);
+   $prep->bindParam(':id_createur', $user_id);
 
    if ($prep->execute()) {
      return $this->db->lastInsertId('id');

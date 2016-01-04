@@ -19,20 +19,22 @@
                 </select>
             </form>
         <table id="forum">
-            <thead>
+            <thead id="label">
                 <tr class="titresujet">
-                    <th class="sujetth">Sujet</th>
-                    <th class="adminth">Administrateur</th>
-                    <th class="eventth">Evenement</th>
-                    <th class="dateth">Date de création</th>
+                    <th class="sujet">Titre</th>
+                    <th class="description">Description</th>
+                    <th class="admin">Administrateur</th>
+                    <th class="date">Date de création</th>
                 </tr>
             </thead>
               <?php foreach($model['topics'] as $topic) { ?>
             <tr>
-                <td class="sujet"><?php echo $topic['titre']; ?></td>
-                <td class="admin"><?php echo $topic['administrateur'];?></td>
-                <td class="event">super concert</td>
-                <td class="date"><?php echo $topic['date_creation'];?></td>
+
+                <td class="sujet"><a id="link_topic" href="#"><?php echo $topic['titre']; ?></a></td>
+                <td class="description"><a id="link_topic" href="#"><?php echo $topic['description']; ?></a></td>
+                <td class="admin"><a id="link_topic" href="#"><?php echo $model['createur'];?></a></td>
+                <td class="date"><a id="link_topic" href="#"><?php echo $topic['date_creation'];?></a></td>
+
             </tr>
             <?php } ?>
         </table>
