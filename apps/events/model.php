@@ -175,5 +175,24 @@ public function modifEvent(array $data) {
       return false;
     }
   }
+  public function getgenre(){
+    $prep = $this->db->prepare('SELECT * FROM genres');
+
+    $prep->execute();
+
+    $events = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    return $events;
+  }
+   public function getype(){
+    $prep = $this->db->prepare('SELECT * FROM types');
+
+    $prep->execute();
+
+    $events = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    return $events;
+  }
+
 }
 ?>

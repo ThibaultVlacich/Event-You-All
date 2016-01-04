@@ -111,12 +111,15 @@ class EventsController extends Controller {
   }
 
   function create() {
+    $data['genre'] = $this->model->getgenre();
+    $data['type'] = $this->model->getype();
+    return $data;
 
   }
 
   function create_confirm() {
     $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de_h','time_de_m','date_fi_j','date_fi_m','date_fi_a','time_fi_h','time_fi_m','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
-    print_r($data);
+    //print_r($data);
     $errors = array();
 
     if (!in_array(null, $data, true)) {
@@ -182,7 +185,7 @@ class EventsController extends Controller {
         }
       }
 
-      print_r ($data);
+      //print_r ($data);
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
       
@@ -241,7 +244,8 @@ class EventsController extends Controller {
 
       // Retourner les infos récupérées
       //print_r ($data);
-
+        $data['genreT'] = $this->model->getgenre();
+        $data['typeT'] = $this->model->getype();
       return $data;
     }
     else{echo false;}
