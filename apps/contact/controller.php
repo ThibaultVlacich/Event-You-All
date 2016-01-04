@@ -1,5 +1,5 @@
 <?php
-
+defined('EUA_VERSION') or die('Access denied');
 /**
  * This is the Controller for the app contact.
  *
@@ -14,8 +14,14 @@ class ContactController extends Controller {
 	 * @var Instance of Session
 	 */
 	private $session;
-
+	/**
+	 * UserController's constructor to initialize $session.
+	 */
+	public function __construct() {
+		$this->session = System::getSession();
 	}
+	}
+
 
 
 
