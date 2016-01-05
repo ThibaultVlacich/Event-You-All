@@ -23,6 +23,8 @@ class ArticleController extends Controller {
 
      // Récupérer l'article lié depuis le model
      $data = $this->model->getArticle($article_id);
+// Get creator's name and id
+    $data['creator'] = $this->model->getCreatorForArticle($data['id']);
 
      // Retourner les infos récupérées
      return $data;
@@ -48,7 +50,7 @@ class ArticleController extends Controller {
    $data = Request::getAssoc(array('nom','corps','arti'));
 
    if (!in_array(null, $data, true)) {
-     $data += Request::getAssoc(array('bann','mclef'));
+     $data += Request::getAssoc(array('mclef'));
      $errors = array();
      
      //TO DO : Make the error work (doesn't appear despite bad extension)

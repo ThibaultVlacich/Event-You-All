@@ -7,11 +7,27 @@
   <?php
   }
   ?>
+
 <div id="entete">
   <h1>
     <?php echo $model['nom']; ?>
   </h1>
 </div>
+  <div class="bouton">
+  <?php
+            $session = System::getSession();
+
+            if($session->isConnected()) {
+              // User is logged in
+              $user_id = $_SESSION['userid'];
+
+              if ($model['creator']['id'] == $user_id) {
+                // User is the creator
+          ?>
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'article</a>
+          <?php
+            }}?>
+ </div>
 <div id="contenu">
   <p id="description">
     <?php echo $model['contenu']; ?>
@@ -26,12 +42,12 @@
   </li>
   <li>
     <div class="bouton">
-      <a href="#">Voir la page de l'organisateur</a>
+      <a href="<?php echo Config::get('config.base'); ?>/user/profil/<?php echo $model['id_createur']?>">Voir la page de l'organisateur</a>
     </div>
   </li>
   <li>
     <div class="bouton">
-      <a href="#">Voir la page de l'évenement</a>
+      <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $model['id_evenement']?>">Voir la page de l'évenement</a>
     </div>
   </li>
   <!--insérer note de l'auteur-->

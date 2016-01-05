@@ -199,7 +199,7 @@ class EventsController extends Controller {
       }
 
 	    if (empty($data['bann'])) {
-        $data['bann'] = '';
+        $data['bann'] = null;
       }
 
       if (empty($data['mclef'])) {

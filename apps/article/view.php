@@ -18,10 +18,17 @@ class ArticleView extends View {
     $this->setTemplate('/apps/article/views/creatarticle.php');
     $this->assign('css', Config::get('config.base').'/apps/article/styles/creatarticle.css');
   }
+    public function modif() {
+    $this->setTemplate('/apps/article/views/modifarticleconf.php');
+    $this->assign('css', Config::get('config.base').'/apps/article/styles/creatarticle.css');
+  }
 
   //page de confirmation à faire
   public function create_confirm(){
     $this->setTemplate('/apps/article/views/creatart.php');
+ }
+   public function modif_confirm(){
+    $this->setTemplate('/apps/article/views/modifarticle.php');
  }
 }
 

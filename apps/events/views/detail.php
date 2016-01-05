@@ -98,7 +98,7 @@
           foreach ($model['articles'] as $article) {
         ?>
         <article>
-          <h3><?php echo $article['nom']; ?></h3>
+          <h3><a href="<?php echo Config::get('config.base'); ?>/article/detail/<?php echo $article['id']?>"><?php echo $article['nom']; ?></a></h3>
           <p>
             <?php echo $article['contenu']; ?>
           </p>
@@ -131,12 +131,12 @@
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'événement</a>
           <?php
-              } else {
+              } 
                 // User is not the creator
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
           <?php
-              }
+              
             } else {
               // User is not logged in
           ?>

@@ -10,10 +10,10 @@ return;
 	<script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo Config::get('config.base'); ?>/article/detail/<?php echo $model['id']; ?>';
-      }, 3000);
+      }, 5000);
     </script>
 	<ul>
 		<li>Votre événement a été créé avec succès !</li>
-		<li>Vous allez être redirigé dans 3 secondes.</li>
+		<li>Vous allez être redirigé dans 5 secondes.</li>
 	</ul>
 </div>

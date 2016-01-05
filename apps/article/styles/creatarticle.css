@@ -22,26 +22,7 @@ div.create_part2{
     background-color:whitesmoke;
     padding:10px;
 }
-/*.right {
-    diplay:inline-block;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-*/
-/*.blocinscri form .long {
-    vertical-align: top;
-    width:80%;
-    margin-left:10px;
-    right:20px;
-    border:1px black solid;
-}
-*/
 
-/*label , input, .long{
-    display:inline-block;
-    margin-top:30px;
-    
-}*/
 .plusieurs{
     display:inline-block;
 }
@@ -69,4 +50,8 @@ div.create_part2{
 }
 .gauche{
     font-size:small;
+}
+span.required {
+  color: #CC0033;
+  font-size: bold;
 }
