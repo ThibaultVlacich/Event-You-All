@@ -193,6 +193,15 @@ public function modifEvent(array $data) {
 
     return $events;
   }
+  public function getregion(){
+    $prep = $this->db->prepare('SELECT * FROM region');
+
+    $prep->execute();
+
+    $events = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    return $events;
+  }
 
 }
 ?>

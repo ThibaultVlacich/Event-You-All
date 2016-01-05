@@ -113,6 +113,7 @@ class EventsController extends Controller {
   function create() {
     $data['genre'] = $this->model->getgenre();
     $data['type'] = $this->model->getype();
+    $data['region'] = $this->model->getregion();
     return $data;
 
   }
@@ -246,6 +247,7 @@ class EventsController extends Controller {
       //print_r ($data);
         $data['genreT'] = $this->model->getgenre();
         $data['typeT'] = $this->model->getype();
+        $data['regionT'] = $this->model->getregion();
       return $data;
     }
     else{echo false;}
