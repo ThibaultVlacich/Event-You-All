@@ -325,7 +325,10 @@ CREATE TABLE `users` (
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
-  `access` int(11) NOT NULL DEFAULT '1'
+  `access` int(11) NOT NULL DEFAULT '1',
+  `photoprofil` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `commentaire` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profilprive` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
