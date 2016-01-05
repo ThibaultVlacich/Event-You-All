@@ -70,7 +70,6 @@
                          </select>
                     </div>
                     <br>
-                    <!--les champs ne marchent pas pour firefox d'où le placeholder...-->
                          <div class="label">
                         <label for='date_de_j'>Début<span class="required">*</span>  </label>
                          </div>

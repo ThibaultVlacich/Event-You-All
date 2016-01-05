@@ -190,10 +190,12 @@ class EventsController extends Controller {
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
       
-      $data['priv'] = false;
 
       if (!empty($data['priv'])) {
-        $data['priv'] = true;
+        $data['priv'] = 1;
+      }
+      else{
+         $data['priv'] = 0;
       }
 
 	    if (empty($data['bann'])) {
@@ -334,19 +336,13 @@ class EventsController extends Controller {
       $data['date_de']=$date_debut;
       $data['date_fi']=$date_fin;
 
-      $data['priv'] = false;
-
       if (!empty($data['priv'])) {
-        $data['priv'] = true;
+        $data['priv'] = 1;
       }
-/*
-	    if (empty($data['bann'])) {
-        $data['bann'] = '';
+      else{
+         $data['priv'] = 0;
       }
 
-      if (empty($data['mclef'])) {
-        $data['mclef'] = '';
-      }*/
 
       $data['date_de'] = $date_debut;
       $data['date_fi'] = $date_fin;
