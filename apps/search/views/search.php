@@ -4,34 +4,29 @@
             <input type="search" name="advancedsearch" id="advancedsearch" placeholder="Recherche"/>
              <select  name='theme' id='theme'>
                     <option selected disabled>Thème</option>
-                    <optgroup label='Musique'/>
-                        <option value='classique'>Classique</option>
-                        <option value='metal'>Metal</option>
-                        <option value='rock'>Rock</option>
-                        <option value='autres_m'>Autres</option>
-                    <optgroup label='Cinema'/>
-                        <option value='action'>Action</option>
-                        <option value='thriller'>Thriller</option>
-                        <option value='familial'>Familial</option>
-                        <option value='comedie'>Comedie</option>
-                        <option value='autres_c'>Autres</option>
-                    <optgroup label='Image'/>
-                        <option value='peinture'>Peinture</option>
-                        <option value='photographie'>Photographie</option>
-                        <option value='autres_i'>Autres</option>
+                    <?php
+ 							  foreach ($model['theme'] as $proptheme) {
+ 							?>
+                    <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['theme']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
+                    <?php } ?>
             </select>
             <select name='type' id='type' name='type'>
                     <option selected disabled>Type</option>
-                    <option value='concert'>Concert</option>
-                    <option value='plein-air'>Plein-air</option>
-                    <option value='visite'>Visite</option>
+                    <?php
+ 							  foreach ($model['type'] as $proptheme) {
+ 							?>
+                    <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['type']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
+                    <?php } ?>
             </select>
             <input type="date" placeholder="Date" id="date_event" name='date'/>
             <input type="submit" value="Recherche"/><br/>
             <select  name='region' id='region' name = 'region'>
                <option selected disabled>Région</option>
-               <option value=''>Île-de-France</option>
-               <option value=''>Berry</option>
+               <?php
+             			  foreach ($model['region'] as $proptheme) {
+             							?>
+               <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['region']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
+              <?php } ?>
             </select>
             <input type="text" placeholder="Ville" id='city' name = 'city'/>
             <input type="text" placeholder="Code Postal" id="zip_code" name = 'zip_code'/><br/>
@@ -40,13 +35,16 @@
             <input type="int" placeholder="Prix maximum" id="prix_max" name='prix_max'/>
             <input type="int" placeholder="Nombre de places min" id='nbr_place_min' name = 'nbr_place_min'/>
             <input type="int" placeholder="Nombre de places max" id="nbr_place_max" name = 'nbr_place_max'/>
-            <input type="int" placeholder="Partenaires et sponsors" id="sponsors" name = 'sponsors'><br/>
         </form>
     </div>
   </section>
+  <?php if(!empty($model['error'])){
+    echo $model['error'];
+  }
+  else{ ?>
      <section>
          <ul>
-           <?php foreach($model as $value) { ?>
+           <?php foreach($model['advancedresults'] as $value) { ?>
              <li>
                  <div class="poster_evenement">
                    <img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
@@ -60,3 +58,4 @@
           <?php } ?>
           </ul>
       </section>
+      <?php } ?>

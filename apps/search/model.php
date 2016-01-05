@@ -19,149 +19,145 @@ class SearchModel {
     //found will be having the SQL Request
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
+    $found = 'SELECT nom, ville, date_debut, poster FROM evenements WHERE ';
+
+    if (!empty($advancedsearch['theme'])) {
+      $found .= ' id_theme = "'.addslashes($advancedsearch['theme']).'"';
+    }
+
     if(!empty($advancedsearch['advancedsearch'])){
-      $found = 'SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE (evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
+      if($found<65){
+        $found.=  '(evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
-    elseif (!empty($advancedsearch['city'])) {
-      $found= 'SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.ville LIKE "'.addslashes($advancedsearch['city']).'"';
-    }
-    elseif (!empty($advancedsearch['theme'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.id = evenements_genres.id_evenement
-            AND evenements_genres.id_genre = genres.id
-            AND genres.nom LIKE "'.addslashes($advancedsearch['theme']).'"';
-    }
-    elseif (!empty($advancedsearch['type'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.id = evenements_types.id_evenement
-            AND evenements_types.id_type = types.id
-            AND types.nom LIKE "'.addslashes($advancedsearch['type']).'"';
-    }
-    elseif (!empty($advancedsearch['nbr_place_max'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.capacite < '.intval($advancedsearch['nbr_place_max']);
-    }
-    elseif (!empty($advancedsearch['nbr_place_min'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.capacite > '.intval($advancedsearch['nbr_place_min']);
-    }
-    elseif (!empty($advancedsearch['prix_min'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.prix > '.intval($advancedsearch['prix_min']);
-    }
-    elseif (!empty($advancedsearch['prix_max'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements ,evenements_genres ,genres ,evenements_types ,types ,users ,evenements_sponsors, sponsors
-      WHERE evenements.prix < '.intval($advancedsearch['prix_max']);
-    }
-    elseif (!empty($advancedsearch['region'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.region LIKE "'.addslashes($advancedsearch['region']).'"';
-    }
-    elseif (!empty($advancedsearch['zip_code'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.code_postal LIKE '.intval($advancedsearch['zip_code']);
-    }
-    elseif (!empty($advancedsearch['organisateur'])) {
-      $found='SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.id_createur = users.id
-            AND (users.nickname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.firstname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.lastname LIKE "'.addslashes($advancedsearch['organisateur']).'")';
-    }
-    elseif (!empty($advancedsearch['sponsors'])) {
-      $found='
-      SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types,users, evenements_sponsors, sponsors
-      WHERE AND evenements.id = evenements_sponsors.id_evenement
-            AND evenements_sponsors.id_sponsor = sponsors.id
-            AND sponsors.nom LIKE "'.addslashes($advancedsearch['sponsors']).'"';
-    }
-    elseif (!empty($advancedsearch['date_event'])) {
-      $found='
-      SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements, evenements_genres, genres, evenements_types, types, users, evenements_sponsors, sponsors
-      WHERE evenements.date_debut = "'.$advancedsearch['date_event'].'"';
-    }
-    else{
-      $found='
-      SELECT evenements.nom, evenements.ville, evenements.date_debut, evenements.poster FROM evenements';
-    }
-//-------------------End of the Initialisation-------------------------
-
-
-//------------------Check if other fields have been filled-----------------------
-
-    //If city isn't empty, it must be considered in the SQL Request.
-    if(!empty($advancedsearch['city'])){
-      $found .= ' AND evenements.ville LIKE "'.addslashes($advancedsearch['city']).'"'; //add the end next part of the SQL request, only if city isn't empty
+      else{
+        $found.=  ' AND (evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
+      }
     }
 
-//Do it again for all the others fields of the array
-    if(!empty($advancedsearch['theme'])){
-      $found .= ' AND evenements.id = evenements_genres.id_evenement
-                       AND evenements_genres.id_genre = genres.id
-                       AND genres.nom LIKE "'.addslashes($advancedsearch['theme']).'"';
+    if (!empty($advancedsearch['city'])) {
+      if($found<65){
+        $found .= 'ville LIKE "'.addslashes($advancedsearch['city']).'"';
+      }
+      else{
+        $found .= ' AND ville LIKE "'.addslashes($advancedsearch['city']).'"';
+      }
     }
 
-    if(!empty($advancedsearch['type'])){
-      $found .= ' AND evenements.id = evenements_types.id_evenement
-                       AND evenements_types.id_type = types.id
-                       AND types.nom LIKE "'.addslashes($advancedsearch['type']).'"';
+    if (!empty($advancedsearch['type'])) {
+      if($found<65){
+        $found .= 'id_type = '.intval($advancedsearch['type']).'';
+      }
+      else{
+        $found .= ' AND id_type = '.intval($advancedsearch['type']).'';
+      }
     }
-
-    if(!empty($advancedsearch['nbr_place_max']) && !empty($advancedsearch['nbr_place_min'])){
-      $found .= ' AND evenements.capacite < '.intval($advancedsearch['nbr_place_max']).'
-                  AND evenements.capacite > '.intval($advancedsearch['nbr_place_min']);
-    }
-    elseif(empty($advancedsearch['nbr_place_max']) && !empty($advancedsearch['nbr_place_min'])){
-      $found .= ' AND evenements.capacite > '.intval($advancedsearch['nbr_place_min']);
-    }
-    elseif(empty($advancedsearch['nbr_place_min']) && !empty($advancedsearch['nbr_place_max'])){//case where only max number has been filled
-      $found .= ' AND evenements.capacite < '.intval($advancedsearch['nbr_place_max']);
-    }
-
-
-    if(!empty($advancedsearch['prix_max']) && !empty($advancedsearch['prix_min'])){
-      $found .= ' AND evenements.prix < '.intval($advancedsearch['prix_max']).'
-                          AND evenements.prix > '.intval($advancedsearch['prix_min']);
-    }
-    elseif(empty($advancedsearch['prix_max']) && !empty($advancedsearch['prix_max'])){//case where only min number has been filled
-      $found .= ' AND evenements.prix > '.intval($advancedsearch['prix_min']);
-    }
-    elseif(empty($advancedsearch['prix_min']) && !empty($advancedsearch['prix_max'])){//case where only max number has been filled
-        $found .= ' AND evenements.prix < '.intval($advancedsearch['prix_max']);
-    }
-
 
     if(!empty($advancedsearch['region'])){
-        $found .= ' AND evenements.region LIKE "'.addslashes($advancedsearch['region']).'"'; //add the end next part of the SQL request
+      if($found<65){
+        $found .= 'region LIKE "'.addslashes($advancedsearch['region']).'"';
+      }
+      else{
+        $found .= ' AND region LIKE "'.addslashes($advancedsearch['city']).'"';
+      }
     }
 
-    if(!empty($advancedsearch['zip_code'])){
-        $found .= ' AND evenements.code_postal LIKE '.intval($advancedsearch['zip_code']); //add the end next part of the SQL request
+    if (!empty($advancedsearch['nbr_place_max'])) {
+      if($found<65){
+        $found .= 'capacite < '.intval($advancedsearch['nbr_place_max']);
+      }
+      else{
+        $found .= ' AND capacite < '.intval($advancedsearch['nbr_place_max']);
+      }
     }
 
-    if(!empty($advancedsearch['date_event'])){
-      $found .= ' AND evenements.date_debut LIKE "'.$advancedsearch['date_event'].'"'; //add the end next part of the SQL request
+    if (!empty($advancedsearch['nbr_place_min'])) {
+      if($found<65){
+        $found .= 'capacite > '.intval($advancedsearch['nbr_place_min']);
+      }
+      else{
+        $found .= ' AND capacite > '.intval($advancedsearch['nbr_place_min']);
+      }
     }
 
-    if(!empty($advancedsearch['organisateur'])){
-      $found .= ' AND evenements.id_createur = users.id
-                         AND (users.nickname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.firstname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.lastname LIKE "'.addslashes($advancedsearch['organisateur']).'"';
+    if (!empty($advancedsearch['prix_min'])) {
+      if($found<65){
+        $found .= 'prix > '.intval($advancedsearch['prix_min']);
+      }
+      else{
+        $found .= ' AND prix > '.intval($advancedsearch['prix_min']);
+      }
     }
 
-    if(!empty($advancedsearch['sponsors'])){
-      $found .= ' AND evenements.id = evenements_sponsors.id_evenement
-                            AND evenements_sponsors.id_sponsor = sponsors.id
-                            AND sponsors.nom LIKE "'.addslashes($advancedsearch['sponsors']).'"';
+    if (!empty($advancedsearch['prix_max'])) {
+      if($found<65){
+        $found .= 'prix < '.intval($advancedsearch['prix_max']);
+      }
+      else{
+        $found .= ' AND prix < '.intval($advancedsearch['prix_max']);
+      }
     }
 
+    if (!empty($advancedsearch['zip_code'])) {
+      if($found<65){
+        $found .= 'code_postal LIKE '.intval($advancedsearch['zip_code']);
+      }
+      else{
+        $found .= ' AND code_postal LIKE '.intval($advancedsearch['zip_code']);
+      }
+    }
+
+    if (!empty($advancedsearch['organisateur'])) {
+'      WHERE evenements.id_createur = users.id
+            AND (users.nickname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.firstname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.lastname LIKE "'.addslashes($advancedsearch['organisateur']).'")';
+    }
+
+    if (!empty($advancedsearch['date_event'])) {
+      if($found<65){
+        $found .= 'date_debut = "'.$advancedsearch['date_event'].'"';
+      }
+      else{
+        $found .= ' AND date_debut = "'.$advancedsearch['date_event'].'"';
+      }
+    }
+
+
+//-------------------End of the Initialisation-------------------------
 
     //Sends back the final sql request
     $prep = $this->db->prepare($found);
-
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
 
   }
+
+    public function gettheme(){
+      $prep = $this->db->prepare('SELECT id, nom FROM theme');
+      $prep->execute();
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function gettype(){
+      $prep = $this->db->prepare('SELECT id, nom FROM types');
+      $prep->execute();
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getregion(){
+      $prep = $this->db->prepare('SELECT id, nom FROM region');
+      $prep->execute();
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserID($organisateur){
+      $prep = $this->db->prepare('
+      SELECT id FROM users WHERE nickname LIKE :organisteur
+      OR firstname LIKE :organisateur
+      OR lastname LIKE :organisateur
+      ');
+      $prep->bindParam(':organisateur',$organisateur);
+      $prep->execute();
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
