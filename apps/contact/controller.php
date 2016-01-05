@@ -13,8 +13,60 @@ class ContactController extends Controller {
 public function contact() {}
 public function contactconfirm() {
 	$data = Request::getAssoc(array('subject','message','firstname','lastname','email'));
-}
-	}
+
+ $data['subject'];
+
+ $mail = 'gay.alexandre@overstar-entertainment.com'; // Déclaration de l'adresse de destination.
+ if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
+ {
+ 	$passage_ligne = "\r\n";
+ }
+ else
+ {
+ 	$passage_ligne = "\n";
+ }
+ //=====message text
+ $message_txt = $data['message'];
+
+ //==========
+
+ //=====Create boundary
+ $boundary = "-----=".md5(rand());
+ //==========
+
+ //=====Create subject.
+ $subject = $data['subject'];
+ //=========
+
+ //=====Create header
+ $header = "From:  $data['email'];".$passage_ligne;
+ $header.= "Reply-to:  <gay.alexandre@overstar-entertainment.com>".$passage_ligne;
+ $header.= "MIME-Version: 1.0".$passage_ligne;
+ $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+ //==========
+
+ //=====Create message.
+ $message = $passage_ligne."--".$boundary.$passage_ligne;
+ //=====Message
+ $message.= "Content-Type: text/plain; charset=\"ISO-8859-1\"".$passage_ligne;
+ $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+ $message.= $passage_ligne.$message_txt.$passage_ligne;
+
+ //$message.= $passage_ligne."--".$boundary.$passage_ligne;
+
+ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+
+
+ //=====send e-mail
+ mail($mail,$subject,$message,$header);
+ //==========
+
+
+
+
+		}
+		}
 
 
 

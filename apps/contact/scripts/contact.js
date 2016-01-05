@@ -63,3 +63,7 @@ if (
 $(function() {
  $('#sent').prop('disabled', true);
 });
+
+$(function() {
+  CKEDITOR.replace('message');
+});
