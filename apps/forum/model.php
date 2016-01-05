@@ -19,18 +19,15 @@ class ForumModel {
   public function createTopic(array $data) {
     $prep = $this->db->prepare('
      INSERT INTO forum_topics (titre,description,date_creation,id_createur)
-     VALUES (:titre,:description,:date_creation,:id_createur)
+     VALUES (:titre,:description,NOW(),:id_createur)
    ');
 
    $session = System::getSession();
 	if ($session->isConnected()) {
 	$user_id = $_SESSION['userid'];
 }
-  $date = date(time());
-
    $prep->bindParam(':titre', $data['titre']);
    $prep->bindParam(':description', $data['description']);
-   $prep->bindParam(':date_creation', $date);
    $prep->bindParam(':id_createur', $user_id);
 
    if ($prep->execute()) {
@@ -73,20 +70,16 @@ class ForumModel {
 
  public function addComment(array $data) {
    $prep = $this->db->prepare('
-    INSERT INTO forum_messages (message,date,id_createur,id_topic)
-    VALUES (:message,:date,:id_createur,:id_topic)
+    INSERT INTO forum_messages (message,date,id_createur)
+    VALUES (:message,NOW(),:id_createur)
   ');
 
   $session = System::getSession();
  if ($session->isConnected()) {
  $user_id = $_SESSION['userid'];
 }
-//$topic_id = $this->db->get('SELECT forum_topics.id FROM forum_topics WHERE ') don't know what to put after WHERE to select the id of the page
-$date = DateTime::getTimestamp();
-
-
+//$topic_id =
   $prep->bindParam(':message', $data['message']);
-  $prep->bindParam(':date', $date);
   $prep->bindParam(':id_createur',$user_id);
 //  $prep->bindParam(':id_topic',$topic_id);
 

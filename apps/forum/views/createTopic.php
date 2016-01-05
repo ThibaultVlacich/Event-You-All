@@ -13,7 +13,7 @@
                 <h1>Ajouter un commentaire</h1>
                 <textarea required name='description' id="commentaire"></textarea><br/>
               </div>
-                <input class="valider" type="submit" value="Créer le sujet">
+                <input class="Envoyer" type="submit" value="Envoyer">
                 <input class="Annuler" type="submit" value="Annuler">
         </section>
     </form>

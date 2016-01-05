@@ -23,7 +23,7 @@
 
         <ul id="presentation">
             <li><p>Sujet de :</p></li>
-            <li><h3><?php echo $model['id_createur']; ?></h3></li>
+            <li><h3><?php echo $model['createurtop']; ?></h3></li>
             <li><p>Crée le :</p></li>
             <li><h3><?php echo $model['date_creation']; ?></h3></li>
         </ul>
@@ -45,11 +45,12 @@
             </tr>
             <?php $i=1; ?>
             <?php foreach($model['comments'] as $comment) { ?>
+            <?php if($comment['id_topic'] == $model['id_topic']) { ?>
         </table>
-        <table <?php if(i%2==0){?>class="back2" <?php } else {?>class="back1"<?php } ?>>
+        <table <?php if($i%2==0){?>class="back1" <?php } else {?>class="back2"<?php } ?>>
             <tr>
                 <td class="utilisateur">
-                    <h4><?php echo $comment['createur']; ?></h4>
+                    <h4><?php echo $model['createurcom']; ?></h4>
                 </td>
                 <td class="date">
                     <p><?php echo $comment['date']; ?></p>
@@ -59,6 +60,7 @@
                 </td>
             </tr>
             <?php $i=$i+1; } ?>
+            <?php } ?>
         <table id="num_page">
             <tr>
                 <td><a href="#">1</a></td>
@@ -66,7 +68,7 @@
                 <td><a href="#">3</a></td>
             </tr>
         </table>
-<form method="post" action="<?php echo Config::get('config.base'); ?>/forum/views/sent_comment" enctype="multipart/form-data">
+<form method="post" action="<?php echo Config::get('config.base'); ?>/forum/sent_comment" enctype="multipart/form-data">
           <h3 id="aj_com">Ajouter un commentaire :</h3>
           <textarea required name='message' id="commentaire"></textarea><br/>
         <input class="Envoyer" type="submit" value="Envoyer">

@@ -10,7 +10,7 @@ return;
     <i class="fa fa-spin fa-spinner"></i>
     <script type="text/javascript">
       setTimeout(function() {
-        window.location = '<?php echo Config::get('config.base'); ?>/forum/Topic<?php echo $model['id']; ?>';
+        window.location = '<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $model['id']; ?>';
       }, 5000);
     </script>
     <ul>

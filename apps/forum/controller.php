@@ -4,9 +4,6 @@ defined('EUA_VERSION') or die('Access denied');
 class ForumController extends Controller {
   var $default_module = 'forum';
 
- function detail() {
-
- }
  function Forum(array $params){
      $data = $this->model->getTopics(0, 5, 'date_creation', true);
        foreach ($data as $topic) {
@@ -28,30 +25,33 @@ class ForumController extends Controller {
  }
 
  function Topic(array $params){
-   if (isset($params[0])) {
-    $topic_id = intval($params[0]);
-    if (!($data = $this->model->getTopic($topic_id))) {
-      return array();
-    }
+      if (isset($params[0])) {
 
-     $data['comment'] = $this->model->getComments(0, 5, 'date', true);
-       foreach ($data['comment'] as $comment) {
+      $topic_id = intval($params[0]);
+
+      $data = $this->model->getTopic($topic_id);
+      $datecrea=$data['date_creation'];
+      $titre=$data['titre'];
+      $createurtop=$this->model->getCreatorForTopic($data['id_createur']);
+      $data= $this->model->getComments(0, 5, 'date', true);
+       foreach ($data as $comment) {
          $date_timestamp = strtotime($comment['date']);
          $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
+         $createurcom = $this->model->getCreatorForComments($comment['id_createur']);
        }
-       $data['comment'] = $this->model->getComments(0, 10);
+       $data = $this->model->getComments(0, 10);
 
        $comments = array();
 
-       foreach ($data['comment'] as $comment) {
+       foreach ($data as $comment) {
           $date_timestamp = strtotime($comment['date']);
           $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
 
           $comments[] = $comment;
         }
-        return array($data,'comments' => $comments);
+        return array('id_topic'=>$topic_id,'comments' => $comments,'createurtop'=>$createurtop['nickname'],'createurcom'=>$createurcom['nickname'],'date_creation'=>$datecrea,'titre'=>$titre);
  }
- }
+}
 
  function create() {
 
@@ -66,17 +66,12 @@ class ForumController extends Controller {
      return array ('id' => $id_topic);
    }
  }
- function sent_comment() {
+ function sent_comment(array $params) {
 
-   $data = Request::getAssoc(array('message','date','id_createur','id_topic'));
+   $data = Request::getAssoc(array('message'));
 
    if (!in_array(null, $data, true)) {
-     $date = $data['date'];
-
-     $data['date'] = $date;
-
-
-     $this->model->Topic($data);
+     $id_topic = intval($params[0]);
      return array ('id' => $id_topic);
    }
  }
