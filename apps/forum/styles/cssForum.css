@@ -26,13 +26,33 @@ ul .enteteforum:hover
     color:#CC0033;
     background-color: white;
 }
-
-tr:nth-child(2n)
+#forum{
+  margin-bottom: 50px;
+}
+#forum tr{
+  background-color: rgb(235,235,235);
+}
+.titresujet{
+ color:#cc0033;
+ background-color: rgb(235,235,235);
+ border-bottom: solid 1px #cc0033;
+}
+#forum tr:first-child
 {
     background-color:rgb(235,235,235);
 }
+#forum tr:nth-child(2n)
+{
+    background-color:whitesmoke;
+}
 #Trier{
     margin-top: 10px;
+}
+#link_topic{
+  color:black;
+}
+#link_topic:hover{
+  color:#cc0033;
 }
 table{
     margin-top: 30px;
@@ -41,17 +61,17 @@ table{
     text-align: center;
 }
 .sujet{
-    width:200px;
+    width:15em;
     height:45px;
 }
 .admin{
-    width:150px;
+    width:15em;
 }
-.event{
-    width:300px;
+.description{
+   width:30em;
 }
 .date{
-    width:110px;
+    width:15em;
 }
 .dernier_com{
     width:110px;

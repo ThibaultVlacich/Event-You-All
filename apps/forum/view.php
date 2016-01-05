@@ -13,13 +13,13 @@ class ForumView extends View {
     $this->setTemplate('/apps/forum/views/createTopic.php');
     $this->assign('css', Config::get('config.base').'/apps/forum/styles/createTopic.css');
     $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
-    $this->assign('js', Config::get('config.base').'/apps/forum/script/create.js');
+    $this->assign('js', Config::get('config.base').'/apps/forum/script/createcom.js');
   }
   public function Topic() {
     $this->setTemplate('/apps/forum/views/Topic.php');
     $this->assign('css', Config::get('config.base').'/apps/forum/styles/Topic.css');
     $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
-    $this->assign('js', Config::get('config.base').'/apps/forum/script/create.js');
+    $this->assign('js', Config::get('config.base').'/apps/forum/script/createtop.js');
   }
   public function create_confirm(){
   $this->setTemplate('/apps/forum/views/create_confirm.php');

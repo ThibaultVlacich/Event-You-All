@@ -23,7 +23,7 @@
 
         <ul id="presentation">
             <li><p>Sujet de :</p></li>
-            <li><h3><?php echo $model['administrateur']; ?></h3></li>
+            <li><h3><?php echo $model['id_createur']; ?></h3></li>
             <li><p>Crée le :</p></li>
             <li><h3><?php echo $model['date_creation']; ?></h3></li>
         </ul>
