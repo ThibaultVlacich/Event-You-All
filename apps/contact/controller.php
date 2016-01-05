@@ -10,17 +10,12 @@ defined('EUA_VERSION') or die('Access denied');
 
 class ContactController extends Controller {
 
-	/**
-	 * @var Instance of Session
-	 */
-	private $session;
-	/**
-	 * UserController's constructor to initialize $session.
-	 */
-	public function __construct() {
-		$this->session = System::getSession();
+public function contact() {}
+public function contactconfirm() {
+	$data = Request::getAssoc(array('subject','message','firstname','lastname','email'));
+}
 	}
-	}
+
 
 
 

@@ -20,17 +20,17 @@ $('#subject, #message, #firstname, #lastname, #email').on('change keyup', functi
       $firstname        = $('#firstname'),
       $lastname         = $('#lastname'),
       $email            = $('#email'),
-      $submit_button    = $('#submit');
+      $sent_button    = $('#sent');
 /*set up conditions*/
 
 if (
-  ($this.is($subject) && $this.val().length >=2) ||
-  ($this.is($subject) && $this.val().length <=5) ||
-  ($this.is($message) && $this.val().length <=5000) ||
+  ($this.is($subject) && $this.val().length >=2 && $this.val().length <=200) ||
 
-  ($this.is($firstname) && $this.val().length >= 1) ||
+  ($this.is($message) &&  $this.val().length >=2 && $this.val().length <=5000) ||
 
-  ($this.is($lastname) && $this.val().length >= 1) ||
+  ($this.is($firstname) && $this.val().length >= 1 && $this.val().length <=40 ) ||
+
+  ($this.is($lastname) && $this.val().length >= 1 && $this.val().length <=40) ||
 
   ($this.is($email) && validateEmail($this.val()))
 ) {
@@ -43,10 +43,10 @@ else {
 
 //disable or able sent button according to conditions
 if (
-  $subject.val().subject >=2 &&
-  $subject.val().subject <=200 &&
-  $message.val().message <=5000 &&
-  $message.val().message >=10 &&
+  $subject.val().length >=2 &&
+  $subject.val().length <=200 &&
+  $message.val().length <=5000 &&
+  $message.val().length >=2 &&
   $firstname.val().length >= 1 &&
   $firstname.val().length <=40 &&
   $lastname.val().length >= 1 &&
@@ -61,5 +61,5 @@ if (
 
 // sent button disabled when page is loading
 $(function() {
- $('#submit').prop('disabled', true);
+ $('#sent').prop('disabled', true);
 });

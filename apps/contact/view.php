@@ -9,20 +9,18 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class ContactView extends View {
-  function __construct() {
-    $this->assign('css', Config::get('config.base').'/apps/contact/styles/style.css');
-
-  }
 
 
-  public function Contact() {
+  public function contact() {
     $this->assign('js', Config::get('config.base').'/apps/contact/scripts/contact.js');
     $this->assign('js', 'https://www.google.com/recaptcha/api.js');
 $this->assign('css', Config::get('config.base').'/apps/contact/styles/style.css');
     $this->setTemplate('/apps/contact/views/index.php');
   }
 
-
+  public function contactconfirm () {
+    $this->setTemplate('/apps/contact/views/contactconfirm.php');
+  }
 }
 
 ?>
