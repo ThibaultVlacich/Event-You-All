@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2016 at 08:41 AM
+-- Generation Time: Jan 05, 2016 at 09:33 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.0
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `articles`
 --
 
+DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -42,6 +43,7 @@ CREATE TABLE `articles` (
 -- Table structure for table `badges`
 --
 
+DROP TABLE IF EXISTS `badges`;
 CREATE TABLE `badges` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -56,6 +58,7 @@ CREATE TABLE `badges` (
 -- Table structure for table `contact_admin`
 --
 
+DROP TABLE IF EXISTS `contact_admin`;
 CREATE TABLE `contact_admin` (
   `id` int(11) NOT NULL,
   `id_expediteur` int(11) NOT NULL,
@@ -70,6 +73,7 @@ CREATE TABLE `contact_admin` (
 -- Table structure for table `evenements`
 --
 
+DROP TABLE IF EXISTS `evenements`;
 CREATE TABLE `evenements` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
@@ -97,6 +101,7 @@ CREATE TABLE `evenements` (
 -- Table structure for table `evenements_genres`
 --
 
+DROP TABLE IF EXISTS `evenements_genres`;
 CREATE TABLE `evenements_genres` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -109,6 +114,7 @@ CREATE TABLE `evenements_genres` (
 -- Table structure for table `evenements_notes`
 --
 
+DROP TABLE IF EXISTS `evenements_notes`;
 CREATE TABLE `evenements_notes` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -122,6 +128,7 @@ CREATE TABLE `evenements_notes` (
 -- Table structure for table `evenements_participants`
 --
 
+DROP TABLE IF EXISTS `evenements_participants`;
 CREATE TABLE `evenements_participants` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -135,6 +142,7 @@ CREATE TABLE `evenements_participants` (
 -- Table structure for table `evenements_photos`
 --
 
+DROP TABLE IF EXISTS `evenements_photos`;
 CREATE TABLE `evenements_photos` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -148,6 +156,7 @@ CREATE TABLE `evenements_photos` (
 -- Table structure for table `evenements_sponsors`
 --
 
+DROP TABLE IF EXISTS `evenements_sponsors`;
 CREATE TABLE `evenements_sponsors` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -160,6 +169,7 @@ CREATE TABLE `evenements_sponsors` (
 -- Table structure for table `evenements_types`
 --
 
+DROP TABLE IF EXISTS `evenements_types`;
 CREATE TABLE `evenements_types` (
   `id` int(11) NOT NULL,
   `id_evenement` int(11) NOT NULL,
@@ -172,6 +182,7 @@ CREATE TABLE `evenements_types` (
 -- Table structure for table `faq`
 --
 
+DROP TABLE IF EXISTS `faq`;
 CREATE TABLE `faq` (
   `id` int(11) NOT NULL,
   `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -184,6 +195,7 @@ CREATE TABLE `faq` (
 -- Table structure for table `forum_categories`
 --
 
+DROP TABLE IF EXISTS `forum_categories`;
 CREATE TABLE `forum_categories` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -195,6 +207,7 @@ CREATE TABLE `forum_categories` (
 -- Table structure for table `forum_messages`
 --
 
+DROP TABLE IF EXISTS `forum_messages`;
 CREATE TABLE `forum_messages` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
@@ -210,6 +223,7 @@ CREATE TABLE `forum_messages` (
 -- Table structure for table `forum_topics`
 --
 
+DROP TABLE IF EXISTS `forum_topics`;
 CREATE TABLE `forum_topics` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
@@ -225,6 +239,7 @@ CREATE TABLE `forum_topics` (
 -- Table structure for table `genres`
 --
 
+DROP TABLE IF EXISTS `genres`;
 CREATE TABLE `genres` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -236,6 +251,7 @@ CREATE TABLE `genres` (
 -- Table structure for table `groupes`
 --
 
+DROP TABLE IF EXISTS `groupes`;
 CREATE TABLE `groupes` (
   `id` int(11) NOT NULL,
   `id_createur` int(11) NOT NULL,
@@ -251,6 +267,7 @@ CREATE TABLE `groupes` (
 -- Table structure for table `newsletters`
 --
 
+DROP TABLE IF EXISTS `newsletters`;
 CREATE TABLE `newsletters` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -264,6 +281,7 @@ CREATE TABLE `newsletters` (
 -- Table structure for table `newsletters_abonnes`
 --
 
+DROP TABLE IF EXISTS `newsletters_abonnes`;
 CREATE TABLE `newsletters_abonnes` (
   `id` int(11) NOT NULL,
   `id_newsletter` int(11) NOT NULL,
@@ -276,10 +294,36 @@ CREATE TABLE `newsletters_abonnes` (
 -- Table structure for table `region`
 --
 
+DROP TABLE IF EXISTS `region`;
 CREATE TABLE `region` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `region`
+--
+
+INSERT INTO `region` (`id`, `nom`) VALUES
+(1, 'Alsace Champagne-Ardenne Lorraine'),
+(2, 'Alsace Champagne-Ardenne Lorraine'),
+(3, 'Aquitaine Limousin Poitou-Charentes'),
+(4, 'Auvergne Rhône-Alpes'),
+(5, 'Bourgogne Franche-Comté'),
+(6, 'Bretagne'),
+(7, 'Centre-Val de Loire'),
+(8, 'Corse'),
+(9, 'Île-de-France'),
+(10, 'Languedoc-Roussillon Midi-Pyrénées'),
+(11, 'Nord - Pas-de-Calais Picardie'),
+(12, 'Normandie'),
+(13, 'Pays de la Loire'),
+(14, 'Provence - Alpes - Côte d''Azur'),
+(15, 'Guadeloupe'),
+(16, 'Guyane'),
+(17, 'Martinique'),
+(18, 'Mayotte'),
+(19, 'La Réunion');
 
 -- --------------------------------------------------------
 
@@ -287,6 +331,7 @@ CREATE TABLE `region` (
 -- Table structure for table `sponsors`
 --
 
+DROP TABLE IF EXISTS `sponsors`;
 CREATE TABLE `sponsors` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -298,6 +343,7 @@ CREATE TABLE `sponsors` (
 -- Table structure for table `types`
 --
 
+DROP TABLE IF EXISTS `types`;
 CREATE TABLE `types` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL
@@ -309,6 +355,7 @@ CREATE TABLE `types` (
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -337,6 +384,7 @@ CREATE TABLE `users` (
 -- Table structure for table `utilisateurs_badges`
 --
 
+DROP TABLE IF EXISTS `utilisateurs_badges`;
 CREATE TABLE `utilisateurs_badges` (
   `id` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -350,6 +398,7 @@ CREATE TABLE `utilisateurs_badges` (
 -- Table structure for table `utilisateurs_groupes`
 --
 
+DROP TABLE IF EXISTS `utilisateurs_groupes`;
 CREATE TABLE `utilisateurs_groupes` (
   `id` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
@@ -462,6 +511,12 @@ ALTER TABLE `newsletters`
 -- Indexes for table `newsletters_abonnes`
 --
 ALTER TABLE `newsletters_abonnes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `region`
+--
+ALTER TABLE `region`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -582,6 +637,11 @@ ALTER TABLE `newsletters`
 -- AUTO_INCREMENT for table `newsletters_abonnes`
 --
 ALTER TABLE `newsletters_abonnes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `region`
+--
+ALTER TABLE `region`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sponsors`
