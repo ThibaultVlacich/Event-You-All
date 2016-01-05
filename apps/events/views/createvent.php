@@ -22,7 +22,7 @@
         <div class="fill">
                     <select  name='theme' id='theme'>
 						<?php
-							  foreach ($model['genre'] as $event) {
+							  foreach ($model['themes'] as $event) {
 							?>
 							<option value=
 							<?php echo $event['id']?>
@@ -42,7 +42,7 @@
         <div class="fill">
           <select  name='type' id='type'>
 						<?php
-							  foreach ($model['type'] as $event) {
+							  foreach ($model['types'] as $event) {
 							?>
 							<option value=
 							<?php echo $event['id']?>
@@ -175,7 +175,7 @@
               <?php echo date('Y') + 2; ?>
             </option>
           </select>
-          à 
+          à
                         <!--Heures et minutes-->
                         <select  name='time_fi_h' id='time_fi_h'>
                             <?php
@@ -297,7 +297,7 @@
         <div class="fill">
           <select  name='reg' id='reg'>
 						<?php
-							  foreach ($model['region'] as $event) {
+							  foreach ($model['regions'] as $event) {
 							?>
 							<option value=
 							<?php echo $event['id']?>

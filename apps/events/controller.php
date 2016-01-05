@@ -111,11 +111,11 @@ class EventsController extends Controller {
   }
 
   function create() {
-    $data['genre'] = $this->model->getgenre();
-    $data['type'] = $this->model->getype();
-    $data['region'] = $this->model->getregion();
-    return $data;
+    $data['themes']  = $this->model->getThemes();
+    $data['types']   = $this->model->getTypes();
+    $data['regions'] = $this->model->getRegions();
 
+    return $data;
   }
 
   function create_confirm() {
@@ -189,7 +189,7 @@ class EventsController extends Controller {
       //print_r ($data);
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
-      
+
 
       if (!empty($data['priv'])) {
         $data['priv'] = 1;
@@ -247,9 +247,9 @@ class EventsController extends Controller {
 
       // Retourner les infos récupérées
       //print_r ($data);
-        $data['genreT'] = $this->model->getgenre();
-        $data['typeT'] = $this->model->getype();
-        $data['regionT'] = $this->model->getregion();
+        $data['themes'] = $this->model->getThemes();
+        $data['types'] = $this->model->geTypes();
+        $data['regions'] = $this->model->getRegions();
       return $data;
     }
     else{echo false;}
@@ -298,7 +298,7 @@ class EventsController extends Controller {
       }
       else{//prend ancienne banniere si aucune nouvelle entrée
           $data['bann'] =$oldbannerposter['banniere'];
-          
+
       }
 
       $poster = Request::get('poster', null, 'FILES');

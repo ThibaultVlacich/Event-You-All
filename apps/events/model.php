@@ -121,7 +121,7 @@ class EventsModel {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
-  
+
   public function getPosterBannerForEvent($event_id) {
     $prep = $this->db->prepare('SELECT evenements.poster,evenements.banniere, evenements.id FROM evenements WHERE  evenements.id = '.$event_id.'');
     $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
@@ -175,8 +175,8 @@ public function modifEvent(array $data) {
       return false;
     }
   }
-  public function getgenre(){
-    $prep = $this->db->prepare('SELECT * FROM genres');
+  public function getThemes(){
+    $prep = $this->db->prepare('SELECT * FROM themes');
 
     $prep->execute();
 
@@ -184,7 +184,7 @@ public function modifEvent(array $data) {
 
     return $events;
   }
-   public function getype(){
+   public function getTypes(){
     $prep = $this->db->prepare('SELECT * FROM types');
 
     $prep->execute();
@@ -193,7 +193,7 @@ public function modifEvent(array $data) {
 
     return $events;
   }
-  public function getregion(){
+  public function getRegions(){
     $prep = $this->db->prepare('SELECT * FROM region');
 
     $prep->execute();
