@@ -13,7 +13,8 @@ class EventsController extends Controller {
 
   var $access = array(
     'create'         => 1,
-    'create_confirm' => 1
+    'create_confirm' => 1,
+    'register'       => 1
   );
 
   function index() {
@@ -351,6 +352,14 @@ class EventsController extends Controller {
 
 	    return array('id' => $id_event, 'error' => $errors);
     }
+    }
+  }
+
+  public function register(array $params) {
+    if(isset($params[0])) {
+      $id_event = intval($params[0]);
+
+      $this->model->registerUserToEvent($id_event);
     }
   }
 }
