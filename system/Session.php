@@ -23,11 +23,6 @@ class Session {
 	 */
 	const TOKEN_EXPIRATION = 120;
 
-	/*
-	 * Maximum login attempts
-	 */
-	const MAX_LOGIN_ATTEMPT = 3;
-
 	/**
 	 * States
 	 */
@@ -77,14 +72,6 @@ class Session {
 	 * @return int State of the request (LOGIN_SUCCESS | 0 = error)
 	 */
 	public function createSession($nickname, $password, $remember) {
-		// In case of multiple errors of login, return an error
-		// Stores in SESSION variable $login_try the login try number
-		if (!isset($_SESSION['login_try']) || (isset($_SESSION['flood_time']) && $_SESSION['flood_time'] < time())) {
-			$_SESSION['login_try'] = 0;
-		} else if ($_SESSION['login_try'] >= self::MAX_LOGIN_ATTEMPT) {
-			return self::LOGIN_MAX_ATTEMPT_REACHED;
-		}
-
 		// Treatment
 		$nickname = trim($nickname);
 
@@ -102,8 +89,6 @@ class Session {
 
 		// User found
 		if (!empty($data)) {
-			unset($_SESSION['login_try']); // cleanup
-
 			$this->setupSession($data['id'], $data);
 
 			// Cookie setup
@@ -117,9 +102,6 @@ class Session {
 
 			return self::LOGIN_SUCCESS;
 		} else {
-			// Attempt + 1
-			$_SESSION['login_try']++;
-
 			return 0;
 		}
 	}

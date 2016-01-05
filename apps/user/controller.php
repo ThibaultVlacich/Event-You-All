@@ -79,9 +79,6 @@ class UserController extends Controller {
 							return array('success' => true);
 						}
 						break;
-					case Session::LOGIN_MAX_ATTEMPT_REACHED:
-						array_push($errors, 'Nombre de tentatives de connexion maximale atteinte ! Ré-essayez plus tard !');
-						break;
 					case 0:
 						array_push($errors, 'Couple Login / Mot de passe incorrect.');
 						break;
