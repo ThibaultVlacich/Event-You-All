@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 05 Janvier 2016 à 10:16
+-- Généré le :  Mar 05 Janvier 2016 à 10:34
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
+DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `id_evenement` int(11) NOT NULL,
   `banniere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -43,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 -- Structure de la table `badges`
 --
 
+DROP TABLE IF EXISTS `badges`;
 CREATE TABLE IF NOT EXISTS `badges` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_evenement` int(11) NOT NULL,
@@ -50,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `badges` (
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `condition_obtention` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `badges` (
 -- Structure de la table `contact_admin`
 --
 
+DROP TABLE IF EXISTS `contact_admin`;
 CREATE TABLE IF NOT EXISTS `contact_admin` (
   `id` int(11) NOT NULL,
   `id_expediteur` int(11) NOT NULL,
@@ -72,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `contact_admin` (
 -- Structure de la table `evenements`
 --
 
+DROP TABLE IF EXISTS `evenements`;
 CREATE TABLE IF NOT EXISTS `evenements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_createur` int(11) NOT NULL,
@@ -91,10 +95,15 @@ CREATE TABLE IF NOT EXISTS `evenements` (
   `site_web` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `region` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pays` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `id_genre` int(11) NOT NULL,
+  `id_type` int(11) NOT NULL,
   `id_theme` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `evenements`
+--
+
 
 -- --------------------------------------------------------
 
@@ -102,13 +111,14 @@ CREATE TABLE IF NOT EXISTS `evenements` (
 -- Structure de la table `evenements_notes`
 --
 
+DROP TABLE IF EXISTS `evenements_notes`;
 CREATE TABLE IF NOT EXISTS `evenements_notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `note` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -116,13 +126,14 @@ CREATE TABLE IF NOT EXISTS `evenements_notes` (
 -- Structure de la table `evenements_participants`
 --
 
+DROP TABLE IF EXISTS `evenements_participants`;
 CREATE TABLE IF NOT EXISTS `evenements_participants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `nb_participant` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -130,13 +141,14 @@ CREATE TABLE IF NOT EXISTS `evenements_participants` (
 -- Structure de la table `evenements_photos`
 --
 
+DROP TABLE IF EXISTS `evenements_photos`;
 CREATE TABLE IF NOT EXISTS `evenements_photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_evenement` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -144,12 +156,13 @@ CREATE TABLE IF NOT EXISTS `evenements_photos` (
 -- Structure de la table `faq`
 --
 
+DROP TABLE IF EXISTS `faq`;
 CREATE TABLE IF NOT EXISTS `faq` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `reponse` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -157,11 +170,12 @@ CREATE TABLE IF NOT EXISTS `faq` (
 -- Structure de la table `forum_categories`
 --
 
+DROP TABLE IF EXISTS `forum_categories`;
 CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -169,6 +183,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 -- Structure de la table `forum_messages`
 --
 
+DROP TABLE IF EXISTS `forum_messages`;
 CREATE TABLE IF NOT EXISTS `forum_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_createur` int(11) NOT NULL,
@@ -177,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `forum_messages` (
   `date` datetime NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -185,6 +200,7 @@ CREATE TABLE IF NOT EXISTS `forum_messages` (
 -- Structure de la table `forum_topics`
 --
 
+DROP TABLE IF EXISTS `forum_topics`;
 CREATE TABLE IF NOT EXISTS `forum_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_createur` int(11) NOT NULL,
@@ -193,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `date_creation` datetime NOT NULL,
   `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -201,6 +217,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
 -- Structure de la table `groupes`
 --
 
+DROP TABLE IF EXISTS `groupes`;
 CREATE TABLE IF NOT EXISTS `groupes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_createur` int(11) NOT NULL,
@@ -209,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `groupes` (
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -217,13 +234,14 @@ CREATE TABLE IF NOT EXISTS `groupes` (
 -- Structure de la table `newsletters`
 --
 
+DROP TABLE IF EXISTS `newsletters`;
 CREATE TABLE IF NOT EXISTS `newsletters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `contenu` text COLLATE utf8_unicode_ci NOT NULL,
   `date_envoi` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -231,12 +249,13 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
 -- Structure de la table `newsletters_abonnes`
 --
 
+DROP TABLE IF EXISTS `newsletters_abonnes`;
 CREATE TABLE IF NOT EXISTS `newsletters_abonnes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_newsletter` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -244,10 +263,36 @@ CREATE TABLE IF NOT EXISTS `newsletters_abonnes` (
 -- Structure de la table `region`
 --
 
+DROP TABLE IF EXISTS `region`;
 CREATE TABLE IF NOT EXISTS `region` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `region`
+--
+
+INSERT INTO `region` (`id`, `nom`) VALUES
+(1, 'Alsace Champagne-Ardenne Lorraine'),
+(2, 'Alsace Champagne-Ardenne Lorraine'),
+(3, 'Aquitaine Limousin Poitou-Charentes'),
+(4, 'Auvergne Rhône-Alpes'),
+(5, 'Bourgogne Franche-Comté'),
+(6, 'Bretagne'),
+(7, 'Centre-Val de Loire'),
+(8, 'Corse'),
+(9, 'Île-de-France'),
+(10, 'Languedoc-Roussillon Midi-Pyrénées'),
+(11, 'Nord - Pas-de-Calais Picardie'),
+(12, 'Normandie'),
+(13, 'Pays de la Loire'),
+(14, 'Provence - Alpes - Côte d''Azur'),
+(15, 'Guadeloupe'),
+(16, 'Guyane'),
+(17, 'Martinique'),
+(18, 'Mayotte'),
+(19, 'La Réunion');
 
 -- --------------------------------------------------------
 
@@ -255,11 +300,12 @@ CREATE TABLE IF NOT EXISTS `region` (
 -- Structure de la table `sponsors`
 --
 
+DROP TABLE IF EXISTS `sponsors`;
 CREATE TABLE IF NOT EXISTS `sponsors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -267,11 +313,21 @@ CREATE TABLE IF NOT EXISTS `sponsors` (
 -- Structure de la table `theme`
 --
 
+DROP TABLE IF EXISTS `theme`;
 CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `theme`
+--
+
+INSERT INTO `theme` (`id`, `nom`) VALUES
+(1, 'Musique'),
+(2, 'Peinture'),
+(3, 'Sculpture');
 
 -- --------------------------------------------------------
 
@@ -279,11 +335,21 @@ CREATE TABLE IF NOT EXISTS `theme` (
 -- Structure de la table `types`
 --
 
+DROP TABLE IF EXISTS `types`;
 CREATE TABLE IF NOT EXISTS `types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `types`
+--
+
+INSERT INTO `types` (`id`, `nom`) VALUES
+(1, 'Concert'),
+(2, 'Exposition'),
+(3, 'Projection');
 
 -- --------------------------------------------------------
 
@@ -291,6 +357,7 @@ CREATE TABLE IF NOT EXISTS `types` (
 -- Structure de la table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -312,7 +379,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `commentaire` text COLLATE utf8_unicode_ci,
   `profilprive` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `users`
+--
 
 -- --------------------------------------------------------
 
@@ -320,13 +391,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Structure de la table `utilisateurs_badges`
 --
 
+DROP TABLE IF EXISTS `utilisateurs_badges`;
 CREATE TABLE IF NOT EXISTS `utilisateurs_badges` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_utilisateur` int(11) NOT NULL,
   `id_badge` int(11) NOT NULL,
   `date_obtention` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -334,6 +406,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs_badges` (
 -- Structure de la table `utilisateurs_groupes`
 --
 
+DROP TABLE IF EXISTS `utilisateurs_groupes`;
 CREATE TABLE IF NOT EXISTS `utilisateurs_groupes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_utilisateur` int(11) NOT NULL,
@@ -341,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs_groupes` (
   `gere` tinyint(1) NOT NULL,
   `date_adhesion` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
