@@ -66,7 +66,7 @@ class System {
 				die('Information is missing to connect to the database: please, check the server, or the database name or the user name in "system/config/database.php".');
 			}
 
-			self::$dbInstance = new Database($dsn, $user, $password);
+			self::$dbInstance = new PDO($dsn, $user, $password);
 			self::$dbInstance->query("SET NAMES 'utf8'");
 			self::$dbInstance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 		}
@@ -82,7 +82,7 @@ class System {
 	public static function getAppsList() {
 		if (empty(self::$apps_list)) {
 			$apps = glob(APPS_DIR.'*', GLOB_ONLYDIR);
-			
+
 			foreach ($apps as $appDir) {
 				if ($appDir != '.' && $appDir != '..') {
 					// Check front

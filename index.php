@@ -29,13 +29,12 @@ require_once 'paths.php';
 /**
  * Core classes inclusion
  */
- require_once SYS_DIR.'System.php';
- require_once SYS_DIR.'Database.php';
- require_once SYS_DIR.'Route.php';
- require_once SYS_DIR.'Config.php';
- require_once SYS_DIR.'Request.php';
- require_once SYS_DIR.'Tools.php';
- require_once SYS_DIR.'Main.php';
+require_once SYS_DIR.'System.php';
+require_once SYS_DIR.'Route.php';
+require_once SYS_DIR.'Config.php';
+require_once SYS_DIR.'Request.php';
+require_once SYS_DIR.'Tools.php';
+require_once SYS_DIR.'Main.php';
 
 /**
  * Execute Main process
