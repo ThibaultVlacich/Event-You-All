@@ -21,6 +21,18 @@
 
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
+  div.main-head {
+    height: 100px;
+  }
+
+  div.main-head header {
+    height: 100px;
+  }
+
+  div.main-head header .logo {
+    height: 100px;
+  }
+
   div.main-head header .socials {
     display: none;
   }

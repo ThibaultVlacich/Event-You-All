@@ -100,23 +100,24 @@ div.app-events-home div.slideshow-container div.slideshow-details div.slide a di
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
   div.app-events-home div.slideshow-container div.slideshow {
-    height: 450px;
+    height: 400px;
   }
 
   div.app-events-home div.slideshow-container div.slideshow div.slidesjs-container {
-    height: 450px;
+    height: 400px;
   }
 
   div.app-events-home div.slideshow-container div.slideshow div.slidesjs-container img {
-    height: 450px;
+    height: 400px;
   }
 
   div.app-events-home div.slideshow-container a.slidesjs-navigation {
-    top: 300px;
+    top: 200px;
   }
 
   div.app-events-home div.slideshow-container div.slideshow-details {
     height: 250px;
+    top: 150px;
     left: 0; right: 0;
   }
 
