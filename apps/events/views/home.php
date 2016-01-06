@@ -36,11 +36,11 @@
       <div class="search-form">
         <select name="region">
           <option disabled selected hidden>Région</option>
-          <option>Île-de-France</option>
+          <?php foreach($model['regions'] as $region) { ?><option value="<?php echo $region['id']; ?>"><?php echo $region['nom']; ?></option><?php } ?>
         </select>
         <select name="theme">
           <option disabled selected hidden>Thème</option>
-          <option>Concert</option>
+          <?php foreach($model['themes'] as $theme) { ?><option value="<?php echo $theme['id']; ?>"><?php echo $theme['nom']; ?></option><?php } ?>
         </select>
         <input type="date" name="date" placeholder="Date">
         <input type="submit" value="Rechercher">

@@ -69,8 +69,13 @@ class EventsController extends Controller {
 
       $events[] = $event;
     }
-
-    return array('slideshow' => $slideshow, 'events' => $events);
+    
+    return array(
+      'slideshow' => $slideshow,
+      'events'    => $events,
+      'regions'   => $this->model->getRegions(),
+      'themes'    => $this->model->getThemes()
+    );
   }
 
   function detail(array $params) {
