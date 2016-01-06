@@ -16,6 +16,11 @@ require_once SYS_DIR.'View.php';
  */
 class Main {
 	/**
+	 * @var is404 If set to true, should display a 404 error
+	 */
+	private $is404 = false;
+
+	/**
 	 * Class constructor
 	 */
 	public function __construct() {
@@ -46,7 +51,7 @@ class Main {
 	private function route() {
 		Route::init();
 
-		// Checks if the browser tried to load a physical file
+		// Checks if the browser tried to load a physical file who doesn't exists
 		$error = false;
 		$query = Route::getQuery();
 		$length = strlen($query);
@@ -71,14 +76,7 @@ class Main {
 			}
 		}
 
-		if ($error) {
-			$route = Route::getRoute();
-
-			if ($route['app'] != 'media') {
-				header('HTTP/1.0 404 Not Found');
-				//Note::error(404, WLang::get('error_404'), 'die');
-			}
-		}
+		$this->is404 = $error;
 	}
 
 
@@ -111,8 +109,7 @@ class Main {
 			$app_class = $app_name_clear.'Controller';
 		}
 
-		if (is_dir($app_dir) && file_exists($app_dir.'controller.php')) {
-
+		if (is_dir($app_dir) && file_exists($app_dir.'controller.php') && !$this->is404) {
 			include_once $app_dir.'controller.php';
 
 			if (class_exists($app_class) && get_parent_class($app_class) == 'Controller') {
@@ -141,6 +138,9 @@ class Main {
 				}
 			}
 		} else {
+			// Set header to a 404 code
+			header('HTTP/1.0 404 Not Found');
+
 			// Load the 404 app
 			include_once APPS_DIR.'404'.DS.'controller.php';
 			include_once APPS_DIR.'404'.DS.'view.php';

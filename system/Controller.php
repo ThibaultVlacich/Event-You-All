@@ -66,7 +66,7 @@ abstract class Controller {
 		}
 
 		// Extract the name of the module from the parameters
-		$module = isset($params[0]) ? $params[0] : $this->default_module;
+		$module = (isset($params[0]) && method_exists($this, $params[0])) ? $params[0] : $this->default_module;
 
 		// Remove the first param if its the module name
 		if (isset($params[0]) && $params[0] == $module) {
