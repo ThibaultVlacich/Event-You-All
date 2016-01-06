@@ -176,7 +176,7 @@ public function modifEvent(array $data) {
     }
   }
   public function getThemes(){
-    $prep = $this->db->prepare('SELECT * FROM themes');
+    $prep = $this->db->prepare('SELECT * FROM theme');
 
     $prep->execute();
 
