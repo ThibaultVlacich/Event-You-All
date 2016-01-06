@@ -83,6 +83,28 @@ class EventsModel {
 
     $event = $prep->fetch(PDO::FETCH_ASSOC);
 
+    if ($event !== false) {
+      // Get theme linked for the event
+      if (!empty($event['id_theme'])) {
+        $prep = $this->db->prepare('SELECT * FROM theme WHERE id = :id_theme');
+
+        $prep->bindParam(':id_theme', $event['id_theme']);
+        $prep->execute();
+
+        $event['theme'] = $prep->fetch(PDO::FETCH_ASSOC);
+      }
+
+      // Get type linked for the event
+      if (!empty($event['id_type'])) {
+        $prep = $this->db->prepare('SELECT * FROM type WHERE id = :id_type');
+
+        $prep->bindParam(':id_type', $event['id_type']);
+        $prep->execute();
+
+        $event['type'] = $prep->fetch(PDO::FETCH_ASSOC);
+      }
+    }
+
     return $event;
   }
 
@@ -102,7 +124,31 @@ class EventsModel {
     $prep->bindParam(':number', $number, PDO::PARAM_INT);
     $prep->execute();
 
-    return $prep->fetchAll(PDO::FETCH_ASSOC);
+    $events = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($events as &$event) {
+      // Get theme linked for the event
+      if (!empty($event['id_theme'])) {
+        $prep = $this->db->prepare('SELECT * FROM theme WHERE id = :id_theme');
+
+        $prep->bindParam(':id_theme', $event['id_theme']);
+        $prep->execute();
+
+        $event['theme'] = $prep->fetch(PDO::FETCH_ASSOC);
+      }
+
+      // Get type linked for the event
+      if (!empty($event['id_type'])) {
+        $prep = $this->db->prepare('SELECT * FROM type WHERE id = :id_type');
+
+        $prep->bindParam(':id_type', $event['id_type']);
+        $prep->execute();
+
+        $event['type'] = $prep->fetch(PDO::FETCH_ASSOC);
+      }
+    }
+
+    return $events;
   }
 
   public function getArticlesForEvent($event_id) {

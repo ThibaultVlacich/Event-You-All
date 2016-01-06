@@ -38,7 +38,7 @@
               ?>
                 Le <?php echo $model['date_debut']; ?>
               <?php
-            } else if ( !empty($model['date_debut']) && !empty($model['date_fin']) && $model['date_debut'] != $model['date_fin'] ) {
+                } else if ( !empty($model['date_debut']) && !empty($model['date_fin']) && $model['date_debut'] != $model['date_fin'] ) {
               ?>
                 Du <?php echo $model['date_debut']; ?> au <?php echo $model['date_fin']; ?>
               <?php
@@ -131,12 +131,12 @@
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'événement</a>
           <?php
-              } 
+              }
                 // User is not the creator
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
           <?php
-              
+
             } else {
               // User is not logged in
           ?>

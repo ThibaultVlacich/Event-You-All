@@ -15,7 +15,7 @@
         <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>">
           <div class="caption">
             <div class="caption-wrapper">
-              <span class="theme">Concert</span>
+              <?php if(isset($event['theme'])) { ?><span class="theme"><?php echo $event['theme']['nom']; ?></span><?php } ?>
               <h2><?php echo $event['nom']; ?></h2>
             </div>
           </div>
@@ -54,7 +54,7 @@
             <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><img src="<?php echo $event['poster']; ?>" alt=""></a>
           </div>
           <div class="caption">
-            <span class="theme">Concert</span>
+            <?php if(isset($event['theme'])) { ?><span class="theme"><?php echo $event['theme']['nom']; ?></span><?php } ?>
             <h3><a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $event['id']; ?>"><?php echo $event['nom']; ?></a></h3>
             <?php
               if (( !empty($event['date_debut']) && empty($event['date_fin']) ) || ( !empty($event['date_debut']) && !empty($event['date_fin']) && $event['date_debut'] == $event['date_fin'] )) {
