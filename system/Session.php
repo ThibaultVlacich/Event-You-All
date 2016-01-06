@@ -27,7 +27,6 @@ class Session {
 	 * States
 	 */
 	const LOGIN_SUCCESS = 1;
-	const LOGIN_MAX_ATTEMPT_REACHED = 2;
 
 	/**
 	 * Session setup
