@@ -25,7 +25,7 @@ class EventsController extends Controller {
     foreach ($data as $event) {
       if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
         $date_debut_timestamp = strtotime($event['date_debut']);
-        $event['date_debut'] = strftime('%d %b. %Y', $date_debut_timestamp);
+        $event['date_debut'] = strftime('%d %b %Y', $date_debut_timestamp);
         $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
       } else {
         $event['date_debut'] = null;
@@ -34,7 +34,7 @@ class EventsController extends Controller {
 
       if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
         $date_fin_timestamp = strtotime($event['date_fin']);
-        $event['date_fin'] = strftime('%d %b. %Y', $date_fin_timestamp);
+        $event['date_fin'] = strftime('%d %b %Y', $date_fin_timestamp);
         $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
       } else {
         $event['date_fin'] = null;
@@ -51,7 +51,7 @@ class EventsController extends Controller {
     foreach ($data as $event) {
       if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
         $date_debut_timestamp = strtotime($event['date_debut']);
-        $event['date_debut'] = strftime('%d %b. %Y', $date_debut_timestamp);
+        $event['date_debut'] = strftime('%d %b %Y', $date_debut_timestamp);
         $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
       } else {
         $event['date_debut'] = null;
@@ -60,7 +60,7 @@ class EventsController extends Controller {
 
       if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
         $date_fin_timestamp = strtotime($event['date_fin']);
-        $event['date_fin'] = strftime('%d %b. %Y', $date_fin_timestamp);
+        $event['date_fin'] = strftime('%d %b %Y', $date_fin_timestamp);
         $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
       } else {
         $event['date_fin'] = null;
@@ -69,7 +69,7 @@ class EventsController extends Controller {
 
       $events[] = $event;
     }
-    
+
     return array(
       'slideshow' => $slideshow,
       'events'    => $events,
@@ -89,7 +89,7 @@ class EventsController extends Controller {
 
       if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {
         $date_debut_timestamp = strtotime($data['date_debut']);
-        $data['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
+        $data['date_debut'] = strftime('%a %d %b %Y', $date_debut_timestamp);
         $data['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
       } else {
         $data['date_debut'] = null;
@@ -98,7 +98,7 @@ class EventsController extends Controller {
 
       if (!empty($data['date_fin']) && $data['date_fin'] != '0000-00-00 00:00:00') {
         $date_fin_timestamp = strtotime($data['date_fin']);
-        $data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
+        $data['date_fin'] = strftime('%a %d %b %Y', $date_fin_timestamp);
         $data['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
       } else {
         $data['date_fin'] = null;

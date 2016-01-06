@@ -19,7 +19,7 @@ error_reporting(E_ALL);
 /**
  * Set locale to fr_FR
  */
-setlocale(LC_ALL, 'fr_FR');
+setlocale(LC_ALL, 'fr_FR.UTF-8');
 
 /**
  * Files paths
