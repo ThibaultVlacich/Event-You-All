@@ -18,6 +18,11 @@ class Request {
 	private static $checked = array();
 
 	/**
+	 * @var bool Variable to lock all read/write actions on the input values. Default values will be sent.
+	 */
+	private static $lock = false;
+
+	/**
 	 * Returns the values of all variables with name in $names sent by $hash method
 	 *
 	 * You can use the following hashes:
@@ -159,6 +164,59 @@ class Request {
 	}
 
 	/**
+	 * Sets a request value
+	 *
+	 * @param string    $name       variable name
+	 * @param mixed     $value      the value that will be set
+	 * @param string    $hash       name of the method used to initially send
+	 * @param boolean   $overwrite  optional overwrite command, true by default
+	 * @return mixed previous value, may be null
+	 */
+	public static function set($name, $value, $hash = 'REQUEST', $overwrite = true) {
+		// Stop write action
+		if (self::$lock) {
+			return null;
+		}
+
+		// Check if overwriting is allowed
+		if (!$overwrite && array_key_exists($name, $_REQUEST)) {
+			return $_REQUEST[$name];
+		}
+
+		// Stores previous value
+		$previous = array_key_exists($name, $_REQUEST) ? $_REQUEST[$name] : null;
+
+		switch (strtoupper($hash)) {
+			case 'GET':
+				$_GET[$name] = $value;
+				$_REQUEST[$name] = $value;
+				break;
+
+			case 'POST':
+				$_POST[$name] = $value;
+				$_REQUEST[$name] = $value;
+				break;
+
+			case 'COOKIE':
+				$_COOKIE[$name] = $value;
+				$_REQUEST[$name] = $value;
+				break;
+
+			case 'FILES':
+				$_FILES[$name] = $value;
+				break;
+
+			default:
+				$_REQUEST[$name] = $value;
+				break;
+		}
+
+		self::$checked[$hash.$name] = true;
+
+		return $previous;
+	}
+
+	/**
 	 * Returns the filtered variable after a tiny security check
 	 *
 	 * @param mixed $variable variable that we want to filter
@@ -192,6 +250,20 @@ class Request {
 		}
 
 		return $variable;
+	}
+
+	/**
+	 * Stops all read/write actions on the Request variables.
+	 */
+	public static function lock() {
+		self::$lock = true;
+	}
+
+	/**
+	 * Allows all read/write actions on the Request variables.
+	 */
+	public static function unlock() {
+		self::$lock = false;
 	}
 
 	/**
