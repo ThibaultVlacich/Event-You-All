@@ -6,7 +6,7 @@
         </section>
         <section class="principal">
               <div class="titre">
-                <h1>titre</h1><br/>
+                <h1>Titre</h1><br/>
                 <input type="text" required autofocus name='titre' id='sujet'/><br/>
               </div>
               <div class="description">

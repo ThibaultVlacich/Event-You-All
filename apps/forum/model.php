@@ -77,8 +77,8 @@ class ForumModel {
    return $prep->fetch(PDO::FETCH_ASSOC);
  }
 
-  public function addComment(array $data) {
-     $prep = $this->db->prepare('
+  public function addComment($topic_id, array $data) {
+    $prep = $this->db->prepare('
       INSERT INTO forum_messages (message,date,id_createur,id_topic)
       VALUES (:message,NOW(),:id_createur,:id_topic)
     ');
@@ -87,9 +87,6 @@ class ForumModel {
     if ($session->isConnected()) {
      $user_id = $_SESSION['userid'];
     }
-   $URI=strval($_SERVER['REQUEST_URI']);
-   $tabl_uri =explode('/' , $URI);
-   $topic_id=intval($tabl_uri[4]);
 
     $prep->bindParam(':message', $data['message']);
     $prep->bindParam(':id_createur',$user_id);
@@ -113,14 +110,16 @@ class ForumModel {
     return $comment;
   }
 
-  public function getComments($from = 0, $number = 9999999, $order = 'date', $asc = true) {
+  public function getComments($topic_id, $from = 0, $number = 9999999, $order = 'date', $asc = true) {
     $prep = $this->db->prepare('
       SELECT *
       FROM forum_messages
+      WHERE id_topic = :topic_id
       ORDER BY '.$order.' '.($asc ? 'ASC' : 'DESC').'
       LIMIT :from, :number
     ');
 
+    $prep->bindParam(':topic_id', $topic_id);
     $prep->bindParam(':from', $from, PDO::PARAM_INT);
     $prep->bindParam(':number', $number, PDO::PARAM_INT);
     $prep->execute();

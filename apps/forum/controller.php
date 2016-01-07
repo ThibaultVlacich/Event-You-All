@@ -48,58 +48,60 @@ class ForumController extends Controller {
 
  function topic(array $params){
     if (isset($params[0])) {
-
       $topic_id = intval($params[0]);
 
       $data = $this->model->getTopic($topic_id);
       $datecrea = $data['date_creation'];
       $titre = $data['titre'];
       $createurtop = $this->model->getCreatorForTopic($data['id_createur']);
-      $data = $this->model->getComments(0, 5, 'date', true);
-       foreach ($data as $comment) {
+
+      $comments = $this->model->getComments($topic_id, 0, 10);
+
+      foreach ($comments as &$comment) {
          $date_timestamp = strtotime($comment['date']);
-         $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
-         $createurcom = $this->model->getCreatorForComments($comment['id_createur']);
-       }
-       $data = $this->model->getComments(0, 10);
+         $comment['date'] = strftime('%d %b %Y', $date_timestamp);
+         $comment['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
+      }
 
-       $comments = array();
-
-       foreach ($data as $comment) {
-          $date_timestamp = strtotime($comment['date']);
-          $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
-
-          $comments[] = $comment;
-        }
-        $data = Request::getAssoc(array('message'));
-
-
-        return array('id_topic'=>$topic_id,'comments' => $comments,'createurtop'=>$createurtop['nickname'],'createurcom'=>$createurcom['nickname'],'date_creation'=>$datecrea,'titre'=>$titre);
+      return array(
+        'id_topic' => $topic_id,
+        'comments' => $comments,
+        'createurtop' => $createurtop['nickname'],
+        'date_creation' => $datecrea,
+        'titre' => $titre
+      );
+    }
   }
-}
 
- function create() {
+  function create() {
 
- }
+  }
 
- function create_confirm() {
+  function create_confirm() {
 
-   $data = Request::getAssoc(array('titre','description'));
+    $data = Request::getAssoc(array('titre','description'));
 
-   if (!in_array(null, $data, true)) {
-     $id_topic = $this->model->createTopic($data);
-     return array ('id' => $id_topic);
-   }
- }
- function send_comment(array $params) {
-
-   $data = Request::getAssoc(array('message'));
-
-   if (!in_array(null, $data, true)) {
-      $id_topic = $this->model->addComment($data);
+    if (!in_array(null, $data, true)) {
+      $id_topic = $this->model->createTopic($data);
       return array ('id' => $id_topic);
-   }
- }
+    }
+  }
+
+  function send_comment(array $params) {
+    if(!isset($params[0])) {
+      return false;
+    }
+
+    $topic_id = intval($params[0]);
+
+    $data = Request::getAssoc(array('message'));
+
+    if (!in_array(null, $data, true)) {
+      $this->model->addComment($topic_id, $data);
+
+      return array('id' => $topic_id);
+    }
+  }
 }
 
 ?>

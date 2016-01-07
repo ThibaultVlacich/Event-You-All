@@ -35,30 +35,25 @@ border-bottom:1px solid #cc0033;
 #presentation h3{
   color:#cc0033;
 }
-.first_ligne{
-  background-color: rgb(229,229,229);
-  margin-top: 5px;
+table.messages {
   margin-left: auto;
   margin-right: auto;
   width:80%;
+}
+.first_ligne{
+  background-color: rgb(229,229,229);
+  margin-top: 5px;
   text-align: center;
   color:#cc0033;
 }
 .back1{
   background-color: rgb(229,229,229);
   margin-top: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  width:80%;
   text-align: center;
 }
 .back2{
   background-color: whitesmoke;
   margin-top: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: Trebuchet MS;
-  width:80%;
   text-align: center;
 }
 .utilisateur{
