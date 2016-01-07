@@ -57,17 +57,7 @@ class EventsModel {
     if ($prep->execute()) {
 	    $idevent = $this->db->lastInsertId('id');
 
-	    // lier le type de l'event
-	    $prep = $this->db->prepare('INSERT INTO evenements_types (id_evenement, id_type) VALUES (:id_ev, :id_ty)');
-	    $prep->bindParam(':id_ev', $idevent);
-      $prep->bindParam(':id_ty', $data['type']);
-	    $prep->execute();
 
-	    // lier le theme de l'event
-	    $prep = $this->db->prepare('INSERT INTO evenements_genres (id_evenement, id_genre) VALUES (:id_ev, :id_ge)');
-	    $prep->bindParam(':id_ev', $idevent);
-      $prep->bindParam(':id_ge', $data['theme']);
-	    $prep->execute();
 
       return $idevent;
     } else {
