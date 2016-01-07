@@ -254,7 +254,7 @@ class EventsController extends Controller {
       // Retourner les infos récupérées
       //print_r ($data);
         $data['themes'] = $this->model->getThemes();
-        $data['types'] = $this->model->geTypes();
+        $data['types'] = $this->model->getTypes();
         $data['regions'] = $this->model->getRegions();
       return $data;
     }
