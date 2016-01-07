@@ -1,4 +1,11 @@
 <?php
+/**
+ * This is the View for the app "forum".
+ *
+ * @package apps/forum
+ * @author Léo Plouvier <leo.plouvier@isep.fr>
+ * @version 0.1.0-dev-07-01-2015
+ */
 
 class ForumView extends View {
   public function forum() {
@@ -23,7 +30,7 @@ class ForumView extends View {
   public function create_confirm(){
   $this->setTemplate('/apps/forum/views/create_confirm.php');
   }
-  
+
   public function sent_comment(){
     $this->setTemplate('/apps/forum/views/sent_comment.php');
   }

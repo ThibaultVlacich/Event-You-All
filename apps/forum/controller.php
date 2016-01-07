@@ -1,5 +1,12 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
+/**
+ * This is the Controller for the app "forum".
+ *
+ * @package apps/forum
+ * @author Léo Plouvier <leo.plouvier@isep.fr>
+ * @version 0.1.0-dev-07-01-2015
+ */
 
 class ForumController extends Controller {
   var $default_module = 'forum';
