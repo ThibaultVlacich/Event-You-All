@@ -3,10 +3,10 @@
     <script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $model['id']; ?>';
-      }, 5000);
+      }, 3000);
     </script>
     <ul>
         <li>Votre commentaire a été envoyé avec succès !</li>
-        <li>Vous allez être redirigé dans 5 secondes.</li>
+        <li>Vous allez être redirigé dans 3 secondes.</li>
     </ul>
 </div>

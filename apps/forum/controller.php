@@ -49,8 +49,11 @@ class ForumController extends Controller {
 
           $comments[] = $comment;
         }
+        $data = Request::getAssoc(array('message'));
+
+
         return array('id_topic'=>$topic_id,'comments' => $comments,'createurtop'=>$createurtop['nickname'],'createurcom'=>$createurcom['nickname'],'date_creation'=>$datecrea,'titre'=>$titre);
- }
+  }
 }
 
  function create() {
@@ -71,7 +74,7 @@ class ForumController extends Controller {
    $data = Request::getAssoc(array('message'));
 
    if (!in_array(null, $data, true)) {
-     $id_topic = intval($params[0]);
+     $id_topic =$this->model->addComment($data);
      return array ('id' => $id_topic);
    }
  }

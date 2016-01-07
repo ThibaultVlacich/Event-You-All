@@ -70,18 +70,21 @@ class ForumModel {
 
  public function addComment(array $data) {
    $prep = $this->db->prepare('
-    INSERT INTO forum_messages (message,date,id_createur)
-    VALUES (:message,NOW(),:id_createur)
+    INSERT INTO forum_messages (message,date,id_createur,id_topic)
+    VALUES (:message,NOW(),:id_createur,:id_topic)
   ');
 
   $session = System::getSession();
  if ($session->isConnected()) {
  $user_id = $_SESSION['userid'];
 }
-//$topic_id =
+ $URI=strval($_SERVER['REQUEST_URI']);
+ $tabl_uri =explode('/' , $URI);
+ $topic_id=intval($tabl_uri[4]);
+
   $prep->bindParam(':message', $data['message']);
   $prep->bindParam(':id_createur',$user_id);
-//  $prep->bindParam(':id_topic',$topic_id);
+  $prep->bindParam(':id_topic',$topic_id);
 
   if ($prep->execute()) {
     return $this->db->lastInsertId('id');

@@ -20,7 +20,6 @@
             return;
           }
         ?>
-
         <ul id="presentation">
             <li><p>Sujet de :</p></li>
             <li><h3><?php echo $model['createurtop']; ?></h3></li>
@@ -68,7 +67,7 @@
                 <td><a href="#">3</a></td>
             </tr>
         </table>
-<form method="post" action="<?php echo Config::get('config.base'); ?>/forum/sent_comment" enctype="multipart/form-data">
+<form method="post" action="<?php echo Config::get('config.base'); ?>/forum/Topic"<?php echo $model['id_topic']?>  enctype="multipart/form-data">
           <h3 id="aj_com">Ajouter un commentaire :</h3>
           <textarea required name='message' id="commentaire"></textarea><br/>
         <input class="Envoyer" type="submit" value="Envoyer">
