@@ -19,7 +19,7 @@ class ArticleView extends View {
     $this->assign('css', Config::get('config.base').'/apps/article/styles/creatarticle.css');
   }
     public function modif() {
-    $this->setTemplate('/apps/article/views/modifarticleconf.php');
+    $this->setTemplate('/apps/article/views/modifarticle.php');
     $this->assign('css', Config::get('config.base').'/apps/article/styles/creatarticle.css');
   }
 
@@ -28,7 +28,7 @@ class ArticleView extends View {
     $this->setTemplate('/apps/article/views/creatart.php');
  }
    public function modif_confirm(){
-    $this->setTemplate('/apps/article/views/modifarticle.php');
+    $this->setTemplate('/apps/article/views/modifarticleconf.php');
  }
 }
 

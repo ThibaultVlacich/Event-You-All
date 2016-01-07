@@ -43,7 +43,7 @@
                     <br>
                     <div class="long">
                         <div class="label">
-                            <label for='arti'>Article lié à mon événément  </label>
+                            <label for='arti'>Evénement lié à mon Article </label>
                         </div>
                             <select  name='arti' id='arti'>
 								<?php

@@ -72,6 +72,31 @@ class ArticleModel {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
+  
+    public function oldban($event_id) {
+    $prep = $this->db->prepare('SELECT banniere FROM articles WHERE id = '.$event_id.'');
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+  
+  public function modifArticle(array $data) {
+    $prep = $this->db->prepare('
+      UPDATE articles SET nom=:nom,contenu=:corps,id_evenement=:event,banniere=:bann WHERE id = :id_event
+    ');
+
+    $prep->bindParam(':nom', $data['nom']);
+    $prep->bindParam(':corps', $data['corps']);
+    $prep->bindParam(':event', $data['arti']);
+    $prep->bindParam(':bann', $data['bann']);
+
+    if ($prep->execute()) {
+
+      return $data['id'];
+    } else {
+        echo 'non';
+      return false;
+    }
+  }
 }
 
 ?>

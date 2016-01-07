@@ -24,7 +24,7 @@
               if ($model['creator']['id'] == $user_id) {
                 // User is the creator
           ?>
-          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'article</a>
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/article/modif/<?php echo $model['id']; ?>">Modifier l'article</a>
           <?php
             }}?>
  </div>

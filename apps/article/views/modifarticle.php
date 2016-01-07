@@ -1,21 +1,27 @@
-<div class="app-events app-events-detail">
-  <?php
-    if (empty($model['evenements'])) {
-      // No events created by user
-  ?>
-  <div class="note error">
-    <i class="fa fa-exclamation-triangle"></i>
-    <ul>
-      <li>Vous ne pouvez pas écrire d'articles sans avoir créé un événement avant</li>
-    </ul>
-  </div>
-  <?php
-      return;
-    }
-  ?>
+ <?php
+            if (empty($model)) {
+              // No event based on asked id
+          ?>
+          <div class="note error">
+            <i class="fa fa-exclamation-triangle"></i>
+            <ul>
+              <li>L'événement demandé n'existe pas !</li>
+            </ul>
+          </div>
+          <?php
+              return;
+            }?>
+            <?php 
+            $session = System::getSession();
+            if($session->isConnected()) {
+              // User is logged in
+              $user_id = $_SESSION['userid'];
+
+              if ($model['creator']['id'] == $user_id) {
+                // User is the creator?>
 <section class="blocinscri">
-            <form method='post' action='<?php echo Config::get('config.base'); ?>/article/create_confirm' enctype="multipart/form-data">
-                <h2>Ecrire un article</h2>
+            <form method='post' action='<?php echo Config::get('config.base'); ?>/article/modif_confirm' enctype="multipart/form-data">
+                <h2>Modifier mon article</h2>
 				<div class="create_part" >
                 <h3>1-A propos de l'Article</h3>
                 <div class="centre">
@@ -23,7 +29,7 @@
                         <div class="label">
                             <label for='nom'>Nom<span class="required">*</span>  </label>
                         </div>
-                        <input type='text' name='nom' id='nom' required placeholder="ex : Mon evenement">
+                        <input type='text' name='nom' id='nom' required placeholder="ex : Mon evenement" value="<?php echo $model['nom'] ?>">
                     </div>
                     <div class="long">
                         <div class="label">
@@ -43,14 +49,14 @@
                     <br>
                     <div class="long">
                         <div class="label">
-                            <label for='arti'>Article lié à mon événément  </label>
+                            <label for='arti'>Evénement lié à mon Article  </label>
                         </div>
                             <select  name='arti' id='arti'>
 								<?php
 									  foreach ($model['evenements'] as $event) {
 									?>
-									<option value=
-									<?php echo $event['id']?>
+									<option value="
+									<?php echo $event['id']?>" <?php if ($model['id_evenement']==$event['id']){echo "selected";} ?>
 									>
 									<?php echo $event['nom']?>
 									</option>
@@ -70,7 +76,7 @@
                             <label for='corps'>Article  </label>
                         </div>
                         <br>
-                        <textarea required name="corps" rows=10 cols=100>Bla bla bla </textarea>
+                        <textarea required name="corps" rows=10 cols=100><?php echo $model['contenu'] ?></textarea>
                     </div>
                     <div class="long">
                         <div class="label">
@@ -94,3 +100,4 @@
             </form>
 			
         </section>
+            <?php } }?>
