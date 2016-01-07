@@ -1,3 +1,4 @@
+![](https://raw.githubusercontent.com/ThibaultVlacich/Event-You-All/master/templates/images/header/logo.png?token=AAUcXGaQqEDntrE9DjZXYOHT4tBcNKMuks5WmAjpwA%3D%3D)
 # Event-You-All
 
 This is the private repository of the Event-You-All website source code.
