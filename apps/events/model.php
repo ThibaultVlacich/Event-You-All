@@ -55,7 +55,7 @@ class EventsModel {
     $prep->bindParam(':creator',$user_id);
     $prep->bindParam(':type', $data['type']);
     $prep->bindParam(':theme',$data['theme']);
-    
+
 
     if ($prep->execute()) {
 	    $idevent = $this->db->lastInsertId('id');
@@ -79,7 +79,7 @@ class EventsModel {
     if ($event !== false) {
       // Get theme linked for the event
       if (!empty($event['id_theme'])) {
-        $prep = $this->db->prepare('SELECT * FROM theme WHERE id = :id_theme');
+        $prep = $this->db->prepare('SELECT * FROM themes WHERE id = :id_theme');
 
         $prep->bindParam(':id_theme', $event['id_theme']);
         $prep->execute();
@@ -122,7 +122,7 @@ class EventsModel {
     foreach ($events as &$event) {
       // Get theme linked for the event
       if (!empty($event['id_theme'])) {
-        $prep = $this->db->prepare('SELECT * FROM theme WHERE id = :id_theme');
+        $prep = $this->db->prepare('SELECT * FROM themes WHERE id = :id_theme');
 
         $prep->bindParam(':id_theme', $event['id_theme']);
         $prep->execute();
@@ -194,30 +194,16 @@ public function modifEvent(array $data) {
     $prep->bindParam(':poster', $data['poster']);
     $prep->bindParam(':theme', $data['theme']);
     $prep->bindParam(':type', $data['type']);
-//TO DO mofify poster and banner only if changed !
-//      modify date
-    if ($prep->execute()) {
-/*
-        // lier le type de l'event
-        $prep = $this->db->prepare('INSERT INTO evenements_types (id_evenement, id_type) VALUES (:id_ev, :id_ty)');
-        $prep->bindParam(':id_ev', $idevent);
-      $prep->bindParam(':id_ty', $data['type']);
-        $prep->execute();
 
-        // lier le theme de l'event
-        $prep = $this->db->prepare('INSERT INTO evenements_genres (id_evenement, id_genre) VALUES (:id_ev, :id_ge)');
-        $prep->bindParam(':id_ev', $idevent);
-      $prep->bindParam(':id_ge', $data['theme']);
-        $prep->execute();
-*/
+    if ($prep->execute()) {
       return $data['id'];
     } else {
-        echo 'non';
       return false;
     }
   }
+
   public function getThemes(){
-    $prep = $this->db->prepare('SELECT * FROM theme');
+    $prep = $this->db->prepare('SELECT * FROM themes');
 
     $prep->execute();
 
@@ -225,7 +211,8 @@ public function modifEvent(array $data) {
 
     return $events;
   }
-   public function getTypes(){
+
+  public function getTypes(){
     $prep = $this->db->prepare('SELECT * FROM types');
 
     $prep->execute();
@@ -234,8 +221,9 @@ public function modifEvent(array $data) {
 
     return $events;
   }
+
   public function getRegions(){
-    $prep = $this->db->prepare('SELECT * FROM region');
+    $prep = $this->db->prepare('SELECT * FROM regions');
 
     $prep->execute();
 

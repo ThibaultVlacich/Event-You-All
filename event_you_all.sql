@@ -255,21 +255,21 @@ CREATE TABLE IF NOT EXISTS `newsletters_abonnes` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `region`
+-- Structure de la table `regions`
 --
 
-DROP TABLE IF EXISTS `region`;
-CREATE TABLE IF NOT EXISTS `region` (
+DROP TABLE IF EXISTS `regions`;
+CREATE TABLE IF NOT EXISTS `regions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT = 20 ;
 
 --
--- Contenu de la table `region`
+-- Contenu de la table `regions`
 --
 
-INSERT INTO `region` (`id`, `nom`) VALUES
+INSERT INTO `regions` (`id`, `nom`) VALUES
 (1, 'Alsace Champagne-Ardenne Lorraine'),
 (2, 'Alsace Champagne-Ardenne Lorraine'),
 (3, 'Aquitaine Limousin Poitou-Charentes'),
@@ -306,21 +306,21 @@ CREATE TABLE IF NOT EXISTS `sponsors` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `theme`
+-- Structure de la table `themes`
 --
 
-DROP TABLE IF EXISTS `theme`;
-CREATE TABLE IF NOT EXISTS `theme` (
+DROP TABLE IF EXISTS `themes`;
+CREATE TABLE IF NOT EXISTS `themes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT = 4 ;
 
 --
--- Contenu de la table `theme`
+-- Contenu de la table `themes`
 --
 
-INSERT INTO `theme` (`id`, `nom`) VALUES
+INSERT INTO `themes` (`id`, `nom`) VALUES
 (1, 'Musique'),
 (2, 'Peinture'),
 (3, 'Sculpture');
