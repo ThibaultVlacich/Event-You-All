@@ -31,7 +31,7 @@ class ForumView extends View {
   $this->setTemplate('/apps/forum/views/create_confirm.php');
   }
 
-  public function sent_comment(){
+  public function send_comment(){
     $this->setTemplate('/apps/forum/views/sent_comment.php');
   }
 }
