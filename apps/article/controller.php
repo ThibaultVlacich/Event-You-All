@@ -109,7 +109,7 @@ class ArticleController extends Controller {
       if (!($data = $this->model->getArticle($article_id))) {
         return array();
       }
-
+    
     // Get creator's name and id
     $data['creator'] = $this->model->getCreatorForArticle($data['id']);
 
@@ -180,7 +180,8 @@ function modif_confirm(array $params) {
      if (empty($data['bann'])) {
         $data['bann'] = null;
       }
-        $id_article = $this->model->modifArticle($data);
+        $id_article = $article_id;
+        $truc=$this->model->modifArticle($data,$id_article);
 
 	    return array('id' => $id_article, 'error' => $errors);
    }

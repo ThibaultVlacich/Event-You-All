@@ -79,19 +79,20 @@ class ArticleModel {
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
   
-  public function modifArticle(array $data) {
+  public function modifArticle(array $data,$id) {
     $prep = $this->db->prepare('
-      UPDATE articles SET nom=:nom,contenu=:corps,id_evenement=:event,banniere=:bann WHERE id = :id_event
+      UPDATE articles SET nom=:nom,contenu=:corps,id_evenement=:event,banniere=:bann WHERE id = :id_article
     ');
 
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':corps', $data['corps']);
     $prep->bindParam(':event', $data['arti']);
     $prep->bindParam(':bann', $data['bann']);
+    $prep->bindParam(':id_article', $id);
 
     if ($prep->execute()) {
 
-      return $data['id'];
+      return $id;
     } else {
         echo 'non';
       return false;

@@ -20,7 +20,7 @@
               if ($model['creator']['id'] == $user_id) {
                 // User is the creator?>
 <section class="blocinscri">
-            <form method='post' action='<?php echo Config::get('config.base'); ?>/article/modif_confirm' enctype="multipart/form-data">
+            <form method='post' action='<?php echo Config::get('config.base'); ?>/article/modif_confirm/<?php echo $model['id']?>' enctype="multipart/form-data">
                 <h2>Modifier mon article</h2>
 				<div class="create_part" >
                 <h3>1-A propos de l'Article</h3>
