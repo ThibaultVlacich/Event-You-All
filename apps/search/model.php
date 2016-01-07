@@ -137,7 +137,7 @@ class SearchModel {
   }
 
     public function gettheme(){
-      $prep = $this->db->prepare('SELECT id, nom FROM theme');
+      $prep = $this->db->prepare('SELECT id, nom FROM themes');
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -149,7 +149,7 @@ class SearchModel {
     }
 
     public function getregion(){
-      $prep = $this->db->prepare('SELECT id, nom FROM region');
+      $prep = $this->db->prepare('SELECT id, nom FROM regions');
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
