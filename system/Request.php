@@ -131,11 +131,6 @@ class Request {
 	 * @return mixed the checked value associated to $name or null if not exists
 	 */
 	public static function getValue(&$data, $name, $default, $hash) {
-		// Stop read action
-		if (self::$lock) {
-			return $default;
-		}
-
 		if (isset(self::$checked[$hash.$name])) {
 			// Directly get the verifed variable in data
 			return $data[$name];
