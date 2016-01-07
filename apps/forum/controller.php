@@ -3,37 +3,52 @@ defined('EUA_VERSION') or die('Access denied');
 
 class ForumController extends Controller {
   var $default_module = 'forum';
+  var $access = array(
+    'create' => 1,
+    'create_confirm' => 1,
+    'send_comment' => 1
+  );
 
- function Forum(array $params){
-     $data = $this->model->getTopics(0, 5, 'date_creation', true);
-       foreach ($data as $topic) {
-         $date_creation_timestamp = strtotime($topic['date_creation']);
-         $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
-         $createur = $this->model->getCreatorForTopic($topic['id_createur']);
-       }
-       $data = $this->model->getTopics(0, 10);
+  function forum(array $params){
+    $n = 10; // Number of topics per page
+    $page = 1; // Current page
 
-       $topics = array();
+    // Get the current page from URL
+    if ((isset($params[0]) && $params[0] == 'page') && isset($params[1])) {
+      $page = intval($params[1]);
+    }
 
-       foreach ($data as $topic) {
-          $date_creation_timestamp = strtotime($topic['date_creation']);
-          $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
+    $data = $this->model->getTopics(($page-1)*$n, $n);
 
-          $topics[] = $topic;
-        }
-        return array('topics' => $topics, 'createur'=>$createur['nickname']);
+    $topics = array();
+
+    foreach ($data as $topic) {
+      $date_creation_timestamp = strtotime($topic['date_creation']);
+      $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
+
+      $topic['createur'] = $this->model->getCreatorForTopic($topic['id_createur']);
+
+      $topics[] = $topic;
+    }
+
+    return array(
+      'topics'       => $topics,
+      'total'        => $this->model->countTopics(),
+			'current_page' => $page,
+			'per_page'     => $n
+    );
  }
 
- function Topic(array $params){
-      if (isset($params[0])) {
+ function topic(array $params){
+    if (isset($params[0])) {
 
       $topic_id = intval($params[0]);
 
       $data = $this->model->getTopic($topic_id);
-      $datecrea=$data['date_creation'];
-      $titre=$data['titre'];
-      $createurtop=$this->model->getCreatorForTopic($data['id_createur']);
-      $data= $this->model->getComments(0, 5, 'date', true);
+      $datecrea = $data['date_creation'];
+      $titre = $data['titre'];
+      $createurtop = $this->model->getCreatorForTopic($data['id_createur']);
+      $data = $this->model->getComments(0, 5, 'date', true);
        foreach ($data as $comment) {
          $date_timestamp = strtotime($comment['date']);
          $comment['date'] = strftime('%d %b. %Y', $date_timestamp);
@@ -69,13 +84,13 @@ class ForumController extends Controller {
      return array ('id' => $id_topic);
    }
  }
- function sent_comment(array $params) {
+ function send_comment(array $params) {
 
    $data = Request::getAssoc(array('message'));
 
    if (!in_array(null, $data, true)) {
-     $id_topic =$this->model->addComment($data);
-     return array ('id' => $id_topic);
+      $id_topic = $this->model->addComment($data);
+      return array ('id' => $id_topic);
    }
  }
 }

@@ -22,29 +22,39 @@ class ForumModel {
      VALUES (:titre,:description,NOW(),:id_createur)
    ');
 
-   $session = System::getSession();
-	if ($session->isConnected()) {
-	$user_id = $_SESSION['userid'];
-}
-   $prep->bindParam(':titre', $data['titre']);
-   $prep->bindParam(':description', $data['description']);
-   $prep->bindParam(':id_createur', $user_id);
+    $session = System::getSession();
+	  if ($session->isConnected()) {
+  	  $user_id = $_SESSION['userid'];
+    }
 
-   if ($prep->execute()) {
-     return $this->db->lastInsertId('id');
-   } else {
-     return false;
-   }
- }
- public function getTopic($topic_id) {
-   $prep = $this->db->prepare('SELECT * FROM forum_topics WHERE id = :topic_id');
+    $prep->bindParam(':titre', $data['titre']);
+    $prep->bindParam(':description', $data['description']);
+    $prep->bindParam(':id_createur', $user_id);
 
-   $prep->bindParam(':topic_id', $topic_id, PDO::PARAM_INT);
-   $prep->execute();
+    if ($prep->execute()) {
+      return $this->db->lastInsertId('id');
+    } else {
+      return false;
+    }
+  }
 
-   $topic = $prep->fetch(PDO::FETCH_ASSOC);
+  public function countTopics() {
+    $prep = $this->db->prepare('SELECT * FROM forum_topics');
 
-   return $topic;
+    $prep->execute();
+
+    return intval($prep->fetchColumn());
+  }
+
+  public function getTopic($topic_id) {
+    $prep = $this->db->prepare('SELECT * FROM forum_topics WHERE id = :topic_id');
+
+    $prep->bindParam(':topic_id', $topic_id, PDO::PARAM_INT);
+    $prep->execute();
+
+    $topic = $prep->fetch(PDO::FETCH_ASSOC);
+
+    return $topic;
  }
 
  public function getTopics($from = 0, $number = 9999999, $order = 'date_creation', $asc = true) {
