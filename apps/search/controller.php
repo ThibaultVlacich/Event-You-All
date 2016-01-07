@@ -21,8 +21,9 @@ class SearchController extends Controller {
     $data['region'] = $this->model->getregion();
 
     $advancedsearch = $advancedsearchsend;
+
     if(!empty($advancedsearchsend['organisateur'])){
-      $advancedsearch['organisateur'] = $this->model->getUserID($advancedsearchsend('organisateur'));
+      $advancedsearch['organisateur'] = $this->model->getUserID($advancedsearchsend['organisateur']);
     }
 
     if(isset($advancedsearchsend) && !empty($advancedsearchsend)){

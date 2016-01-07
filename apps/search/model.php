@@ -22,7 +22,7 @@ class SearchModel {
     $found = 'SELECT nom, ville, date_debut, poster FROM evenements WHERE ';
 
     if (!empty($advancedsearch['theme'])) {
-      $found .= ' id_theme = "'.addslashes($advancedsearch['theme']).'"';
+      $found .= ' id_theme = '.intval($advancedsearch['theme']);
     }
 
     if(!empty($advancedsearch['advancedsearch'])){
@@ -45,19 +45,19 @@ class SearchModel {
 
     if (!empty($advancedsearch['type'])) {
       if($found<65){
-        $found .= 'id_type = '.intval($advancedsearch['type']).'';
+        $found .= 'id_type = '.intval($advancedsearch['type']);
       }
       else{
-        $found .= ' AND id_type = '.intval($advancedsearch['type']).'';
+        $found .= ' AND id_type = '.intval($advancedsearch['type']);
       }
     }
 
     if(!empty($advancedsearch['region'])){
       if($found<65){
-        $found .= 'region LIKE "'.addslashes($advancedsearch['region']).'"';
+        $found .= 'region = '.intval($advancedsearch['region']);
       }
       else{
-        $found .= ' AND region LIKE "'.addslashes($advancedsearch['city']).'"';
+        $found .= ' AND region LIKE '.intval($advancedsearch['region']);
       }
     }
 
@@ -107,8 +107,14 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['organisateur'])) {
-'      WHERE evenements.id_createur = users.id
-            AND (users.nickname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.firstname LIKE "'.addslashes($advancedsearch['organisateur']).'" OR users.lastname LIKE "'.addslashes($advancedsearch['organisateur']).'")';
+      if($found>65){
+        $found .= ' AND ';
+      }
+      $nbrcaserestants = count($advancedsearch['organisateur']);
+      while ($nbrcaserestants > 1) {
+        $found .= ' evenements.id_createur = '.intval($advancedsearch['organisateur'][$nbrcaserestants-1]).' OR ';          $nbrcaserestants = $nbrcaserestants - 1;
+      }
+      $found .= ' evenements.id_createur = '.intval($advancedsearch['organisateur'][0]);
     }
 
     if (!empty($advancedsearch['date_event'])) {
