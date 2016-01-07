@@ -39,7 +39,7 @@
                     <div class="fill">
                        <select  name='theme' id='theme'>
                                         <?php
-                                              foreach ($model['genreT'] as $event) {
+                                              foreach ($model['themes'] as $event) {
                                             ?>
                                             <option value=
                                             <?php echo $event['id']?>
@@ -57,7 +57,7 @@
                     <div class="fill">
                         <select  name='type' id='type'>
                                                 <?php
-                                                      foreach ($model['typeT'] as $event) {
+                                                      foreach ($model['types'] as $event) {
                                                     ?>
                                                     <option value=
                                                     <?php echo $event['id']?>
@@ -350,7 +350,7 @@
                     <div class="fill">
                       <select  name='reg' id='reg'>
                                     <?php
-                                          foreach ($model['regionT'] as $event) {
+                                          foreach ($model['regions'] as $event) {
                                         ?>
                                         <option value=
                                         <?php if ($event['id']==$model['region']){echo $event['id'].' selected';}else{echo $event['id'];}?>
