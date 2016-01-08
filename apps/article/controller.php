@@ -38,10 +38,10 @@ class ArticleController extends Controller {
 		if ($session->isConnected()) {
 		$user_id = $_SESSION['userid'];
 		}
-	//recupere infos sur evenements crees par utilisateur	
+	//recupere infos sur evenements crees par utilisateur
 	 $data['evenements'] = $this->model->getUserEvents($user_id);
 	 return $data;
-	 
+
 
  }
 
@@ -52,7 +52,7 @@ class ArticleController extends Controller {
    if (!in_array(null, $data, true)) {
      $data += Request::getAssoc(array('mclef'));
      $errors = array();
-     
+
      //TO DO : Make the error work (doesn't appear despite bad extension)
      //-------------Banniere---------------------------------------------------
      $maxwidth = 100000;
@@ -87,12 +87,12 @@ class ArticleController extends Controller {
         }
       }
       //----------------------------------------------------------------------------(fin banniere)
-      
+
      if (empty($data['bann'])) {
         $data['bann'] = null;
       }
      $id_article = $this->model->createEvent($data);
-	 
+
 	 return array('id' => $id_article,'error' => $errors);
    }
  }
@@ -100,7 +100,7 @@ class ArticleController extends Controller {
  function index() {
 
  }
- 
+
  function modif (array $params) {
     if (isset($params[0])) {
       $article_id = intval($params[0]);
@@ -109,25 +109,25 @@ class ArticleController extends Controller {
       if (!($data = $this->model->getArticle($article_id))) {
         return array();
       }
-    
+
     // Get creator's name and id
     $data['creator'] = $this->model->getCreatorForArticle($data['id']);
 
       // Retourner les infos récupérées
-      
+
       //print_r ($data);
       	 //recupere id utilisateur
 	 $session = System::getSession();
 		if ($session->isConnected()) {
 		$user_id = $_SESSION['userid'];
 		}
-     //recupere infos sur evenements crees par utilisateur	
+     //recupere infos sur evenements crees par utilisateur
      $data['evenements'] = $this->model->getUserEvents($user_id);
       return $data;
     }
     else{echo false;}
   }
-  
+
 function modif_confirm(array $params) {
     if (isset($params[0])) {
     $article_id = intval($params[0]);
@@ -137,7 +137,7 @@ function modif_confirm(array $params) {
    if (!in_array(null, $data, true)) {
      $data += Request::getAssoc(array('mclef'));
      $errors = array();
-     
+
      //TO DO : Make the error work (doesn't appear despite bad extension)
      //-------------Banniere---------------------------------------------------
      $maxwidth = 100000;
@@ -146,7 +146,7 @@ function modif_confirm(array $params) {
       $minheight = 0;
       $banner = Request::get('bann', null, 'FILES');
       $message_erreur = '';
-      $oldbanner=$this->model->oldban($article_id);
+
       if(!empty($banner['name'])) {
         if(!$banner['error']) {
             $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
@@ -173,10 +173,10 @@ function modif_confirm(array $params) {
         }
       }
       else{
-          $data['bann']=$oldbanner;
+          $data['bann'] = '';
       }
       //----------------------------------------------------------------------------(fin banniere)
-      
+
      if (empty($data['bann'])) {
         $data['bann'] = null;
       }

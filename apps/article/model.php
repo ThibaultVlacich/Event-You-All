@@ -26,10 +26,10 @@ class ArticleModel {
    public function createEvent(array $data) {
     $prep = $this->db->prepare('INSERT INTO articles (nom,contenu,id_evenement,banniere,date_creation,id_createur) VALUES (:nom,:contenu,:event,
     :banniere,:date_creation,:creator)');
-    
+
     $creation=date("Y-m-d H:i:s");
     $user_id = $_SESSION['userid'];
-    
+
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':contenu', $data['corps']);
     $prep->bindParam(':event', $data['arti']);
@@ -54,7 +54,7 @@ class ArticleModel {
 
     return $article;
   }
-  
+
   public function getUserEvents($user_id){
     $prep = $this->db->prepare('SELECT * FROM evenements WHERE id_createur = :user_id');
 
@@ -72,26 +72,28 @@ class ArticleModel {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
-  
-    public function oldban($event_id) {
-    $prep = $this->db->prepare('SELECT banniere FROM articles WHERE id = '.$event_id.'');
-    $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
-  }
-  
+
   public function modifArticle(array $data,$id) {
     $prep = $this->db->prepare('
-      UPDATE articles SET nom=:nom,contenu=:corps,id_evenement=:event,banniere=:bann WHERE id = :id_article
+      UPDATE articles SET nom=:nom,contenu=:corps,id_evenement=:event WHERE id = :id_article
     ');
 
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':corps', $data['corps']);
     $prep->bindParam(':event', $data['arti']);
-    $prep->bindParam(':bann', $data['bann']);
     $prep->bindParam(':id_article', $id);
 
-    if ($prep->execute()) {
+    if(!empty($data['bann'])) {
+      $prep2 = $this->db->prepare('
+        UPDATE articles SET bann = :bann WHERE id = :id_article
+      ');
 
+      $prep2->bindParam(':bann', $data['bann']);
+
+      $prep2->execute();
+    }
+
+    if ($prep->execute()) {
       return $id;
     } else {
         echo 'non';
