@@ -204,7 +204,7 @@ class UserController extends Controller {
 		$data = $this->model->getUser($user_id);
 
 		if(empty($data['photoprofil'])){
-			$data['photoprofil'] = Config::get('config.base').'apps/user/images/photoinconnu.png';
+			$data['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png';
 		}
 		if($data['profilprive'] == 1){
 			$data['profilprive'] = 'Profil Privé';
@@ -255,8 +255,9 @@ class UserController extends Controller {
 			$data = $this->model->getUser($user_id);
 
 			if(empty($data['photoprofil'])){
-				$data['photoprofil'] = Config::get('config.base').'apps/user/images/photoinconnu.png';
+				$data['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png';
 			}
+
 			if($data['profilprive'] == 1){
 				$data['profilprive'] = 'Profil Privé';
 			}

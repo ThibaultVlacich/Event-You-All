@@ -79,7 +79,7 @@
             if ($session->isConnected()) {
           ?>
             <li>Bienvenue <?php echo $_SESSION['nickname']; ?></li>
-            <li><a href="<?php echo Config::get('config.base'); ?>/user/my_account">Mon compte</a></li>
+            <li><a href="<?php echo Config::get('config.base'); ?>/user/myprofil">Mon compte</a></li>
             <li><a href="<?php echo Config::get('config.base'); ?>/user/logout">Se déconnecter</a></li>
             <?php if($_SESSION['access'] == 3) { ?><li><a href="<?php echo Config::get('config.base'); ?>/admin">Administration</a></li><?php } ?>
           <?php
