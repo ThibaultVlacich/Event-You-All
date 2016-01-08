@@ -1,4 +1,4 @@
-        <div id="LATOTALESUPERCHOUETTE">
+        <div id="divpage">
             <h1 class= 'entetecompte'>Mon Compte</h1>
             <?php
               if (isset($model['success']) && $model['success'] === true) {
@@ -33,7 +33,7 @@
                 <h2 class='entetecompte'>Mon Profil</h2>
                 <section>
                   <form method="POST" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
-                      <div class="LAPHOTO">
+                      <div class="photodemoi">
                               <p class="Principal">
                                   <img class="photoinconnu" src="<?php echo $model['data']['photoprofil']; ?>" alt="Photo d'inconnu"/>
                               </p>
@@ -42,8 +42,8 @@
       						</p>
                               <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
                                   <textarea class="textlaissercommentaire" name="commentaire" id="commentaire" value='<?php echo $model['data']['commentaire']; ?>'></textarea><br/>
-                                  <input class='updateprofil' type = 'submit' value='Valider'>
-                                  <a class='updateprofil' href = 'myprofil'>Annuler</a>
+                                  <input class='boutoncompte' type = 'submit' value='Valider'>
+                                  <a class='boutoncompte' href = 'myprofil'>Annuler</a>
 
                       </div>
                       <div class="infoperso">

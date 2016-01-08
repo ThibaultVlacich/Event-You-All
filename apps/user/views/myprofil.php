@@ -1,15 +1,19 @@
-        <div id="LATOTALESUPERCHOUETTE">
+        <div id="divpage">
             <h1>Mon Compte</h1>
+              <h2>Mes Evénéments</h2>
+              <a href='eventspasse' class='boutoncompte'>Mes événements passés</a>
+              <a href='eventsactuels' class='boutoncompte'>Les événements où je suis inscrit</a>
+              <a href='eventscree' class='boutoncompte'>Mes événements créés</a>
                 <h2>Mon Profil</h2>
                 <section>
-                <div class="LAPHOTO">
+                <div class="photodemoi">
                         <p class="Principal">
                             <img class="photoinconnu" src="<?php echo $model['photoprofil']; ?>" alt="Photo d'inconnu"/>
                         </p>
                         <p><label class="laissercommentaire" for="commentaire">Voici le commentaire que vous avez laissé :</label><br/></p>
             <div class='moncommentaire'><?php echo $model['commentaire']; ?></div>
                             <br/>
-                            <a class='updateprofil' href = 'updateProfil'>Modifier mon profil</a>
+                            <a class='boutoncompte' href = 'updateProfil'>Modifier mon profil</a>
                 </div>
                 <div class="infoperso">
                     <div class="infoperso1">

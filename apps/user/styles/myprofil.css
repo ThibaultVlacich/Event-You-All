@@ -2,7 +2,7 @@ h1
 {
    border-collapse:collapse;
    text-align: center;
-   margin-bottom:10%;
+   margin-bottom:3%;
 }
 
 .photoperso
@@ -14,7 +14,7 @@ h1
     border: 1px solid black;
 }
 
-.LAPHOTO,.infoperso
+.photodemoi,.infoperso
 {
     display:inline-block;
     width :45%;
@@ -37,7 +37,7 @@ h1
     margin-left : 10%;
 }
 
-#LATOTALESUPERCHOUETTE
+#divpage
 {
     margin : 0 auto;
     width : 80%;
@@ -128,7 +128,7 @@ h1
     margin-top:20px;
 }
 
-.updateprofil
+.boutoncompte
 {
   color:black;
   border : 1px black solid;
@@ -143,6 +143,7 @@ h1
   font-weight: bold;
   font-size: 14px;
   padding: 2px 6px 3px;
+  margin-right: 10px;
 }
 
 input
