@@ -1,5 +1,5 @@
         <div id="LATOTALE">
-            <h1>Mon Compte</h1>
+            <h1 class= 'entetecompte'>Mon Compte</h1>
             <?php
               if (isset($model['success']) && $model['success'] === true) {
             ?>
@@ -30,7 +30,7 @@
             <?php
               }
             ?>
-                <h2>Mon Profil</h2>
+                <h2 class='entetecompte'>Mon Profil</h2>
                 <section>
                   <form method="POST" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
                       <div class="LAPHOTO">
@@ -43,6 +43,7 @@
                               <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
                                   <textarea class="textlaissercommentaire" name="commentaire" id="commentaire" value='<?php echo $model['data']['commentaire']; ?>'></textarea><br/>
                                   <input class='updateprofil' type = 'submit' value='Valider'>
+                                  <a class='updateprofil' href = 'myprofil'>Annuler</a>
 
                       </div>
                       <div class="infoperso">

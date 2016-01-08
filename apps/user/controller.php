@@ -304,8 +304,8 @@ class UserController extends Controller {
 			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
 			return array('data' => $data, 'success' => true);
 		}
-		
-		elseif(empty($modifications)){
+
+		elseif($isValid == false ){
 			return array('data' => $data, 'success' => 'rien'); }
 
 		else{
