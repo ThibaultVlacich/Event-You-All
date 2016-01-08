@@ -61,14 +61,14 @@
                           <div class="infoperso2"><br/>
                                       <label for="adressephysique" id='adressephysique'>Adresse : </label><?php echo $model['data']['adress'];?><br/>
                                         <input type='text' name='adress'/><br/>
-                                      <label for='pays' class='pays'> Pays :   </label><?php echo $model['data']['country'];?>
-                                      <label for="codepostal" class='codepostal'>Code Postal : </label><?php echo $model['data']['zip_code'];?>
+                                      <label for='pays' class='pays'> Pays :   </label><?php echo $model['data']['country'];?><br/>
+                                      <select name="country" class="pays" >
+                                        <option value="FR">France</option>
+                                        <option value="CN">Canada</option>
+                                      </select><br/>
+                                      <label for="codepostal" class='codepostal'>Code Postal : </label><?php echo $model['data']['zip_code'];?><br/>
+                                        <input class ='codepostal' type='number' name='zip_code'/><br/>
                                       <label for="Ville" class='ville'>Ville : </label><?php echo $model['data']['city'];?><br/>
-                                        <select name="country" class="pays" >
-                                          <option value="FR">France</option>
-                                          <option value="CN">Canada</option>
-                                        </select>
-                                        <input class ='codepostal' type='number' name='zip_code'/>
                                         <input type='text' name='city' class='ville'/><br/>
                                       <label for="adressemail" id='adressemail'>Mon Adresse Mail : </label><?php echo $model['data']['email'];?><br/>
                                         <input name='mail' type='mail'/><br/>

@@ -271,6 +271,22 @@ class UserController extends Controller {
 			if(empty($data['sex'])){
 				$data['sex'] = 'Non renseigné';
 			}
+
+			if(empty($data['zip_code'])){
+				$data['zip_code'] = 'Non renseigné';
+			}
+
+			if(empty($data['city'])){
+				$data['city'] = 'Non renseigné';
+			}
+
+			if(empty($data['phone'])){
+				$data['phone'] = 'Non renseigné';
+			}
+
+			if(empty($data['adress'])){
+				$data['adress'] = 'Non renseigné';
+			}
 		}
 
 		$modifications=Request::getAssoc(array('photoprofil','commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));

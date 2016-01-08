@@ -187,7 +187,7 @@ class UserModel {
        if(strlen($changes)>17) {
          $changes .=', ';
        }
-       $changes .= 'profilprive = "'.addslashes($modifications['profilprive']).'" ';
+       $changes .= 'profilprive = '.intval($modifications['profilprive']);
      }
 
      if(!empty($modifications['birthdate'])) {
@@ -222,7 +222,7 @@ class UserModel {
        if(strlen($changes)>17) {
          $changes .=', ';
        }
-       $changes .= 'zip_code = "'.addslashes($modifications['zip_code']).'" ';
+       $changes .= 'zip_code = "'.intval($modifications['zip_code']).'" ';
      }
 
      if(!empty($modifications['city'])) {
