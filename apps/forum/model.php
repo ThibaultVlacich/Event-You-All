@@ -42,7 +42,7 @@ class ForumModel {
 
     $prep->execute();
 
-    return intval($prep->fetchColumn());
+    return $prep->rowCount();
   }
 
   public function getTopic($topic_id) {
@@ -56,7 +56,7 @@ class ForumModel {
     return $topic;
  }
 
- public function getTopics($from = 0, $number = 9999999, $order = 'date_creation', $asc = true) {
+ public function getTopics($from = 0, $number = 9999999, $order = 'date_creation', $asc = false) {
    $prep = $this->db->prepare('
      SELECT *
      FROM forum_topics
