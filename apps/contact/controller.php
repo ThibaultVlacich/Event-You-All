@@ -9,6 +9,7 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class ContactController extends Controller {
+	var $default_module = 'contact';
 
 public function contact() {}
 public function contactconfirm() {
