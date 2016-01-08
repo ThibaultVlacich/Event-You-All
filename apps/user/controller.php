@@ -295,7 +295,7 @@ class UserController extends Controller {
 		//checks that something has been modified
 		$isValid = false;
 		foreach ($modifications as $value) {
-			if($value !== null) {
+			if(!empty($value)) {
 				$isValid = true;
 			}
 		}
@@ -304,8 +304,13 @@ class UserController extends Controller {
 			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
 			return array('data' => $data, 'success' => true);
 		}
+		
+		elseif(empty($modifications)){
+			return array('data' => $data, 'success' => 'rien'); }
+
 		else{
-		return array('data' => $data, 'success' => false); }
+					return array('data' => $data, 'success' => false); }
+
 	}
 }
 ?>

@@ -19,7 +19,7 @@
                 return;
               }
 
-              else{
+              elseif(isset($model['success']) && $model['success'] === false){
             ?>
             <div class="note error">
               <i class="fa fa-exclamation-triangle"></i>
@@ -32,7 +32,7 @@
             ?>
                 <h2>Mon Profil</h2>
                 <section>
-                  <form method="GET" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
+                  <form method="POST" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
                       <div class="LAPHOTO">
                               <p class="Principal">
                                   <img class="photoinconnu" src="<?php echo $model['data']['photoprofil']; ?>" alt="Photo d'inconnu"/>
@@ -42,7 +42,7 @@
       						</p>
                               <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
                                   <textarea class="textlaissercommentaire" name="commentaire" id="commentaire" value='<?php echo $model['data']['commentaire']; ?>'></textarea><br/>
-                                  <a class='updateprofil' href = 'updateProfil'>Valider</a>
+                                  <input class='updateprofil' type = 'submit' value='Valider'>
 
                       </div>
                       <div class="infoperso">
