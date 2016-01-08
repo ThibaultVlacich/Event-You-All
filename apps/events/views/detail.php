@@ -141,7 +141,7 @@
               // User is logged in
               $user_id = $_SESSION['userid'];
 
-              if ($model['creator']['id'] == $user_id) {
+              if ($model['id_createur'] == $user_id) {
                 // User is the creator
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'événement</a>
