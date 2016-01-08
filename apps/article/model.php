@@ -75,20 +75,20 @@ class ArticleModel {
 
   public function modifArticle(array $data,$id) {
     $prep = $this->db->prepare('
-      UPDATE articles SET nom=:nom,contenu=:corps,id_evenement=:event WHERE id = :id_article
+      UPDATE articles SET nom=:nom,contenu=:corps WHERE id = :id_article
     ');
 
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':corps', $data['corps']);
-    $prep->bindParam(':event', $data['arti']);
     $prep->bindParam(':id_article', $id);
 
     if(!empty($data['bann'])) {
       $prep2 = $this->db->prepare('
-        UPDATE articles SET bann = :bann WHERE id = :id_article
+        UPDATE articles SET banniere = :bann WHERE id = :id_article
       ');
 
       $prep2->bindParam(':bann', $data['bann']);
+      $prep2->bindParam(':id_article', $id);
 
       $prep2->execute();
     }

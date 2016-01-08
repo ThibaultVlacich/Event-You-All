@@ -132,7 +132,7 @@ function modif_confirm(array $params) {
     if (isset($params[0])) {
     $article_id = intval($params[0]);
 
-   $data = Request::getAssoc(array('nom','corps','arti'));
+   $data = Request::getAssoc(array('nom','corps'));
 
    if (!in_array(null, $data, true)) {
      $data += Request::getAssoc(array('mclef'));

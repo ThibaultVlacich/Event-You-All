@@ -47,24 +47,6 @@
                         <input type='text' name='mclef' id='mclef' maxlength="100" placeholder="motclef1, motclef2, motclef3...">
                     </div>
                     <br>
-                    <div class="long">
-                        <div class="label">
-                            <label for='arti'>Evénement lié à mon Article  </label>
-                        </div>
-                            <select  name='arti' id='arti'>
-								<?php
-									  foreach ($model['evenements'] as $event) {
-									?>
-									<option value="
-									<?php echo $event['id']?>" <?php if ($model['id_evenement']==$event['id']){echo "selected";} ?>
-									>
-									<?php echo $event['nom']?>
-									</option>
-									<?php
-									}
-									?>
-                            </select>
-                    </div>
                 </div>
 				</div>
 				<div class="create_part2">

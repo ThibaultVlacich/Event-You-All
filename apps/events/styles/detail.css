@@ -222,6 +222,22 @@ div.app-events-detail div.event-wrapper aside.event-column {
 div.app-events-detail div.event-wrapper aside.event-column div.register {
   text-align: center;
 }
+.ajouter{
+      float:right;
+      display:block;
+      padding: 5px 10px;
+      margin-top:-5px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #CC0033;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      transition: all ease-in-out 0.15s;
+}
+.ajouter:hover {
+  background-color: #880000;
+  color:white;
+  border-color: rgba(0, 0, 0, 0.5);
+}
 div.app-events-detail div.event-wrapper aside.event-column div.register a.button {
   display: inline-block;
   margin: 10px 0;

@@ -6,7 +6,6 @@ if (!empty($model['error'])) {
 return;
 }
 ?>
-<?php echo $model['id']; ?>
 <div class="note success">
 	<i class="fa fa-spin fa-spinner"></i>
 	<script type="text/javascript">
@@ -15,7 +14,7 @@ return;
       }, 3000);
     </script>
 	<ul>
-		<li>Votre événement a été créé avec succès !</li>
+		<li>Votre Article a été modifié avec succès !</li>
 		<li>Vous allez être redirigé dans 3 secondes.</li>
 	</ul>
 </div>

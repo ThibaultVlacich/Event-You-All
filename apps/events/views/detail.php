@@ -92,7 +92,22 @@
       <?php if(!empty($model['description'])) { ?>
       <?php } ?>
       <section class="event-news">
-        <h2 class="title">Articles</h2>
+        <h2 class="title">Articles
+        <?php
+            $session = System::getSession();
+
+            if($session->isConnected()) {
+              // User is logged in
+              $user_id = $_SESSION['userid'];
+
+              if ($model['creator']['id'] == $user_id) {
+                // User is the creator
+          ?>
+          <a class="ajouter" href="<?php echo Config::get('config.base'); ?>/article/create">Ajouter un article</a>
+          <?php
+            }}
+          ?>
+          </h2>
         <?php
         if (isset($model['articles']) && !empty($model['articles'])) {
           foreach ($model['articles'] as $article) {
@@ -100,7 +115,7 @@
         <article>
           <h3><a href="<?php echo Config::get('config.base'); ?>/article/detail/<?php echo $article['id']?>"><?php echo $article['nom']; ?></a></h3>
           <p>
-            <?php echo $article['contenu']; ?>
+            <?php echo substr($article['contenu'],0,500) ; if (strlen($article['contenu'])>500){echo '...';} ?>
           </p>
         </article>
         <?php
