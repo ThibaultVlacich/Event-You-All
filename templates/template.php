@@ -34,7 +34,7 @@
           ?>
             Bienvenue <?php echo $_SESSION['nickname']; ?>
             <br><br>
-            <a href="<?php echo Config::get('config.base'); ?>/user/my_account">Mon compte</a> - <a href="<?php echo Config::get('config.base'); ?>/user/logout">Se déconnecter</a>
+            <a href="<?php echo Config::get('config.base'); ?>/user/myprofil">Mon compte</a> - <a href="<?php echo Config::get('config.base'); ?>/user/logout">Se déconnecter</a>
             <?php if($_SESSION['access'] == 3) { ?><br><a href="<?php echo Config::get('config.base'); ?>/admin">Accéder à l'administration</a><?php } ?>
           <?php
             } else {
