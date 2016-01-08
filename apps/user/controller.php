@@ -217,6 +217,30 @@ class UserController extends Controller {
 			$data['commentaire'] = "Vous n'avez encore laissé aucun commentaire sur vous ! Pour entrer maintenant un commentaire, cliquez sur modifier mon profil.";
 		}
 
+		if(empty($data['birthdate'])){
+			$data['birthdate'] = 'Non renseigné';
+		}
+
+		if(empty($data['sex'])){
+			$data['sex'] = 'Non renseigné';
+		}
+
+		if(empty($data['zip_code'])){
+			$data['zip_code'] = 'Non renseigné';
+		}
+
+		if(empty($data['city'])){
+			$data['city'] = 'Non renseigné';
+		}
+
+		if(empty($data['phone'])){
+			$data['phone'] = 'Non renseigné';
+		}
+
+		if(empty($data['adress'])){
+			$data['adress'] = 'Non renseigné';
+		}
+
 		return $data;
 	}
 
@@ -238,6 +262,14 @@ class UserController extends Controller {
 			}
 			if($data['profilprive'] == 0){
 				$data['profilprive'] = 'Profil Public';
+			}
+
+			if(empty($data['birthdate'])){
+				$data['birthdate'] = 'Non renseigné';
+			}
+
+			if(empty($data['sex'])){
+				$data['sex'] = 'Non renseigné';
 			}
 		}
 

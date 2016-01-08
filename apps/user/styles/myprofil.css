@@ -17,6 +17,7 @@ h1
 .LAPHOTO,.infoperso
 {
     display:inline-block;
+    width :45%;
 }
 
 
@@ -44,7 +45,7 @@ h1
 
 .infoperso
 {
-    margin-left : 15%;
+    margin-left : 5%;
    vertical-align: top;
 }
 
@@ -56,17 +57,28 @@ h1
 }
 
 
-#adressephysique,.codepostal,#adressemail,.ville,#telephone,.pays
+#adressephysique,.codepostal,#adressemail,.ville,#telephone
 {
     margin-bottom:20px;
     display:inline-block;
     margin-right: 10px;
 }
 
-.ville,.prenom,.codepostal
+#codepostal,#pays
 {
-  margin-left: 40px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#codepostal
+{
+  margin-left: 10px;
+}
+
+#ville,.prenom,#codepostal,#pays
+{
   margin-top:10px;
+  margin-right :10px;
 }
 
 #interet
@@ -101,7 +113,6 @@ h1
 {
     margin-left:8%;
 }
-
 
 
 .envoyer, .annuler
