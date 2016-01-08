@@ -15,10 +15,12 @@ public function contact() {}
 public function contactconfirm() {
 	$data = Request::getAssoc(array('subject','message','firstname','lastname','email'));
 
- $data['subject'];
 
- $mail = 'gay.alexandre@overstar-entertainment.com'; // Déclaration de l'adresse de destination.
- if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
+	//Destination
+   $mail = 'gay.alexandre@overstar-entertainment.com';
+
+ //filter
+ if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
  {
  	$passage_ligne = "\r\n";
  }
@@ -26,21 +28,29 @@ public function contactconfirm() {
  {
  	$passage_ligne = "\n";
  }
- //=====message text
+
+
+ 
+ //extract email
+ $email = $data['email'];
+ //extract firsname
+ $firstname = $data['firstname'];
+ //extract lastname
+ $lastname = $data['lastname'];
+ //extract message text
  $message_txt = $data['message'];
-
- //==========
-
- //=====Create boundary
- $boundary = "-----=".md5(rand());
- //==========
-
- //=====Create subject.
+ //extract subject.
  $subject = $data['subject'];
- //=========
+
+
+
+
+ //Create boundary
+ $boundary = "-----=".md5(rand());
+
 
  //=====Create header
- $header = "From:  $data['email'];".$passage_ligne;
+ $header = "From:  <$email>".$passage_ligne;
  $header.= "Reply-to:  <gay.alexandre@overstar-entertainment.com>".$passage_ligne;
  $header.= "MIME-Version: 1.0".$passage_ligne;
  $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;

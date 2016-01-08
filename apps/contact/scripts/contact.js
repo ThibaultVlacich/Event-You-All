@@ -64,6 +64,6 @@ $(function() {
  $('#sent').prop('disabled', true);
 });
 
-$(function() {
+/*$(function() {
   CKEDITOR.replace('message');
-});
+});*/

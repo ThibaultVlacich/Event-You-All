@@ -3,7 +3,7 @@
 	<script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo Config::get('config.base'); ?>';
-      }, 3000);
+      }, 300000);
     </script>
 	<ul>
 		<li>Votre message a été envoyé avec succès !</li>
