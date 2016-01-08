@@ -1,4 +1,4 @@
-        <div id="LATOTALE">
+        <div id="LATOTALESUPERCHOUETTE">
             <h1 class= 'entetecompte'>Mon Compte</h1>
             <?php
               if (isset($model['success']) && $model['success'] === true) {

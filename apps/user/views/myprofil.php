@@ -1,4 +1,4 @@
-        <div id="LATOTALE">
+        <div id="LATOTALESUPERCHOUETTE">
             <h1>Mon Compte</h1>
                 <h2>Mon Profil</h2>
                 <section>
