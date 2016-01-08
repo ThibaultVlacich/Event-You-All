@@ -77,8 +77,7 @@
                  <p class="gauche"><span class="required">*</span> : champs obligatoires</p>
                  <!--Mettre différentes fonctions à chaque bouton -->
                  <p><input id="bouton" type='submit' value='Envoyer'/> 
-                    <input id="bouton" type='submit' value='Enregistrer sans sauvegarder'/>
-                    <input id="bouton" type='submit' value='Annuler'/></p>
+                <input id="bouton" type='button' onclick="window.history.back()" value='Annuler'/></p>
             </form>
 			
         </section>
