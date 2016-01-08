@@ -248,7 +248,7 @@ class EventsController extends Controller {
         $data['heure_fin'] = null;
       }
     // Get creator's name and id
-    $data['creator'] = $this->model->getCreatorForEvent($data['id']);
+    $data['creator'] = $this->model->getCreator($data['id']);
       // Get user's id
 
       // Retourner les infos récupérées
