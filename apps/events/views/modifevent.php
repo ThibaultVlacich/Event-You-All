@@ -18,7 +18,7 @@
               // User is logged in
               $user_id = $_SESSION['userid'];
 
-              if ($model['creator']['id'] == $user_id) {
+              if ($model['id_createur'] == $user_id) {
                 // User is the creator?>
             <form method='post' action='<?php echo Config::get('config.base'); ?>/events/modif_confirm/<?php echo $model['id']; ?>' enctype="multipart/form-data">
                 <h2>Modifier l'événement</h2>

@@ -154,9 +154,9 @@ class EventsModel {
   }
 
   //recuperer l'id lié au createur
-  public function getCreatorForEvent($event_id) {
-    $prep = $this->db->prepare('SELECT users.nickname, users.id FROM users INNER JOIN evenements ON  users.id = evenements.id_createur WHERE evenements.id_createur = :event_id');
-    $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+  public function getCreator($creator_id) {
+    $prep = $this->db->prepare('SELECT * FROM users WHERE id = :creator_id');
+    $prep->bindParam(':creator_id', $creator_id, PDO::PARAM_INT);
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
