@@ -401,8 +401,7 @@
     <!--Mettre différentes fonctions à chaque bouton -->
     <p>
       <input id="bouton" type="submit" value="Envoyer" />
-      <input id="bouton" type="submit" value="Enregistrer sans publier" />
-      <input id="bouton" type="submit" value="Annuler" />
+      <input id="bouton" type='button' onclick="window.history.back()" value='Annuler'/></p>
     </p>
   </form>
 </section>
