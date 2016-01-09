@@ -17,16 +17,21 @@ class EventsView extends View {
   }
 
   public function create() {
-    $this->setTemplate('/apps/events/views/createvent.php');
+    $this->setTemplate('/apps/events/views/create.php');
 
-    $this->assign('css', Config::get('config.base').'/apps/events/styles/createvent.css');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
 
     $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
     $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
   }
-    public function modif() {
-    $this->setTemplate('/apps/events/views/modifevent.php');
-    $this->assign('css', Config::get('config.base').'/apps/events/styles/createvent.css');
+
+  public function modif() {
+    $this->setTemplate('/apps/events/views/modif.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
   }
 
   public function index() {

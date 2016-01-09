@@ -238,37 +238,26 @@ class EventsController extends Controller {
       }
 
       if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {
-        $date_debut_timestamp = strtotime($data['date_debut']);
-        //$data['date_debut'] = strftime('%a. %d %b. %Y', $date_debut_timestamp);
-        $data['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
-      } else {
-        $data['date_debut'] = null;
-        $data['heure_debut'] = null;
+        $data['date_debut_timestamp'] = strtotime($data['date_debut']);
       }
+
       if (!empty($data['date_fin']) && $data['date_fin'] != '0000-00-00 00:00:00') {
-        $date_fin_timestamp = strtotime($data['date_fin']);
-        //$data['date_fin'] = strftime('%a. %d %b. %Y', $date_fin_timestamp);
-        $data['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
-      } else {
-        $data['date_fin'] = null;
-        $data['heure_fin'] = null;
+        $data['date_fin_timestamp'] = strtotime($data['date_fin']);
       }
-    // Get creator's name and id
-    $data['creator'] = $this->model->getCreator($data['id']);
-      // Get user's id
+
+      // Get creator's name and id
+      $data['creator'] = $this->model->getCreator($data['id']);
 
       // Retourner les infos récupérées
-      //print_r ($data);
-        $data['themes'] = $this->model->getThemes();
-        $data['types'] = $this->model->getTypes();
-        $data['regions'] = $this->model->getRegions();
+      $data['themes'] = $this->model->getThemes();
+      $data['types'] = $this->model->getTypes();
+      $data['regions'] = $this->model->getRegions();
+
       return $data;
+    } else {
+      return array();
     }
-    else{echo false;}
   }
-
-
-
 
   function modif_confirm(array $params) {
     if (isset($params[0])) {
