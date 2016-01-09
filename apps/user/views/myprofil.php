@@ -1,9 +1,6 @@
         <div id="divpage">
             <h1>Mon Compte</h1>
-              <h2>Mes Evénéments</h2>
-              <a href='eventspasse' class='boutoncompte'>Mes événements passés</a>
-              <a href='eventsactuels' class='boutoncompte'>Les événements où je suis inscrit</a>
-              <a href='eventscree' class='boutoncompte'>Mes événements créés</a>
+              <a href='mesevents' class='boutoncompte'>Mes événements</a>
                 <h2>Mon Profil</h2>
                 <section>
                 <div class="photodemoi">

@@ -250,12 +250,20 @@ class UserModel {
        $changes .= 'WHERE id = :id_user';
 
        $prep = $this->db->prepare($changes) ;
-       var_dump($changes);
 
        $prep->bindParam(':id_user',$user_id);
 
        $prep->execute();
     }
   }
+
+  public function eventscreation($user_id){
+    $prep = $this->db->prepare('SELECT poster, nom, ville, date_debut FROM evenements WHERE id_createur = :user_id');
+
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 }
 ?>

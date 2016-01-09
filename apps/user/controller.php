@@ -312,5 +312,17 @@ class UserController extends Controller {
 					return array('data' => $data, 'success' => false); }
 
 	}
+
+	public function mesevents(){
+
+		$session = System::getSession();
+
+		if ($session->isConnected()){
+
+			$user_id = $_SESSION['userid'];
+		}
+
+		$data['eventscreation'] = $this->model->eventscreation($user_id);
+	}
 }
 ?>

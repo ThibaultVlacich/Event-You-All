@@ -40,5 +40,11 @@ class UserView extends View {
     $this->setTemplate('/apps/user/views/updateProfil.php');
   }
 
+  public function mesevents(){
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/mesevents.css');
+
+    $this->setTemplate('/apps/user/views/mesevents.php');
+  }
+
 }
 ?>
