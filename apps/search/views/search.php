@@ -54,7 +54,7 @@
                  <div class="event_text">
                    <span class='theme'> <?php echo $value['theme']['nom'];?></span>
                    <span class='type'> <?php echo $value['type']['nom'];?></span>
-                   <?php $lien='../../events/detail/'.$value['id'];?>
+                   <?php $lien='../events/detail/'.$value['id'];?>
                     <h2><a href="<?php echo $lien?>"><?php echo $value['nom']; ?></p></h2>
                     <p><?php echo $value['ville']; ?></p>
                     <p><?php echo $value['date_debut']; ?></p>
