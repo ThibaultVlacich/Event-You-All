@@ -325,7 +325,7 @@ class UserController extends Controller {
 
 		$data['eventscreation'] = $this->model->eventscreation($user_id);
 
-		$dateactuelle = strtotime(date("F j, Y, g:i a"));
+		$dateactuelle = time();
 
 		$eventsinscrit = $this->model->geteventsinscritID($user_id);
 
@@ -343,7 +343,12 @@ class UserController extends Controller {
 					$i +=1;
 				}
 			}
+			$data['existanceinscription'] = true;
 		}
+		else{
+			$data['existenceinscription'] = false;
+		}
+		return $data;
 	}
 }
 ?>
