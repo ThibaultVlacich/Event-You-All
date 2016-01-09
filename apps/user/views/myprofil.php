@@ -1,6 +1,6 @@
         <div id="divpage">
             <h1>Mon Compte</h1>
-              <a href='mesevents' class='boutoncompte'>Mes événements</a>
+              <a href='<?php echo Config::get('config.base'); ?>/user/mesevents' class='boutoncompte'>Mes événements</a>
                 <h2>Mon Profil</h2>
                 <section>
                 <div class="photodemoi">
@@ -10,7 +10,7 @@
                         <p><label class="laissercommentaire" for="commentaire">Voici le commentaire que vous avez laissé :</label><br/></p>
             <div class='moncommentaire'><?php echo $model['commentaire']; ?></div>
                             <br/>
-                            <a class='boutoncompte' href = 'updateProfil'>Modifier mon profil</a>
+                            <a class='boutoncompte' href = "<?php echo Config::get('config.base'); ?>/user/updateProfil">Modifier mon profil</a>
                 </div>
                 <div class="infoperso">
                     <div class="infoperso1">

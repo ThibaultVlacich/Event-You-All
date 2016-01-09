@@ -43,7 +43,7 @@
                               <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
                                   <textarea class="textlaissercommentaire" name="commentaire" id="commentaire" value='<?php echo $model['data']['commentaire']; ?>'></textarea><br/>
                                   <input class='boutoncompte' type = 'submit' value='Valider'>
-                                  <a class='boutoncompte' href = 'myprofil'>Annuler</a>
+                                  <a class='boutoncompte' href = '<?php echo Config::get('config.base'); ?>/user/myprofil'>Annuler</a>
 
                       </div>
                       <div class="infoperso">

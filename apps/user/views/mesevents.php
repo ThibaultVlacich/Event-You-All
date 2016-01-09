@@ -1,6 +1,6 @@
 <section id='sectionpage'>
 <h1>Mon Compte</h1>
-<a href='myprofil' class='boutoncompte'>Retourner sur mon profil</a>
+<a href='<?php echo Config::get('config.base'); ?>/user/myprofil' class='boutoncompte'>Retourner sur mon profil</a>
 <h2  class='voirmesevents'>Les événements que j'ai créé</h1>
   <section>
       <ul>
