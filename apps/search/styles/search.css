@@ -22,11 +22,7 @@ section ul{
   margin: 0 auto;
   padding: 0;
 }
-section ul li{
-  display : inline-block;
-  margin: 14px;
-  width: calc(50% - 30px);
-}
+
 
 section ul li div p{
 padding-left: 5px;
@@ -74,4 +70,66 @@ font-weight:bold;
 {
   display : inline-block;
   margin-left: 3px;
+}
+
+.event_text .theme,.event_text .type
+{
+  display: inline-block;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    background-color: #880000;
+    color: white;
+}
+
+.event_text .searchlien2
+{
+  color: white;
+}
+
+.event_text
+{
+  float: left;
+    width: 65%;
+    height: 200px;
+    padding: 10px;
+    background: #CC0033;
+    color: white;
+}
+
+.resultssearch ul
+{
+position: relative;
+margin: 15px 0;
+margin-bottom: 20px;
+padding: 0 15px;
+height: 200px;
+}
+
+.resultssearch ul li
+{
+  display: inline-block;
+margin: 14px;
+width : 33%;
+position: relative;
+    float: left;
+    margin: 15px 0;
+    padding: 0 15px;
+    height: 200px;
+}
+
+.poster_evenement_image
+{
+  float:left;
+  height: 200px;
+  color: #CC0033;
+
+}
+
+.searchlien1
+{
+  color: #CC0033;
+  text-decoration: none;
+  outline: none;
+  background-color: transparent;
 }

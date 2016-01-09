@@ -48,14 +48,14 @@
          <ul>
            <?php if(!empty($model['advancedresults'])){  foreach($model['advancedresults'] as $value) { ?>
              <li>
+               <?php $lien='../events/detail/'.$value['id'];?>
                  <div class="poster_evenement">
-                   <img src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
+                   <a class ='searchlien1' href="<?php echo $lien?>"><img class ='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/></a>
                  </div>
                  <div class="event_text">
                    <span class='theme'> <?php echo $value['theme']['nom'];?></span>
                    <span class='type'> <?php echo $value['type']['nom'];?></span>
-                   <?php $lien='../events/detail/'.$value['id'];?>
-                    <h2><a href="<?php echo $lien?>"><?php echo $value['nom']; ?></p></h2>
+                    <h2><a class ='searchlien2' href="<?php echo $lien?>"><?php echo $value['nom']; ?></a></h2>
                     <p><?php echo $value['ville']; ?></p>
                     <p><?php echo $value['date_debut']; ?></p>
                  </div>
