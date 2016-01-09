@@ -49,7 +49,16 @@
       </form>
     </section>
     <section>
-      <h2 class="title">Les événements à venir <a href="<?php echo Config::get('config.base'); ?>/events/create" class="create"><i class="fa fa-plus"></i> Ajouter un événement</a></h2>
+      <h2 class="title">
+        Les événements à venir
+        <?php
+          $session = System::getSession();
+          
+          if($session->isConnected()) {
+            echo '<a href="'.Config::get('config.base').'/events/create" class="create"><i class="fa fa-plus"></i> Ajouter un événement</a>';
+          }
+        ?>
+      </h2>
       <ul class="events">
         <?php foreach($model['events'] as $event) { ?>
           <li>
