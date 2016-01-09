@@ -19,7 +19,7 @@ class SearchModel {
     //found will be having the SQL Request
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
-    $found = 'SELECT nom, ville, date_debut, poster FROM evenements WHERE ';
+    $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements WHERE ';
 
     if (!empty($advancedsearch['theme'])) {
       $found .= ' id_theme = '.intval($advancedsearch['theme']);
@@ -128,13 +128,26 @@ class SearchModel {
 
 
 //-------------------End of the Initialisation-------------------------
-
     //Sends back the final sql request
     $prep = $this->db->prepare($found);
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
 
   }
+
+    public function getthemewithid($id_theme){
+      $prep = $this->db->prepare('SELECT nom FROM themes WHERE id = :id_theme');
+      $prep->bindParam(':id_theme',$id_theme);
+      $prep->execute();
+      return $prep->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function gettypewithid($id_type){
+      $prep = $this->db->prepare('SELECT nom FROM types WHERE id = :id_type');
+      $prep->bindParam(':id_type',$id_type);
+      $prep->execute();
+      return $prep->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function gettheme(){
       $prep = $this->db->prepare('SELECT id, nom FROM themes');

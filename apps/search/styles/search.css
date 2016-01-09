@@ -2,7 +2,6 @@ div.search_h{
     border: 2px #CC0033 solid;
     background:rgba(255, 255, 255, 0.4);
     border-radius: 5px;
-    margin-top: 30px;
     padding: 2px;
 
 }
@@ -11,9 +10,12 @@ div.search_h form{
 }
 div.search_h form input{
     margin:0 10px
+    height: 40px;
 }
+
 div.search_h form select{
     margin:0 10px
+    height: 40px;
 }
 section ul{
   list-style-type: none;
@@ -25,25 +27,19 @@ section ul li{
   margin: 14px;
   width: calc(50% - 30px);
 }
-section ul li div{
-  display : inline-block;
-  width:50%;
-  height:100px  ;
-  background: #CC0033;
-  vertical-align: top;
-}
+
 section ul li div p{
 padding-left: 5px;
 color:white;
 font-weight:bold;
 }
 
-section ul li .image{
-  float : left;
-    width:50%;
-    height:100px;
-    background-size: cover;
-    background-position: center;
+.poster_evenement{
+  float: left;
+  display :block;
+  width:35%;
+  height: 200px;
+  overflow: hidden;
 }
 
 #prix_mini, #prix_max, #organisateur, #nbr_min_personnes, #nbr_max_personnes, #sponsors, #city, #zip_code
@@ -51,13 +47,31 @@ section ul li .image{
   margin : 5px;
 }
 
-.poster_evenement
-{
-  float:left;
+.searchsection h1, .resultssearch h1{
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #CC0033;
+  margin: 15px;
+  margin-bottom: 0;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
 }
 
-.poster_evenement_image
+#sendrecherche
 {
-  width:100%;
-  height:100%;
+  width: 150px;
+  border: 0;
+  background: #CC0033;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#nosearchresults *
+{
+  display : inline-block;
+  margin-left: 3px;
 }

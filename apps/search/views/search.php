@@ -1,4 +1,5 @@
     <section class="searchsection">
+            <h1>Faire une recherche avancée</h1>
     <div class="search_h">
         <form method="GET" action = "<?php echo Config::get('config.base'); ?>/search/advancedsearch">
             <input type="search" name="advancedsearch" id="advancedsearch" placeholder="Recherche"/>
@@ -19,7 +20,7 @@
                     <?php } ?>
             </select>
             <input type="date" placeholder="Date" id="date_event" name='date'/>
-            <input type="submit" value="Recherche"/><br/>
+            <input id='sendrecherche' type="submit" value="Recherche"/><br/>
             <select  name='region' id='region' name = 'region'>
                <option selected disabled>Région</option>
                <?php
@@ -42,20 +43,25 @@
     echo $model['error'];
   }
   else{ ?>
-     <section>
+     <section class='resultssearch'>
+       <h1> Voici les résultats de votre recherche :</h1>
          <ul>
-           <?php foreach($model['advancedresults'] as $value) { ?>
+           <?php if(!empty($model['advancedresults'])){  foreach($model['advancedresults'] as $value) { ?>
              <li>
                  <div class="poster_evenement">
-                   <img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
+                   <img src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
                  </div>
                  <div class="event_text">
-                    <p><?php echo $value['nom']; ?></p>
+                   <span class='theme'> <?php echo $value['theme']['nom'];?></span>
+                   <span class='type'> <?php echo $value['type']['nom'];?></span>
+                   <?php $lien='../../events/detail/'.$value['id'];?>
+                    <h2><a href="<?php echo $lien?>"><?php echo $value['nom']; ?></p></h2>
                     <p><?php echo $value['ville']; ?></p>
                     <p><?php echo $value['date_debut']; ?></p>
                  </div>
              </li>
-          <?php } ?>
+          <?php }}  else{ ?><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en</p><a id='createmyevent' href='../events/create'> cliquant ici !</a></div>
+            <?php }?>
           </ul>
       </section>
       <?php } ?>

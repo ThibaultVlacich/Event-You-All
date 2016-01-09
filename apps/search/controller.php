@@ -29,6 +29,12 @@ class SearchController extends Controller {
     if(isset($advancedsearchsend) && !empty($advancedsearchsend)){
       $advancedresults = $this->model->advancedsearchindatabase($advancedsearch);//function defined in model
       $data['advancedresults'] = $advancedresults;
+      $k=0;
+      foreach($data['advancedresults'] as $value){
+        $data['advancedresults'][$k]['theme'] = $this->model->getthemewithid($value['id_theme']);
+        $data['advancedresults'][$k]['type'] = $this->model->gettypewithid($value['id_type']);
+        $k += 1;
+      }
       return $data;
     }
     //Error if nothing has been selected by the user
