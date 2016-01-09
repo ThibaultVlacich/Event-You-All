@@ -53,7 +53,7 @@ $(function() {
     expirationTime.setTime(parseInt(currentTime.getTime()) + 2592000 * 1000);
 
     // set cookie
-    document.cookie = 'cookie_notice_accepted=true;expires=' + expirationTime.toGMTString() + ';';
+    document.cookie = 'cookie_notice_accepted=true;expires=' + expirationTime.toGMTString() + ';path=/;';
 
     // Remove the notice from the DOM
     $cookieNotice.remove();
