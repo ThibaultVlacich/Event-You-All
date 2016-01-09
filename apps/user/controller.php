@@ -343,7 +343,7 @@ class UserController extends Controller {
 					$i +=1;
 				}
 			}
-			$data['existanceinscription'] = true;
+			$data['existenceinscription'] = true;
 		}
 		else{
 			$data['existenceinscription'] = false;
