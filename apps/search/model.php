@@ -180,7 +180,7 @@ class SearchModel {
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
-      $prep = $this->db->prepare('SELECT nom, ville, date_debut,poster  FROM evenements WHERE
+      $prep = $this->db->prepare('SELECT nom, ville, date_debut,poster,id_theme,id_type,id  FROM evenements WHERE
             nom LIKE :search
         OR  date_debut = :search
         OR  description LIKE :search

@@ -49,6 +49,12 @@ class SearchController extends Controller {
     if(isset($search) && !empty($search)) {
         $results = $this->model->basicsearchindatabase($search);//Function defined in model
         $data['advancedresults'] = $results;
+        $k=0;
+        foreach($data['advancedresults'] as $value){
+          $data['advancedresults'][$k]['theme'] = $this->model->getthemewithid($value['id_theme']);
+          $data['advancedresults'][$k]['type'] = $this->model->gettypewithid($value['id_type']);
+          $k += 1;
+        }
         return $data;
 
 }
