@@ -322,7 +322,28 @@ class UserController extends Controller {
 			$user_id = $_SESSION['userid'];
 		}
 
+
 		$data['eventscreation'] = $this->model->eventscreation($user_id);
+
+		$dateactuelle = strtotime(date("F j, Y, g:i a"));
+
+		$eventsinscrit = $this->model->geteventsinscritID($user_id);
+
+		if(!empty($eventsinscrit)){
+			$k = 0;
+			$i = 0;
+			foreach($eventsinscrit as $value){
+				$dateevent = $this->model->geteventsinscritDate($value);
+				if(strtotime($dateevent) > $dateactuelle){
+					$data['eventsinscrit'][$k] = $this->model->geteventsDetail($value);
+					$k +=1;
+				}
+				else{
+					$data['eventspasse'][$i] = $this->model->geteventsDetail($value);
+					$i +=1;
+				}
+			}
+		}
 	}
 }
 ?>

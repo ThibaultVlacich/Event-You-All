@@ -258,11 +258,36 @@ class UserModel {
   }
 
   public function eventscreation($user_id){
-    $prep = $this->db->prepare('SELECT poster, nom, ville, date_debut FROM evenements WHERE id_createur = :user_id');
+    $prep = $this->db->prepare('SELECT poster, nom, ville, date_debut FROM evenements WHERE id_createur = :user_id ORDER BY date_debut');
 
     $prep->bindParam(':user_id',$user_id);
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function geteventsinscritID($user_id){
+    $prep = $this->db->prepare('SELECT id_evenement FROM evenements_participants WHERE id_utilisateur = :user_id');
+
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function geteventsinscritDate($event_id){
+    $prep = $this->db->prepare('SELECT date_debut FROM evenements WHERE id = :id_evenement');
+
+    $prep->bindParam('$event_id',$event_id);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+
+  public function geteventsDetail($event_id){
+    $prep = $this->db->prepare('SELECT poster, nom, ville, date_debut FROM evenements WHERE id = :id_evenement ORDER BY date_debut');
+
+    $prep->bindParam(':id_evenement',$event_id);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
 }
