@@ -301,10 +301,33 @@ class UserController extends Controller {
 		}
 
 		if($isValid == true)	 {
+			if(!empty($modifications['photoprofil'])){
+				$maxwidth = 100000;
+				$minwidth = 0;
+				$maxheight = 100000;
+				$minheight = 0;
+			            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+			            $extension_upload = strtolower(  substr(  strrchr($modifications['photoprofil'], '.')  ,1)  );
+			            if (in_array($extension_upload,$extensions_valides) ){
+			                $sizeimage=getimagesize($modifications['tmp_name']);
+			                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
+			                    $new_file_name = $modifications['tmp_name'];
+			                    move_uploaded_file($modifications['tmp_name'], UPLOAD_DIR.'user'.DS.'photoprofil'.DS.$new_file_name);
+			                } else {
+			                    $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
+			                }
+			            } else {
+			             $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+			            }
+			      }
+
+				$modifications['photoprofil'] = Config::get('config.base').'/upload/user/photoprofil/'.$modifications['photoprofil'];
+
+
 			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
 			return array('data' => $data, 'success' => true);
-		}
 
+	}
 		elseif($isValid == false ){
 			return array('data' => $data, 'success' => 'rien'); }
 
