@@ -39,10 +39,19 @@ class EventsView extends View {
 
   public function create_confirm(){
     $this->setTemplate('/apps/events/views/createventre.php');
- }
+  }
+
   public function modif_confirm(){
     $this->setTemplate('/apps/events/views/modifsent.php');
- }
+  }
+
+  public function register() {
+    $this->setTemplate('/apps/events/views/register.php');
+  }
+
+  public function unregister() {
+    $this->setTemplate('/apps/events/views/unregister.php');
+  }
 }
 
 ?>

@@ -232,5 +232,66 @@ public function modifEvent(array $data) {
     return $events;
   }
 
+  public function isCurrentUserRegisteredToEvent($id_event) {
+    $session = System::getSession();
+
+	  if ($session->isConnected()) {
+	    $id_user = $_SESSION['userid'];
+	  }
+
+    $prep = $this->db->prepare('
+      SELECT * FROM evenements_participants
+      WHERE id_evenement = :id_event AND id_utilisateur = :id_user
+    ');
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+
+    $prep->execute();
+
+    return ($prep->rowCount() > 0);
+  }
+
+  public function registerUserToEvent($id_event) {
+    $session = System::getSession();
+
+	  if (!$session->isConnected()) {
+      return;
+    }
+
+	  $id_user = $_SESSION['userid'];
+
+    $prep = $this->db->prepare('
+      INSERT INTO evenements_participants
+      (id_evenement, id_utilisateur)
+      VALUES (:id_event, :id_user)
+    ');
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+
+    $prep->execute();
+  }
+
+  public function unregisterUserToEvent($id_event) {
+    $session = System::getSession();
+
+    if (!$session->isConnected()) {
+      return;
+    }
+
+	  $id_user = $_SESSION['userid'];
+
+    $prep = $this->db->prepare('
+      DELETE FROM evenements_participants
+      WHERE id_evenement = :id_event AND id_utilisateur = :id_user
+    ');
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+
+    $prep->execute();
+  }
+
 }
 ?>

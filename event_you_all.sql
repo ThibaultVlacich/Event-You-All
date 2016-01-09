@@ -126,7 +126,6 @@ CREATE TABLE IF NOT EXISTS `evenements_participants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_evenement` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `nb_participant` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

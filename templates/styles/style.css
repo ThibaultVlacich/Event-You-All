@@ -205,17 +205,24 @@ div.note.error {
 div.note.success {
   background-color: #1fa67a;
 }
+div.note.question {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: black;
+}
 div.note .fa {
   font-size: 3em;
   display: inline-block;
   vertical-align: middle;
 }
 div.note ul {
+  width: 80%;
+  width: calc(100% - 3em - 30px);
   display: inline-block;
   vertical-align: middle;
   list-style: none;
   margin: 0;
-  margin-left: 20px;
+  margin-left: 10px;
   padding: 0;
 }
 div.note ul li {
@@ -230,6 +237,52 @@ div.note ul li .fa {
   font-size: 1em;
   display: inline-block;
   vertical-align: middle;
+}
+div.note ul.buttons {
+  width: 100%;
+  display: block;
+  margin: 0;
+  margin-top: 20px;
+  text-align: right;
+}
+div.note ul.buttons::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+div.note ul.buttons li {
+  display: inline-block;
+}
+div.note ul.buttons li a {
+  text-decoration: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+div.note ul.buttons li a:hover {
+  background: #eee;
+}
+div.note ul.buttons li a.confirm {
+  color: #fff;
+  background-color: #1fa67a;
+  border-color: #17995c;
+}
+div.note ul.buttons li a.confirm:hover {
+  background-color: #17995c;
+}
+div.note ul.buttons li a.danger {
+  color: #fff;
+  background-color: #CC0033;
+  border-color: #880000;
+}
+div.note ul.buttons li a.danger:hover {
+  background-color: #880000;
 }
 
 /**

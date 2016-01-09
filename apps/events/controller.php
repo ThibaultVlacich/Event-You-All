@@ -107,9 +107,15 @@ class EventsController extends Controller {
 
       // Get linked articles
       $data['articles'] = $this->model->getArticlesForEvent($data['id']);
-	  // Get creator's name and id
-	  $data['creator'] = $this->model->getCreator($data['id_createur']);
-      // Get user's id
+	    // Get creator's name and id
+	    $data['creator'] = $this->model->getCreator($data['id_createur']);
+
+      // See if the user is logged in, and if he's already registered to the event
+      $session = System::getSession();
+
+  	  if ($session->isConnected()) {
+        $data['user_already_registered'] = $this->model->isCurrentUserRegisteredToEvent($event_id);
+      }
 
       // Retourner les infos récupérées
       return $data;
@@ -364,8 +370,74 @@ class EventsController extends Controller {
     if(isset($params[0])) {
       $id_event = intval($params[0]);
 
-      $this->model->registerUserToEvent($id_event);
+      if(!($event = $this->model->getEvent($id_event))) {
+        return false;
+      }
+
+      if ($this->model->isCurrentUserRegisteredToEvent($id_event)) {
+        return array(
+          'id_event'           => $id_event,
+          'event'              => $event,
+          'already_registered' => true,
+          'success'            => false
+        );
+      }
+
+      if(isset($params[1]) && $params[1] == 'confirm') {
+        $this->model->registerUserToEvent($id_event);
+
+        return array(
+          'id_event' => $id_event,
+          'event'    => $event,
+          'success'  => true
+        );
+      }
+
+      return array(
+        'id_event' => $id_event,
+        'event'    => $event,
+        'success'  => false
+      );
     }
+
+    return false;
+  }
+
+  public function unregister(array $params) {
+    if(isset($params[0])) {
+      $id_event = intval($params[0]);
+
+      if(!($event = $this->model->getEvent($id_event))) {
+        return false;
+      }
+
+      if (!$this->model->isCurrentUserRegisteredToEvent($id_event)) {
+        return array(
+          'id_event'           => $id_event,
+          'event'              => $event,
+          'not_registered'     => true,
+          'success'            => false
+        );
+      }
+
+      if(isset($params[1]) && $params[1] == 'confirm') {
+        $this->model->unregisterUserToEvent($id_event);
+
+        return array(
+          'id_event' => $id_event,
+          'event'    => $event,
+          'success'  => true
+        );
+      }
+
+      return array(
+        'id_event' => $id_event,
+        'event'    => $event,
+        'success'  => false
+      );
+    }
+
+    return false;
   }
 }
 ?>

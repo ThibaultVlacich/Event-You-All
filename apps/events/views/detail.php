@@ -147,11 +147,16 @@
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'événement</a>
           <?php
               }
-                // User is not the creator
+
+              if($model['user_already_registered']) {
+          ?>
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/unregister/<?php echo $model['id']; ?>">Se désinscrire de l'événement</a>
+          <?php
+              } else {
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
           <?php
-
+              }
             } else {
               // User is not logged in
           ?>
