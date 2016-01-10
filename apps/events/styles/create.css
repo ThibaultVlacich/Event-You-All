@@ -110,6 +110,11 @@ div.app-events.app-events-create div.form-block div.form-group input:disabled, d
   opacity: 0.7;
 }
 
+div.app-events.app-events-create div.form-block div.form-group em.legend {
+  display: block;
+  margin-top: 10px;
+}
+
 div.app-events.app-events-create aside.form-column {
   width: 33.33333333%;
   float: left;

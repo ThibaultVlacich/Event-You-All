@@ -153,7 +153,7 @@
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/unregister/<?php echo $model['id']; ?>">Se désinscrire de l'événement</a>
           <?php
               } else {
-                if (($model['capacite'] < $model['number_of_participants']) OR $model['capacite'] == 0) {
+                if (($model['capacite'] > $model['number_of_participants']) OR $model['capacite'] == 0) {
                   // There is still place in the event
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>

@@ -278,14 +278,14 @@
           <textarea required id="description" name="descript"><?php echo $model['description']; ?></textarea>
         </div>
         <div class="form-group full">
-          <label for="poster">Poster (Si vous souhaitez le modifier)</label>
-          <input type="file" id="poster" name="poster">
-          <p>Dimensions recommandées : 360*640px (format 9/16 obligatoire)</p>
+          <label for="poster">Poster (si vous souhaitez le modifier)</label>
+          <input required type="file" id="poster" name="poster">
+          <em class="legend">Dimensions minimales : 90*160px. Dimensions maximales : 450*800px.</em>
         </div>
         <div class="form-group full">
-          <label for="bann">Bannière (Si vous souhaitez la modifier)</label>
+          <label for="bann">Bannière (si vous souhaitez la modifier)</label>
           <input type="file" id="bann" name="bann">
-          <p>Dimensions recommandées : 1920*1080px (taille minimale)</p>
+          <em class="legend">Dimensions minimales : 1600*900px. Dimensions maximales : 3200*1800px.</em>
         </div>
         <!--<p>
             <input type="checkbox" name="sujet" id="sujet" />

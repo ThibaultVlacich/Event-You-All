@@ -140,76 +140,92 @@ class EventsController extends Controller {
 
     if (!in_array(null, $data, true)) {
       $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
-      $maxwidth = 100000;
-      $minwidth = 0;
-      $maxheight = 100000;
-      $minheight = 0;
+
       $banner = Request::get('bann', null, 'FILES');
-      $message_erreur = '';
+
+      $minwidth = 1600;
+      $maxwidth = 3200;
+      $minheight = 900;
+      $maxheight = 1800;
+
       if(!empty($banner['name'])) {
         if(!$banner['error']) {
-            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-            //1. strrchr renvoie l'extension avec le point (« . »).
-            //2. substr(chaine,1) ignore le premier caractère de chaine.
-            //3. strtolower met l'extension en minuscules.
-            $extension_upload = strtolower(  substr(  strrchr($banner['name'], '.')  ,1)  );
-            if ( in_array($extension_upload,$extensions_valides) ){
-                $sizeimage=getimagesize($banner['tmp_name']);
-                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
-                    $new_file_name = $banner['name'];
+          $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
+          //1. strrchr renvoie l'extension avec le point (« . »).
+          //2. substr(chaine,1) ignore le premier caractère de chaine.
+          //3. strtolower met l'extension en minuscules.
+          $extension_upload = strtolower(substr(strrchr($banner['name'], '.'), 1));
 
-                    move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+          if ( in_array($extension_upload,$extensions_valides) ){
+            $sizeimage = getimagesize($banner['tmp_name']);
 
-                    $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
-                } else {
-                    $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
-                }
+            if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight){
+              if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
+
+                move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+
+                $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
+              } else {
+                $errors += array('Problème de dimension pour la bannière : trop grand en hauteur et/ou en largeur');
+              }
             } else {
-             $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+              $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
             }
+          } else {
+            $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+          }
         } else{
-            $errors += array('Problème de Serveur');
+          $errors += array('Problème de Serveur');
         }
       }
 
       $poster = Request::get('poster', null, 'FILES');
 
+      $minwidth = 90;
+      $maxwidth = 450;
+      $minheight = 160;
+      $maxheight = 800;
 
       if(!empty($poster['name'])) {
         if(!$poster['error']) {
-            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-            //1. strrchr renvoie l'extension avec le point (« . »).
-            //2. substr(chaine,1) ignore le premier caractère de chaine.
-            //3. strtolower met l'extension en minuscules.
-            $extension_upload = strtolower(  substr(  strrchr($poster['name'], '.')  ,1)  );
-            if ( in_array($extension_upload,$extensions_valides) ){
-                $sizeimage=getimagesize($poster['tmp_name']);
-                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
-                    $new_file_name = $poster['name'];
+          $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
 
-                    move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+          //1. strrchr renvoie l'extension avec le point (« . »).
+          //2. substr(chaine,1) ignore le premier caractère de chaine.
+          //3. strtolower met l'extension en minuscules.
+          $extension_upload = strtolower(substr(strrchr($poster['name'], '.'), 1));
 
-                    $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
-                } else {
-                    $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
-                }
+          if (in_array($extension_upload,$extensions_valides)) {
+            $sizeimage = getimagesize($poster['tmp_name']);
+
+            if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight) {
+              if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
+
+                move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+
+                $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
+              } else {
+                $errors += array('Problème de dimension pour le poster : trop grand en hauteur et/ou en largeur');
+              }
             } else {
-             $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+              $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
             }
+          } else {
+            $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+          }
         } else{
-            $errors += array('Problème de Serveur');
+          $errors += array('Problème de Serveur');
         }
       }
 
-      //print_r ($data);
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
 
-
       if (!empty($data['priv'])) {
         $data['priv'] = 1;
-      }
-      else{
+      } else {
          $data['priv'] = 0;
       }
 
@@ -223,11 +239,16 @@ class EventsController extends Controller {
 
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
-      $data['date_de']=$date_debut;
-      $data['date_fi']=$date_fin;
-      $id_event = $this->model->createEvent($data);
+      $data['date_de'] = $date_debut;
+      $data['date_fi'] = $date_fin;
 
-	    return array('id' => $id_event, 'error' => $errors);
+      if (empty($errors)) {
+        $id_event = $this->model->createEvent($data);
+
+  	    return array('id' => $id_event);
+      }
+
+	    return array('error' => $errors);
     }
 
     return array('error' => array('Tous les champs requis n\'ont pas été remplis.'));
@@ -273,67 +294,89 @@ class EventsController extends Controller {
     if (!in_array(null, $data, true)) {
       $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
 
-      $maxwidth = 100000;
-      $minwidth = 0;
-      $maxheight = 100000;
-      $minheight = 0;
       $banner = Request::get('bann', null, 'FILES');
-      $message_erreur = '';
+
       $oldbannerposter=$this->model->getPosterBannerForEvent($id_event);
+
+      $minwidth = 1600;
+      $maxwidth = 3200;
+      $minheight = 900;
+      $maxheight = 1800;
+
       if(!empty($banner['name'])) {
         if(!$banner['error']) {
-            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-            $extension_upload = strtolower(  substr(  strrchr($banner['name'], '.')  ,1)  );
-            if ( in_array($extension_upload,$extensions_valides) ){
-                $sizeimage=getimagesize($banner['tmp_name']);
-                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
-                    $new_file_name = $banner['name'];
+          $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
+          //1. strrchr renvoie l'extension avec le point (« . »).
+          //2. substr(chaine,1) ignore le premier caractère de chaine.
+          //3. strtolower met l'extension en minuscules.
+          $extension_upload = strtolower(substr(strrchr($banner['name'], '.'), 1));
 
-                    move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+          if ( in_array($extension_upload,$extensions_valides) ){
+            $sizeimage=getimagesize($banner['tmp_name']);
 
-                    $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
-                } else {
-                    $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
-                }
+            if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight){
+              if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
+
+                move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+
+                $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
+              } else {
+                $errors += array('Problème de dimension pour la bannière : trop grand en hauteur et/ou en largeur');
+              }
             } else {
-             $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+              $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
             }
+          } else {
+            $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+          }
         } else{
-            $errors += array('Problème de Serveur');
+          $errors += array('Problème de Serveur');
         }
-      }
-      else{//prend ancienne banniere si aucune nouvelle entrée
-          $data['bann'] =$oldbannerposter['banniere'];
-
+      } else { //prend ancienne banniere si aucune nouvelle entrée
+        $data['bann'] = $oldbannerposter['banniere'];
       }
 
       $poster = Request::get('poster', null, 'FILES');
 
+      $minwidth = 90;
+      $maxwidth = 450;
+      $minheight = 160;
+      $maxheight = 800;
 
       if(!empty($poster['name'])) {
         if(!$poster['error']) {
-            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-            $extension_upload = strtolower(  substr(  strrchr($poster['name'], '.')  ,1)  );
-            if ( in_array($extension_upload,$extensions_valides) ){
-                $sizeimage=getimagesize($poster['tmp_name']);
-                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
-                    $new_file_name = $poster['name'];
+          $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
 
-                    move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+          //1. strrchr renvoie l'extension avec le point (« . »).
+          //2. substr(chaine,1) ignore le premier caractère de chaine.
+          //3. strtolower met l'extension en minuscules.
+          $extension_upload = strtolower(substr(strrchr($poster['name'], '.'), 1));
 
-                    $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
-                } else {
-                    $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
-                }
+          if (in_array($extension_upload,$extensions_valides)) {
+            $sizeimage = getimagesize($poster['tmp_name']);
+
+            if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight) {
+              if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
+
+                move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+
+                $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
+              } else {
+                $errors += array('Problème de dimension pour le poster : trop grand en hauteur et/ou en largeur');
+              }
             } else {
-             $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+              $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
             }
+          } else {
+            $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+          }
         } else{
-            $errors += array('Problème de Serveur');
+          $errors += array('Problème de Serveur');
         }
-      }
-      else{//prend ancien poster si aucun nouveau entré
-          $data['poster'] =$oldbannerposter['poster'];
+      } else { //prend ancien poster si aucun nouveau entré
+          $data['poster'] = $oldbannerposter['poster'];
       }
 
 
