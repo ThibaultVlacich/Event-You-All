@@ -147,6 +147,19 @@ CREATE TABLE IF NOT EXISTS `evenements_photos` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `evenements_sponsors`
+--
+
+CREATE TABLE `evenements_sponsors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_evenement` int(11) NOT NULL,
+  `id_sponsor` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `faq`
 --
 
