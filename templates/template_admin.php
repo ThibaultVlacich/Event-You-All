@@ -40,13 +40,13 @@
     if (!empty($admin_apps)) {
     ?>
     <ul class="apps-menu">
-      <li<?php if($route['app'] == 'Board') { echo ' clas="active"'; } ?>>
+      <li<?php if($route['app'] == 'Board' || empty($route['app'])) { echo ' class="active"'; } ?>>
         <a href="<?php echo Config::get('config.base'); ?>/admin/board" class="app-link">
           <span class="icon" style="background-image: url(<?php echo Config::get('config.base'); ?>/apps/board/icon.png)"></span> Tableau de bord
         </a>
       </li>
       <?php foreach ($admin_apps as $admin_app) { ?>
-      <li<?php if($route['app'] == $admin_app) { echo ' clas="active"'; } ?>>
+      <li<?php if($route['app'] == $admin_app) { echo ' class="active"'; } ?>>
         <a href="<?php echo Config::get('config.base'); ?>/admin/<?php echo $admin_app; ?>" class="app-link">
           <span class="icon" style="background-image: url(<?php echo Config::get('config.base'); ?>/apps/<?php echo $admin_app; ?>/icon.png)"></span> <?php echo ucfirst($admin_app); ?>
         </a>
@@ -80,6 +80,7 @@
   </div>
   <div class="clearfix"></div>
   <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/librairies/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/templates/scripts/admin.js"></script>
   <?php echo $app_rendered['js']; ?>
 </body>
 </html>
