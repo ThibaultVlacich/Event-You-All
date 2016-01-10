@@ -48,9 +48,9 @@
          <ul>
            <?php if(!empty($model['advancedresults'])){  foreach($model['advancedresults'] as $value) { ?>
              <li>
-               <?php $lien='../events/detail/'.$value['id'];?>
+               <?php $lien='/events/detail/'.$value['id'];?>
                  <div class="poster_evenement">
-                   <a class ='searchlien1' href="<?php echo $lien?>"><img class ='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/></a>
+                   <a class ='searchlien1' href="<?php echo Config::get('config.base').$lien; ?>"><img class ='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/></a>
                  </div>
                  <div class="event_text">
                    <span class='theme'> <?php echo $value['theme']['nom'];?></span>
