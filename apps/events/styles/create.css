@@ -47,6 +47,10 @@ div.app-events.app-events-create div.form-block {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #ddd;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 div.app-events.app-events-create div.form-block h3.form-block-title {
@@ -123,11 +127,12 @@ div.app-events.app-events-create aside.form-column {
 }
 
 div.app-events.app-events-create input[type="submit"], div.app-events.app-events-create input[type="button"] {
-  width: 90%;
+  width: 80%;
   width: calc(100% - 30px);
   display: block;
   margin: 10px 15px;
   padding: 10px 15px;
+  font-size: 16px;
   text-decoration: none;
   color: #fff;
   background-color: #CC0033;

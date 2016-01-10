@@ -27,6 +27,7 @@
         <div class="form-group">
           <label>Date de début <span class="required">*</span></label>
           <select name="date_de_j" id="date_de_j">
+            <option value="" disabled selected>--</option>
             <?php
               for ($i = 1; $i <= 31; $i++) {
                 echo '<option value="'.$i.'">'.$i.'</option>';
@@ -34,6 +35,7 @@
             ?>
           </select>
           <select name="date_de_m" id="date_de_m">
+            <option value="" disabled selected>--</option>
             <?php
               $months = array(
                 1  => "Janvier",
@@ -56,12 +58,14 @@
             ?>
           </select>
           <select name="date_de_a" id="date_de_a">
+            <option value="" disabled selected>--</option>
             <option><?php echo date('Y'); ?></option>
             <option><?php echo date('Y') + 1; ?></option>
             <option> <?php echo date('Y') + 2; ?></option>
           </select>
           &nbsp;à&nbsp;
           <select name='time_de_h' id='time_de_h'>
+            <option value="" disabled selected>--</option>
             <?php
               for ($i = 0; $i <= 23; $i++) {
                 echo '<option>'.$i.'</option>';
@@ -70,6 +74,7 @@
           </select>
           :
           <select name='time_de_m' id='time_de_m'>
+            <option value="" disabled selected>--</option>
             <?php
               foreach (array('00', '15', '30', '45') as $i) {
                 echo '<option>'.$i.'</option>';
@@ -80,6 +85,7 @@
         <div class="form-group">
           <label for="date_fi_j">Date de fin <span class="required">*</span></label>
           <select name="date_fi_j" id="date_fi_j">
+            <option value="" disabled selected>--</option>
             <?php
               for ($i = 1; $i <= 31; $i++) {
                 echo '<option value="'.$i.'">'.$i.'</option>';
@@ -87,6 +93,7 @@
             ?>
           </select>
           <select name="date_fi_m" id="date_fi_m">
+            <option value="" disabled selected>--</option>
             <?php
               $months = array(
                 1  => "Janvier",
@@ -109,12 +116,14 @@
             ?>
           </select>
           <select name="date_fi_a" id="date_fi_a">
+            <option value="" disabled selected>--</option>
             <option><?php echo date('Y'); ?></option>
             <option><?php echo date('Y') + 1; ?></option>
             <option><?php echo date('Y') + 2; ?></option>
           </select>
           &nbsp;à&nbsp;
           <select name='time_fi_h' id='time_fi_h'>
+            <option value="" disabled selected>--</option>
             <?php
               for ($i = 0; $i <= 23; $i++) {
                 echo '<option>'.$i.'</option>';
@@ -123,6 +132,7 @@
           </select>
           :
           <select  name='time_fi_m' id='time_fi_m'>
+            <option value="" disabled selected>--</option>
             <?php
               foreach (array('00', '15', '30', '45') as $i) {
                 echo '<option>'.$i.'</option>';
@@ -207,6 +217,7 @@
         <div class="form-group full">
           <label for="reg">Région <span class="required">*</span></label>
           <select  name="reg" id="reg">
+            <option value="" disabled selected>--</option>
   				<?php foreach ($model['regions'] as $region) { ?>
   					<option value="<?php echo $region['id']; ?>"><?php echo $region['nom']; ?></option>
   				<?php } ?>
