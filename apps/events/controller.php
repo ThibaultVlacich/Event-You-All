@@ -132,7 +132,7 @@ class EventsController extends Controller {
 
   function create_confirm() {
     $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de_h','time_de_m','date_fi_j','date_fi_m','date_fi_a','time_fi_h','time_fi_m','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
-    //print_r($data);
+
     $errors = array();
 
     if (!in_array(null, $data, true)) {
@@ -226,6 +226,8 @@ class EventsController extends Controller {
 
 	    return array('id' => $id_event, 'error' => $errors);
     }
+
+    return array('error' => array('Tous les champs requis n\'ont pas été remplis.'));
   }
 
   function modif (array $params) {

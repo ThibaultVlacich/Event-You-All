@@ -1,7 +1,18 @@
 <?php
 if (!empty($model['error'])) {
-    echo('Erreur : ');
-    print_r($model['error']);
+  ?>
+  <div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+    <?php
+      foreach ($model['error'] as $error) {
+        echo '<li>'.$error.'</li>';
+      }
+    ?>
+      <li><a href="#" onclick="history.back(); return false;">Retourner à la page précédente</a></li>
+    </ul>
+  </div>
+  <?php
 return;
 }
 

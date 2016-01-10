@@ -276,7 +276,7 @@
         </div>
         <div class="form-group full">
           <label for="pays">Pays <span class="required">*</span></label>
-          <input type="text" name="pays" id="pays" required value="<?php echo $model['pays']; ?>" disabled>
+          <input type="text" name="pays" id="pays" required value="<?php echo $model['pays']; ?>">
         </div>
       </div>
       <div class="form-block">

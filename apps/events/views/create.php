@@ -180,26 +180,18 @@
           </div>
         </div>
         <br>
-      </div>
-      <div class="create_part2">
-        <h3>4-Organisateur</h3>
-        <div class="centre">
-          <div class="label">
-            <label for="partn">Partenaires et Sponsors </label>
-          </div>
-          <div class="fill">
-            <input type="text" name="partn" id="partn" placeholder="partenaire1, partenaire2, sponsor1...">
-          </div>
-
-          <div class="label">
-            <label for="weborg">Site internet </label>
-          </div>
-          <div class="fill">
-            <input type="text" name="weborg" id="weborg" placeholder="wwww.exemple.com">
-          </div>
-        </div>
-        <br>
       </div>-->
+      <div class="form-block">
+        <h3 class="form-block-title">Organisateur</h3>
+        <div class="form-group full">
+          <label for="partn">Partenaires et Sponsors </label>
+          <input type="text" name="partn" id="partn">
+        </div>
+        <div class="form-group full">
+          <label for="weborg">Site internet </label>
+          <input type="text" name="weborg" id="weborg">
+        </div>
+      </div>
       <div class="form-block">
         <h3 class="form-block-title">Lieu</h3>
         <div class="form-group full">
@@ -225,7 +217,7 @@
         </div>
         <div class="form-group full">
           <label for="pays">Pays <span class="required">*</span></label>
-          <input type="text" name="pays" id="pays" required value="France" disabled>
+          <input type="text" name="pays" id="pays" required value="France">
         </div>
       </div>
       <div class="form-block">

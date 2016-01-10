@@ -1,7 +1,18 @@
 <?php
 if (!empty($model['error'])) {
-    echo('Erreur : ');
-    print_r($model['error']);
+?>
+<div class="note error">
+  <i class="fa fa-exclamation-triangle"></i>
+  <ul>
+  <?php
+    foreach ($model['error'] as $error) {
+      echo '<li>'.$error.'</li>';
+    }
+  ?>
+    <li><a href="#" onclick="history.back(); return false;">Retourner à la page précédente</a></li>
+  </ul>
+</div>
+<?php
 return;
 }
 
@@ -11,10 +22,10 @@ return;
     <script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $model['id']; ?>';
-      }, 5000);
+      }, 3000);
     </script>
     <ul>
         <li>Votre événement a été créé avec succès !</li>
-        <li>Vous allez être redirigé dans 5 secondes.</li>
+        <li>Vous allez être redirigé dans 3 secondes.</li>
     </ul>
 </div>
