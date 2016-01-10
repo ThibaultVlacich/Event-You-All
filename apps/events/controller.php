@@ -14,6 +14,8 @@ class EventsController extends Controller {
   var $access = array(
     'create'         => 1,
     'create_confirm' => 1,
+    'modif'          => 1,
+    'modif_confirm'  => 1,
     'register'       => 1
   );
 
@@ -260,7 +262,11 @@ class EventsController extends Controller {
 
       // Récupérer l'evenement lié depuis le model
       if (!($data = $this->model->getEvent($event_id))) {
-        return array();
+        return array('errors' => array('L\'événement demandé n\'existe pas !'));
+      }
+
+      if(!($_SESSION['userid'] == $data['id_createur'])) {
+        return array('errors' => array('Vous n\'êtes pas le créateur de cet événement !'));
       }
 
       if (!empty($data['date_debut']) && $data['date_debut'] != '0000-00-00 00:00:00') {

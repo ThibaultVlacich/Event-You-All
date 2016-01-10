@@ -1,11 +1,15 @@
 <?php
-  if (empty($model)) {
+  if (!empty($model['errors'])) {
     // No event based on asked id
 ?>
 <div class="note error">
   <i class="fa fa-exclamation-triangle"></i>
   <ul>
-    <li>L'événement demandé n'existe pas !</li>
+  <?php
+    foreach ($model['errors'] as $error) {
+      echo '<li>'.$error.'</li>';
+    }
+  ?>
   </ul>
 </div>
 <?php
@@ -13,7 +17,7 @@
   }
 ?>
 <div class="app-events app-events-create">
-  <h2 class="title">Créer un nouvel événement</h2>
+  <h2 class="title">Modifier mon événement</h2>
   <form method="post" action="<?php echo Config::get('config.base'); ?>/events/modif_confirm/<?php echo $model['id'];?>" enctype="multipart/form-data">
     <div class="form-main">
       <div class="form-block full">
