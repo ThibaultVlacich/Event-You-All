@@ -7,7 +7,8 @@
         <?php foreach($model['eventscreation'] as $value) { ?>
           <li>
               <div class="poster_evenement">
-                <img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
+                <?php $lien='/events/detail/'.$value['id'];?>
+              <a href="<?php echo Config::get('config.base').$lien; ?>"><img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/></a>
               </div>
               <div class="event_text">
                  <p><?php echo $value['nom']; ?></p>
@@ -25,7 +26,8 @@
         <?php foreach($model['eventsinscrit'] as $value) { ?>
           <li>
               <div class="poster_evenement">
-                <img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
+                <?php $lien='/events/detail/'.$value['id'];?>
+                <a href="<?php echo Config::get('config.base').$lien; ?>"><img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/></a>
               </div>
               <div class="event_text">
                  <p><?php echo $value['nom']; ?></p>
@@ -41,11 +43,12 @@
 <h2 class='voirmesevents'>Les événements où j'ai participé</h1>
   <section>
       <ul>
-        <?php if($model['existenceinscription'] == true){ ?>
+        <?php if($model['existenceinscriptionpasse'] == true){ ?>
         <?php foreach($model['eventspasse'] as $value) { ?>
           <li>
               <div class="poster_evenement">
-                <img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/>
+                <?php $lien='/events/detail/'.$value['id'];?>
+              <a href="<?php echo Config::get('config.base').$lien; ?>"><img class='poster_evenement_image' src="<?php echo $value['poster'];?>" alt = "poster de l'événement"/></a>
               </div>
               <div class="event_text">
                  <p><?php echo $value['nom']; ?></p>

@@ -253,7 +253,6 @@ class UserController extends Controller {
 			$user_id = $_SESSION['userid'];
 
 			$data = $this->model->getUser($user_id);
-
 			if(empty($data['photoprofil'])){
 				$data['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png';
 			}
@@ -290,9 +289,10 @@ class UserController extends Controller {
 			}
 		}
 
-		$modifications=Request::getAssoc(array('photoprofil','commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));
-
+		$modifications=Request::getAssoc(array('commentaire','profilprive','birthdate','sex','adress','country','zip_code','city','mail','phone'));
 		//checks that something has been modified
+		$photoprofil = Request::get('photoprofil', null, 'FILES');
+
 		$isValid = false;
 		foreach ($modifications as $value) {
 			if(!empty($value)) {
@@ -300,33 +300,38 @@ class UserController extends Controller {
 			}
 		}
 
+		if(!empty($photoprofil)){
+			$isValid = true;
+		}
+
 		if($isValid == true)	 {
-			if(!empty($modifications['photoprofil'])){
+			if(!empty($photoprofil)){
+				$errors = [];
 				$maxwidth = 100000;
 				$minwidth = 0;
 				$maxheight = 100000;
 				$minheight = 0;
-			            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-			            $extension_upload = strtolower(  substr(  strrchr($modifications['photoprofil'], '.')  ,1)  );
-			            if (in_array($extension_upload,$extensions_valides) ){
-			                $sizeimage=getimagesize($modifications['tmp_name']);
-			                if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
-			                    $new_file_name = $modifications['tmp_name'];
-			                    move_uploaded_file($modifications['tmp_name'], UPLOAD_DIR.'user'.DS.'photoprofil'.DS.$new_file_name);
-			                } else {
-			                    $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
-			                }
-			            } else {
-			             $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
-			            }
-			      }
-
-				$modifications['photoprofil'] = Config::get('config.base').'/upload/user/photoprofil/'.$modifications['photoprofil'];
+			  $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+				$extension_upload = strtolower(  substr(  strrchr($photoprofil['tmp_name'], '.')  ,1)  );
+        if (in_array($extension_upload,$extensions_valides) ){
+          $sizeimage=getimagesize($photoprofil['tmp_name']);
+          if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
+            $new_file_name = $photoprofil['tmp_name'];
+            move_uploaded_file($photoprofil['tmp_name'], UPLOAD_DIR.'user'.DS.'photoprofil'.DS.$new_file_name);
+						$modifications['photoprofil'] = Config::get('config.base').'/upload/user/photoprofil/'.$new_file_name;
+        	}
+				 	else {
+			      $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
+			  	}
+			  }
+				else {
+			   	$errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+			  }
+			}
 
 
 			$modifsresults = $this->model->changeprofil($modifications, $user_id);//function defined in model
-			return array('data' => $data, 'success' => true);
-
+			return array('data' => $data, 'success' => true, 'errors' => $errors);
 	}
 		elseif($isValid == false ){
 			return array('data' => $data, 'success' => 'rien'); }
@@ -351,25 +356,28 @@ class UserController extends Controller {
 		$dateactuelle = time();
 
 		$eventsinscrit = $this->model->geteventsinscritID($user_id);
-
 		if(!empty($eventsinscrit)){
 			$k = 0;
 			$i = 0;
 			foreach($eventsinscrit as $value){
-				$dateevent = $this->model->geteventsinscritDate($value);
-				if(strtotime($dateevent) > $dateactuelle){
-					$data['eventsinscrit'][$k] = $this->model->geteventsDetail($value);
+				$dateevent = $this->model->geteventsinscritDate($value['id_evenement']);
+				if(strtotime($dateevent['date_debut']) > $dateactuelle){
+					$data['eventsinscrit'][$k] = $this->model->geteventsDetail($value['id_evenement']);
 					$k +=1;
+					$data['existenceinscription'] = true;
 				}
 				else{
-					$data['eventspasse'][$i] = $this->model->geteventsDetail($value);
+					$data['eventspasse'][$i] = $this->model->geteventsDetail($value['id_evenement']);
 					$i +=1;
+					$data['existenceinscriptionpasse'] = true;
 				}
 			}
-			$data['existenceinscription'] = true;
 		}
-		else{
+		if(empty($data['existenceinscription'])){
 			$data['existenceinscription'] = false;
+		}
+		if(empty($data['existenceinscriptionpasse'])){
+			$data['existenceinscriptionpasse'] = false;
 		}
 		return $data;
 	}
