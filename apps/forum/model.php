@@ -44,6 +44,13 @@ class ForumModel {
 
     return $prep->rowCount();
   }
+  public function countMessages() {
+    $prep = $this->db->prepare('SELECT * FROM forum_messages');
+
+    $prep->execute();
+
+    return $prep->rowCount();
+  }
 
   public function getTopic($topic_id) {
     $prep = $this->db->prepare('SELECT * FROM forum_topics WHERE id = :topic_id');

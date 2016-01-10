@@ -2,23 +2,47 @@
     margin: auto;
     text-align: center;
 }
-#haut li, #presentation li, #titre li{
+#presentation li, #titre li{
     margin-top:30px;
     display: inline-block;
     margin-left: 30px;
     vertical-align: text-center;
 }
-#haut a {
-  background-color: white;
-  border: 1px solid #cc0033;
-  text-decoration: none;
-  color: black;
-  border-radius: 3px;
+#description li {
+  margin-top:30px;
+  display: inline-block;
+  margin-left: 30px;
+  vertical-align: top;
 }
-#haut a:hover{
-  background-color: #cc0033;
-  color: white;
+#description li h3{
+    color: #cc0033;
+}
+#haut{
+    margin:auto;
+}
+#haut div{
 
+}
+ul .enteteforum
+{
+  margin-top:1em;
+  display: inline-block;
+  color : white;
+  width : 30%;
+  line-height: 3.5em;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
+  background-color: #cc0033;
+}
+ul .enteteforum:hover
+{
+    color:#CC0033;
+    background-color: rgb(235,235,235);
 }
 #tire{
     text-align: center;

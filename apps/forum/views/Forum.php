@@ -1,10 +1,6 @@
         <ul id="haut">
             <a class="titreenteteforum" href="<?php echo Config::get('config.base'); ?>/forum/create"><li class="enteteforum">Créer un nouveau Topic</li></a>
-            <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
-            <li class="enteteforum"><form method="post" action="hey.php">
-                <label for="recherche" >Rechercher sur le forum</label>
-                <input type="search" placeholder="ex: Photographie" id="recherche" name="recherche"/>
-                </form></li>
+            <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>    
         </ul>
         <table id="forum">
             <thead id="label">
@@ -17,10 +13,11 @@
             </thead>
             <?php foreach($model['topics'] as $topic) { ?>
             <tr>
-                <td class="sujet"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/topic/<?php echo $topic['id']; ?>"><?php echo $topic['titre']; ?></a></td>
+                <td class="sujet"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id']; ?>"><?php echo $topic['titre']; ?></a></td>
                 <td class="description"><?php echo $topic['description']; ?></td>
                 <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/user/profile/<?php echo $topic['createur']['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>
                 <td class="date"><?php echo $topic['date_creation'];?></td>
+                <td class="acceder"><a class="acceder" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo  $topic['id']; ?>">Accéder</a></td>
             </tr>
             <?php } ?>
         </table>

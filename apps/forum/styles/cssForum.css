@@ -1,30 +1,30 @@
 #haut{
-    width:100%;
-    background-color: #CC0033;
-    align-content: center;
+    margin:auto;
+
 }
 #haut div{
-  margin-left: auto;
-  margin-right: auto;
+
 }
 ul .enteteforum
 {
+  margin-top:1em;
   display: inline-block;
-  margin-right: 30px;
   color : white;
-  line-height: 50px;
-  padding: 0 25px;
+  width : 49%;
+  line-height: 3.5em;
   color: white;
   text-decoration: none;
   font-size: 1.2em;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  text-align: center;
+  background-color: #cc0033;
 }
 ul .enteteforum:hover
 {
     color:#CC0033;
-    background-color: white;
+    background-color: rgb(235,235,235);
 }
 #forum{
   margin-bottom: 50px;
@@ -60,6 +60,22 @@ table{
     margin-right: auto;
     text-align: center;
 }
+.acceder{
+  background-color:#f8f8f8;
+  width:5em;
+
+}
+.acceder a{
+  background-color: #CC0033;
+  color:white;
+  border: 5px solid #CC0033;
+  border-radius: 3px;
+}
+.acceder a:hover{
+  background-color:#880000;
+  border: 5px solid #880000;
+
+}
 .sujet{
     width:15em;
     height:45px;
@@ -89,7 +105,8 @@ table{
     height:20px;
     width:20px;
     text-align: center;
-    border: solid #CC0033 2px;
+    font-size: 1.5em;
+    color:#cc0033;
 }
 a{
     text-decoration: none;

@@ -1,7 +1,27 @@
-.entete
+#haut{
+    margin:auto;
+
+}
+ul .enteteforum
 {
-    width:100%;
-    text-align: center;
+  margin-top:1em;
+  display: inline-block;
+  color : white;
+  width : 49%;
+  line-height: 3.5em;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
+  background-color: #cc0033;
+}
+ul .enteteforum:hover
+{
+    color:#CC0033;
+    background-color: rgb(235,235,235);
 }
 .titre{
   width:100%;

@@ -1,11 +1,8 @@
-        <ul id="haut">
-            <li><a href="<?php echo Config::get('config.base');?>/forum/create">Créer un nouveau Topic</a></li>
-            <li><a href="#">Mes Topics</a></li>
-            <li><form method="post" action="hey.php">
-                <label for="recherche">Rechercher sur le forum</label>
-                <input type="search" placeholder="ex: Photographie" id="recherche" name="recherche"/>
-                </form></li>
-        </ul>
+<ul id="haut">
+    <a href="<?php echo Config::get('config.base'); ?>/forum" class="titreenteteforum"><li class="enteteforum">Revenir au Forum</li></a>
+    <a class="titreenteteforum" href="<?php echo Config::get('config.base'); ?>/forum/create"><li class="enteteforum">Créer un nouveau Topic</li></a>
+    <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
+</ul>
         <?php
           if (empty($model)) {
             // No topic based on asked id
@@ -27,8 +24,12 @@
             <li><h3><?php echo $model['date_creation']; ?></h3></li>
         </ul>
         <ul id="titre">
-            <li><p>sujet :</p></li>
+            <li><p>Sujet :</p></li>
             <li><div><h1><?php echo $model['titre']; ?></h1></div></li>
+        </ul>
+        <ul id="description">
+            <li><p>Description :</p></li>
+            <li><div><h3><?php echo $model['description']; ?></h3></div></li>
         </ul>
         <table class="messages">
           <thead class="first_ligne">

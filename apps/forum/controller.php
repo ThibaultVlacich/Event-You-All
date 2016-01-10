@@ -54,6 +54,7 @@ class ForumController extends Controller {
       $datecrea = $data['date_creation'];
       $titre = $data['titre'];
       $createurtop = $this->model->getCreatorForTopic($data['id_createur']);
+      $description= $data['description'];
 
       $comments = $this->model->getComments($topic_id, 0, 10);
 
@@ -68,7 +69,8 @@ class ForumController extends Controller {
         'comments' => $comments,
         'createurtop' => $createurtop['nickname'],
         'date_creation' => $datecrea,
-        'titre' => $titre
+        'titre' => $titre,
+        'description' =>$description
       );
     }
   }
