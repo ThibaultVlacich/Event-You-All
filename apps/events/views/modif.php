@@ -283,7 +283,7 @@
         </div>
         <div class="form-group full">
           <label for="poster">Poster (si vous souhaitez le modifier)</label>
-          <input required type="file" id="poster" name="poster">
+          <input type="file" id="poster" name="poster">
           <em class="legend">Dimensions minimales : 90*160px. Dimensions maximales : 450*800px.</em>
         </div>
         <div class="form-group full">
