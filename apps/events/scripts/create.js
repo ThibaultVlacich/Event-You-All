@@ -16,8 +16,8 @@ $(function() {
     $(window).scroll(function() {
       var windowTop = $(window).scrollTop();
 
-      if (stickyTop < windowTop){
-        $sticky.css({ position: 'fixed', top: 0 });
+      if (stickyTop < (windowTop + 15)){
+        $sticky.css({ position: 'fixed', top: '15px' });
       } else {
         $sticky.css('position','static');
       }
