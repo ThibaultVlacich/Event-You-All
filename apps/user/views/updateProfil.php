@@ -32,9 +32,10 @@
             ?>
                 <h2 class='entetecompte'>Mon Profil</h2>
                 <section>
-                  <form method="POST" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
+                  <form enctype="multipart/form-data" method="POST" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
                       <div class="photodemoi">
                               <p class="Principal">
+                                <?php var_dump($model['data']['photoprofil']);?>
                                   <img class="photoinconnu" src="<?php echo $model['data']['photoprofil']; ?>" alt="Photo d'inconnu"/>
                               </p>
                               <p>
