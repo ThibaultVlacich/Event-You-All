@@ -8,13 +8,13 @@
       <i class="fa fa-spin fa-spinner"></i>
       <ul>
         <li>Bienvenue <strong><?php echo $model['data']['nickname']; ?></strong>. Votre compte a été créé avec succès !</li>
-        <li>Vous allez être redirigé dans 5 secondes.</li>
+        <li>Vous allez être redirigé dans 3 secondes.</li>
       </ul>
     </div>
     <script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo Config::get('config.base'); ?>';
-      }, 5000);
+      }, 3000);
     </script>
     <?php
         return;

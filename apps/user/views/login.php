@@ -8,13 +8,13 @@
       <i class="fa fa-spin fa-spinner"></i>
       <ul>
         <li>Vous avez été connecté avec succès !</li>
-        <li>Vous allez être redirigé dans 5 secondes.</li>
+        <li>Vous allez être redirigé dans 3 secondes.</li>
       </ul>
     </div>
     <script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo isset($model['redirect']) ? $model['redirect'] : Config::get('config.base'); ?>';
-      }, 5000);
+      }, 3000);
     </script>
     <?php
         return;
