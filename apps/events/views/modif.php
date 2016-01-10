@@ -14,7 +14,7 @@
 ?>
 <div class="app-events app-events-create">
   <h2 class="title">Créer un nouvel événement</h2>
-  <form method="post" action="<?php echo Config::get('config.base'); ?>/events/create_confirm" enctype="multipart/form-data">
+  <form method="post" action="<?php echo Config::get('config.base'); ?>/events/modif_confirm/<?php echo $model['id'];?>" enctype="multipart/form-data">
     <div class="form-main">
       <div class="form-block full">
         <h3 class="form-block-title">&Agrave; propos de l'événement</h3>
@@ -287,7 +287,7 @@
         </div>
         <div class="form-group full">
           <label for="poster">Poster (Si vous souhaitez le modifier)</label>
-          <input required type="file" id="poster" name="poster">
+          <input type="file" id="poster" name="poster">
           <p>Dimensions recommandées : 360*640px (format 9/16 obligatoire)</p>
         </div>
         <div class="form-group full">
