@@ -293,5 +293,15 @@ public function modifEvent(array $data) {
     $prep->execute();
   }
 
+  public function numberOfParticipants($id_event) {
+    $prep = $this->db->prepare('SELECT * FROM `evenements_participants` WHERE id_evenement = :id_event');
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+
+    $prep->execute();
+
+    return $prep->rowCount();
+  }
+
 }
 ?>

@@ -110,6 +110,9 @@ class EventsController extends Controller {
 	    // Get creator's name and id
 	    $data['creator'] = $this->model->getCreator($data['id_createur']);
 
+      // Get number of participants
+      $data['number_of_participants'] = $this->model->numberOfParticipants($event_id);
+
       // See if the user is logged in, and if he's already registered to the event
       $session = System::getSession();
 
