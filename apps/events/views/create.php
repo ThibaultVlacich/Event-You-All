@@ -217,7 +217,8 @@
         </div>
         <div class="form-group full">
           <label for="pays">Pays <span class="required">*</span></label>
-          <input type="text" name="pays" id="pays" required value="France">
+          <input type="text" value="France" disabled>
+          <input type="hidden" name="pays" id="pays" value="France">
         </div>
       </div>
       <div class="form-block">
