@@ -13,7 +13,7 @@ return;
       }, 3000);
     </script>
 	<ul>
-		<li>Votre événement a été créé avec succès !</li>
+		<li>Votre article a été créé avec succès !</li>
 		<li>Vous allez être redirigé dans 3 secondes.</li>
 	</ul>
 </div>
