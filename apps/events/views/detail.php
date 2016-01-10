@@ -153,9 +153,18 @@
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/unregister/<?php echo $model['id']; ?>">Se désinscrire de l'événement</a>
           <?php
               } else {
+                if ($model['capacite'] < $model['number_of_participants']) {
+                  // There is still place in the event
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/register/<?php echo $model['id']; ?>">S'inscrire à l'événement</a>
           <?php
+                } else {
+                  // There is no place left
+          ?>
+          <a class="button disabled">S'inscrire à l'événement</a>
+          <p>Vous ne pouvez pas vous inscrire à cet événement, ce dernier étant plein !</p>
+          <?php
+                }
               }
             } else {
               // User is not logged in

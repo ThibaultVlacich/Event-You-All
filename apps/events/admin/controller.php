@@ -10,8 +10,19 @@ defined('EUA_VERSION') or die('Access denied');
 
 class EventsAdminController extends Controller {
   var $default_module = 'index';
+  var $access = array(
+    'all' => 3
+  );
 
   function index() {
+    // Ici un tableau avec un listing de tous les événements disponibles sur le site
+  }
+
+  function modif() {
+
+  }
+
+  function delete() {
 
   }
 
