@@ -14,6 +14,12 @@ class UserController extends Controller {
 	 */
 	private $session;
 
+	var $access = array(
+		'mesevents'    => 1,
+		'updateProfil' => 1,
+		'myprofil'     => 1
+	);
+
 	/**
 	 * UserController's constructor to initialize $session.
 	 */
@@ -345,11 +351,11 @@ class UserController extends Controller {
 
 		$session = System::getSession();
 
-		if ($session->isConnected()){
-
-			$user_id = $_SESSION['userid'];
+		if (!$session->isConnected()){
+			return;
 		}
 
+		$user_id = $_SESSION['userid'];
 
 		$data['eventscreation'] = $this->model->eventscreation($user_id);
 
@@ -357,18 +363,14 @@ class UserController extends Controller {
 
 		$eventsinscrit = $this->model->geteventsinscritID($user_id);
 		if(!empty($eventsinscrit)){
-			$k = 0;
-			$i = 0;
 			foreach($eventsinscrit as $value){
 				$dateevent = $this->model->geteventsinscritDate($value['id_evenement']);
 				if(strtotime($dateevent['date_debut']) > $dateactuelle){
-					$data['eventsinscrit'][$k] = $this->model->geteventsDetail($value['id_evenement']);
-					$k +=1;
+					$data['eventsinscrit'][] = $this->model->geteventsDetail($value['id_evenement']);
 					$data['existenceinscription'] = true;
 				}
 				else{
-					$data['eventspasse'][$i] = $this->model->geteventsDetail($value['id_evenement']);
-					$i +=1;
+					$data['eventspasse'][] = $this->model->geteventsDetail($value['id_evenement']);
 					$data['existenceinscriptionpasse'] = true;
 				}
 			}

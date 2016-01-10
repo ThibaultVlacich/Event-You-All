@@ -258,11 +258,36 @@ class UserModel {
   }
 
   public function eventscreation($user_id){
-    $prep = $this->db->prepare('SELECT poster, nom, ville, date_debut, id FROM evenements WHERE id_createur = :user_id ORDER BY date_debut');
+    $prep = $this->db->prepare('SELECT * FROM evenements WHERE id_createur = :user_id ORDER BY date_debut');
 
     $prep->bindParam(':user_id',$user_id);
     $prep->execute();
-    return $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    $events = array();
+
+    foreach ($prep->fetchAll(PDO::FETCH_ASSOC) as $event) {
+      if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
+        $date_debut_timestamp = strtotime($event['date_debut']);
+        $event['date_debut'] = strftime('%d %b %Y', $date_debut_timestamp);
+        $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
+      } else {
+        $event['date_debut'] = null;
+        $event['heure_debut'] = null;
+      }
+
+      if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
+        $date_fin_timestamp = strtotime($event['date_fin']);
+        $event['date_fin'] = strftime('%d %b %Y', $date_fin_timestamp);
+        $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
+      } else {
+        $event['date_fin'] = null;
+        $event['heure_fin'] = null;
+      }
+
+      $events[] = $event;
+    }
+
+    return $events;
   }
 
   public function geteventsinscritID($user_id){
@@ -283,11 +308,43 @@ class UserModel {
 
 
   public function geteventsDetail($event_id){
-    $prep = $this->db->prepare('SELECT poster, nom, ville, date_debut, id FROM evenements WHERE id = :id_evenement ORDER BY date_debut');
+    $prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :id_evenement ORDER BY date_debut');
 
     $prep->bindParam(':id_evenement',$event_id);
     $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
+
+    if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
+      $date_debut_timestamp = strtotime($event['date_debut']);
+      $event['date_debut'] = strftime('%d %b %Y', $date_debut_timestamp);
+      $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
+    } else {
+      $event['date_debut'] = null;
+      $event['heure_debut'] = null;
+    }
+
+    if(!($event = $prep->fetch(PDO::FETCH_ASSOC))) {
+      return false;
+    }
+
+    if (!empty($event['date_debut']) && $event['date_debut'] != '0000-00-00 00:00:00') {
+      $date_debut_timestamp = strtotime($event['date_debut']);
+      $event['date_debut'] = strftime('%d %b %Y', $date_debut_timestamp);
+      $event['heure_debut'] = strftime('%H:%M', $date_debut_timestamp);
+    } else {
+      $event['date_debut'] = null;
+      $event['heure_debut'] = null;
+    }
+
+    if (!empty($event['date_fin']) && $event['date_fin'] != '0000-00-00 00:00:00') {
+      $date_fin_timestamp = strtotime($event['date_fin']);
+      $event['date_fin'] = strftime('%d %b %Y', $date_fin_timestamp);
+      $event['heure_fin'] = strftime('%H:%M', $date_fin_timestamp);
+    } else {
+      $event['date_fin'] = null;
+      $event['heure_fin'] = null;
+    }
+
+    return $event;
   }
 
 }
