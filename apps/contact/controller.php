@@ -17,7 +17,7 @@ public function contactconfirm() {
 
 
 	//Destination
-   $mail = 'gay.alexandre@overstar-entertainment.com';
+   $mail = config::get('config.email');
 
  //filter
  if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
@@ -30,7 +30,7 @@ public function contactconfirm() {
  }
 
 
- 
+
  //extract email
  $email = $data['email'];
  //extract firsname
@@ -51,7 +51,7 @@ public function contactconfirm() {
 
  //=====Create header
  $header = "From:  <$email>".$passage_ligne;
- $header.= "Reply-to:  <gay.alexandre@overstar-entertainment.com>".$passage_ligne;
+ $header.= "Reply-to:  <$mail>".$passage_ligne;
  $header.= "MIME-Version: 1.0".$passage_ligne;
  $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
  //==========
