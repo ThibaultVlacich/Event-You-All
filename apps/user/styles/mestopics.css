@@ -1,0 +1,51 @@
+.boutoncompte
+{
+  color:black;
+  border : 1px black solid;
+  box-shadow: 1px 1px 1px black;
+  margin-top: 5px;
+  display : inline-block;
+  margin-bottom:20px;
+  border: 0;
+  background: #CC0033;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 6px 3px;
+  margin-right: 10px;
+}
+.detailtopic1 li, .detailtopic2 li{
+  display:inline-block;
+  width:30%;
+  height: 5em;
+  vertical-align: center;
+  font-size:1.2em;
+}
+.detailtopic1{
+  background-color: rgb(235,235,235);
+  text-align: center;
+}
+.detailtopic2{
+  background-color: whitesmoke;
+  text-align: center;
+}
+.topic{
+  text-align: center;
+  color:black;
+font-size:1.2em;
+}
+.topic li{
+  display: inline-block;
+  width:30%;
+  vertical-align: center;
+  border-bottom: 1px solid black;
+}
+#page{
+  text-align: center;
+}
+.voirmestopics{
+    color:#cc0033;
+    border-bottom: 1px solid #cc0033;
+    margin-bottom: 4em;
+}

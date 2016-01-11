@@ -383,5 +383,20 @@ class UserController extends Controller {
 		}
 		return $data;
 	}
+
+public function mestopics(){
+
+	$session = System::getSession();
+
+	if (!$session->isConnected()){
+		return;
+	}
+
+	$user_id = $_SESSION['userid'];
+
+	$data['topicscreation'] = $this->model->topicscreation($user_id);
+
+	return $data;
+}
 }
 ?>

@@ -347,5 +347,22 @@ class UserModel {
     return $event;
   }
 
+public function topicscreation($user_id){
+    $prep = $this->db->prepare('SELECT * FROM forum_topics WHERE id_createur = :user_id ORDER BY date_creation');
+
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+
+    $topics = array();
+
+    foreach ($prep->fetchAll(PDO::FETCH_ASSOC) as $topic) {
+      $date_creation_timestamp = strtotime($topic['date_creation']);
+      $topic['date_creation'] = strftime('%d %b %Y', $date_creation_timestamp);
+      $topics[] = $topic;
+    }
+
+
+    return $topics;
+  }
 }
 ?>

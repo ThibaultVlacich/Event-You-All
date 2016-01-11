@@ -46,5 +46,11 @@ class UserView extends View {
     $this->setTemplate('/apps/user/views/mesevents.php');
   }
 
+  public function mestopics(){
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/mestopics.css');
+
+    $this->setTemplate('/apps/user/views/mestopics.php');
+  }
+
 }
 ?>

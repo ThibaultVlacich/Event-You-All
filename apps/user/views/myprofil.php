@@ -1,6 +1,7 @@
         <div id="divpage">
             <h1>Mon Compte</h1>
               <a href='<?php echo Config::get('config.base'); ?>/user/mesevents' class='boutoncompte'>Mes événements</a>
+              <a href='<?php echo Config::get('config.base'); ?>/user/mestopics' class='boutoncompte'>Mes Topics</a>
                 <h2>Mon Profil</h2>
                 <section>
                 <div class="photodemoi">
