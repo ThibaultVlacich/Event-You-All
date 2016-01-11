@@ -1,6 +1,6 @@
 <ul id="haut">
     <a class="titreenteteforum" href="<?php echo Config::get('config.base'); ?>/forum"><li class="enteteforum">Revenir au Forum</li></a>
-    <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
+    <a href="<?php echo Config::get('config.base'); ?>/user/mestopics" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
 </ul>
     <form method="post" action="<?php echo Config::get('config.base'); ?>/forum/create_confirm" enctype="multipart/form-data">
         <section class="principal">

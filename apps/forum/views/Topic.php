@@ -1,7 +1,7 @@
 <ul id="haut">
     <a href="<?php echo Config::get('config.base'); ?>/forum" class="titreenteteforum"><li class="enteteforum">Revenir au Forum</li></a>
     <a class="titreenteteforum" href="<?php echo Config::get('config.base'); ?>/forum/create"><li class="enteteforum">Créer un nouveau Topic</li></a>
-    <a href="#" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
+    <a href="<?php echo Config::get('config.base'); ?>/user/mestopics" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
 </ul>
         <?php
           if (empty($model)) {
