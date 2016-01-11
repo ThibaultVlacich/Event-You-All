@@ -5,9 +5,9 @@
     <select name="times">
     <?php
      foreach (array('10','30','60','All') as $value) {
-         if (isset($model['times'])){
+         if (isset($model['times']) and !empty($data['times'])){
              if ($value!='All'){
-                 ?><option  value="<?php echo $value ?>" <?php if ($model['times']==$value){echo 'selected';}?>><?php echo $value ?></option><?php
+                 ?><option  value="<?php echo $value ?>" <?php if ($model['times']=$value){echo 'selected';}?>><?php echo $value ?></option><?php
              }
              else{
                  ?><option value="100000000000"><?php echo $value ?></option><?php
@@ -26,12 +26,8 @@
      }
     
     ?>
-        <option value="10">10</option>
-        <option value="30">30</option>
-        <option value="60">60</option>
-        <option value="100000000">All</option>
     </select>
-    <input id='hide'type="submit" />
+    <input id='nohide'type="submit" />
 </form>
 
 <table id='resultat'> <tr><th></th><th>Début</th> <th>Nom</th> <th>Créateur</th> <th>Theme</th><th>Type</th><th></th></tr>

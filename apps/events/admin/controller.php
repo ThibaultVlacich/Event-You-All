@@ -17,24 +17,24 @@ class EventsAdminController extends Controller {
   function index() {
     // Ici un tableau avec un listing de tous les événements disponibles sur le site
     $data = Request::getAssoc(array('number', 'times'), null, 'GET');
-    if ( isset($_GET['number']))
+    if ( isset($data['number']) and !empty($data['number']))
     {
-        if ( isset($_GET['times']))
+        if ( isset($data['times']) and !empty($data['times']))
         {
-            if  ($_GET['times']>100)
+            if  ($data['times']>100)
             {
-                $data['events']=$this->model->getAllEvents(0,$_GET['times']);
+                $data['events']=$this->model->getAllEvents(0,intval($data['times']));
             }
             else
             {
-                $calc=$_GET['times']*$_GET['number'];
-                $data['events']=$this->model->getAllEvents($calc,$_GET['times']);
+                $calc=intval($data['times'])*(intval($data['number'])-1);
+                $data['events']=$this->model->getAllEvents($calc,intval($data['times']));
             }
         }
         else
         {
-            $calc=10*$_GET['number'];
-            $data['events']=$this->model->getAllEvents($calc,$_GET['times']);
+            $calc=10*intval($data['number']);
+            $data['events']=$this->model->getAllEvents($calc,intval($data['times']));
         }
     }
     else
