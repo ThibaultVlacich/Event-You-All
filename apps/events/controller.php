@@ -20,7 +20,7 @@ class EventsController extends Controller {
   );
 
   function index() {
-    $data = $this->model->getEvents(0, 5, 'date_debut', true, 'WHERE `banniere` IS NOT NULL');
+    $data = $this->model->getEvents(0, 5, 'date_debut', true, 'WHERE `banniere` != "" AND `date_fin` > NOW()');
 
     $slideshow = array();
 
@@ -46,7 +46,7 @@ class EventsController extends Controller {
       $slideshow[] = $event;
     }
 
-    $data = $this->model->getEvents(0, 10);
+    $data = $this->model->getEvents(0, 10, 'date_debut', true, 'WHERE `date_fin` > NOW()');
 
     $events = array();
 
