@@ -100,6 +100,14 @@ class ArticleModel {
       return false;
     }
   }
+  public function deleteArticle($id) {
+      $prep = $this->db->prepare('DELETE FROM articles WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return 'deleted';
+  
+  }
 }
 
 ?>
