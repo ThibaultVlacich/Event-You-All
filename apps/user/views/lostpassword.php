@@ -1,4 +1,11 @@
 <div class="app-user app-user-passwordlost">
+  <?php $session = System::getSession(); if ($session->isConnected()){ ?>
+    <div class="note error">
+      <i class="fa fa-exclamation-triangle"></i>
+      <ul><li>Vous êtes connecté, vous ne pouvez pas demander de nouveau mot de passe ! Déconnectez-vous ou changez votre mot de passe en <a href='<?php echo Config::get('config.base'); ?>/user/updateProfil'>cliquez ici</a></li>
+      </ul>
+    </div>
+    <?php } else{ ?>
   <h2>Mot de passe oublié</h2>
   <div class="form">
     <?php
@@ -38,4 +45,5 @@
       </div>
     </form>
   </div>
+  <?php } ?>
 </div>
