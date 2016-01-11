@@ -188,6 +188,13 @@ function modif_confirm(array $params) {
    else {}
    }
  }
+ 
+ function deleted(array $params) {
+    if (isset($params[0])) {
+      $id_event = intval($params[0]);
+      $this->model->deleteArticle($id_event);
+    }
+  }
 
 }
 

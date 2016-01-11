@@ -30,6 +30,9 @@ class ArticleView extends View {
    public function modif_confirm(){
     $this->setTemplate('/apps/article/views/modifarticleconf.php');
  }
+   public function deleted(){
+    $this->setTemplate('/apps/article/views/delete.php');
+ }
 }
 
 ?>

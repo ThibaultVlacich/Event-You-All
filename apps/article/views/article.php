@@ -26,7 +26,15 @@
           ?>
           <a class="button" href="<?php echo Config::get('config.base'); ?>/article/modif/<?php echo $model['id']; ?>">Modifier l'article</a>
           <?php
-            }}?>
+            }
+                         if ($model['creator']['id'] == $user_id) {
+                // User is the creator
+          ?>
+          <a class="button" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article ?'));" href="<?php echo Config::get('config.base'); ?>/article/deleted/<?php echo $model['id']; ?>">Effacer l'événement</a>
+          <?php
+              }
+            
+            }?>
  </div>
 <div id="contenu">
   <p id="description">
