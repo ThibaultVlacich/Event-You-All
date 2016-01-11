@@ -1,6 +1,7 @@
 
 <h1 id="page">Mon Compte</h1>
 <a href='<?php echo Config::get('config.base'); ?>/user/myprofil' class='boutoncompte'>Retourner sur mon profil</a>
+<a href='<?php echo Config::get('config.base'); ?>/forum' class='boutoncompte'>Accès au Forum</a>
 <h2  class='voirmestopics'>Les Topics que j'ai créé</h2>
       <ul class="topic">
         <li>Titre</li>
