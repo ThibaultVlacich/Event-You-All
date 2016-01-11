@@ -1,7 +1,7 @@
 <?php
 
 $config = array(
-  'base'            => 'http://localhost:8080/Event-You-All',
+  'base'            => 'http://localhost/Event-You-All',
   'defaultapp'      => 'events',
   'defaultadminapp' => 'board',
   'site_title'      => 'Event-You-All',
