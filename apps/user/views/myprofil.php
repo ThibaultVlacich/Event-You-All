@@ -12,6 +12,7 @@
             <div class='moncommentaire'><?php echo $model['commentaire']; ?></div>
                             <br/>
                             <a class='boutoncompte' href = "<?php echo Config::get('config.base'); ?>/user/updateProfil">Modifier mon profil</a>
+                            <a class='boutoncompte' href = '<?php echo Config::get('config.base'); ?>/user/updatepassword'>Modifier mon Mot de Passe</a>
                 </div>
                 <div class="infoperso">
                     <div class="infoperso1">

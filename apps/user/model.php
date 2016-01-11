@@ -364,5 +364,22 @@ public function topicscreation($user_id){
 
     return $topics;
   }
+
+  public function getoldpasswordcheck($user_id){
+    $prep = $this->db->prepare('SELECT password FROM users WHERE id = :user_id');
+
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function modifpassword($user_id,$newpassword){
+    $prep = $this->db->prepare('UPDATE users SET password = :newpassword WHERE id = :user_id');
+
+    $prep->bindParam(':newpassword',$newpassword);
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+  }
+
 }
 ?>

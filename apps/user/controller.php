@@ -398,5 +398,44 @@ public function mestopics(){
 
 	return $data;
 }
+
+	public function updatepassword(array $params){
+		$session = System::getSession();
+		if ($session->isConnected()) {
+			$user_id = $_SESSION['userid'];
+		}
+
+		$oldpassword = $this->model->getoldpasswordcheck($user_id);
+		$modifications = Request::getAssoc(array('oldpassword','newpassword','newpasswordcheck'));
+		if(empty($modifications['oldpassword']) && empty($modifications['newpassword']) && empty($modifications['newpasswordcheck'])){
+			$nothingyet = true;
+		}
+		else{
+			$nothingyet = false;
+		}
+		$error = '';
+
+		if($oldpassword['password'] == sha1($modifications['oldpassword'])){
+			if($modifications['newpassword'] == $modifications['newpasswordcheck']){
+				$a = $this->model->modifpassword($user_id, sha1($modifications['newpassword']));
+			}
+			else{
+				$error .= 'Les deux mots de passe sont différents';
+			}
+		}
+		else{
+			$error .= 'Mot de Passe erroné !';
+		}
+		if(empty($error)){
+			$data = array('success'=>true, 'error'=>$error);
+		}
+		elseif ($nothingyet===true) {
+			$data = array('success'=>'pasencore');
+		}
+		else{
+			$data = array('success'=>false, 'error'=>$error);
+		}
+		return $data;
+	}
 }
 ?>
