@@ -1,8 +1,31 @@
 <h2 id='titre' >Evénements</h2>
 
 <form id="nb" method="get" action="<?php echo Config::get('config.base'); ?>/admin/events">
-    <input type="number" name="number" placeholder="page n°" min="1">
+    <input type="number" name="number" placeholder="page n°" min='1'  value="<?php if (isset($model['number'])){echo $model['number'];} else {echo '1';}?>">
     <select name="times">
+    <?php
+     foreach (array('10','30','60','All') as $value) {
+         if (isset($model['times'])){
+             if ($value!='All'){
+                 ?><option  value="<?php echo $value ?>" <?php if ($model['times']==$value){echo 'selected';}?>><?php echo $value ?></option><?php
+             }
+             else{
+                 ?><option value="100000000000"><?php echo $value ?></option><?php
+             }
+         }
+         else{
+             if ($value!='All'){
+                 ?><option value="<?php echo $value ?>"<?php if ($model['times']==100000000000){echo 'selected';}?>><?php echo $value ?></option><?php
+             }
+             else{
+                 ?><option value="100000000000"><?php echo $value ?></option><?php
+             }
+         }
+         
+         
+     }
+    
+    ?>
         <option value="10">10</option>
         <option value="30">30</option>
         <option value="60">60</option>

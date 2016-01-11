@@ -16,6 +16,7 @@ class EventsAdminController extends Controller {
 
   function index() {
     // Ici un tableau avec un listing de tous les événements disponibles sur le site
+    $data = Request::getAssoc(array('number', 'times'), null, 'GET');
     if ( isset($_GET['number']))
     {
         if ( isset($_GET['times']))
