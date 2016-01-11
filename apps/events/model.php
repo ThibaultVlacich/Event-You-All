@@ -302,6 +302,14 @@ public function modifEvent(array $data) {
 
     return $prep->rowCount();
   }
+    public function deleteEvent($id) {
+      $prep = $this->db->prepare('DELETE FROM evenements WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return 'deleted';
+  
+  }
 
 }
 ?>

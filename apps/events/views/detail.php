@@ -147,6 +147,12 @@
           <a class="button" href="<?php echo Config::get('config.base'); ?>/events/modif/<?php echo $model['id']; ?>">Modifier l'événement</a>
           <?php
               }
+                        if ($model['id_createur'] == $user_id) {
+                // User is the creator
+          ?>
+          <a class="button" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet événement ?'));" href="<?php echo Config::get('config.base'); ?>/events/delete/<?php echo $model['id']; ?>">Effacer l'événement</a>
+          <?php
+              }
 
               if($model['user_already_registered']) {
           ?>

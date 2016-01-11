@@ -74,14 +74,14 @@ class EventsAdminModel extends EventsModel {
     return $events;
   }
 
-  public function deleteEvent($id) {
+ /* public function deleteEvent($id) {
       $prep = $this->db->prepare('DELETE FROM evenements WHERE id = :id');
 
         $prep->bindParam(':id', $id);
         $prep->execute();
         return 'deleted';
   
-  }
+  }*/
   
 
 }

@@ -482,5 +482,14 @@ class EventsController extends Controller {
 
     return false;
   }
+  
+    function delete(array $params) {
+    if (isset($params[0])) {
+      $id_event = intval($params[0]);
+      $delete = $this->model->deleteEvent($id_event);
+      
+    }
+
+  }
 }
 ?>
