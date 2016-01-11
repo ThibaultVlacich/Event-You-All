@@ -48,11 +48,10 @@
                       </div>
                       <div class="infoperso">
                           <div class="infoperso1">
-                                  <input type='checkbox' name='profilprive' id='Profilprive'/> Profil privé</p><br/>
-                                  <p class="nom">Nom : <?php echo $model['data']['lastname']; ?></p>
-                                  <p class="prenom">Prénom :	<?php echo $model['data']['firstname'];?></p><p class="datedenaissance">Date de naissance : <?php echo $model['data']['birthdate'];?></p>
+                                  <p class="nom"><span class='base'>Nom :</span><?php echo $model['data']['lastname']; ?></p>
+                                  <p class="prenom"><span class ='base'>Prénom :</span>	<?php echo $model['data']['firstname'];?></p><p class="datedenaissance"><span class ='base'>Date de naissance :</span> <?php echo $model['data']['birthdate'];?></p>
                                     <input name='birthdate' type='date'/>
-                                  <p id="sexe">Sexe :  <?php echo $model['data']['sex'];?> </p>
+                                  <p id="sexe"><span class='base'>Sexe :</span>  <?php echo $model['data']['sex'];?> </p>
                                     <select name='sex'>
                                       <option selected disabled>Non renseigné</option>
                                         <option value='M'>Homme</option>
@@ -60,20 +59,20 @@
                                     </select>
                           </div>
                           <div class="infoperso2"><br/>
-                                      <label for="adressephysique" id='adressephysique'>Adresse : </label><?php echo $model['data']['adress'];?><br/>
+                                      <label for="adressephysique" id='adressephysique'><span class='base'>Adresse :</span> </label><?php echo $model['data']['adress'];?><br/>
                                         <input type='text' name='adress'/><br/>
-                                      <label for='pays' class='pays'> Pays :   </label><?php echo $model['data']['country'];?><br/>
+                                      <label for='pays' class='pays'> <span class='base'>Pays :</span>   </label><?php echo $model['data']['country'];?><br/>
                                       <select name="country" class="pays" >
                                         <option value="FR">France</option>
                                         <option value="CN">Canada</option>
                                       </select><br/>
-                                      <label for="codepostal" class='codepostal'>Code Postal : </label><?php echo $model['data']['zip_code'];?><br/>
+                                      <label for="codepostal" class='codepostal'><span class='base'>Code Postal :</span> </label><?php echo $model['data']['zip_code'];?><br/>
                                         <input class ='codepostal' type='number' name='zip_code'/><br/>
-                                      <label for="Ville" class='ville'>Ville : </label><?php echo $model['data']['city'];?><br/>
+                                      <label for="Ville" class='ville'><span class='base'>Ville :</span> </label><?php echo $model['data']['city'];?><br/>
                                         <input type='text' name='city' class='ville'/><br/>
-                                      <label for="adressemail" id='adressemail'>Mon Adresse Mail : </label><?php echo $model['data']['email'];?><br/>
+                                      <label for="adressemail" id='adressemail'><span class='base'>Mon Adresse Mail :</span> </label><?php echo $model['data']['email'];?><br/>
                                         <input name='mail' type='mail'/><br/>
-                                      <label for="telephone" id='telephone'>Numéro de Téléphone : </label><?php echo $model['data']['phone'];?><br/>
+                                      <label for="telephone" id='telephone'><span class='base'>Numéro de Téléphone :</span> </label><?php echo $model['data']['phone'];?><br/>
                                         <input name='phone' type='tel'/><br/>
                           </div>
                       </div>

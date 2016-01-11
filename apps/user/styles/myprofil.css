@@ -154,3 +154,31 @@ select
 {
   margin-bottom: 10px;
 }
+
+.photoinconnu
+{
+  width:256px;
+  height:192px;
+}
+
+.moncommentaire
+{
+  border :1px solid black;
+  padding :5px;
+}
+
+#divpage .base
+{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.datedenaissance .base
+{
+  margin-right: 5px;
+}
+
+.nom .base
+{
+  margin-right :5px;
+}
