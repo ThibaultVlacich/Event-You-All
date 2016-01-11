@@ -7,13 +7,13 @@
               <i class="fa fa-spin fa-spinner"></i>
               <ul>
                 <li>Votre compte a été mis à jour avec succès !</li>
-                <li>Vous allez être redirigé dans 5 secondes.</li>
+                <li>Vous allez être redirigé dans 3 secondes.</li>
               </ul>
             </div>
             <script type="text/javascript">
               setTimeout(function() {
                 window.location = '<?php echo Config::get('config.base'); ?>';
-              }, 5000);
+              }, 3000);
             </script>
             <?php
                 return;
@@ -35,7 +35,6 @@
                   <form enctype="multipart/form-data" method="POST" action = "<?php echo Config::get('config.base'); ?>/user/updateProfil">
                       <div class="photodemoi">
                               <p class="Principal">
-                                <?php var_dump($model['data']['photoprofil']);?>
                                   <img class="photoinconnu" src="<?php echo $model['data']['photoprofil']; ?>" alt="Photo d'inconnu"/>
                               </p>
                               <p>

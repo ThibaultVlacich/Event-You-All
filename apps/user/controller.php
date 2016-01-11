@@ -318,11 +318,11 @@ class UserController extends Controller {
 				$maxheight = 100000;
 				$minheight = 0;
 			  $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-				$extension_upload = strtolower(  substr(  strrchr($photoprofil['tmp_name'], '.')  ,1)  );
+				$extension_upload = strtolower(  substr(  strrchr($photoprofil['name'], '.')  ,1)  );
         if (in_array($extension_upload,$extensions_valides) ){
           $sizeimage=getimagesize($photoprofil['tmp_name']);
           if ($sizeimage[0] > $minwidth and $sizeimage[1] > $minheight){
-            $new_file_name = $photoprofil['tmp_name'];
+            $new_file_name = $photoprofil['name'];
             move_uploaded_file($photoprofil['tmp_name'], UPLOAD_DIR.'user'.DS.'photoprofil'.DS.$new_file_name);
 						$modifications['photoprofil'] = Config::get('config.base').'/upload/user/photoprofil/'.$new_file_name;
         	}
