@@ -7,27 +7,26 @@
                         <p class="Principal">
                             <img class="photoinconnu" src="<?php echo $model['photoprofil']; ?>" alt="Photo d'inconnu"/>
                         </p>
-                        <p><label class="laissercommentaire" for="commentaire">Voici le commentaire que vous avez laissé :</label><br/></p>
+                        <p><label class="laissercommentaire" for="commentaire"><span class='base'>Voici le commentaire que vous avez laissé :</span></label><br/></p>
             <div class='moncommentaire'><?php echo $model['commentaire']; ?></div>
                             <br/>
                             <a class='boutoncompte' href = "<?php echo Config::get('config.base'); ?>/user/updateProfil">Modifier mon profil</a>
                 </div>
                 <div class="infoperso">
                     <div class="infoperso1">
-                            <p id="Profilprive" name="Profilprive"><?php echo $model['profilprive']; ?></p><br/>
-                            <p class="nom">Nom : <?php echo $model['lastname']; ?></p><p class="prenom">Prénom :
-							<?php echo $model['firstname'];?></p><p class="datedenaissance">Date de naissance : <?php echo $model['birthdate'];?></p>
-                            <p id="sexe">Sexe :
+                            <p class="nom"><span class='base'>Nom :</span> <?php echo $model['lastname']; ?></p><p class="prenom"><span class='base'>Prénom :</span>
+							<?php echo $model['firstname'];?></p><p class="datedenaissance"><span class="base"> Date de naissance :</span><?php echo $model['birthdate'];?></p>
+                            <p id="sexe"><span class='base'>Sexe :</span>
                                 <?php echo $model['sex'];?>
                             </p>
                     </div>
                     <div class="infoperso2"><br/>
-                                <label for="adressephysique" id='adressephysique'>Adresse : </label><?php echo $model['adress'];?><br/>
-                                <label for='pays' id='pays'> Pays : </label><?php echo $model['country'];?>
-                                <label for="codepostal" id='codepostal'>Code Postal : </label><?php echo $model['zip_code'];?><br/>
-                                <label for="Ville" id='ville'>Ville : </label><?php echo $model['city'];?><br/>
-                                <label for="adressemail" id='adressemail'>Mon Adresse Mail : </label><?php echo $model['email'];?><br/>
-                                <label for="telephone" id='telephone'>Numéro de Téléphone : </label><?php echo $model['phone'];?><br/>
+                                <label for="adressephysique" id='adressephysique'><span class='base'>Adresse :</span> </label><?php echo $model['adress'];?><br/>
+                                <label for='pays' id='pays'> <span class='base'>Pays :</span> </label><?php echo $model['country'];?>
+                                <label for="codepostal" id='codepostal'><span class='base'>Code Postal :</span> </label><?php echo $model['zip_code'];?><br/>
+                                <label for="Ville" id='ville'><span class='base'>Ville :</span> </label><?php echo $model['city'];?><br/>
+                                <label for="adressemail" id='adressemail'><span class'base'>Mon Adresse Mail :</span> </label><?php echo $model['email'];?><br/>
+                                <label for="telephone" id='telephone'><span class'base'>Numéro de Téléphone :</span> </label><?php echo $model['phone'];?><br/>
                     </div>
                 </div>
                 </section>
