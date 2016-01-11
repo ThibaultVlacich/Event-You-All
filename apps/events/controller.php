@@ -16,7 +16,8 @@ class EventsController extends Controller {
     'create_confirm' => 1,
     'modif'          => 1,
     'modif_confirm'  => 1,
-    'register'       => 1
+    'register'       => 1,
+    'rate'           => 1
   );
 
   function index() {
@@ -114,6 +115,16 @@ class EventsController extends Controller {
 
       // Get number of participants
       $data['number_of_participants'] = $this->model->numberOfParticipants($event_id);
+
+      // Get rate of event
+      $data['rate'] = $this->model->getRateForEvent($event_id);
+
+      // Get the user rate for the event
+      $session = System::getSession();
+
+      if ($session->isConnected()) {
+        $data['user_rate'] = $this->model->getUserRateForEvent($event_id);
+      }
 
       // See if the user is logged in, and if he's already registered to the event
       $session = System::getSession();
@@ -482,14 +493,53 @@ class EventsController extends Controller {
 
     return false;
   }
-  
-    function delete(array $params) {
+
+  function delete(array $params) {
     if (isset($params[0])) {
       $id_event = intval($params[0]);
-      $delete = $this->model->deleteEvent($id_event);
-      
+      $this->model->deleteEvent($id_event);
+    }
+  }
+
+  public function rate(array $params) {
+    if(isset($params[0])) {
+      $id_event = intval($params[0]);
+
+      if(!($event = $this->model->getEvent($id_event))) {
+        return false;
+      }
+
+      if ($this->model->getUserRateForEvent($id_event)) {
+        return array(
+          'id_event'           => $id_event,
+          'event'              => $event,
+          'already_rated'      => true,
+          'success'            => false
+        );
+      }
+
+      $note = Request::get('note', null, 'GET');
+
+      if(isset($params[1]) && $params[1] == 'confirm') {
+        $this->model->rateEvent($id_event, $note);
+
+        return array(
+          'id_event' => $id_event,
+          'note'     => $note,
+          'event'    => $event,
+          'success'  => true
+        );
+      }
+
+      return array(
+        'id_event' => $id_event,
+        'note'     => $note,
+        'event'    => $event,
+        'success'  => false
+      );
     }
 
+    return false;
   }
 }
 ?>

@@ -303,3 +303,27 @@ div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-g
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-google-plus:hover {
   background-color: #de3721;
 }
+
+div.app-events-detail div.event-wrapper aside.event-column .rating {
+  width: 260px;
+  margin: 10px auto 0;
+  font-size: 45px;
+  overflow:hidden;
+}
+div.app-events-detail div.event-wrapper aside.event-column .rating a {
+  margin: 0 5px;
+  float:right;
+  color: #aaa;
+  text-decoration: none;
+  -webkit-transition: color .4s;
+  -moz-transition: color .4s;
+  -o-transition: color .4s;
+  transition: color .4s;
+}
+div.app-events-detail div.event-wrapper aside.event-column .rating a:hover,
+div.app-events-detail div.event-wrapper aside.event-column .rating a:hover ~ a,
+div.app-events-detail div.event-wrapper aside.event-column .rating a:focus,
+div.app-events-detail div.event-wrapper aside.event-column .rating a:focus ~ a		{
+  color: #CC0033;
+  cursor: pointer;
+}

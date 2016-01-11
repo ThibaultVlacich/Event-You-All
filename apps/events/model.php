@@ -16,7 +16,6 @@ class EventsModel {
     $this->db = System::getDb();
   }
 
-
   /**
    * Creates an event in the database.
    *
@@ -308,8 +307,62 @@ public function modifEvent(array $data) {
         $prep->bindParam(':id', $id);
         $prep->execute();
         return 'deleted';
-  
+
   }
 
+  public function getRateForEvent($id_event) {
+    $prep = $this->db->prepare('
+      SELECT AVG(note) AS NoteAverage FROM evenements_notes
+      WHERE id_evenement = :id_event
+    ');
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+
+    $prep->execute();
+
+    $result = $prep->fetch(PDO::FETCH_ASSOC);
+
+    return $result['NoteAverage'];
+  }
+
+  public function getUserRateForEvent($id_event) {
+    $prep = $this->db->prepare('
+      SELECT note FROM evenements_notes
+      WHERE id_evenement = :id_event AND id_utilisateur = :id_user
+      LIMIT 1
+    ');
+
+    $id_user = $_SESSION['userid'];
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+
+    $prep->execute();
+
+    if (!($result = $prep->fetch(PDO::FETCH_ASSOC))) {
+      return false;
+    }
+
+    return $result['note'];
+  }
+
+  /**
+   * Add a rate into the database for an event
+   */
+  public function rateEvent($id_event, $note) {
+    $prep = $this->db->prepare('
+      INSERT INTO evenements_notes
+      (id_evenement, id_utilisateur, note)
+      VALUES (:id_event, :id_user, :note)
+    ');
+
+    $id_user = $_SESSION['userid'];
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $prep->bindParam(':note', $note, PDO::PARAM_INT);
+
+    $prep->execute();
+  }
 }
 ?>

@@ -182,6 +182,22 @@
           ?>
         </div>
       </section>
+      <?php
+      if ($session->isConnected() && !$model['user_rate'] && $model['user_already_registered']) {
+        // Display the rate block only if the user is connected
+        // and if he has not already rated the event and if he is registered to the event
+      ?>
+      <section class="block">
+        <h2 class="title">Noter cet événement</h2>
+        <div class="rating">
+      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=5" title="Give 5 stars"><i class="fa fa-star"></i></a>
+      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=4" title="Give 4 stars"><i class="fa fa-star"></i></a>
+      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=3" title="Give 3 stars"><i class="fa fa-star"></i></a>
+      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=2" title="Give 2 stars"><i class="fa fa-star"></i></a>
+      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=1" title="Give 1 star"><i class="fa fa-star"></i></a>
+      	</div>
+      </section>
+      <?php } ?>
       <section class="block">
         <h2 class="title">Partager cet événement</h2>
         <div class="share-buttons">

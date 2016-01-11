@@ -57,8 +57,13 @@ class EventsView extends View {
   public function unregister() {
     $this->setTemplate('/apps/events/views/unregister.php');
   }
-    public function delete() {
+
+  public function delete() {
     $this->setTemplate('/apps/events/views/delete.php');
+  }
+
+  public function rate() {
+    $this->setTemplate('/apps/events/views/rate.php');
   }
 }
 
