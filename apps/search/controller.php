@@ -15,10 +15,15 @@ class SearchController extends Controller {
   //In case of an advanced research
   public function advancedsearch() {
     $advancedsearchsend=Request::getAssoc(array('advancedsearch','region','theme','date_event','organisateur',
-    'prix_min','nbr_place_min','prix_max','nbr_place_max','city','zip_code','type'));
+    'prix_min','nbr_place_min','prix_max','nbr_place_max','city','zip_code','type','sponsor'));
     $data['theme'] = $this->model->gettheme();
     $data['type'] = $this->model->gettype();
     $data['region'] = $this->model->getregion();
+
+    if(!empty($advancedsearchsend['sponsor'])){
+      $advancedsearchsend['sponsor_evenement_id'] = $this->model->getEventwithSponsor($advancedsearchsend['sponsor']);
+      var_dump($advancedsearchsend['sponsor_evenement_id']);
+    }
 
     $advancedsearch = $advancedsearchsend;
 

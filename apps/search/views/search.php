@@ -32,6 +32,7 @@
             <input type="text" placeholder="Ville" id='city' name = 'city'/>
             <input type="text" placeholder="Code Postal" id="zip_code" name = 'zip_code'/><br/>
             <input type="text" placeholder="Organisateur" id="organisateur" name = 'organisateur'/>
+                        <input type='text' placeholder="Sponsor" id='sponsor' name='sponsor'/>
             <input type="int" placeholder="Prix minimum" id="prix_min" name = 'prix_min'/>
             <input type="int" placeholder="Prix maximum" id="prix_max" name='prix_max'/>
             <input type="int" placeholder="Nombre de places min" id='nbr_place_min' name = 'nbr_place_min'/>

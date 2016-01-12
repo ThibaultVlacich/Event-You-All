@@ -126,7 +126,26 @@ class SearchModel {
       }
     }
 
+    $k=0;
+    if(!empty($advancedsearch['sponsor_evenement_id'][$k]['id_evenement'])){
+      if($found<65){
+        $found .= 'id = '.intval($advancedsearch['sponsor_evenement_id'][$k]['id_evenement']);
+        $k += 1;
+      }
+      else{
+        $found .= ' AND id = '.intval($advancedsearch['sponsor_evenement_id'][$k]['id_evenement']);
+        $k += 1;
+      }
+      while(!empty($advancedsearch['sponsor_evenement_id'][$k+1]['id_evenement'])){
+        $found .= ' OR id = '.intval($advancedresearch['sponsor_evenement_id'][$k]['id_evenement']);
+        $k += 1;
+      }
+      if(!empty($advancedsearch['sponsor_evenement_id'][$k]['id_evenement'])){
+        $found .= ' OR id = '.intval($advancedsearch['sponsor_evenement_id'][$k]['id_evenement']);
+      }
+    }
 
+    var_dump($advancedsearch);
 //-------------------End of the Initialisation-------------------------
     //Sends back the final sql request
     $prep = $this->db->prepare($found);
@@ -174,6 +193,15 @@ class SearchModel {
       OR lastname LIKE :organisateur
       ');
       $prep->bindParam(':organisateur',$organisateur);
+      $prep->execute();
+      return $prep->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getEventwithSponsor($sponsor){
+      $prep = $this->db->prepare('SELECT id_evenement FROM evenements_sponsors INNER JOIN sponsors ON evenements_sponsors.id_sponsor = sponsors.id WHERE sponsors.nom LIKE :sponsor');
+
+      $filtered = '%'.$sponsor.'%';
+      $prep->bindParam(':sponsor',$filtered);
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
