@@ -295,6 +295,7 @@ class EventsController extends Controller {
       $data['themes'] = $this->model->getThemes();
       $data['types'] = $this->model->getTypes();
       $data['regions'] = $this->model->getRegions();
+      $data['sponsors'] = $this->model->getSponsors($event_id);
 
       return $data;
     } else {

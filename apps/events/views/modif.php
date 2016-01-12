@@ -241,7 +241,7 @@
         <h3 class="form-block-title">Organisateur</h3>
         <div class="form-group">
           <label for="partn">Partenaires et Sponsors </label>
-          <input type="text" name="partn" id="partn" value="<?php //echo $model['partn']; ?>">
+          <input type="text" name="partn" id="partn" value="<?php echo $model['sponsors']; ?>">
         </div>
         <div class="form-group">
           <label for="weborg">Site internet </label>

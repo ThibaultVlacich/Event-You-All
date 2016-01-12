@@ -403,5 +403,21 @@ public function modifEvent(array $data) {
     }
     return 'ok';
   }
+  
+  public function getSponsors($event_id){
+    
+    $prep = $this->db->prepare('SELECT sponsors.nom FROM sponsors LEFT OUTER JOIN evenements_sponsors ON 
+    sponsors.id = evenements_sponsors.id_sponsor WHERE :id=evenements_sponsors.id_evenement');
+    $prep->bindParam(':id', $event_id);
+    $prep->execute();
+    $sponsors = $prep->fetchAll(PDO::FETCH_ASSOC);
+    $newsp=array();
+    foreach ($sponsors as $spo)
+    {
+        $newsp+=$sponsors[0];
+    }
+    $sponsors=implode (',',$newsp);
+    return $sponsors;
+  }
 }
 ?>
