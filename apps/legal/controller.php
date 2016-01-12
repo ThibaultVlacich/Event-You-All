@@ -11,7 +11,7 @@ class LegalController extends Controller {
   var $default_module = 'legal';
 
 
- function Legal(){}
+ function legal(){}
 
 }
 

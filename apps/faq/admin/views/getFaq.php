@@ -1,3 +1,4 @@
+
 <div class="text"><?php
 echo $model['faq'];
 ?>

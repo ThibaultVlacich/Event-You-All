@@ -1,3 +1,6 @@
+<!--Static title -->
+<h2> FAQ
+</h2>
         <!--haut page-->
         <div class="app-faq">
           <?php

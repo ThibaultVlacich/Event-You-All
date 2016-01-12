@@ -1,3 +1,10 @@
+/*Title*/
+h2{
+  font-size: 300%;
+  text-align: center;
+  color: rgb(119,119,119);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
 
 h1{
     color:white;

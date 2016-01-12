@@ -4,7 +4,7 @@
             <h1>Mentions légales</h1>
         </div>
         <p id="présentation">Considérée comme la plus grande communauté mondiale d'ammateur d'arts event-you-all est un site non lucratif regroupant des evenements artistiques (concert, exposition etc...) dans le monde entier afin de réunir des gens ayant une passion communes pour le pus grand plaisir des petits et des grands </p>
-        <p>Nom du site : </p>
+        <p>Nom du site : Event-You-All </p>
         <p>Url du site : </p>
         <p>Propriétaire du site : </p>
         <p>Adresse postale : </p>

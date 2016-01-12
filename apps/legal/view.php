@@ -5,8 +5,8 @@ class LegalView extends View {
 $this->assign('css', Config::get('config.base').'/apps/legal/styles/legal.css');
   }
 
-  public function Legal() {
-    $this->setTemplate('/apps/legal/views/index.php');
+  public function legal() {
+    $this->setTemplate('/apps/legal/views/legal.php');
 
   }
  }

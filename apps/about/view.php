@@ -5,8 +5,8 @@ class AboutView extends View {
 $this->assign('css', Config::get('config.base').'/apps/about/styles/about.css');
   }
 
-  public function About() {
-    $this->setTemplate('/apps/about/views/index.php');
+  public function about() {
+    $this->setTemplate('/apps/about/views/about.php');
 
   }
  }
