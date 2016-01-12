@@ -22,7 +22,6 @@ class SearchController extends Controller {
 
     if(!empty($advancedsearchsend['sponsor'])){
       $advancedsearchsend['sponsor_evenement_id'] = $this->model->getEventwithSponsor($advancedsearchsend['sponsor']);
-      var_dump($advancedsearchsend['sponsor_evenement_id']);
     }
 
     $advancedsearch = $advancedsearchsend;
