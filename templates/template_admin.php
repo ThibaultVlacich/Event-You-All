@@ -32,7 +32,38 @@
   			$app_name = substr($app, 6);
 
         if ($app_name != 'board') {
-  			  $admin_apps[] = $app_name;
+
+          switch($app_name) {
+            case "events":
+              $name = '&Eacute;vénements';
+              $icon = 'paint-brush';
+
+              break;
+
+            case "article":
+              $name = 'Articles';
+              $icon = 'sticky-note';
+
+              break;
+
+            case "user":
+              $name = 'Utilisateurs';
+              $icon = 'users';
+
+              break;
+
+            default:
+              $name = $app_name;
+              $icon = '';
+          }
+
+          $app = array(
+            'app-name' => $app_name,
+            'name'     => $name,
+            'icon'     => $icon
+          );
+
+  			  $admin_apps[] = $app;
         }
   		}
   	}
@@ -42,13 +73,21 @@
     <ul class="apps-menu">
       <li<?php if($route['app'] == 'Board' || empty($route['app'])) { echo ' class="active"'; } ?>>
         <a href="<?php echo Config::get('config.base'); ?>/admin/board" class="app-link">
-          <span class="icon" style="background-image: url(<?php echo Config::get('config.base'); ?>/apps/board/icon.png)"></span> Tableau de bord
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-dashboard fa-stack-1x"></i>
+          </span>
+          Tableau de bord
         </a>
       </li>
       <?php foreach ($admin_apps as $admin_app) { ?>
       <li<?php if($route['app'] == $admin_app) { echo ' class="active"'; } ?>>
-        <a href="<?php echo Config::get('config.base'); ?>/admin/<?php echo $admin_app; ?>" class="app-link">
-          <span class="icon" style="background-image: url(<?php echo Config::get('config.base'); ?>/apps/<?php echo $admin_app; ?>/icon.png)"></span> <?php echo ucfirst($admin_app); ?>
+        <a href="<?php echo Config::get('config.base'); ?>/admin/<?php echo $admin_app['app-name']; ?>" class="app-link">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <?php if (!empty($admin_app['icon'])) { ?><i class="fa fa-<?php echo $admin_app['icon']; ?> fa-stack-1x"></i><?php } ?>
+          </span>
+          <?php echo $admin_app['name']; ?>
         </a>
       </li>
       <?php } ?>
