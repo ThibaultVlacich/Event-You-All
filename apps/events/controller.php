@@ -310,7 +310,7 @@ class EventsController extends Controller {
     $errors = array();
 
     if (!in_array(null, $data, true)) {
-      $data += Request::getAssoc(array('sujet','mclef','weborg','priv'));
+      $data += Request::getAssoc(array('sujet','mclef','weborg','priv','partn'));
 
       $banner = Request::get('bann', null, 'FILES');
 

@@ -196,6 +196,19 @@ public function modifEvent(array $data) {
     $prep->bindParam(':type', $data['type']);
 
     if ($prep->execute()) {
+            if ($data['partn']!='' and $data['partn']!=NULL){
+                //enleve les anciens sponsors
+                $prep = $this->db->prepare('DELETE FROM evenements_sponsors
+                  WHERE id_evenement = :id_event');
+                  
+                $prep->bindParam(':id_event', $data['id']);
+
+                $prep->execute();
+                //met les nouveaux sponsors 
+                $sp=$this->sponsor($data['partn'], $data['id']);
+                
+                
+            }
       return $data['id'];
     } else {
       return false;
