@@ -185,7 +185,7 @@
         <h3 class="form-block-title">Organisateur</h3>
         <div class="form-group full">
           <label for="partn">Partenaires et Sponsors </label>
-          <input type="text" name="partn" id="partn">
+          <input type="text" name="partn" id="partn" placeholder="sponsor1, sponsor2, sponsor3">
         </div>
         <div class="form-group full">
           <label for="weborg">Site internet </label>

@@ -58,8 +58,9 @@ class EventsModel {
 
     if ($prep->execute()) {
 	    $idevent = $this->db->lastInsertId('id');
-
-
+        if ($data['partn']!='' and $data['partn']!=NULL){
+            $sp=$this->sponsor($data['partn'], $idevent);
+        }
 
       return $idevent;
     } else {
@@ -243,7 +244,7 @@ public function modifEvent(array $data) {
       WHERE id_evenement = :id_event AND id_utilisateur = :id_user
     ');
 
-    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':id_event', $id_event);
     $prep->bindParam(':id_user', $id_user, PDO::PARAM_INT);
 
     $prep->execute();
@@ -363,6 +364,41 @@ public function modifEvent(array $data) {
     $prep->bindParam(':note', $note, PDO::PARAM_INT);
 
     $prep->execute();
+  }
+  
+   /**
+   * Add sponsors to database
+   */
+  public function sponsor($virgules, $idevent) {
+      //decoupe en tableau
+    $sponsors=explode (",",$virgules);
+
+    foreach ($sponsors as $sponsor){
+    $sponsor=trim($sponsor);
+    $prep = $this->db->prepare('SELECT * FROM sponsors WHERE nom LIKE :name_sp');
+    $prep->bindParam(':name_sp', $sponsor);
+    $numero=$prep->rowCount();
+    if ($numero==0)
+    {
+        $prep = $this->db->prepare('INSERT INTO sponsors (nom) VALUES (:name_sp)');
+        $prep->bindParam(':name_sp', $sponsor);
+        $prep->execute();
+        $idspon = $this->db->lastInsertId('id');
+        $prep = $this->db->prepare('INSERT INTO evenements_sponsors (id_evenement,id_sponsor) VALUES (:name_ev,:name_sp)');
+        $prep->bindParam(':name_ev', $idevent);
+        $prep->bindParam(':name_sp', $idspon);
+        $prep->execute();
+    }
+    else 
+    {
+        $idspon=$prep[0]['id'];
+        $prep = $this->db->prepare('INSERT INTO evenements_sponsors (id_evenement,id_sponsor) VALUES (:name_ev,:name_sp)');
+        $prep->bindParam(':name_ev', $idevent);
+        $prep->bindParam(':name_sp', $idspon);
+        $prep->execute();
+    }
+    }
+    return 'ok';
   }
 }
 ?>

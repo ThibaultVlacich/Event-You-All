@@ -55,13 +55,16 @@
                  <div class="event_text">
                    <span class='theme'> <?php echo $value['theme']['nom'];?></span>
                    <span class='type'> <?php echo $value['type']['nom'];?></span>
-                    <h2><a class ='searchlien2' href="<?php echo $lien?>"><?php echo $value['nom']; ?></a></h2>
+                    <h2><a class ='searchlien2' href="<?php echo Config::get('config.base').$lien?>"><?php echo $value['nom']; ?></a></h2>
                     <p><?php echo $value['ville']; ?></p>
                     <p><?php echo $value['date_debut']; ?></p>
                  </div>
              </li>
-          <?php }}  else{ ?><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
+
+          <?php } ?></ul><div id='nosearchresults'><p>Vous ne trouvez pas l'événement de qui vous fait envie . N'attendez pas, créez l'événement dont vous rêvez dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
+<?php }  else{ ?><ul><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
             <?php }?>
           </ul>
-      </section>
       <?php } ?>
+    </section>
+  </section>

@@ -87,6 +87,7 @@ section ul.events li div.caption span.theme {
   text-transform: uppercase;
   background-color: #880000;
   color: white;
+  margin-right: 5px;
 }
 
 section ul.events li div.caption h3 {

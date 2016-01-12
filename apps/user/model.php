@@ -364,5 +364,36 @@ public function topicscreation($user_id){
 
     return $topics;
   }
+
+  public function getoldpasswordcheck($user_id){
+    $prep = $this->db->prepare('SELECT password FROM users WHERE id = :user_id');
+
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function modifpassword($user_id,$newpassword){
+    $prep = $this->db->prepare('UPDATE users SET password = :newpassword WHERE id = :user_id');
+
+    $prep->bindParam(':newpassword',$newpassword);
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+  }
+
+  public function getthemewithid($id_theme){
+    $prep = $this->db->prepare('SELECT nom FROM themes WHERE id = :id_theme');
+    $prep->bindParam(':id_theme',$id_theme);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function gettypewithid($id_type){
+    $prep = $this->db->prepare('SELECT nom FROM types WHERE id = :id_type');
+    $prep->bindParam(':id_type',$id_type);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
 }
 ?>
