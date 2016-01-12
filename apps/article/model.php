@@ -55,6 +55,17 @@ class ArticleModel {
     return $article;
   }
 
+  /**
+   * Obtenir le nombre d'articles créés
+   */
+  public function countArticles() {
+    $prep = $this->db->prepare('SELECT * FROM articles');
+
+    $prep->execute();
+
+    return $prep->rowCount();
+  }
+
   public function getUserEvents($user_id){
     $prep = $this->db->prepare('SELECT * FROM evenements WHERE id_createur = :user_id');
 
@@ -106,7 +117,7 @@ class ArticleModel {
         $prep->bindParam(':id', $id);
         $prep->execute();
         return 'deleted';
-  
+
   }
 }
 

@@ -1,4 +1,4 @@
-<h2 class="titre">Liste des événements</h2>
+<h2 class="title">Liste des événements</h2>
 <table class="table">
   <thead>
     <tr>
@@ -33,7 +33,13 @@
         <a href="<?php echo Config::get('config.base'); ?>/admin/events/delete/<?php echo $value['id']; ?>" title="Supprimer l'événement" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet événement ?'));"><i class="fa fa-trash fa-lg"></i></a>
       </td>
     </tr>
-    <?php } ?>
+    <?php
+    }
+
+    if (empty($model['events'])) {
+      echo '<tr><td colspan="6" style="text-align: center;">Aucun événement n\'a encore été créé !</td></tr>';
+    }
+    ?>
   </tbody>
 </table>
 <?php
