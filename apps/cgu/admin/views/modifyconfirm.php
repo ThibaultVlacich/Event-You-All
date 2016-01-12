@@ -6,7 +6,7 @@
       }, 3000);
     </script>
 	<ul>
-		<li>Votre message a été envoyé avec succès !</li>
+		<li>Modification enregistrée! </li>
 		<li>Vous allez être redirigé dans 3 secondes.</li>
 	</ul>
 </div>

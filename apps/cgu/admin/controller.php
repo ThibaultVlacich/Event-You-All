@@ -9,9 +9,17 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class CguAdminController extends Controller {
-  function get(){
+  var $default_module = 'getCgu';
+
+  function getCgu(){
     $data = $this->model->getCgu();
     return $data;
+  }
+  function modify(){
+
+  }
+  function modifyConfirm(){
+    
   }
 
 
