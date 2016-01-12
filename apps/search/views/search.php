@@ -60,8 +60,11 @@
                     <p><?php echo $value['date_debut']; ?></p>
                  </div>
              </li>
-          <?php }}  else{ ?><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
+             
+          <?php } ?></ul><div id='nosearchresults'><p>Vous ne trouvez pas l'événement de qui vous fait envie . N'attendez pas, créez l'événement dont vous rêvez dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
+<?php }  else{ ?><ul><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
             <?php }?>
           </ul>
-      </section>
       <?php } ?>
+    </section>
+  </section>
