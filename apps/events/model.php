@@ -374,10 +374,12 @@ public function modifEvent(array $data) {
     $sponsors=explode (",",$virgules);
 
     foreach ($sponsors as $sponsor){
-    $sponsor=trim($sponsor);
-    $prep = $this->db->prepare('SELECT * FROM sponsors WHERE nom LIKE :name_sp');
+    $sponsor=strtolower(trim($sponsor));
+    $prep = $this->db->prepare('SELECT * FROM sponsors WHERE LOWER(nom) = :name_sp');
     $prep->bindParam(':name_sp', $sponsor);
+    $prep->execute();
     $numero=$prep->rowCount();
+    var_dump($numero==0);
     if ($numero==0)
     {
         $prep = $this->db->prepare('INSERT INTO sponsors (nom) VALUES (:name_sp)');
@@ -391,7 +393,8 @@ public function modifEvent(array $data) {
     }
     else 
     {
-        $idspon=$prep[0]['id'];
+        $result = $prep->fetch(PDO::FETCH_ASSOC);
+        $idspon=$result['id'];
         $prep = $this->db->prepare('INSERT INTO evenements_sponsors (id_evenement,id_sponsor) VALUES (:name_ev,:name_sp)');
         $prep->bindParam(':name_ev', $idevent);
         $prep->bindParam(':name_sp', $idspon);
