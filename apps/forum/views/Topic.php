@@ -83,7 +83,7 @@
               <?php
                   } else {
               ?>
-              <td><a href="<?php echo Config::get('config.base'); ?>/forum/Topic/page/<?php echo $n; ?>"><?php echo $n; ?></a></td>
+              <td><a href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $model['id_topic'] ?>/page/<?php echo $n; ?>"><?php echo $n; ?></a></td>
               <?php
                   }
                 }
