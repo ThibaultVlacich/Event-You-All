@@ -11,7 +11,9 @@ class LegalController extends Controller {
   var $default_module = 'legal';
 
 
- function legal(){}
+ function legal(){
+   	$mail = Config::get('config.email');
+ }
 
 }
 
