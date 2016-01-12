@@ -144,6 +144,17 @@ class EventsModel {
     return $events;
   }
 
+  /**
+   * Obtenir le nombre d'événements créés
+   */
+  public function countEvents() {
+    $prep = $this->db->prepare('SELECT * FROM evenements');
+
+    $prep->execute();
+
+    return $prep->rowCount();
+  }
+
   public function getArticlesForEvent($event_id) {
     $prep = $this->db->prepare('SELECT * FROM articles WHERE id_evenement = :event_id');
 
@@ -200,14 +211,14 @@ public function modifEvent(array $data) {
                 //enleve les anciens sponsors
                 $prep = $this->db->prepare('DELETE FROM evenements_sponsors
                   WHERE id_evenement = :id_event');
-                  
+
                 $prep->bindParam(':id_event', $data['id']);
 
                 $prep->execute();
-                //met les nouveaux sponsors 
+                //met les nouveaux sponsors
                 $sp=$this->sponsor($data['partn'], $data['id']);
-                
-                
+
+
             }
       return $data['id'];
     } else {
@@ -378,7 +389,7 @@ public function modifEvent(array $data) {
 
     $prep->execute();
   }
-  
+
    /**
    * Add sponsors to database
    */
@@ -404,7 +415,7 @@ public function modifEvent(array $data) {
         $prep->bindParam(':name_sp', $idspon);
         $prep->execute();
     }
-    else 
+    else
     {
         $result = $prep->fetch(PDO::FETCH_ASSOC);
         $idspon=$result['id'];
@@ -416,10 +427,10 @@ public function modifEvent(array $data) {
     }
     return 'ok';
   }
-  
+
   public function getSponsors($event_id){
-    
-    $prep = $this->db->prepare('SELECT sponsors.nom FROM sponsors LEFT OUTER JOIN evenements_sponsors ON 
+
+    $prep = $this->db->prepare('SELECT sponsors.nom FROM sponsors LEFT OUTER JOIN evenements_sponsors ON
     sponsors.id = evenements_sponsors.id_sponsor WHERE :id=evenements_sponsors.id_evenement');
     $prep->bindParam(':id', $event_id);
     $prep->execute();

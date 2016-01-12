@@ -14,34 +14,23 @@ class EventsAdminController extends Controller {
     'all' => 3
   );
 
-  function index() {
-    // Ici un tableau avec un listing de tous les événements disponibles sur le site
-    $data = Request::getAssoc(array('number', 'times'), null, 'GET');
-    if ( isset($data['number']) and !empty($data['number']))
-    {
-        if ( isset($data['times']) and !empty($data['times']))
-        {
-            if  ($data['times']>100)
-            {
-                $data['events']=$this->model->getAllEvents(0,intval($data['times']));
-            }
-            else
-            {
-                $calc=intval($data['times'])*(intval($data['number'])-1);
-                $data['events']=$this->model->getAllEvents($calc,intval($data['times']));
-            }
-        }
-        else
-        {
-            $calc=10*intval($data['number']);
-            $data['events']=$this->model->getAllEvents($calc,intval($data['times']));
-        }
+  public function index(array $params) {
+    $n    = 50; // Number of events per page
+    $page = 1; // Current page
+
+    // Get the current page from URL
+    if ((isset($params[0]) && $params[0] == 'page') && isset($params[1])) {
+      $page = intval($params[1]);
     }
-    else
-    {
-    $data['events']=$this->model->getAllEvents(0,10);
-    }
-    return $data;
+
+    $events = $this->model->getAllEvents(($page-1)*$n, $n);
+
+    return array(
+      'events'       => $events,
+      'total'        => $this->model->countEvents(),
+			'current_page' => $page,
+			'per_page'     => $n
+    );
   }
 
     function modif (array $params) {
@@ -74,7 +63,7 @@ class EventsAdminController extends Controller {
       return array();
     }
   }
-  
+
   function modif_confirm(array $params) {
     if (isset($params[0])) {
     $id_event = intval($params[0]);
