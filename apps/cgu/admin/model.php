@@ -8,11 +8,12 @@ defined('EUA_VERSION') or die('Access denied');
  * @version 0.1.0-dev-13-12-2015
  */
 
-require APPS_DIR.'cgu/model.php';
+class CguAdminModel {
+  protected $db;
 
-class CguAdminModel extends CguModel {
-
-
+  public function __construct() {
+    $this->db = System::getDb();
+  }
   /**
    * obtenir Cgu
    */
@@ -21,8 +22,12 @@ class CguAdminModel extends CguModel {
    SELECT *
    FROM cgu');
    $prep->execute();
-   return $prep;
+   return $prep->fetch(PDO::FETCH_ASSOC);
+
 }
+
+
+
 
     /**
     * Update database
@@ -31,14 +36,11 @@ class CguAdminModel extends CguModel {
       $prep = $this->db->prepare('UPDATE cgu');
     }
 
-   };
+   }
   /**
   *modify Cgu
   */
-     public function modifycgu(){};
 
 
 
-
-}
 ?>

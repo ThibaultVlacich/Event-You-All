@@ -1,0 +1,4 @@
+$(function() {
+  CKEDITOR.replace('description');
+}
+)

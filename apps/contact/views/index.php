@@ -13,7 +13,7 @@
 
         <input type="submit" value="Envoyer" class="sent" id="sent" />
       </div>
-
+    </form>
 
   </div>
 </div>
