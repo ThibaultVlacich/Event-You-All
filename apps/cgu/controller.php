@@ -1,4 +1,5 @@
 <?php
+defined('EUA_VERSION') or die('Access denied');
 /**
  * This is the Controller for the cgu.
  *
@@ -10,7 +11,7 @@
 class CguController extends Controller {
   var $default_module = 'cgu';
 
- 
+
  function cgu(){
 
      $data = $this->model->cgu();

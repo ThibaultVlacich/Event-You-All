@@ -16,8 +16,10 @@ class FaqModel {
   }
 
   // Then add methods (can be named whatever you want)
-  public function getFaq() {
-    $prep = $this->db->prepare('SELECT * FROM faq ');
+  public function faq() {
+    $prep = $this->db->prepare('
+    SELECT *
+    FROM faq ');
 
     $prep->execute();
 

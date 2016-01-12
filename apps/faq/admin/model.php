@@ -8,19 +8,19 @@ defined('EUA_VERSION') or die('Access denied');
  * @version 0.1.0-dev-13-12-2015
  */
 
-class faqAdminModel {
+class FaqAdminModel {
   protected $db;
 
   public function __construct() {
     $this->db = System::getDb();
   }
   /**
-   * fonction obtenir Cgu db
+   * fonction obtenir faq db
    */
    public function getFaq(){
      $prep = $this->db->prepare('
    SELECT *
-   FROM cgu');
+   FROM faq');
    $prep->execute();
    return $prep->fetch(PDO::FETCH_ASSOC);
 
@@ -35,15 +35,15 @@ public function modify(){
 
 }
 /**
-*modify Cgu db
+*modify faq db
 */
 
 
 
 public function modifyConfirm(array $data){
 
-  $prep = $this->db->prepare('UPDATE cgu SET cgu=:cgu');
-  $prep->bindParam(':cgu', $data['text_modify']);
+  $prep = $this->db->prepare('UPDATE faq SET faq=:faq');
+  $prep->bindParam(':faq', $data['text_modify']);
   $prep->execute();
 
 }

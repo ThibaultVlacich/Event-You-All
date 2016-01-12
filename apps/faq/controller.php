@@ -9,13 +9,13 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class FaqController extends Controller {
-  var $default_module = 'index';
+  var $default_module = 'faq';
 
-  public function index(array $params) {
-    //recuperer données de model TO DO
-    $quest=$this->model->getFaq();
-    // Need to return an array of datas
-    return $quest;
+
+ function faq(){
+
+     $data = $this->model->faq();
+     return $data;
   }
 }
 

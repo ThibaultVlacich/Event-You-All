@@ -3,7 +3,7 @@ defined('EUA_VERSION') or die('Access denied');
 /**
  * This is the View for the app "cgu".
  *
- * @package apps/events/admin
+ * @package apps/cgu/admin
  * @author Alexandre Gay <alexandre.gay@isep.fr>
  * @version 0.1.0-dev-13-12-2015
  */
