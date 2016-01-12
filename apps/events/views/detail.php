@@ -207,6 +207,15 @@
           <a class="fa fa-google-plus" title="Partager sur Google+"></a>
         </div>
       </section>
+      <?php
+        if ($session->isConnected() ){ ?>
+      <section class="block">
+        <h2 class='title'>Contacter l'organisateur</h2>
+        <div class='contact'>
+          <a href="<?php echo Config::get('config.base'); ?>/events/contactorganisateur">Envoyer un mail</a>
+        </div>
+      </section>
+      <?php } ?>
     </aside>
   </div>
 </div>

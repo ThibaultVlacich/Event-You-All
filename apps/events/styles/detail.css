@@ -327,3 +327,21 @@ div.app-events-detail div.event-wrapper aside.event-column .rating a:focus ~ a		
   color: #CC0033;
   cursor: pointer;
 }
+
+.block .contact
+{
+  text-align: center;
+}
+
+.block .contact a
+{
+  display: inline-block;
+    margin: 10px 0;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #CC0033;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out 0.15s;
+
+}

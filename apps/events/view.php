@@ -65,6 +65,13 @@ class EventsView extends View {
   public function rate() {
     $this->setTemplate('/apps/events/views/rate.php');
   }
+
+  public function contactorganisateur(){
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/contactorganisateur.css');
+
+    $this->setTemplate('/apps/events/views/contactorganisateur.php');
+  }
+
 }
 
 ?>
