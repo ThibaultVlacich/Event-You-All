@@ -55,13 +55,21 @@ class ForumController extends Controller {
       $titre = $data['titre'];
       $createurtop = $this->model->getCreatorForTopic($data['id_createur']);
       $description= $data['description'];
-
+      $photoprofil=$this->model->getAvatarForCreator($data['id_createur']);
+      if(empty($photoprofil)){
+        $photoprofil = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
+      }
       $comments = $this->model->getComments($topic_id, 0, 10);
 
-      foreach ($comments as &$comment) {
+      foreach ($comments as $index => $comment) {
          $date_timestamp = strtotime($comment['date']);
-         $comment['date'] = strftime('%d %b %Y', $date_timestamp);
-         $comment['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
+         $comments[$index]['photoprofil'] = $this->model->getAvatarForCreator($comment['id_createur']);
+         if(empty($comments[$index]['photoprofil'])){
+           $comment['id_createur'];
+           $comments[$index]['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
+       }
+         $comments[$index]['date'] = strftime('%d %b %Y', $date_timestamp);
+         $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
       }
 
       return array(
@@ -70,6 +78,7 @@ class ForumController extends Controller {
         'createurtop' => $createurtop['nickname'],
         'date_creation' => $datecrea,
         'titre' => $titre,
+        'photoprofil' => $photoprofil,
         'description' =>$description
       );
     }

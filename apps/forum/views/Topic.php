@@ -17,6 +17,7 @@
             return;
           }
         ?>
+        <img src="<?php echo $model['photoprofil']['photoprofil']; ?>" class="avatartopic"/>
         <ul id="presentation">
             <li><p>Sujet de :</p></li>
             <li><h3><?php echo $model['createurtop']; ?></h3></li>
@@ -34,29 +35,35 @@
         <table class="messages">
           <thead class="first_ligne">
             <tr>
+              <td class="image">
+                <h4>Avatar</h4>
+              </td>
                 <td class="utilisateur">
                     <h4>Utilisateur</h4>
                 </td>
-                <td class="date">
-                    <h4>Date</h4>
-                </td>
                 <td class="com">
                     <h4 class="p_commentaire">Commentaire</h4>
+                </td>
+                <td class="date">
+                    <h4>Date</h4>
                 </td>
             </tr>
           </thead>
           <tbody>
             <?php $i=1; ?>
-            <?php foreach($model['comments'] as $comment) { ?>
+            <?php foreach($model['comments'] as $comment) {?>
             <tr class="back<?php echo (!$i%2) ? '1' : '2'; ?>">
+                <td class="image">
+                  <img src="<?php echo $comment['photoprofil']['photoprofil']; ?>" class="avatar"/>
+                </td>
                 <td class="utilisateur">
                     <h4><?php echo $comment['createur']['nickname']; ?></h4>
                 </td>
-                <td class="date">
-                    <p><?php echo $comment['date']; ?></p>
-                </td>
                 <td class="com">
                     <p class="p_commentaire"><?php echo $comment['message']; ?></p>
+                </td>
+                <td class="date">
+                    <p><?php echo $comment['date']; ?></p>
                 </td>
             </tr>
             <?php $i=$i+1; } ?>

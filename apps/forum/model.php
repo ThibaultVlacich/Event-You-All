@@ -140,6 +140,12 @@ class ForumModel {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
+  public function getAvatarForCreator($user_id){
+    $prep = $this->db->prepare('SELECT photoprofil FROM users WHERE id = :user_id');
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 }
 
 ?>

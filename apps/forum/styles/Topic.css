@@ -55,6 +55,9 @@ border-bottom:1px solid #cc0033;
 #presentation{
     margin: auto;
     text-align: center;
+    float:right;
+    margin-top: 5em;
+    margin-right: 22em;
 }
 #presentation h3{
   color:#cc0033;
@@ -87,9 +90,22 @@ table.messages {
 }
 .date{
     width:150px;
-    border-right: 1px solid #cc0033;
+    border-left: 1px solid #cc0033;
 }
-
+.avatartopic{
+  height:8em;
+  width:8em;
+  border-radius: 6em;
+  margin-left: 25em;
+  margin-top: 5em;
+}
+.avatar{
+  height:5em;
+}
+.image{
+    border-right: 1px solid #cc0033;
+    width:150px;
+}
 #AJ_txt{
     height:200px;
     width:70%;
