@@ -20,14 +20,14 @@ class SearchModel {
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
     $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements WHERE ';
-    $longueur = strlen($found);
+    $longueur = 82;
 
     if (!empty($advancedsearch['theme'])) {
       $found .= ' id_theme = '.intval($advancedsearch['theme']);
     }
 
     if(!empty($advancedsearch['advancedsearch'])){
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found.=  '(evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
       else{
@@ -36,7 +36,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['city'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'ville LIKE "'.addslashes($advancedsearch['city']).'"';
       }
       else{
@@ -45,7 +45,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['type'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'id_type = '.intval($advancedsearch['type']);
       }
       else{
@@ -54,7 +54,7 @@ class SearchModel {
     }
 
     if(!empty($advancedsearch['region'])){
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'region = '.intval($advancedsearch['region']);
       }
       else{
@@ -63,7 +63,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['nbr_place_max'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'capacite < '.intval($advancedsearch['nbr_place_max']);
       }
       else{
@@ -72,7 +72,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['nbr_place_min'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'capacite > '.intval($advancedsearch['nbr_place_min']);
       }
       else{
@@ -81,7 +81,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['prix_min'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'prix > '.intval($advancedsearch['prix_min']);
       }
       else{
@@ -90,7 +90,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['prix_max'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'prix < '.intval($advancedsearch['prix_max']);
       }
       else{
@@ -99,7 +99,7 @@ class SearchModel {
     }
 
     if (!empty($advancedsearch['zip_code'])) {
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'code_postal LIKE '.intval($advancedsearch['zip_code']);
       }
       else{
@@ -109,7 +109,7 @@ class SearchModel {
 
     $k=0;
     if(!empty($advancedsearch['organisateur'][$k]['id'])){
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'id = '.intval($advancedsearch['organisateur'][$k]['id']);
         $k += 1;
       }
@@ -128,7 +128,7 @@ class SearchModel {
 
     $k=0;
     if(!empty($advancedsearch['sponsor_evenement_id'][$k]['id_evenement'])){
-      if($found < $longueur+1){
+      if(strlen($found) < $longueur+1){
         $found .= 'id = '.intval($advancedsearch['sponsor_evenement_id'][$k]['id_evenement']);
         $k += 1;
       }
@@ -145,7 +145,7 @@ class SearchModel {
       }
     }
 
-    if($found < $longueur+1){
+    if(strlen($found) < $longueur+1){
       $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements';
     }
 //-------------------End of the Initialisation-------------------------

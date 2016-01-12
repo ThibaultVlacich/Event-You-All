@@ -23,16 +23,16 @@ class SearchController extends Controller {
     if(!empty($advancedsearchsend['sponsor'])){
       $advancedsearchsend['sponsor_evenement_id'] = $this->model->getEventwithSponsor($advancedsearchsend['sponsor']);
     }
+    if(!empty($advancedsearchsend['organisateur'])){
+      $advancedsearchsend['organisateur'] = $this->model->getUserID($advancedsearchsend['organisateur']);
+    }
 
     $advancedsearch = $advancedsearchsend;
-
-    if(!empty($advancedsearchsend['organisateur'])){
-      $advancedsearch['organisateur'] = $this->model->getUserID($advancedsearchsend['organisateur']);
-    }
 
     if(isset($advancedsearchsend) && !empty($advancedsearchsend)){
       $advancedresults = $this->model->advancedsearchindatabase($advancedsearch);//function defined in model
       $data['advancedresults'] = $advancedresults;
+
       $k=0;
       foreach($data['advancedresults'] as $value){
         $data['advancedresults'][$k]['theme'] = $this->model->getthemewithid($value['id_theme']);

@@ -33,7 +33,7 @@
   <div class="home-wrapper">
     <section>
       <h2 class="title">Faire une recherche</h2>
-      <form action="<?php echo Config::get('config.base'); ?>/search" method="get">
+      <form action="<?php echo Config::get('config.base'); ?>/search/advancedsearch" method="get">
         <div class="search-form">
           <select name="region">
             <option disabled selected hidden>Région</option>
@@ -53,7 +53,7 @@
         Les événements à venir
         <?php
           $session = System::getSession();
-          
+
           if($session->isConnected()) {
             echo '<a href="'.Config::get('config.base').'/events/create" class="create"><i class="fa fa-plus"></i> Ajouter un événement</a>';
           }
