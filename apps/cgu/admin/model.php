@@ -4,7 +4,7 @@ defined('EUA_VERSION') or die('Access denied');
  * This is the Model for the app "events".
  *
  * @package apps/events/admin
- * @author Thibault Vlacich <thibault.vlacich@isep.fr>
+ * @author Alexandre Gay <alexandre.gay@isep.fr>
  * @version 0.1.0-dev-13-12-2015
  */
 
@@ -15,7 +15,7 @@ class CguAdminModel {
     $this->db = System::getDb();
   }
   /**
-   * obtenir Cgu
+   * fonction obtenir Cgu db
    */
    public function getCgu(){
      $prep = $this->db->prepare('
@@ -23,6 +23,21 @@ class CguAdminModel {
    FROM cgu');
    $prep->execute();
    return $prep->fetch(PDO::FETCH_ASSOC);
+
+
+
+}
+
+/**
+*page modify
+*/
+public function modify(){
+
+}
+/**
+*modify Cgu db
+*/
+public function modifyConfirm(){
 
 }
 
@@ -36,10 +51,8 @@ class CguAdminModel {
       $prep = $this->db->prepare('UPDATE cgu');
     }
 
-   }
-  /**
-  *modify Cgu
-  */
+}
+
 
 
 

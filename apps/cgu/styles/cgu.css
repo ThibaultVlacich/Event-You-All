@@ -1,9 +1,4 @@
-#bandeau{
-    width=100%;
-    height=50px;
-    background-color: #CC0033;
-    border-radius: 10px;
-}
+
 h1{
     color:white;
     font-family: Trebuchet MS;
@@ -15,10 +10,4 @@ p{
     margin-top: 50px;
     margin-left: 20%;
     margin-right: 20%;
-}
-img{
-    height:300px;
-    width:30%;
-    margin-left:35%;
-    margin-top: 75px;
 }
