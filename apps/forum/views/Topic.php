@@ -69,13 +69,28 @@
             <?php $i=$i+1; } ?>
           </tbody>
         </table>
+        <?php
+          // Pagination
+          $numberOfPages = ceil($model['total'] / $model['per_page']);
+        ?>
         <table id="num_page">
             <tr>
-                <td><a href="#">1</a></td>
-                <td><a href="#">2</a></td>
-                <td><a href="#">3</a></td>
+              <?php
+                for($n = 1; $n <= $numberOfPages; $n++) {
+                  if ($n == $model['current_page']) {
+              ?>
+              <td><?php echo $n; ?></td>
+              <?php
+                  } else {
+              ?>
+              <td><a href="<?php echo Config::get('config.base'); ?>/forum/Topic/page/<?php echo $n; ?>"><?php echo $n; ?></a></td>
+              <?php
+                  }
+                }
+              ?>
             </tr>
         </table>
+
 <form method="post" action="<?php echo Config::get('config.base'); ?>/forum/send_comment/<?php echo $model['id_topic']?>">
           <h3 id="aj_com">Ajouter un commentaire :</h3>
           <textarea required name='message' id="commentaire"></textarea><br/>

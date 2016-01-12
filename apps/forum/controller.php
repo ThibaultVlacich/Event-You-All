@@ -47,6 +47,9 @@ class ForumController extends Controller {
  }
 
  function topic(array $params){
+   $n = 10; // Number of topics per page
+   $page = 1; // Current page
+
     if (isset($params[0])) {
       $topic_id = intval($params[0]);
 
@@ -59,7 +62,7 @@ class ForumController extends Controller {
       if(empty($photoprofil)){
         $photoprofil = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
       }
-      $comments = $this->model->getComments($topic_id, 0, 10);
+      $comments = $this->model->getComments($topic_id,($page-1)*$n, $n);
 
       foreach ($comments as $index => $comment) {
          $date_timestamp = strtotime($comment['date']);
@@ -79,7 +82,10 @@ class ForumController extends Controller {
         'date_creation' => $datecrea,
         'titre' => $titre,
         'photoprofil' => $photoprofil,
-        'description' =>$description
+        'description' =>$description,
+        'current_page' => $page,
+        'per_page'     => $n,
+        'total'        => $this->model->countMessages()
       );
     }
   }

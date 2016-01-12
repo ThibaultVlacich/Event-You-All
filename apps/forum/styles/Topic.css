@@ -126,7 +126,15 @@ table.messages {
     height:20px;
     width:20px;
     text-align: center;
-    border: solid #CC0033 2px;
+    font-size: 1.5em;
+    color:#cc0033;
+}
+#num_page a{
+    height:20px;
+    width:20px;
+    text-align: center;
+    font-size: 1em;
+    color:#cc0033;
 }
 #aj_com{
   color: #cc0033;
