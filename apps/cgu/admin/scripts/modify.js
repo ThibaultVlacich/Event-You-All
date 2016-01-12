@@ -1,4 +1,4 @@
+
 $(function() {
-  CKEDITOR.replace('description');
-}
-)
+  CKEDITOR.replace('text_modify');
+});
