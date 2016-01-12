@@ -358,23 +358,34 @@ class UserController extends Controller {
 		$user_id = $_SESSION['userid'];
 
 		$data['eventscreation'] = $this->model->eventscreation($user_id);
+		foreach($data['eventscreation'] as $index=> $value){
+			$data['eventscreation'][$index]['type'] = $this->model->gettypewithid($data['eventscreation'][$index]['id_type']);
+			$data['eventscreation'][$index]['theme'] = $this->model->getthemewithid($data['eventscreation'][$index]['id_theme']);
+
+		}
+
 
 		$dateactuelle = time();
 
 		$eventsinscrit = $this->model->geteventsinscritID($user_id);
 		if(!empty($eventsinscrit)){
-			foreach($eventsinscrit as $value){
+			foreach($eventsinscrit as $index=>$value){
 				$dateevent = $this->model->geteventsinscritDate($value['id_evenement']);
 				if(strtotime($dateevent['date_debut']) > $dateactuelle){
-					$data['eventsinscrit'][] = $this->model->geteventsDetail($value['id_evenement']);
+					$data['eventsinscrit'][$index] = $this->model->geteventsDetail($value['id_evenement']);
 					$data['existenceinscription'] = true;
+					$data['eventsinscrit'][$index]['type'] = $this->model->gettypewithid($data['eventsinscrit'][$index]['id_type']);
+					$data['eventsinscrit'][$index]['theme'] = $this->model->getthemewithid($data['eventsinscrit'][$index]['id_theme']);
 				}
 				else{
-					$data['eventspasse'][] = $this->model->geteventsDetail($value['id_evenement']);
+					$data['eventspasse'][$index] = $this->model->geteventsDetail($value['id_evenement']);
 					$data['existenceinscriptionpasse'] = true;
+					$data['eventspasse'][$index]['type'] = $this->model->gettypewithid($data['eventspasse'][$index]['id_type']);
+					$data['eventspasse'][$index]['theme'] = $this->model->getthemewithid($data['eventspasse'][$index]['id_theme']);
 				}
 			}
 		}
+
 		if(empty($data['existenceinscription'])){
 			$data['existenceinscription'] = false;
 		}

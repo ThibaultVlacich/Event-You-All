@@ -381,5 +381,19 @@ public function topicscreation($user_id){
     $prep->execute();
   }
 
+  public function getthemewithid($id_theme){
+    $prep = $this->db->prepare('SELECT nom FROM themes WHERE id = :id_theme');
+    $prep->bindParam(':id_theme',$id_theme);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function gettypewithid($id_type){
+    $prep = $this->db->prepare('SELECT nom FROM types WHERE id = :id_type');
+    $prep->bindParam(':id_type',$id_type);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
 }
 ?>
