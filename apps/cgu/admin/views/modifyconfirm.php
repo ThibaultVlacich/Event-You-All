@@ -2,7 +2,7 @@
 	<i class="fa fa-spin fa-spinner"></i>
 	<script type="text/javascript">
       setTimeout(function() {
-        window.location = '<?php echo Config::get('config.base'); ?>';
+        window.location = '<?php echo Config::get('config.base'); ?>/admin/cgu';
       }, 3000);
     </script>
 	<ul>

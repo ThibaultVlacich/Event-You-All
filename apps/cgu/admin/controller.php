@@ -16,9 +16,14 @@ class CguAdminController extends Controller {
     return $data;
   }
   function modify(){
-
+    $data = $this->model->getCgu();
+    return $data;
   }
+
   function modifyConfirm(){
+    $data = Request::getAssoc(array('text_modify'));
+
+    $this->model->modifyConfirm($data);
     
   }
 

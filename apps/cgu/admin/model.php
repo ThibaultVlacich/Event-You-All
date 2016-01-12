@@ -1,7 +1,7 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the Model for the app "events".
+ * This is the Model for the app "cgu".
  *
  * @package apps/events/admin
  * @author Alexandre Gay <alexandre.gay@isep.fr>
@@ -37,22 +37,17 @@ public function modify(){
 /**
 *modify Cgu db
 */
-public function modifyConfirm(){
+
+
+
+public function modifyConfirm(array $data){
+
+  $prep = $this->db->prepare('UPDATE cgu SET cgu=:cgu');
+  $prep->bindParam(':cgu', $data['text_modify']);
+  $prep->execute();
 
 }
-
-
-
-
-    /**
-    * Update database
-    */
-    public function updateCgu(){
-      $prep = $this->db->prepare('UPDATE cgu');
-    }
-
 }
-
 
 
 

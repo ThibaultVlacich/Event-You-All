@@ -17,7 +17,7 @@
 
           <?php } ?>
           <section class="conteneur">
-          <a href="pagecontacte.php" class="button">Contactez nous</a>
+          <a href="cgu" class="button">Contactez nous</a>
          </section>
 
           </section>

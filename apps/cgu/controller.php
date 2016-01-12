@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the Controller for the cgu about.
+ * This is the Controller for the cgu.
  *
  * @package apps/cgu
  * @author Alexandre Gay <alexandre.gay@isep.fr>
@@ -10,10 +10,13 @@
 class CguController extends Controller {
   var $default_module = 'cgu';
 
- function detail() {
+ 
+ function cgu(){
+
+     $data = $this->model->cgu();
+     return $data;
 
  }
- function Cgu(){}
 
 }
 

@@ -1,7 +1,7 @@
 <?php
 defined('EUA_VERSION') or die('Access denied');
 /**
- * This is the View for the app "events".
+ * This is the View for the app "cgu".
  *
  * @package apps/events/admin
  * @author Alexandre Gay <alexandre.gay@isep.fr>
