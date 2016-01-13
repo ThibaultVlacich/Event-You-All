@@ -277,7 +277,7 @@ class EventsController extends Controller {
             }
           }
         }
-      }      
+      }
 
       if (empty($errors)) {
         $id_event = $this->model->createEvent($data);
@@ -565,6 +565,44 @@ class EventsController extends Controller {
     }
 
     return false;
+  }
+
+  public function contactorganisateur(array $params){
+    if(isset($params[0])) {
+      $id_event = intval($params[0]);
+      $data['id'] = $id_event;
+    }
+    else{
+      return array('success' => false);
+    }
+
+    $message = Request::get('message');
+    $sujet = Request::get('subject');
+    $id_organisateur = $this->model->getidorganisateur($id_event);
+    $mail_organisateur = $this->model->getmailorganisateur($id_organisateur['id_createur']);
+
+    $session = System::getSession();
+    if ($session->isConnected()) {
+      $user_id = $_SESSION['userid'];
+    }
+    else{
+      return array('data' => $data, 'not_register' => 'Vous n\'êtes pas connecté');
+    }
+
+    $mail_envoyeur = $this->model->getmailenvoyeur($user_id);
+
+    $reply = 'From: '.$mail_envoyeur['email']."\r\n" .
+     'Reply-To: '.$mail_envoyeur['email'];
+     var_dump($sujet);
+     var_dump(isset($sujet));
+    if(isset($message) && isset($sujet)){
+      mail($mail_organisateur['email'],$sujet,$message,$reply);
+
+      return array('data' => $data, 'success' => true);
+      }
+    else{
+      return array('data' => $data, 'success' => '');
+    }
   }
 }
 ?>

@@ -212,7 +212,7 @@
       <section class="block">
         <h2 class='title'>Contacter l'organisateur</h2>
         <div class='contact'>
-          <a href="<?php echo Config::get('config.base'); ?>/events/contactorganisateur">Envoyer un mail</a>
+          <a href="<?php echo Config::get('config.base'); ?>/events/contactorganisateur/<?php echo $model['id']; ?>">Envoyer un mail</a>
         </div>
       </section>
       <?php } ?>
