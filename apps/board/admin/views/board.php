@@ -4,6 +4,12 @@
     <li>
       <h2 class="title">Bienvenue sur l'administration du site Event-You-All&nbsp;!</h2>
       Veuillez sélectionner une application à administrer dans le menu de gauche.
+      <br><br>
+      Liens rapides :
+      <br><br>
+      <ul class="fa-ul">
+        <li><i class="fa-li fa fa-link"></i><a href="#">Notice d'utilisation</a></li>
+      </ul>
     </li>
     <li>
       <h2 class="title">Statistiques du site</h2>
@@ -16,7 +22,7 @@
       </ul>
     </li>
     <li>
-      <h2 class="title">Chat entre admins</h2>
+      <h2 class="title">Discussion entre admins</h2>
       <ul class="chat">
       <?php foreach ($model['messages'] as $message) { ?>
         <li>
@@ -28,8 +34,8 @@
       <?php } ?>
       </ul>
       <form action="<?php echo Config::get('config.base'); ?>/admin/board/sendmessage" method="POST">
-        <textarea name="message" placeholder="Envoyer un message"></textarea>
-        <input type="submit" value="Envoyer">
+        <textarea class="message" name="message" placeholder="Laisser un message"></textarea>
+        <input class="submit" type="submit" value="Envoyer">
       </form>
     </li>
   </ul>

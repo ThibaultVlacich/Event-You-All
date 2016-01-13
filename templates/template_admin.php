@@ -34,17 +34,29 @@
         if ($app_name != 'board') {
 
           switch($app_name) {
+            case "article":
+              $name = 'Articles';
+              $icon = 'sticky-note';
+
+              break;
+
+            case "cgu":
+              $name = 'Conditions générales d\'utilisation';
+              $icon = 'legal';
+
+              break;
+
             case "events":
               $name = '&Eacute;vénements';
               $icon = 'paint-brush';
 
               break;
 
-            case "article":
-              $name = 'Articles';
-              $icon = 'sticky-note';
+            case 'faq':
+             $name = 'Questions fréquentes';
+             $icon = 'question';
 
-              break;
+             break;
 
             case "user":
               $name = 'Utilisateurs';
