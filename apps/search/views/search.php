@@ -19,7 +19,7 @@
                     <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['type']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
                     <?php } ?>
             </select>
-            <input type="date" placeholder="Date" id="date_event" name='date'/>
+            <input type="date" placeholder="Date" id="date_event" name='date_event'/>
             <input id='sendrecherche' type="submit" value="Recherche"/><br/>
             <select  name='region' id='region' name = 'region'>
                <option selected disabled>Région</option>

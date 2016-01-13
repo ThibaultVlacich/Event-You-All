@@ -145,6 +145,25 @@ class SearchModel {
       }
     }
 
+    $k=0;
+    if(!empty($advancedsearch['date_evenement_id'][$k])){
+      if(strlen($found) < $longueur+1){
+        $found .= 'id = '.intval($advancedsearch['date_evenement_id'][$k]);
+        $k += 1;
+      }
+      else{
+        $found .= ' AND id = '.intval($advancedsearch['date_evenement_id'][$k]);
+        $k += 1;
+      }
+      while(!empty($advancedsearch['date_evenement_id'][$k+1])){
+        $found .= ' OR id = '.intval($advancedresearch['date_evenement_id'][$k]);
+        $k += 1;
+      }
+      if(!empty($advancedsearch['date_evenement_id'][$k])){
+        $found .= ' OR id = '.intval($advancedsearch['date_evenement_id'][$k]);
+      }
+    }
+
     if(strlen($found) < $longueur+1){
       $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements';
     }
@@ -154,6 +173,13 @@ class SearchModel {
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
 
+  }
+
+  public function getIDeventforDate(){
+    $prep = $this->db->prepare('SELECT id,date_debut FROM evenements');
+
+    $prep->execute();
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
   }
 
     public function getthemewithid($id_theme){

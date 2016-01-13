@@ -19,6 +19,18 @@ class SearchController extends Controller {
     $data['theme'] = $this->model->gettheme();
     $data['type'] = $this->model->gettype();
     $data['region'] = $this->model->getregion();
+    if(!empty($advancedsearchsend['date_event'])){
+      $datetest= $this->model->getIDeventforDate();
+      foreach ($datetest as $index=>$value) {
+        $datetranslation = date_create($value['date_debut']);
+        $value['date_debut'] = date_format($datetranslation, 'Y-m-d');
+        if($value['date_debut'] == $advancedsearchsend['date_event']){
+          $dateresults[] = $value['id'];
+        }
+      }
+      $advancedsearchsend['date_evenement_id'] = $dateresults;
+    }
+
 
     if(!empty($advancedsearchsend['sponsor'])){
       $advancedsearchsend['sponsor_evenement_id'] = $this->model->getEventwithSponsor($advancedsearchsend['sponsor']);
