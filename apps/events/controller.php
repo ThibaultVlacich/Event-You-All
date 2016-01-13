@@ -329,139 +329,145 @@ class EventsController extends Controller {
 
   function modif_confirm(array $params) {
     if (isset($params[0])) {
-    $id_event = intval($params[0]);
-    $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de_h','time_de_m','date_fi_j','date_fi_m','date_fi_a','time_fi_h','time_fi_m','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
-    $errors = array();
+      $id_event = intval($params[0]);
+      $data = Request::getAssoc(array('nom','date_de_j','date_de_m','date_de_a','time_de_h','time_de_m','date_fi_j','date_fi_m','date_fi_a','time_fi_h','time_fi_m','nbpl','price','reg','adr','code_p','ville','pays','descript','theme','type'));
+      $errors = array();
 
-    if (!in_array(null, $data, true)) {
-      $data += Request::getAssoc(array('sujet','mclef','weborg','priv','partn'));
+      if (!in_array(null, $data, true)) {
+        $data += Request::getAssoc(array('sujet','mclef','weborg','priv','partn'));
 
-      $banner = Request::get('bann', null, 'FILES');
+        $banner = Request::get('bann', null, 'FILES');
 
-      $oldbannerposter=$this->model->getPosterBannerForEvent($id_event);
+        $oldbannerposter=$this->model->getPosterBannerForEvent($id_event);
 
-      $minwidth = 1600;
-      $maxwidth = 3200;
-      $minheight = 900;
-      $maxheight = 1800;
+        $minwidth = 1600;
+        $maxwidth = 3200;
+        $minheight = 900;
+        $maxheight = 1800;
 
-      if(!empty($banner['name'])) {
-        if(!$banner['error']) {
-          $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
-          //1. strrchr renvoie l'extension avec le point (« . »).
-          //2. substr(chaine,1) ignore le premier caractère de chaine.
-          //3. strtolower met l'extension en minuscules.
-          $extension_upload = strtolower(substr(strrchr($banner['name'], '.'), 1));
+        if(!empty($banner['name'])) {
+          if(!$banner['error']) {
+            $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
+            //1. strrchr renvoie l'extension avec le point (« . »).
+            //2. substr(chaine,1) ignore le premier caractère de chaine.
+            //3. strtolower met l'extension en minuscules.
+            $extension_upload = strtolower(substr(strrchr($banner['name'], '.'), 1));
 
-          if ( in_array($extension_upload,$extensions_valides) ){
-            $sizeimage=getimagesize($banner['tmp_name']);
+            if ( in_array($extension_upload,$extensions_valides) ){
+              $sizeimage=getimagesize($banner['tmp_name']);
 
-            if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight){
-              if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
-                $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
+              if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight){
+                if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                  $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
 
-                move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
+                  move_uploaded_file($banner['tmp_name'], UPLOAD_DIR.'events'.DS.'banner'.DS.$new_file_name);
 
-                $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
+                  $data['bann'] = Config::get('config.base').'/upload/events/banner/'.$new_file_name;
+                } else {
+                  $errors += array('Problème de dimension pour la bannière : trop grand en hauteur et/ou en largeur');
+                }
               } else {
-                $errors += array('Problème de dimension pour la bannière : trop grand en hauteur et/ou en largeur');
+                $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
               }
             } else {
-              $errors += array('Problème de dimension pour la bannière : trop petit en hauteur et/ou en largeur');
+              $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
             }
-          } else {
-            $errors += array('Problème d\'extension pour la bannière : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+          } else{
+            $errors += array('Problème de Serveur');
           }
-        } else{
-          $errors += array('Problème de Serveur');
+        } else { //prend ancienne banniere si aucune nouvelle entrée
+          $data['bann'] = $oldbannerposter['banniere'];
         }
-      } else { //prend ancienne banniere si aucune nouvelle entrée
-        $data['bann'] = $oldbannerposter['banniere'];
-      }
 
-      $poster = Request::get('poster', null, 'FILES');
+        $poster = Request::get('poster', null, 'FILES');
 
-      $minwidth = 90;
-      $maxwidth = 450;
-      $minheight = 160;
-      $maxheight = 800;
+        $minwidth = 90;
+        $maxwidth = 450;
+        $minheight = 160;
+        $maxheight = 800;
 
-      if(!empty($poster['name'])) {
-        if(!$poster['error']) {
-          $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
+        if(!empty($poster['name'])) {
+          if(!$poster['error']) {
+            $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
 
-          //1. strrchr renvoie l'extension avec le point (« . »).
-          //2. substr(chaine,1) ignore le premier caractère de chaine.
-          //3. strtolower met l'extension en minuscules.
-          $extension_upload = strtolower(substr(strrchr($poster['name'], '.'), 1));
+            //1. strrchr renvoie l'extension avec le point (« . »).
+            //2. substr(chaine,1) ignore le premier caractère de chaine.
+            //3. strtolower met l'extension en minuscules.
+            $extension_upload = strtolower(substr(strrchr($poster['name'], '.'), 1));
 
-          if (in_array($extension_upload,$extensions_valides)) {
-            $sizeimage = getimagesize($poster['tmp_name']);
+            if (in_array($extension_upload,$extensions_valides)) {
+              $sizeimage = getimagesize($poster['tmp_name']);
 
-            if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight) {
-              if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
-                $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
+              if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight) {
+                if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                  $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['nom'])).'-'.time().'.'.$extension_upload;
 
-                move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
+                  move_uploaded_file($poster['tmp_name'], UPLOAD_DIR.'events'.DS.'poster'.DS.$new_file_name);
 
-                $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
+                  $data['poster'] = Config::get('config.base').'/upload/events/poster/'.$new_file_name;
+                } else {
+                  $errors += array('Problème de dimension pour le poster : trop grand en hauteur et/ou en largeur');
+                }
               } else {
-                $errors += array('Problème de dimension pour le poster : trop grand en hauteur et/ou en largeur');
+                $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
               }
             } else {
-              $errors += array('Problème de dimension pour le poster : trop petit en hauteur et/ou en largeur');
+              $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
             }
-          } else {
-            $errors += array('Problème d\'extension pour le poster : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+          } else{
+            $errors += array('Problème de Serveur');
           }
-        } else{
-          $errors += array('Problème de Serveur');
+        } else { //prend ancien poster si aucun nouveau entré
+            $data['poster'] = $oldbannerposter['poster'];
         }
-      } else { //prend ancien poster si aucun nouveau entré
-          $data['poster'] = $oldbannerposter['poster'];
-      }
 
 
-      $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
-      $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
-      $data['date_de']=$date_debut;
-      $data['date_fi']=$date_fin;
+        $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
+        $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
+        $data['date_de']=$date_debut;
+        $data['date_fi']=$date_fin;
 
-      if (!empty($data['priv'])) {
-        $data['priv'] = 1;
-      }
-      else{
-         $data['priv'] = 0;
-      }
-
-
-      $data['date_de'] = $date_debut;
-      $data['date_fi'] = $date_fin;
-      $data['id'] = $id_event;
-      $id_event = $this->model->modifEvent($data);
-
-      $isValid = true;
-      foreach($errors as $error){
-        if(!empty($error)){
-          $isValid = false;
+        if (!empty($data['priv'])) {
+          $data['priv'] = 1;
         }
-      }
-
-      if($isValid === true){
-        $name_event = $this->model->getEvent($id_event);
-        $message = 'Nous vous informons que l\'événement'.$name_event['nom'].' auquel vous vous êtiez inscrit a été modifié. Pour obtenir plus d\'informations, veuillez consulter le forum.';
-        $mailparticipants = array();
-        $idparticipants = $this->model->getidparticipants($id_event);
-        foreach($idparticipants as $value){
-          $mailparticipants += $this->model->getmailparticipant($value['id_utilisateur']);
+        else{
+           $data['priv'] = 0;
         }
-        foreach($mailparticipants as $value){
-          mail($value, 'Event-You-All : Suppression d\'événement', $message, 'From: '.Config::get('config.email'));
-        }
-      }
 
-	    return array('id' => $id_event, 'error' => $errors);
-    }
+
+        $data['date_de'] = $date_debut;
+        $data['date_fi'] = $date_fin;
+        $data['id'] = $id_event;
+        $id_event = $this->model->modifEvent($data);
+
+        $isValid = true;
+        foreach($errors as $error){
+          if(!empty($error)){
+            $isValid = false;
+          }
+        }
+
+        if($isValid === true) {
+          $headers  = "From: " . strip_tags(Config::get('config.email')) . "\r\n";
+          $headers .= "Reply-To: ". strip_tags(Config::get('config.email')) . "\r\n";
+          $headers .= "MIME-Version: 1.0\r\n";
+          $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+          $participants = $this->model->getParticipants($id_event);
+
+          foreach($participants as $participant){
+            $participant = $this->model->getUser($participant['id_utilisateur']);
+
+            $message  = 'Bonjour <strong>'.$participant['nickname'].'</strong>,<br><br>' . "\r\n";
+            $message .= 'L\'événement <a href="'.Config::get('config.base').'/events/detail/'.$data['id'].'">'.$data['nom'].'</a> auquel vous êtes inscrit sur <strong>Event-You-All</strong> a été modifié.<br><br>' . "\r\n";
+            $message .= 'N\'hésitez pas à vous rendre sur le forum du site pour en savoir plus !';
+
+            mail($participant['email'], 'Event-You-All : Modification d\'événement', $message, $headers);
+          }
+        }
+
+  	    return array('id' => $id_event, 'error' => $errors);
+      }
     }
   }
 
@@ -543,15 +549,23 @@ class EventsController extends Controller {
     if (isset($params[0])) {
       $id_event = intval($params[0]);
 
-      $name_event = $this->model->getEvent($id_event);
-      $message = 'Nous vous informons que l\'événement'.$name_event['nom'].' auquel vous vous êtiez inscrit a été supprimé. Pour obtenir plus d\'informations, veuillez consulter le forum.';
-      $mailparticipants = array();
-      $idparticipants = $this->model->getidparticipants($id_event);
-      foreach($idparticipants as $value){
-        $mailparticipants += $this->model->getmailparticipant($value['id_utilisateur']);
-      }
-      foreach($mailparticipants as $value){
-        mail($value, 'Event-You-All : Suppression d\'événement', $message, 'From: '.Config::get('config.email'));
+      $data = $this->model->getEvent($id_event);
+
+      $headers  = "From: " . strip_tags(Config::get('config.email')) . "\r\n";
+      $headers .= "Reply-To: ". strip_tags(Config::get('config.email')) . "\r\n";
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+      $participants = $this->model->getParticipants($id_event);
+
+      foreach($participants as $participant){
+        $participant = $this->model->getUser($participant['id_utilisateur']);
+
+        $message  = 'Bonjour <strong>'.$participant['nickname'].'</strong>,<br><br>' . "\r\n";
+        $message .= 'L\'événement '.$data['nom'].' auquel vous étiez inscrit sur <strong>Event-You-All</strong> a été supprimé.<br><br>' . "\r\n";
+        $message .= 'N\'hésitez pas à vous rendre sur le forum du site pour en savoir plus !';
+
+        mail($participant['email'], 'Event-You-All : Suppression d\'événement', $message, $headers);
       }
 
       $this->model->deleteEvent($id_event);
@@ -610,7 +624,7 @@ class EventsController extends Controller {
     $message = Request::get('message');
     $sujet = Request::get('subject');
 
-    $organisateur = $this->model->getOrganisateur($data['id_createur']);
+    $organisateur = $this->model->getUser($data['id_createur']);
 
     $session = System::getSession();
     if ($session->isConnected()) {
@@ -620,7 +634,7 @@ class EventsController extends Controller {
       return array('data' => $data, 'not_register' => 'Vous n\'êtes pas connecté');
     }
 
-    $mail_envoyeur = $this->model->getmailenvoyeur($user_id);
+    $mail_envoyeur = $this->model->getUser($user_id);
 
     $headers  = "From: " . strip_tags($mail_envoyeur['email']) . "\r\n";
     $headers .= "Reply-To: ". strip_tags($mail_envoyeur['email']) . "\r\n";
