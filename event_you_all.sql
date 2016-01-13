@@ -23,6 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `admin_messages`
+--
+
+CREATE TABLE `admin_messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `articles`
 --
 

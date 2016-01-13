@@ -71,8 +71,8 @@
     if (!empty($admin_apps)) {
     ?>
     <ul class="apps-menu">
-      <li<?php if($route['app'] == 'Board' || empty($route['app'])) { echo ' class="active"'; } ?>>
-        <a href="<?php echo Config::get('config.base'); ?>/admin/board" class="app-link">
+      <li<?php if($route['app'] == 'board' || empty($route['app'])) { echo ' class="active"'; } ?>>
+        <a href="<?php echo Config::get('config.base'); ?>/admin" class="app-link">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle-thin fa-stack-2x"></i>
             <i class="fa fa-dashboard fa-stack-1x"></i>
