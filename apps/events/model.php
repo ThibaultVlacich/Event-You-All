@@ -403,7 +403,6 @@ public function modifEvent(array $data) {
     $prep->bindParam(':name_sp', $sponsor);
     $prep->execute();
     $numero=$prep->rowCount();
-    var_dump($numero==0);
     if ($numero==0)
     {
         $prep = $this->db->prepare('INSERT INTO sponsors (nom) VALUES (:name_sp)');

@@ -1,4 +1,4 @@
-<?php var_dump($model);
+<?php 
 if($model['success'] === false) {
   // The asked event doesn't exist
 ?>
