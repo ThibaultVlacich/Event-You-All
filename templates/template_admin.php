@@ -21,15 +21,15 @@
 
     <?php
     /**
-  	 * Get the list of admin apps
-  	 */
-  	$admin_apps = array();
+     * Get the list of admin apps
+     */
+    $admin_apps = array();
 
-  	$apps = System::getAppsList();
+    $apps = System::getAppsList();
 
-  	foreach ($apps as $app) {
-  		if (substr($app, 0, 5) == 'admin') {
-  			$app_name = substr($app, 6);
+    foreach ($apps as $app) {
+      if (substr($app, 0, 5) == 'admin') {
+        $app_name = substr($app, 6);
 
         if ($app_name != 'board') {
 
@@ -63,10 +63,10 @@
             'icon'     => $icon
           );
 
-  			  $admin_apps[] = $app;
+          $admin_apps[] = $app;
         }
-  		}
-  	}
+      }
+    }
 
     if (!empty($admin_apps)) {
     ?>
@@ -81,7 +81,7 @@
         </a>
       </li>
       <?php foreach ($admin_apps as $admin_app) { ?>
-      <li<?php if($route['app'] == $admin_app) { echo ' class="active"'; } ?>>
+      <li<?php if($route['app'] == $admin_app['app-name']) { echo ' class="active"'; } ?>>
         <a href="<?php echo Config::get('config.base'); ?>/admin/<?php echo $admin_app['app-name']; ?>" class="app-link">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle-thin fa-stack-2x"></i>

@@ -89,20 +89,14 @@ a:hover {
   display: block;
   padding: 10px 20px;
 }
-.col-menu .apps-menu li a.app-link .icon {
-  background-repeat: no-repeat;
-  background-position: left top;
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-.col-menu .apps-menu li.active a.app-link .icon, .col-menu .apps-menu li a.app-link:hover .icon {
-  background-position: left bottom;
+.col-menu .apps-menu li a.app-link .fa {
+  color: grey;
 }
 .col-menu .apps-menu li a.app-link:hover {
   background: #212734;
+}
+.col-menu .apps-menu li.active a.app-link .fa, .col-menu .apps-menu li a.app-link:hover .fa {
+  color: white;
 }
 .col-menu .apps-menu li.active a.app-link {
   background: #39455f;
