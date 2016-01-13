@@ -58,9 +58,8 @@ a:hover {
   transition: transform 0.3s ease-in-out;
 }
 .col-menu .top-logo {
-  padding: 15px;
-  font-weight: bold;
-  font-size: 1.3em;
+  text-align: center;
+  margin: 10px 0;
 }
 @media (max-width: 992px) {
   .col-menu {
@@ -126,6 +125,7 @@ a:hover {
 @media (max-width: 992px) {
   .col-content {
     margin-left: 0;
+    overflow-x: scroll;
   }
   .menu-opened .col-content {
     -webkit-transform: translate3d(300px, 0, 0);
@@ -192,11 +192,12 @@ a:hover {
 .col-content .page-head .userbox a {
   color: white;
 }
+
+/* Main content */
+
 .col-content .content {
   padding: 65px 15px 15px 15px;
 }
-
-/* Breadcrumb */
 
 .col-content .content h1.app-title {
   font-size: 20px;
@@ -231,6 +232,8 @@ a:hover {
   overflow: visible;
 }
 
+/* Pagination */
+
 .num_page {
   list-style: none;
   margin: 0;
@@ -263,9 +266,7 @@ a:hover {
   background-color: #CC0033;
 }
 
-/*
- * Error and warning messages
- */
+/* Error and warning messages */
 
 div.note {
   width: 100%;
