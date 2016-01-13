@@ -443,16 +443,8 @@ public function modifEvent(array $data) {
     return $sponsors;
   }
 
-  public function getidorganisateur($id_event){
-    $prep = $this->db->prepare('SELECT id_createur FROM evenements WHERE id = :id_event');
-
-    $prep->bindParam(':id_event',$id_event);
-    $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
-  }
-
-  public function getmailorganisateur($id_createur){
-    $prep = $this->db->prepare('SELECT email FROM users WHERE id = :id_createur');
+  public function getOrganisateur($id_createur){
+    $prep = $this->db->prepare('SELECT * FROM users WHERE id = :id_createur');
 
     $prep->bindParam(':id_createur',$id_createur);
     $prep->execute();

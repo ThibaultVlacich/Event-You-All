@@ -602,16 +602,15 @@ class EventsController extends Controller {
   public function contactorganisateur(array $params){
     if(isset($params[0])) {
       $id_event = intval($params[0]);
-      $data['id'] = $id_event;
-    }
-    else{
+      $data = $this->model->getEvent($id_event);
+    } else {
       return array('success' => false);
     }
 
     $message = Request::get('message');
     $sujet = Request::get('subject');
-    $id_organisateur = $this->model->getidorganisateur($id_event);
-    $mail_organisateur = $this->model->getmailorganisateur($id_organisateur['id_createur']);
+
+    $organisateur = $this->model->getOrganisateur($data['id_createur']);
 
     $session = System::getSession();
     if ($session->isConnected()) {
@@ -623,14 +622,20 @@ class EventsController extends Controller {
 
     $mail_envoyeur = $this->model->getmailenvoyeur($user_id);
 
-    $reply = 'From: '.$mail_envoyeur['email']."\r\n" .
-     'Reply-To: '.$mail_envoyeur['email'];
-    if(isset($message) && isset($sujet)){
-      mail($mail_organisateur['email'],$sujet,$message,$reply);
+    $headers  = "From: " . strip_tags($mail_envoyeur['email']) . "\r\n";
+    $headers .= "Reply-To: ". strip_tags($mail_envoyeur['email']) . "\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+    if(!empty($message) && !empty($sujet)){
+      $html_message  = 'Bonjour <strong>'.$organisateur['nickname'].'</strong>,<br><br>' . "\r\n";
+      $html_message .= 'Vous avez reçu un message au sujet de votre événement <a href="'.Config::get('config.base').'/events/detail/'.$data['id'].'">'.$data['nom'].'</a> sur <strong>Event-You-All</strong>.<br><br>' . "\r\n";
+      $html_message .= $message;
+
+      mail($organisateur['email'], $sujet, $html_message, $headers);
 
       return array('data' => $data, 'success' => true);
-      }
-    else{
+    } else {
       return array('data' => $data, 'success' => '');
     }
   }
