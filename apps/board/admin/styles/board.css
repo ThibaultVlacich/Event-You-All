@@ -1,0 +1,94 @@
+div.app-board.app-board-admin ul.modules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.app-board.app-board-admin ul.modules::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+div.app-board.app-board-admin ul.modules > li {
+  float: left;
+  width: 33.33333333%;
+  width: calc(33.33333333% - 30px);
+  margin: 10px 15px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+  div.app-board.app-board-admin ul.modules {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  div.app-board.app-board-admin ul.modules > li {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+div.app-board.app-board-admin ul.modules h2.title {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #CC0033;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+div.app-board.app-board-admin ul.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.app-board.app-board-admin ul.list > li strong {
+  color: #CC0033;
+}
+
+div.app-board.app-board-admin ul.modules > li form textarea {
+  float: left;
+  margin: 5px;
+  width: calc(100% - 120px);
+  height: 50px;
+  outline: none;
+  border: 1px solid #CC0033;
+  background: white;
+  color: #CC0033;
+}
+
+div.app-board.app-board-admin ul.modules > li form input {
+  float: left;
+  margin: 5px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #CC0033;
+  background: white;
+  color: #CC0033;
+}
+
+div.app-board.app-board-admin ul.chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+div.app-board.app-board-admin ul.chat > li {
+  border-bottom: 1px solid #c0c0c0;
+  margin-bottom: 10px;
+}
+
+div.app-board.app-board-admin ul.chat > li strong {
+  color: #CC0033;
+}

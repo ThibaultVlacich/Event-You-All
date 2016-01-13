@@ -10,6 +10,8 @@ defined('EUA_VERSION') or die('Access denied');
 
 class BoardAdminView extends View {
   public function board() {
+    $this->assign('css', Config::get('config.base').'/apps/board/admin/styles/board.css');
+
     $this->setTemplate('/apps/board/admin/views/board.php');
   }
 }

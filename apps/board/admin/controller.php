@@ -14,8 +14,27 @@ class BoardAdminController extends Controller {
     'all' => 3
   );
 
-  public function board(array $params) {
-    return array();
+  public function board() {
+    return array(
+      'messages'     => $this->model->getMessages(0, 50, 'date', false),
+      'userCount'    => $this->model->userCount(),
+      'eventCount'   => $this->model->eventCount(),
+      'articleCount' => $this->model->articleCount(),
+      'topicCount'   => $this->model->topicCount(),
+      'messageCount' => $this->model->messageCount()
+    );
+  }
+
+  public function sendmessage() {
+    $message = Request::get('message');
+
+    if (!empty($message)) {
+      $this->model->addMessage($message);
+    }
+
+    header('Location: '.Config::get('config.base').'/admin/board');
+
+    exit;
   }
 }
 
