@@ -21,6 +21,7 @@ class SearchController extends Controller {
     $data['region'] = $this->model->getregion();
     if(!empty($advancedsearchsend['date_event'])){
       $datetest= $this->model->getIDeventforDate();
+      $dateresults=array();
       foreach ($datetest as $index=>$value) {
         $datetranslation = date_create($value['date_debut']);
         $value['date_debut'] = date_format($datetranslation, 'Y-m-d');
