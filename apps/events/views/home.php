@@ -43,7 +43,7 @@
             <option disabled selected hidden>Thème</option>
             <?php foreach($model['themes'] as $theme) { ?><option value="<?php echo $theme['id']; ?>"><?php echo $theme['nom']; ?></option><?php } ?>
           </select>
-          <input type="date" name="date" placeholder="Date">
+          <input type="date" name="date_event" placeholder="Date">
           <input type="submit" value="Rechercher">
         </div>
       </form>
