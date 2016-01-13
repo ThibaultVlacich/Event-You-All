@@ -254,6 +254,30 @@ class EventsController extends Controller {
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
       $data['date_de'] = $date_debut;
       $data['date_fi'] = $date_fin;
+      $basicerrormessage = array('La date de fin se situe avant la date de début');
+      if($data['date_de_a'] > $data['date_fi_a']){
+        $errors += $basicerrormessage;
+      }
+      elseif($data['date_de_a'] == $data['date_fi_a']){
+        if($data['date_de_m'] > $data['date_fi_m']){
+          $errors += $basicerrormessage;
+        }
+        elseif($data['date_de_m'] == $data['date_fi_m']){
+          if($data['date_de_j'] > $data['date_fi_j']){
+            $errors += $basicerrormessage;
+          }
+          elseif($data['date_de_j'] == $data['date_fi_j']){
+            if($data['time_de_h'] > $data['time_fi_h']){
+              $errors += $basicerrormessage;
+            }
+            elseif($data['time_de_h'] == $data['time_de_h']){
+              if($data['time_de_m'] > $data['time_fi_m']){
+                $errors += $basicerrormessage;
+              }
+            }
+          }
+        }
+      }      
 
       if (empty($errors)) {
         $id_event = $this->model->createEvent($data);
