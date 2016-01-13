@@ -2,7 +2,7 @@
   <?php $session = System::getSession(); if ($session->isConnected()){ ?>
     <div class="note error">
       <i class="fa fa-exclamation-triangle"></i>
-      <ul><li>Vous êtes connecté, vous ne pouvez pas demander de nouveau mot de passe ! Déconnectez-vous ou changez votre mot de passe en <a href='<?php echo Config::get('config.base'); ?>/user/updateProfil'>cliquez ici</a></li>
+      <ul><li>Vous êtes connecté, vous ne pouvez pas demander de nouveau mot de passe ! Déconnectez-vous ou changez votre mot de passe en <a href='<?php echo Config::get('config.base'); ?>/user/updatepassword'>cliquez ici</a></li>
       </ul>
     </div>
     <?php } else{ ?>
