@@ -190,7 +190,7 @@ class UserController extends Controller {
 				$newpassword = $this->model->generateNewPasswordForUser($user['id']);
 
 				// Send him the new password
-				$message = 'Bonjour, voici votre nouveau mot de passe sur Event-You-All : '.$newpassword.'. Nous vous conseillons de le changer le plus rapidement possible dans la section Modifier mon profil. A bientôt sur Event-You-All !';
+				$message = 'Bonjour, voici votre nouveau mot de passe sur Event-You-All : '.$newpassword."\r\n".'Nous vous conseillons de le changer le plus rapidement possible dans la section Modifier mon Mot de Passe. A bientôt sur Event-You-All !';
 
 				mail($user['email'], 'Event-You-All : Votre nouveau mot de passe', $message, 'From: '.Config::get('config.email'));
 

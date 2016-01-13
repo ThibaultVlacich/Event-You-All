@@ -467,5 +467,20 @@ public function modifEvent(array $data) {
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
+	public function getidparticipants($id_event){
+		$prep = $this->db->prepare('SELECT id_utilisateur FROM evenements_participants WHERE id_evenement = :id_event');
+
+    $prep->bindParam(':id_event',$id_event);
+    $prep->execute();
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getmailparticipant($user_id){
+    $prep = $this->db->prepare('SELECT email FROM users WHERE id = :user_id');
+
+    $prep->bindParam(':user_id',$user_id);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 }
 ?>

@@ -440,6 +440,26 @@ class EventsController extends Controller {
       $data['id'] = $id_event;
       $id_event = $this->model->modifEvent($data);
 
+      $isValid = true;
+      foreach($errors as $error){
+        if(!empty($error)){
+          $isValid = false;
+        }
+      }
+
+      if($isValid === true){
+        $name_event = $this->model->getEvent($id_event);
+        $message = 'Nous vous informons que l\'événement'.$name_event['nom'].' auquel vous vous êtiez inscrit a été modifié. Pour obtenir plus d\'informations, veuillez consulter le forum.';
+        $mailparticipants = array();
+        $idparticipants = $this->model->getidparticipants($id_event);
+        foreach($idparticipants as $value){
+          $mailparticipants += $this->model->getmailparticipant($value['id_utilisateur']);
+        }
+        foreach($mailparticipants as $value){
+          mail($value, 'Event-You-All : Suppression d\'événement', $message, 'From: '.Config::get('config.email'));
+        }
+      }
+
 	    return array('id' => $id_event, 'error' => $errors);
     }
     }
@@ -522,6 +542,18 @@ class EventsController extends Controller {
   function delete(array $params) {
     if (isset($params[0])) {
       $id_event = intval($params[0]);
+
+      $name_event = $this->model->getEvent($id_event);
+      $message = 'Nous vous informons que l\'événement'.$name_event['nom'].' auquel vous vous êtiez inscrit a été supprimé. Pour obtenir plus d\'informations, veuillez consulter le forum.';
+      $mailparticipants = array();
+      $idparticipants = $this->model->getidparticipants($id_event);
+      foreach($idparticipants as $value){
+        $mailparticipants += $this->model->getmailparticipant($value['id_utilisateur']);
+      }
+      foreach($mailparticipants as $value){
+        mail($value, 'Event-You-All : Suppression d\'événement', $message, 'From: '.Config::get('config.email'));
+      }
+
       $this->model->deleteEvent($id_event);
     }
   }
