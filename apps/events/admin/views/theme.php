@@ -1,10 +1,14 @@
-<h2 class="title">Liste des Themes</h2>
+<h1 class="app-title">Liste des Themes</h1>
+<div class="app-actions">
+  <a href="<?php echo Config::get('config.base'); ?>/admin/events/addtheme">Ajouter un thème</a>
+</div>
 <table class="table">
   <thead>
     <tr>
       <th>#ID</th>
       <th>Nom</th>
       <th>Affiché</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,11 +21,15 @@
         <?php echo $value['nom'];?>
       </td>
       <td>
-        <?php if ($value['afficher']==1){ echo 'oui';}else{echo 'non';}?>
+        <?php echo ($value['afficher'] == 1) ? 'Oui' : 'Non'; ?>
       </td>
       <td>
+        <?php if ($value['afficher'] == 1) { ?>
+        <a href="<?php echo Config::get('config.base'); ?>/admin/events/hidetheme/<?php echo $value['id']; ?>" title="Masquer le theme"><i class="fa fa-eye-slash fa-lg"></i></a>
+        <?php } else { ?>
+        <a href="<?php echo Config::get('config.base'); ?>/admin/events/showtheme/<?php echo $value['id']; ?>" title="Afficher le theme"><i class="fa fa-eye fa-lg"></i></a>
+        <?php } ?>
         <a href="<?php echo Config::get('config.base'); ?>/admin/events/modiftheme/<?php echo $value['id']; ?>" title="Modifier le thème"><i class="fa fa-edit fa-lg"></i></a>
-        <a href="<?php echo Config::get('config.base'); ?>/admin/events/<?php if ($value['afficher']==0) {echo 'changetheme';} else { echo 'changethemeno';}?>/<?php echo $value['id']; ?>" title="Afficher ou non le thème"><i class="fa fa-trash fa-lg"></i></a>
       </td>
     </tr>
     <?php
@@ -33,5 +41,3 @@
     ?>
   </tbody>
 </table>
-
-<a href="<?php echo Config::get('config.base'); ?>/admin/events/ajoutheme">Ajouter un thème</a>

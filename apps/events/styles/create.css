@@ -18,7 +18,7 @@ div.app-events.app-events-create:after {
   clear: both;
 }
 
-div.app-events.app-events-create h2.title {
+div.app-events.app-events-create h1.app-title, div.app-events.app-events-create h2.title {
   padding: 0 15px;
 }
 

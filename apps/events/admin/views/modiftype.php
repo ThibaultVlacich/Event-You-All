@@ -13,7 +13,7 @@
   }
 ?>
 <div class="app-events app-events-create">
-  <h2 class="title">Modifier le Type (Admin)</h2>
+  <h1 class="app-title">Modifier le Type (Admin)</h1>
   <form method="post" action="<?php echo Config::get('config.base'); ?>/admin/events/modif_confirm_type/<?php echo $model['id'];?>" enctype="multipart/form-data">
     <div class="form-main">
       <div class="form-block full">
@@ -22,8 +22,8 @@
           <label for="nom">Nom <span class="required">*</span></label>
           <input type="text" name="nom" id="nom" required value="<?php echo $model['nom']; ?>">
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
     <aside class="form-column">
       <div class="form-block sticky">
         <h3 class="form-block-title">Valider</h3>

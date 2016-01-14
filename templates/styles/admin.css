@@ -200,6 +200,23 @@ a:hover {
   margin: 0 10px 20px 0;
 }
 
+.col-content .content div.app-actions {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.col-content .content div.app-actions a {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 12px 8px;
+  background: #CC0033;
+  color: white;
+}
+
+.col-content .content div.app-actions a:hover {
+  background: #660000;
+}
+
 /* Tables */
 
 .table {

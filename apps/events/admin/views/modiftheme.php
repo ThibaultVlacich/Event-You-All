@@ -13,7 +13,7 @@
   }
 ?>
 <div class="app-events app-events-create">
-  <h2 class="title">Modifier le Thème (Admin)</h2>
+  <h1 class="app-title">Modifier le Thème (Admin)</h1>
   <form method="post" action="<?php echo Config::get('config.base'); ?>/admin/events/modif_confirm_theme/<?php echo $model['id'];?>" enctype="multipart/form-data">
     <div class="form-main">
       <div class="form-block full">
