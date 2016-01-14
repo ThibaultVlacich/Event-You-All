@@ -26,6 +26,7 @@ class Session {
 	/**
 	 * States
 	 */
+	const USER_BANNED   = -1;
 	const LOGIN_SUCCESS = 1;
 
 	/**
@@ -88,6 +89,10 @@ class Session {
 
 		// User found
 		if (!empty($data)) {
+			if($data['access'] == -1) {
+				return self::USER_BANNED;
+			}
+
 			$this->setupSession($data['id'], $data);
 
 			// Cookie setup
