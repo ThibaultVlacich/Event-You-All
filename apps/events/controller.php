@@ -569,6 +569,8 @@ class EventsController extends Controller {
       }
 
       $this->model->deleteEvent($id_event);
+      $this->model->deleteParticipantsofEvent($id_event);
+      $this->model->deleteArticlesOfEvent($id_event);
     }
   }
 

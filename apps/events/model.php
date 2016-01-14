@@ -458,5 +458,20 @@ public function modifEvent(array $data) {
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function deleteParticipantsofEvent($id_event){
+    $prep = $this->db->prepare('DELETE FROM evenements_participants WHERE id_evenement = :id_event');
+
+    $prep->bindParam(':id_event',$id_event);
+    $prep->execute();
+  }
+
+  public function deleteArticlesOfEvent($id_event){
+    $prep = $this->db->prepare('DELETE FROM articles WHERE id_evenement = :id_event');
+
+    $prep->bindParam(':id_event',$id_event);
+    $prep->execute();
+  }
+
 }
 ?>
