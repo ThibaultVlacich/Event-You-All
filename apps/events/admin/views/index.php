@@ -1,6 +1,8 @@
 <a href="<?php echo Config::get('config.base'); ?>/admin/events/themes">Themes</a>
 --------------
 <a href="<?php echo Config::get('config.base'); ?>/admin/events/types">Types</a>
+--------------
+<a href="<?php echo Config::get('config.base'); ?>/admin/events/regions">Regions</a>
 <h2 class="title">Liste des événements</h2>
 <table class="table">
   <thead>

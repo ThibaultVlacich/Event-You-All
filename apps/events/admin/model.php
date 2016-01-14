@@ -180,5 +180,58 @@ class EventsAdminModel extends EventsModel {
         $prep->execute();
         return 'ok';
   }
+  
+  
+   //---------------------------------GET REGION-----------------------------------------------------------------
+    public function getAllRegions($from = 0, $number = 9999999) {
+    $prep = $this->db->prepare('SELECT * FROM regions ORDER BY nom LIMIT :from, :number');
+
+    $prep->bindParam(':from', $from, PDO::PARAM_INT);
+    $prep->bindParam(':number', $number, PDO::PARAM_INT);
+    $prep->execute();
+
+    $themes = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    return $themes;
+  }
+ public function nodisplayRegion($id) {
+      $prep = $this->db->prepare('UPDATE regions SET afficher=0 WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return 'deleted';
+  }
+  
+  public function displayRegion($id) {
+      $prep = $this->db->prepare('UPDATE regions SET afficher=1 WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return 'ok';
+  }
+  
+    public function getRegion($id) {
+      $prep = $this->db->prepare('SELECT * FROM regions WHERE id=:id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+  
+    public function modRegion($id,$nom) {
+      $prep = $this->db->prepare('UPDATE regions SET nom=:nom WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->bindParam(':nom', $nom);
+        $prep->execute();
+        return 'ok';
+  }
+      public function addRegion($nom) {
+      $prep = $this->db->prepare('INSERT INTO regions (nom,afficher) VALUES (:nom,1)');
+
+        $prep->bindParam(':nom', $nom['nom']);
+        $prep->execute();
+        return 'ok';
+  }
 }
 ?>

@@ -24,6 +24,7 @@ defined('EUA_VERSION') or die('Access denied');
   public function modif_confirm(){
     $this->setTemplate('/apps/events/admin/views/modifsent.php');
   }
+  //---------------THEME------------------------------
     public function themes(){
     $this->setTemplate('/apps/events/admin/views/theme.php');
     $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
@@ -47,6 +48,8 @@ defined('EUA_VERSION') or die('Access denied');
     $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
   }
   
+  
+  //-----------------------TYPE-------------------------------------------
       public function types(){
     $this->setTemplate('/apps/events/admin/views/type.php');
     $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
@@ -63,6 +66,31 @@ defined('EUA_VERSION') or die('Access denied');
   
       public function ajoutype() {
     $this->setTemplate('/apps/events/admin/views/ajoutype.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
+  }
+  
+  
+  //-----------------------REGION-------------------------------------------
+      public function regions(){
+    $this->setTemplate('/apps/events/admin/views/region.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
+  }
+  
+    public function modifregion() {
+    $this->setTemplate('/apps/events/admin/views/modifregion.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
+  }
+  
+      public function ajouregion() {
+    $this->setTemplate('/apps/events/admin/views/ajouregion.php');
     $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
 
 
