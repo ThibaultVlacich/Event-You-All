@@ -617,7 +617,8 @@ class EventsController extends Controller {
     if(isset($params[0])) {
       $id_event = intval($params[0]);
       $data = $this->model->getEvent($id_event);
-    } else {
+    }
+    else {
       return array('success' => false);
     }
 
@@ -636,10 +637,6 @@ class EventsController extends Controller {
 
     $mail_envoyeur = $this->model->getUser($user_id);
 
-    $reply = 'From: '.$mail_envoyeur['email']."\r\n" .
-     'Reply-To: '.$mail_envoyeur['email'];
-    if(!empty($message) && !empty($sujet)){
-      mail($mail_organisateur['email'],$sujet,$message,$reply);
     $headers  = "From: " . strip_tags($mail_envoyeur['email']) . "\r\n";
     $headers .= "Reply-To: ". strip_tags($mail_envoyeur['email']) . "\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
@@ -651,7 +648,6 @@ class EventsController extends Controller {
       $html_message .= $message;
 
       mail($organisateur['email'], $sujet, $html_message, $headers);
->>>>>>> 5f0960910504b2a56ac157a1ccabe4d0814a28cf
 
       return array('data' => $data, 'success' => true);
     } else {
