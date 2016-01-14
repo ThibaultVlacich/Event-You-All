@@ -24,6 +24,28 @@ defined('EUA_VERSION') or die('Access denied');
   public function modif_confirm(){
     $this->setTemplate('/apps/events/admin/views/modifsent.php');
   }
+    public function themes(){
+    $this->setTemplate('/apps/events/admin/views/theme.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
+  }
+  
+    public function modiftheme() {
+    $this->setTemplate('/apps/events/admin/views/modiftheme.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
+  }
+  
+      public function ajoutheme() {
+    $this->setTemplate('/apps/events/admin/views/ajoutheme.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
+  }
 }
 
 ?>

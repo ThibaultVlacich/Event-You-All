@@ -63,6 +63,19 @@ class EventsAdminController extends Controller {
       return array();
     }
   }
+  
+      function modiftheme (array $params) {
+    if (isset($params[0])) {
+      $theme_id = intval($params[0]);
+
+      // Récupérer l'evenement lié depuis le model
+      if (!($data = $this->model->getTheme($theme_id))) {
+        return array();
+      }
+      else {return $data;}
+
+  }
+      }
 
   function modif_confirm(array $params) {
     if (isset($params[0])) {
@@ -164,15 +177,63 @@ class EventsAdminController extends Controller {
     if (isset($params[0])) {
       $id_event = intval($params[0]);
       $delete = $this->model->deleteEvent($id_event);
-      ?>
-      <script>
-      window.history.back();
-      </script>
-      <?php
+      
+      header('Location: '.Config::get('config.base').'/admin/events');
     }
 
   }
+  
+    function changethemeno(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $delete = $this->model->nodisplayTheme($id_theme);
+      
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+    }
 
+  }
+  
+      function changetheme(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $delete = $this->model->displayTheme($id_theme);
+      
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+    }
+
+  }
+  
+        function modif_confirm_theme(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $data = Request::getAssoc(array('nom'));
+      $delete = $this->model->modTheme($id_theme,$data['nom']);
+      
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+    }
+
+  }
+  
+          function add_confirm_theme(array $params) {
+
+      $data = Request::getAssoc(array('nom'));
+      $delete = $this->model->addTheme($data);
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+
+  }
+  
+  
+  public function themes(array $params) {
+
+
+    $themes = $this->model->getAllThemes(0,9999999999);
+    return $themes;
+
+  }
+  public function ajoutheme(array $params) {
+
+
+  }
 }
 
 ?>
