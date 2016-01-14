@@ -77,7 +77,6 @@ class ForumController extends Controller {
          $comments[$index]['date'] = strftime('%d %b %Y', $date_timestamp);
          $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
       }
- var_dump($photoprofil) ;
       return array(
         'id_topic' => $topic_id,
         'comments' => $comments,
