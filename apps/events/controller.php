@@ -625,7 +625,7 @@ class EventsController extends Controller {
 
     $reply = 'From: '.$mail_envoyeur['email']."\r\n" .
      'Reply-To: '.$mail_envoyeur['email'];
-    if(isset($message) && isset($sujet)){
+    if(!empty($message) && !empty($sujet)){
       mail($mail_organisateur['email'],$sujet,$message,$reply);
 
       return array('data' => $data, 'success' => true);
