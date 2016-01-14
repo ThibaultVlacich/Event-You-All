@@ -13,7 +13,9 @@ class ForumController extends Controller {
   var $access = array(
     'create' => 1,
     'create_confirm' => 1,
-    'send_comment' => 1
+    'send_comment' => 1,
+    'delete' => 2,
+    'deleteComment' => 2
   );
 
   function forum(array $params){
@@ -119,6 +121,27 @@ class ForumController extends Controller {
       return array('id' => $topic_id);
     }
   }
+
+  function delete(array $params) {
+    if(!isset($params[0])) {
+      return false;
+    }
+
+    $topic_id = intval($params[0]);
+    $data = $this->model->getTopic($topic_id);
+    $this->model->deleteTopic($data['id']);
+    }
+
+    function deleteComment(array $params) {
+      if(!isset($params[0])) {
+        return false;
+      }
+
+      $comment_id = intval($params[0]);
+      $data = $this->model->getcomment($comment_id);
+      $this->model->deleteComment($data['id']);
+      return array('id' => $data['id_topic']);
+      }
 }
 
 ?>

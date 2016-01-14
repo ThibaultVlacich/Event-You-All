@@ -136,3 +136,6 @@ table.messages {
 .Envoyer{
   margin-bottom: 10px;
 }
+.admin{
+  position:absolute;
+}

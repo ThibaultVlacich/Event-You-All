@@ -146,6 +146,21 @@ class ForumModel {
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
-}
 
+  public function deleteTopic($topic_id){
+    $prep = $this->db->prepare('DELETE FROM forum_topics WHERE id = :topic_id');
+    $prep->bindParam(':topic_id',$topic_id);
+    $prep->execute();
+    $prep = $this->db->prepare('DELETE FROM forum_messages WHERE id_topic = :topic_id');
+    $prep->bindParam(':topic_id',$topic_id);
+    $prep->execute();
+    return 'deleted';
+  }
+  public function deleteComment($comment_id){
+    $prep = $this->db->prepare('DELETE FROM forum_messages WHERE id = :comment_id');
+    $prep->bindParam(':comment_id',$comment_id);
+    $prep->execute();
+    return 'deleted';
+  }
+}
 ?>
