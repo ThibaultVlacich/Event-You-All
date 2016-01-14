@@ -21,9 +21,17 @@ class FaqAdminController extends Controller {
   }
 
   function modifyConfirm(){
-    $data = Request::getAssoc(array('text_modify'));
 
-    $this->model->modifyConfirm($data);
+    $compteur = $this->model->getCompteur();
+      foreach ($compteur as $id){
+
+
+      $data = Request::getAssoc(array("text_modifyQ".$id['compteur'],"text_modifyR".$id['compteur']));
+
+      $this->model->modifyConfirm($data);
+    }
+
+
 
   }
 
