@@ -12,7 +12,11 @@ class EventsView extends View {
   public function detail() {
     $this->setTemplate('/apps/events/views/detail.php');
 
+    $this->assign('css', Config::get('config.base').'/librairies/camera/css/camera.css');
   	$this->assign('css', Config::get('config.base').'/apps/events/styles/detail.css');
+
+    $this->assign('js', Config::get('config.base').'/librairies/camera/scripts/jquery.easing.1.3.js');
+    $this->assign('js', Config::get('config.base').'/librairies/camera/scripts/camera.min.js');
     $this->assign('js', Config::get('config.base').'/apps/events/scripts/detail.js');
   }
 
@@ -70,6 +74,12 @@ class EventsView extends View {
     $this->assign('css', Config::get('config.base').'/apps/events/styles/contactorganisateur.css');
 
     $this->setTemplate('/apps/events/views/contactorganisateur.php');
+  }
+
+  public function uploadphoto() {
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/uploadphoto.css');
+
+    $this->setTemplate('/apps/events/views/uploadphoto.php');
   }
 
 }
