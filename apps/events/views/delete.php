@@ -1,4 +1,3 @@
-
 <div class="note success">
     <i class="fa fa-spin fa-spinner"></i>
     <script type="text/javascript">
@@ -7,7 +6,7 @@
       }, 3000);
     </script>
     <ul>
-        <li>Votre événement a été Effacé définitivement avec succès !</li>
+        <li>Votre événement a été supprimé avec succès !</li>
         <li>Vous allez être redirigé dans 3 secondes.</li>
     </ul>
 </div>

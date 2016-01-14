@@ -443,44 +443,20 @@ public function modifEvent(array $data) {
     return $sponsors;
   }
 
-  public function getidorganisateur($id_event){
-    $prep = $this->db->prepare('SELECT id_createur FROM evenements WHERE id = :id_event');
+  public function getUser($id_user){
+    $prep = $this->db->prepare('SELECT * FROM users WHERE id = :id_user');
 
-    $prep->bindParam(':id_event',$id_event);
+    $prep->bindParam(':id_user',$id_user);
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
-  public function getmailorganisateur($id_createur){
-    $prep = $this->db->prepare('SELECT email FROM users WHERE id = :id_createur');
-
-    $prep->bindParam(':id_createur',$id_createur);
-    $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
-  }
-
-  public function getmailenvoyeur($user_id){
-    $prep = $this->db->prepare('SELECT email FROM users WHERE id = :user_id');
-
-    $prep->bindParam(':user_id',$user_id);
-    $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
-  }
-
-	public function getidparticipants($id_event){
+	public function getParticipants($id_event){
 		$prep = $this->db->prepare('SELECT id_utilisateur FROM evenements_participants WHERE id_evenement = :id_event');
 
     $prep->bindParam(':id_event',$id_event);
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
-  }
-
-  public function getmailparticipant($user_id){
-    $prep = $this->db->prepare('SELECT email FROM users WHERE id = :user_id');
-
-    $prep->bindParam(':user_id',$user_id);
-    $prep->execute();
-    return $prep->fetch(PDO::FETCH_ASSOC);
   }
 }
 ?>

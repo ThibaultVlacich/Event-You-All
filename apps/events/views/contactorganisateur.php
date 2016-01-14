@@ -1,4 +1,4 @@
-<?php 
+<?php
 if($model['success'] === false) {
   // The asked event doesn't exist
 ?>
@@ -14,13 +14,13 @@ if($model['success'] === false) {
 }
 
 if(isset($model['success']) && $model['success'] === true) {
-  // The user has been registered to the event with success
+  // The email has been sent with success
 ?>
 <div class="note success">
     <i class="fa fa-spin fa-spinner"></i>
     <script type="text/javascript">
       setTimeout(function() {
-        window.location = '<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $model['id_event']; ?>';
+        window.location = '<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $model['data']['id']; ?>';
       }, 3000);
     </script>
     <ul>
@@ -32,8 +32,7 @@ if(isset($model['success']) && $model['success'] === true) {
   return;
 }
 
-if(isset($model['not_registered'])) {
-  // The user has already registered to this event
+if(isset($model['not_register'])) {
 ?>
 <div class="note error">
   <i class="fa fa-exclamation-triangle"></i>
@@ -45,7 +44,7 @@ if(isset($model['not_registered'])) {
 <?php
   return;
 }
-// The user still need to confirm if he wants to register to the event
+
 ?>
 <div class="app-contact">
   <h2>Contacter l'organisateur</h2>
