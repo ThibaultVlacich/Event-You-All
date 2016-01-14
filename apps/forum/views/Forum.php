@@ -10,7 +10,7 @@
                   <?php } ?>
                     <th class="sujet">Titre</th>
                     <th class="description">Description</th>
-                    <th class="admin">Administrateur</th>
+                    <th class="admin">Créateur</th>
                     <th class="date">Date de création</th>
                 </tr>
             </thead>
@@ -21,7 +21,7 @@
                 <?php } ?>
                 <td class="sujet"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id']; ?>"><?php echo $topic['titre']; ?></a></td>
                 <td class="description"><?php echo $topic['description']; ?></td>
-                <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/user/profile/<?php echo $topic['createur']['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>
+                <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>
                 <td class="date"><?php echo $topic['date_creation'];?></td>
                 <td class="acceder"><a class="acceder" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo  $topic['id']; ?>">Accéder</a></td>
             </tr>

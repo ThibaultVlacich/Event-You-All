@@ -55,9 +55,7 @@ border-bottom:1px solid #cc0033;
 #presentation{
     margin: auto;
     text-align: center;
-    float:right;
-    margin-top: 5em;
-    margin-right: 22em;
+
 }
 #presentation h3{
   color:#cc0033;
@@ -96,7 +94,7 @@ table.messages {
   height:8em;
   width:8em;
   border-radius: 6em;
-  margin-left: 25em;
+  margin-left: 43em;
   margin-top: 5em;
 }
 .avatar{
@@ -138,4 +136,6 @@ table.messages {
 }
 .admin{
   position:absolute;
+  top:15em;
+  font-size:1.5em;
 }

@@ -35,7 +35,7 @@ class ForumController extends Controller {
       $date_creation_timestamp = strtotime($topic['date_creation']);
       $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
 
-      $topic['createur'] = $this->model->getCreatorForTopic($topic['id_createur']);
+      $topic['createur'] = $this->model->getCreatorForTopic($topic['id']);
 
       $topics[] = $topic;
     }
@@ -58,9 +58,10 @@ class ForumController extends Controller {
       $data = $this->model->getTopic($topic_id);
       $datecrea = $data['date_creation'];
       $titre = $data['titre'];
-      $createurtop = $this->model->getCreatorForTopic($data['id_createur']);
+      $createurtop = $this->model->getCreatorForTopic($topic_id);
       $description= $data['description'];
       $photoprofil=$this->model->getAvatarForCreator($data['id_createur']);
+
       if(empty($photoprofil)){
         $photoprofil = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
       }
@@ -76,7 +77,7 @@ class ForumController extends Controller {
          $comments[$index]['date'] = strftime('%d %b %Y', $date_timestamp);
          $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
       }
-
+ var_dump($photoprofil) ;
       return array(
         'id_topic' => $topic_id,
         'comments' => $comments,
