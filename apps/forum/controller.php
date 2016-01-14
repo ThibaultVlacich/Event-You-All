@@ -62,8 +62,8 @@ class ForumController extends Controller {
       $description= $data['description'];
       $photoprofil=$this->model->getAvatarForCreator($data['id_createur']);
 
-      if(empty($photoprofil)){
-        $photoprofil = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
+      if(empty($photoprofil['photoprofil'])){
+        $photoprofil['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
       }
       $comments = $this->model->getComments($topic_id,($page-1)*$n, $n);
 
