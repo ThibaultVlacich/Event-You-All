@@ -1,0 +1,58 @@
+div.app-user span.required {
+  color: #CC0033;
+  font-size: bold;
+}
+
+div.app-user label {
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+div.app-user div.checkbox label {
+  width: auto;
+  display: inline-block;
+}
+
+div.app-user input, div.app-user select {
+  width: 100%;
+  display: block;
+  min-height: 34px;
+  padding: 7px 8px;
+  font-size: 13px;
+  color: #333;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+  transition: all 0.15s ease-in-out;
+}
+
+div.app-user input.error {
+  border-color: #CC0033;
+}
+
+div.app-user input.good {
+  border-color: #1fa67a;
+}
+
+div.app-user div.checkbox input {
+  width: auto;
+  display: inline-block;
+  min-height: 0px;
+  padding: 0;
+  box-shadow: none;
+}
+
+div.app-user input.submit {
+  transition: all 0.3s ease;
+}
+
+div.app-user input.submit:hover {
+  color: white;
+  background-color: #CC0033;
+}
