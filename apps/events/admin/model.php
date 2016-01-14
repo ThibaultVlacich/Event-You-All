@@ -127,5 +127,58 @@ class EventsAdminModel extends EventsModel {
         return 'ok';
   }
 
+  
+  
+    //---------------------------------GET TYPE-----------------------------------------------------------------
+    public function getAllTypes($from = 0, $number = 9999999) {
+    $prep = $this->db->prepare('SELECT * FROM types ORDER BY nom LIMIT :from, :number');
+
+    $prep->bindParam(':from', $from, PDO::PARAM_INT);
+    $prep->bindParam(':number', $number, PDO::PARAM_INT);
+    $prep->execute();
+
+    $themes = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    return $themes;
+  }
+ public function nodisplayType($id) {
+      $prep = $this->db->prepare('UPDATE types SET afficher=0 WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return 'deleted';
+  }
+  
+  public function displayType($id) {
+      $prep = $this->db->prepare('UPDATE types SET afficher=1 WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return 'ok';
+  }
+  
+    public function getType($id) {
+      $prep = $this->db->prepare('SELECT * FROM types WHERE id=:id');
+
+        $prep->bindParam(':id', $id);
+        $prep->execute();
+        return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+  
+    public function modType($id,$nom) {
+      $prep = $this->db->prepare('UPDATE types SET nom=:nom WHERE id = :id');
+
+        $prep->bindParam(':id', $id);
+        $prep->bindParam(':nom', $nom);
+        $prep->execute();
+        return 'ok';
+  }
+      public function addType($nom) {
+      $prep = $this->db->prepare('INSERT INTO types (nom,afficher) VALUES (:nom,1)');
+
+        $prep->bindParam(':nom', $nom['nom']);
+        $prep->execute();
+        return 'ok';
+  }
 }
 ?>

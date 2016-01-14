@@ -76,6 +76,19 @@ class EventsAdminController extends Controller {
 
   }
       }
+      
+        function modiftype (array $params) {
+    if (isset($params[0])) {
+      $theme_id = intval($params[0]);
+
+      // Récupérer l'evenement lié depuis le model
+      if (!($data = $this->model->getType($theme_id))) {
+        return array();
+      }
+      else {return $data;}
+
+  }
+      }
 
   function modif_confirm(array $params) {
     if (isset($params[0])) {
@@ -231,6 +244,58 @@ class EventsAdminController extends Controller {
 
   }
   public function ajoutheme(array $params) {
+
+
+  }
+  
+          function changetypeno(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $delete = $this->model->nodisplayType($id_theme);
+      
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+    }
+
+  }
+  
+        function changetype(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $delete = $this->model->displayType($id_theme);
+      
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+    }
+
+  }
+  
+        function modif_confirm_type(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $data = Request::getAssoc(array('nom'));
+      $delete = $this->model->modType($id_theme,$data['nom']);
+      
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+    }
+
+  }
+  
+          function add_confirm_type(array $params) {
+
+      $data = Request::getAssoc(array('nom'));
+      $delete = $this->model->addType($data);
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+
+  }
+  
+  
+  public function types(array $params) {
+
+
+    $themes = $this->model->getAllTypes(0,9999999999);
+    return $themes;
+
+  }
+  public function ajoutype(array $params) {
 
 
   }

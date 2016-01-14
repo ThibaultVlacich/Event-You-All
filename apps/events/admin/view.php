@@ -46,6 +46,29 @@ defined('EUA_VERSION') or die('Access denied');
     $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
     $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
   }
+  
+      public function types(){
+    $this->setTemplate('/apps/events/admin/views/type.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
+  }
+  
+    public function modiftype() {
+    $this->setTemplate('/apps/events/admin/views/modiftype.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
+  }
+  
+      public function ajoutype() {
+    $this->setTemplate('/apps/events/admin/views/ajoutype.php');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
+
+
+    $this->assign('js', Config::get('config.base').'/librairies/ckeditor/ckeditor.js');
+    $this->assign('js', Config::get('config.base').'/apps/events/scripts/create.js');
+  }
 }
 
 ?>

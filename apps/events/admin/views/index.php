@@ -1,4 +1,6 @@
 <a href="<?php echo Config::get('config.base'); ?>/admin/events/themes">Themes</a>
+--------------
+<a href="<?php echo Config::get('config.base'); ?>/admin/events/types">Types</a>
 <h2 class="title">Liste des événements</h2>
 <table class="table">
   <thead>
