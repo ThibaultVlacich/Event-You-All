@@ -95,10 +95,11 @@ table.messages {
   width:10em;
   border-radius: 6em;
   margin-left: 43em;
-  margin-top: 5em;
+  margin-top: 2em;
 }
 .avatar{
   height:5em;
+  width:7em;
 }
 .image{
     border-right: 1px solid #cc0033;

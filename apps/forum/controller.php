@@ -70,12 +70,11 @@ class ForumController extends Controller {
       foreach ($comments as $index => $comment) {
          $date_timestamp = strtotime($comment['date']);
          $comments[$index]['photoprofil'] = $this->model->getAvatarForCreator($comment['id_createur']);
-         if(empty($comments[$index]['photoprofil'])){
-           $comment['id_createur'];
-           $comments[$index]['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
+         if(empty($comments[$index]['photoprofil']['photoprofil'])){
+           $comments[$index]['photoprofil']['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
        }
          $comments[$index]['date'] = strftime('%d %b %Y', $date_timestamp);
-         $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
+         $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id']);
       }
       return array(
         'id_topic' => $topic_id,
