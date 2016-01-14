@@ -636,12 +636,10 @@ class EventsController extends Controller {
 
     $mail_envoyeur = $this->model->getUser($user_id);
 
-<<<<<<< HEAD
     $reply = 'From: '.$mail_envoyeur['email']."\r\n" .
      'Reply-To: '.$mail_envoyeur['email'];
     if(!empty($message) && !empty($sujet)){
       mail($mail_organisateur['email'],$sujet,$message,$reply);
-=======
     $headers  = "From: " . strip_tags($mail_envoyeur['email']) . "\r\n";
     $headers .= "Reply-To: ". strip_tags($mail_envoyeur['email']) . "\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
