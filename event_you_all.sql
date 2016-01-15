@@ -348,8 +348,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `zip_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `id_region` int(11) NOT NULL,
-  `commentaire` text COLLATE utf8_unicode_ci NOT NULL,
+  `id_region` int(11) DAFAULT NULL
+  `commentaire` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
   `access` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
@@ -359,5 +359,5 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `nickname`, `email`, `password`, `photoprofil`, `firstname`, `lastname`, `birthdate`, `sex`, `phone`, `adress`, `zip_code`, `city`, `country`, `register_date`, `access`) VALUES
-(1, 'admin', 'contact@event-you-all.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NOW(), 3);
+INSERT INTO `users` (`id`, `nickname`, `email`, `password`, `photoprofil`, `firstname`, `lastname`, `birthdate`, `sex`, `phone`, `adress`, `zip_code`, `city`, `register_date`, `access`) VALUES
+(1, 'admin', 'contact@event-you-all.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NOW(), 3);
