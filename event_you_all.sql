@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `evenements` (
   `banniere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `poster` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `site_web` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `region` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `region` int(11) NOT NULL,
   `pays` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -348,10 +348,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `zip_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_region` int(11) NOT NULL,
+  `commentaire` text COLLATE utf8_unicode_ci NOT NULL,
   `register_date` datetime DEFAULT NULL,
   `access` int(11) NOT NULL DEFAULT '1',
-  `commentaire` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
