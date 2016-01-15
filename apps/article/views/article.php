@@ -1,11 +1,57 @@
 <?php
-  if (!empty($model['banniere'])) {
+  $session = System::getSession();
+if (empty($model['id'])) {
+    echo'<div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+      <li>Cet article n\'existe pas!</li>
+    </ul>
+  </div>';
+  return ;
+    
+} ?>
+  <?php
+    if (!empty($model['vip'])) {
+        if (!($session->isConnected())) {
+  ?>
+  <div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+      <li>Vous ne pouvez pas accéder à cet article!</li>
+    </ul>
+  </div>
+  <?php
+      return;
+    }
+    }
+  ?>
+  <?php
+  if (!empty($model['banniere']) and $model['banniere']!=NULL) {
   ?>
   <div class="banner">
     <img src="<?php echo $model['banniere']; ?>" alt="<?php echo $model['nom']; ?>" />
   </div>
+  <?php }?>
+
+      <?php
+    if (!empty($model['vip'])) {
+        if($session->isConnected()) {
+              $user_name = $_SESSION['nickname'];
+              $user_id = $_SESSION['userid'];
+              $access_id = $_SESSION['access'];
+    if (!(in_array($user_name,explode(",",$model['vip']))) and ($access_id!=3) and $model['id_createur']!=$user_id){
+  ?>
+  <div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+      <li>Vous ne pouvez pas accéder à cet article!</li>
+    </ul>
+  </div>
   <?php
-  }
+      return;
+    }
+    }
+    }
   ?>
 
 <div id="entete">
@@ -30,7 +76,7 @@
                          if ($model['creator']['id'] == $user_id) {
                 // User is the creator
           ?>
-          <a class="button" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article ?'));" href="<?php echo Config::get('config.base'); ?>/article/deleted/<?php echo $model['id']; ?>">Effacer l'événement</a>
+          <a class="button" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article ?'));" href="<?php echo Config::get('config.base'); ?>/article/deleted/<?php echo $model['id']; ?>">Effacer l'article</a>
           <?php
               }
             
@@ -48,11 +94,7 @@
   <li>
     <h3>Mr.Jones :</h3>
   </li>
-  <li>
-    <div class="bouton">
-      <a href="<?php echo Config::get('config.base'); ?>/user/profil/<?php echo $model['id_createur']?>">Voir la page de l'organisateur</a>
-    </div>
-  </li>
+
   <li>
     <div class="bouton">
       <a href="<?php echo Config::get('config.base'); ?>/events/detail/<?php echo $model['id_evenement']?>">Voir la page de l'évenement</a>

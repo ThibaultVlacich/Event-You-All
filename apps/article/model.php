@@ -119,6 +119,23 @@ class ArticleModel {
         return 'deleted';
 
   }
+  
+  //-------------------vip---------------
+  public function getVip($event_id){
+
+    $prep = $this->db->prepare('SELECT users.nickname FROM users LEFT OUTER JOIN evenements_vip ON
+    users.id = evenements_vip.id_utilisateur WHERE :id=evenements_vip.id_evenement');
+    $prep->bindParam(':id', $event_id);
+    $prep->execute();
+    $vips = $prep->fetchAll(PDO::FETCH_ASSOC);
+    $newsp=array();
+    foreach ($vips as $vip)
+    {
+        $newsp[] = $vip['nickname'];
+    }
+    $vips=implode (',',$newsp);
+    return $vips;
+  }
 }
 
 ?>

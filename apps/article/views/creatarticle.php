@@ -34,12 +34,6 @@
                                 <option value='autres_type'>Autres</option>
                         </select>
                     </div>
-                    <div class="long">
-                        <div class="label">
-                            <label for='mclef'>Mots clefs  </label>
-                        </div>
-                        <input type='text' name='mclef' id='mclef' maxlength="100" placeholder="motclef1, motclef2, motclef3...">
-                    </div>
                     <br>
                     <div class="long">
                         <div class="label">

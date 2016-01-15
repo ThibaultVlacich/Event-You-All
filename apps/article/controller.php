@@ -25,7 +25,10 @@ class ArticleController extends Controller {
      $data = $this->model->getArticle($article_id);
 // Get creator's name and id
     $data['creator'] = $this->model->getCreatorForArticle($data['id']);
-
+ // Get vip of event
+ if (!empty($data['id_evenement'])){
+      $data['vip'] = $this->model->getVip($data['id_evenement']);
+ }
      // Retourner les infos récupérées
      return $data;
    }
