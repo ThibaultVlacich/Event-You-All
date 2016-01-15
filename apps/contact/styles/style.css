@@ -131,6 +131,35 @@ div.app-contact div.form .links::after {
 div.app-contact div.form .links .contact {
     float: right;
   }
-id.message {
- height : 300px;
+
+#errorS{
+  display: none;
+
+  color:#CC0033;
+
+}
+#errorM{
+  display: none;
+
+  color:#CC0033;
+
+}
+#errorL{
+  display: none;
+
+  color:#CC0033;
+
+}
+
+#errorF{
+  display: none;
+
+  color:#CC0033;
+
+}
+#errorEM{
+  display: none;
+
+  color:#CC0033;
+
 }
