@@ -49,11 +49,11 @@ class ForumController extends Controller {
  }
 
  function topic(array $params){
-   $n = 2; // Number of comments per page
+   $n = 10; // Number of comments per page
    $page = 1; // Current page
 
-   if ((isset($params[0]) && $params[0] == 'page') && isset($params[1])) {
-     $page = intval($params[1]);
+   if ((isset($params[0]) && isset($params[1]) && $params[1]== 'page')) {
+     $page = intval($params[2]);
 
     }
     $topic_id = intval($params[0]);
