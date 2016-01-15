@@ -112,9 +112,8 @@ height: 200px;
 
 .resultssearch ul li
 {
-  display: inline-block;
-margin: 14px;
-width : 33%;
+    float:left;
+    width : 33%;
     margin: 15px 0;
     padding: 0 15px;
     height: 200px;
@@ -134,4 +133,15 @@ width : 33%;
   text-decoration: none;
   outline: none;
   background-color: transparent;
+}
+
+.clearer
+{
+  clear:both;
+}
+
+@media(max-width:992px){
+  .resultssearch ul li{
+    width:90%;
+  }
 }

@@ -47,7 +47,7 @@
      <section class='resultssearch'>
        <h1> Voici les résultats de votre recherche :</h1>
          <ul>
-           <?php if(!empty($model['advancedresults'])){  foreach($model['advancedresults'] as $value) { ?>
+           <?php if(!empty($model['advancedresults'][0])){  foreach($model['advancedresults'] as $value) { ?>
              <li>
                <?php $lien='/events/detail/'.$value['id'];?>
                  <div class="poster_evenement">
@@ -59,13 +59,13 @@
                     <h2><a class ='searchlien2' href="<?php echo Config::get('config.base').$lien?>"><?php echo $value['nom']; ?></a></h2>
                     <p><?php echo $value['ville']; ?></p>
                     <p><?php echo $value['date_debut']; ?></p>
-                 </div>
+                 </div><div class ='clearer'></div>
              </li>
 
-          <?php } ?></ul><div id='nosearchresults'><p>Vous ne trouvez pas l'événement de qui vous fait envie . N'attendez pas, créez l'événement dont vous rêvez dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
-<?php }  else{ ?><ul><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en</p><a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></div>
-            <?php }?>
-          </ul>
+          <?php } ?></ul><div class ='clearer'></div>
+          <div id='nosearchresults'><p>Vous ne trouvez pas l'événement de qui vous fait envie . N'attendez pas, créez l'événement dont vous rêvez dès maintenant en <a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></p></div>
+        <?php }
+else{ ?><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en <a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></p></div>
+        <?php }?>
       <?php } ?>
     </section>
-  </section>
