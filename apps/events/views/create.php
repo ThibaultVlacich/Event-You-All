@@ -268,7 +268,7 @@
         <h3 class="form-block-title">Valider</h3>
         <div class="form-group checkbox">
           <input type="checkbox" name="condi" id="condi" required/>
-          <label for="condi">J'accepte les conditions d'utilisation du site <span class="required">*</span></label>
+          <label for="condi">J'accepte les <a href="<?php echo Config::get('config.base'); ?>/cgu">conditions d'utilisation</a> du site <span class="required">*</span></label>
         </div>
         <p><span class="required">*</span> : champ obligatoire</p>
         <input type="submit" value="Envoyer">

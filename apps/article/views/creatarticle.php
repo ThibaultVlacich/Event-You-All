@@ -78,7 +78,7 @@
                 </div>
 				</div>
                  <p><input type='checkbox' name='condi' id='condi' required/> 
-                     <label for='condi'>J'accepte les conditions d'utilisation du site... <span class="required">*</span></label></p>
+                     <label for='condi'>J'accepte les <a href="<?php echo Config::get('config.base'); ?>/cgu">conditions d'utilisation</a> du site... <span class="required">*</span></label></p>
                  <br>
                  <p class="gauche"><span class="required">*</span> : champs obligatoires</p>
                  <!--Mettre différentes fonctions à chaque bouton -->
