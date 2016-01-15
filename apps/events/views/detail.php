@@ -16,6 +16,40 @@
       return;
     }
   ?>
+    <?php
+    if (!empty($model['vip'])) {
+        if (!($session->isConnected())) {
+  ?>
+  <div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+      <li>Vous ne pouvez pas accéder à cet événement!</li>
+    </ul>
+  </div>
+  <?php
+      return;
+    }
+    }
+  ?>
+      <?php
+    if (!empty($model['vip'])) {
+        if($session->isConnected()) {
+              $user_name = $_SESSION['nickname'];
+              $access_id = $_SESSION['access'];
+    if (!(in_array($user_name,explode(",",$model['vip']))) and ($access_id!=3) ){
+  ?>
+  <div class="note error">
+    <i class="fa fa-exclamation-triangle"></i>
+    <ul>
+      <li>Vous ne pouvez pas accéder à cet événement!</li>
+    </ul>
+  </div>
+  <?php
+      return;
+    }
+    }
+    }
+  ?>
   <?php
   if (!empty($model['banniere'])) {
   ?>

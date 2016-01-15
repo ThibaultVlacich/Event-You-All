@@ -59,6 +59,9 @@ class EventsModel {
       if ($data['partn']!='' and $data['partn']!=NULL){
         $sp=$this->sponsor($data['partn'], $idevent);
       }
+      if ($data['vip']!='' and $data['vip']!=NULL){
+        $vi=$this->vip($data['vip'], $idevent);
+      }
 
       return $idevent;
     } else {
@@ -203,16 +206,31 @@ public function modifEvent(array $data) {
     $prep->bindParam(':type', $data['type']);
 
     if ($prep->execute()) {
-            if ($data['partn']!='' and $data['partn']!=NULL){
-                //enleve les anciens sponsors
+        //enleve les anciens vips
+                $prep = $this->db->prepare('DELETE FROM evenements_vip
+                  WHERE id_evenement = :id_event');
+
+                $prep->bindParam(':id_event', $data['id']);
+
+                $prep->execute();
+        //enleve les anciens sponsors
                 $prep = $this->db->prepare('DELETE FROM evenements_sponsors
                   WHERE id_evenement = :id_event');
 
                 $prep->bindParam(':id_event', $data['id']);
 
                 $prep->execute();
+                
+                
+            if ($data['partn']!='' and $data['partn']!=NULL){
                 //met les nouveaux sponsors
                 $sp=$this->sponsor($data['partn'], $data['id']);
+
+            
+            }
+            if ($data['vip']!='' and $data['vip']!=NULL){
+                //met les nouveaux vips
+                $vi=$this->vip($data['vip'], $data['id']);
 
 
             }
@@ -439,6 +457,62 @@ public function modifEvent(array $data) {
     return $sponsors;
   }
 
+   /**
+   * Add vips to database
+   */
+  public function vip($virgules, $idevent) {
+      //decoupe en tableau
+    $vips=explode (",",$virgules);
+
+    foreach ($vips as $vip){
+    $vip=strtolower(trim($vip));
+    $prep = $this->db->prepare('SELECT * FROM users WHERE LOWER(nickname) = :name_sp');
+    $prep->bindParam(':name_sp', $vip);
+    $prep->execute();
+    $numero=$prep->rowCount();
+    if ($numero==0)
+    {
+        /*$prep = $this->db->prepare('INSERT INTO vips (nom) VALUES (:name_sp)');
+        $prep->bindParam(':name_sp', $vip);
+        $prep->execute();
+        $idspon = $this->db->lastInsertId('id');
+        $prep = $this->db->prepare('INSERT INTO evenements_vip (id_evenement,id_utilisateur) VALUES (:name_ev,:name_sp)');
+        $prep->bindParam(':name_ev', $idevent);
+        $prep->bindParam(':name_sp', $idspon);
+        $prep->execute();*/
+    }
+    else
+    {
+        $result = $prep->fetch(PDO::FETCH_ASSOC);
+        $idspon=$result['id'];
+        $prep = $this->db->prepare('INSERT INTO evenements_vip (id_evenement,id_utilisateur) VALUES (:name_ev,:name_sp)');
+        $prep->bindParam(':name_ev', $idevent);
+        $prep->bindParam(':name_sp', $idspon);
+        $prep->execute();
+    }
+    }
+    return 'ok';
+  }
+
+  public function getVip($event_id){
+
+    $prep = $this->db->prepare('SELECT users.nickname FROM users LEFT OUTER JOIN evenements_vip ON
+    users.id = evenements_vip.id_utilisateur WHERE :id=evenements_vip.id_evenement');
+    $prep->bindParam(':id', $event_id);
+    $prep->execute();
+    $vips = $prep->fetchAll(PDO::FETCH_ASSOC);
+    $newsp=array();
+    foreach ($vips as $vip)
+    {
+        $newsp[] = $vip['nickname'];
+    }
+    $vips=implode (',',$newsp);
+    return $vips;
+  }
+  
+  //get users
+  
+  
   public function getUser($id_user){
     $prep = $this->db->prepare('SELECT * FROM users WHERE id = :id_user');
 
