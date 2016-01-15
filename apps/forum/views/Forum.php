@@ -5,9 +5,9 @@
         <table id="forum">
             <thead id="label">
                 <tr class="titresujet">
-                  <?php if($_SESSION['access']>=2){?>
+                  <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
                   <td class="suppressbutton"></td>
-                  <?php } ?>
+                  <?php }} ?>
                     <th class="sujet">Titre</th>
                     <th class="description">Description</th>
                     <th class="admin">Créateur</th>
@@ -16,9 +16,9 @@
             </thead>
             <?php foreach($model['topics'] as $topic) { ?>
             <tr>
-              <?php if($_SESSION['access']>=2){?>
+              <?php if(isset($_SESSION['access'])){ if($_SESSION['access']>=2){?>
                 <td class="suppressbutton"><a href="<?php echo Config::get('config.base'); ?>/forum/delete/<?php echo $topic['id']; ?>">supprimer</a></td>
-                <?php } ?>
+                <?php }} ?>
                 <td class="sujet"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id']; ?>"><?php echo $topic['titre']; ?></a></td>
                 <td class="description"><?php echo $topic['description']; ?></td>
                 <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>

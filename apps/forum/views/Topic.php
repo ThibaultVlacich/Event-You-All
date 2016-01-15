@@ -17,9 +17,9 @@
             return;
           }
         ?>
-        <?php if($_SESSION['access']>=2){?>
+        <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
           <a class="admin" href="<?php echo Config::get('config.base'); ?>/forum/delete/<?php echo $model['id_topic']; ?>">supprimer ce topic</a>
-          <?php } ?>
+          <?php }} ?>
         <img src="<?php echo $model['photoprofil']['photoprofil']; ?>" class="avatartopic"/>
         <ul id="presentation">
             <li><p>Sujet de :</p></li>
@@ -38,10 +38,10 @@
         <table class="messages">
           <thead class="first_ligne">
             <tr>
-              <?php if($_SESSION['access']>=2){?>
+              <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
               <td class="suppressbutton">
               </td>
-              <?php } ?>
+              <?php }} ?>
               <td class="image">
                 <h4>Avatar</h4>
               </td>
@@ -60,9 +60,9 @@
             <?php $i=1; ?>
             <?php foreach($model['comments'] as $comment) {?>
             <tr class="back<?php echo (!$i%2) ? '1' : '2'; ?>">
-              <?php if($_SESSION['access']>=2){?>
+              <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
                 <td class="suppressbutton"><a href="<?php echo Config::get('config.base'); ?>/forum/deleteComment/<?php echo $comment['id']; ?>">supprimer</a></td>
-                <?php } ?>
+                <?php }} ?>
                 <td class="image">
                   <img src="<?php echo $comment['photoprofil']['photoprofil']; ?>" class="avatar"/>
                 </td>
