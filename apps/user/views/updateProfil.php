@@ -84,9 +84,9 @@
                                   </select>
                                   <select name="date_de_a" id="date_de_a">
                                     <option value="" disabled selected>--</option>
-                                    <option><?php echo date('Y'); ?></option>
-                                    <option><?php echo date('Y') + 1; ?></option>
-                                    <option> <?php echo date('Y') + 2; ?></option>
+                                  <?php  for ($i = 1; $i <= 100; $i++) {
+                                      echo '<option value="'.(date('Y')-$i).'">'.(date('Y')-$i).'</option>';
+                                    } ?>
                                   </select>                                  <p id="sexe"><span class='base'>Sexe :</span>  <?php echo $model['data']['sex'];?> </p>
                                     <select name='sex'>
                                       <option selected disabled>Non renseigné</option>
