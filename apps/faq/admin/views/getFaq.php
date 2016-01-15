@@ -7,11 +7,9 @@
   <section class="QW">
       <p class="question"> <?php echo $qw['question']; ?></p>
       <p class="reponse"><?php echo $qw['reponse']; ?></p>
+      <a href="<?php echo Config::get('config.base'); ?>/admin/faq/modify/<?php echo $qw['id'];?>">Modifier</a>
   </section>
 
 
 <?php } ?>
 </div>
-<form method="post" action="<?php echo Config::get('config.base'); ?>/admin/faq/modify">
-<input type="submit" value="Modifier" class="modify" id="modify" />
-</form>

@@ -12,34 +12,34 @@ class FaqAdminController extends Controller {
   var $default_module = 'getFaq';
 
   function getFaq(){
-    $data = $this->model->getFaq();
+    $data = $this->model->getAllFaq();
     return $data;
   }
-  function modify(){
-    $data = $this->model->getFaq();
+  function modify(array $params){
+    if (isset($params[0])){
+      $id=intval($params[0]);
+    $data = $this->model->getFaq($id);
     return $data;
   }
+  }
 
-  function modifyConfirm(){
+  function modifyConfirm(array $params){
 
-    $compteur = $this->model->getCompteur();
-      foreach ($compteur as $id){
+    if (isset($params[0])){
+      $id=intval($params[0]);
 
 
-      $data = Request::getAssoc(array("text_modifyQ".$id['compteur'],"text_modifyR".$id['compteur']));
+
+      $data = Request::getAssoc(array("text_modifyQ","text_modifyR"));
+      $data['id']=$id;
+      
 
       $this->model->modifyConfirm($data);
-    }
-
-
-
-  }
-
-
-
-
-
 
 }
+}
+}
+
+
 
 ?>
