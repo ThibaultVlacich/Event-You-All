@@ -74,11 +74,24 @@ class EventsController extends Controller {
       $events[] = $event;
     }
 
+    $themetest = $this->model->getThemes();
+    $regiontest = $this->model->getRegions();
+    foreach($regiontest as $index=>$value){
+      if($value['afficher'] == 1){
+        $regionsok[$index] = $value;
+      }
+    }
+    foreach($themetest as $index=>$value){
+      if($value['afficher'] == 1){
+        $themesok[$index] = $value;
+      }
+    }
+
     return array(
       'slideshow' => $slideshow,
       'events'    => $events,
-      'regions'   => $this->model->getRegions(),
-      'themes'    => $this->model->getThemes()
+      'regions'   => $regionsok,
+      'themes'    => $themesok
     );
   }
 
@@ -137,9 +150,27 @@ class EventsController extends Controller {
   }
 
   function create() {
-    $data['themes']  = $this->model->getThemes();
-    $data['types']   = $this->model->getTypes();
-    $data['regions'] = $this->model->getRegions();
+      $themetest = $this->model->getThemes();
+      $regiontest = $this->model->getRegions();
+      $typetest = $this->model->getTypes();
+      foreach($regiontest as $index=>$value){
+        if($value['afficher'] == 1){
+          $regionsok[$index] = $value;
+        }
+      }
+      foreach($themetest as $index=>$value){
+        if($value['afficher'] == 1){
+          $themesok[$index] = $value;
+        }
+      }
+      foreach($typetest as $index=>$value){
+        if($value['afficher'] == 1){
+          $typesok[$index] = $value;
+        }
+      }
+    $data['themes']  = $themesok;
+    $data['types']   = $typesok;
+    $data['regions'] = $regionsok;
 
     return $data;
   }
@@ -314,10 +345,28 @@ class EventsController extends Controller {
       $data['creator'] = $this->model->getCreator($data['id']);
 
       // Retourner les infos récupérées
-      $data['themes'] = $this->model->getThemes();
-      $data['types'] = $this->model->getTypes();
-      $data['regions'] = $this->model->getRegions();
-      $data['sponsors'] = $this->model->getSponsors($event_id);
+      $themetest = $this->model->getThemes();
+      $regiontest = $this->model->getRegions();
+      $typetest = $this->model->getTypes();
+      foreach($regiontest as $index=>$value){
+        if($value['afficher'] == 1){
+          $regionsok[$index] = $value;
+        }
+      }
+      foreach($themetest as $index=>$value){
+        if($value['afficher'] == 1){
+          $themesok[$index] = $value;
+        }
+      }
+      foreach($typetest as $index=>$value){
+        if($value['afficher'] == 1){
+          $typesok[$index] = $value;
+        }
+      }
+    $data['themes']  = $themesok;
+    $data['types']   = $typesok;
+    $data['regions'] = $regionsok;
+    $data['sponsors'] = $this->model->getSponsors($event_id);
 
       return $data;
     } else {

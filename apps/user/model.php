@@ -403,7 +403,7 @@ public function topicscreation($user_id){
   }
 
   public function getregion(){
-    $prep = $this->db->prepare('SELECT id, nom FROM regions');
+    $prep = $this->db->prepare('SELECT * FROM regions');
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
   }

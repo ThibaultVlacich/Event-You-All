@@ -197,19 +197,19 @@ class SearchModel {
     }
 
     public function gettheme(){
-      $prep = $this->db->prepare('SELECT id, nom FROM themes');
+      $prep = $this->db->prepare('SELECT id, nom, afficher FROM themes');
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function gettype(){
-      $prep = $this->db->prepare('SELECT id, nom FROM types');
+      $prep = $this->db->prepare('SELECT id, nom, afficher FROM types');
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getregion(){
-      $prep = $this->db->prepare('SELECT id, nom FROM regions');
+      $prep = $this->db->prepare('SELECT id, nom, afficher FROM regions');
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -241,7 +241,6 @@ class SearchModel {
         OR  description LIKE :search
         OR  adresse LIKE :search
         OR  ville LIKE :search
-        OR  mot_clef LIKE :search
         OR  region LIKE :search
         OR  pays LIKE :search
         ORDER BY ville

@@ -24,10 +24,10 @@ class EventsModel {
    */
   public function createEvent(array $data) {
     $prep = $this->db->prepare('
-      INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,prive,
-      site_web,region,adresse,code_postal,ville,pays,description,banniere,mot_clef,id_createur,poster,id_type,id_theme)
-      VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,:prive,
-      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:mot_clef,:creator,:poster,:type,:theme)
+      INSERT INTO evenements (nom,date_debut,date_fin,capacite,prix,
+      site_web,region,adresse,code_postal,ville,pays,description,banniere,id_createur,poster,id_type,id_theme)
+      VALUES (:nom,:date_debut,:date_fin,:capacite,:prix,
+      :site_web,:region,:adresse,:code_postal,:ville,:pays,:description,:banniere,:creator,:poster,:type,:theme)
     ');
 
     //prend l'id utilisateur
@@ -40,7 +40,6 @@ class EventsModel {
     $prep->bindParam(':date_fin', $data['date_fi']);
     $prep->bindParam(':capacite', $data['nbpl']);
     $prep->bindParam(':prix', $data['price']);
-    $prep->bindParam(':prive', $data['priv']);
     $prep->bindParam(':site_web', $data['weborg']);
     $prep->bindParam(':region', $data['reg']);
     $prep->bindParam(':adresse', $data['adr']);
@@ -50,7 +49,6 @@ class EventsModel {
     $prep->bindParam(':description', $data['descript']);
     $prep->bindParam(':banniere', $data['bann']);
     $prep->bindParam(':poster', $data['poster']);
-    $prep->bindParam(':mot_clef', $data['mclef']);
     $prep->bindParam(':creator',$user_id);
     $prep->bindParam(':type', $data['type']);
     $prep->bindParam(':theme',$data['theme']);
@@ -181,9 +179,9 @@ class EventsModel {
 
 public function modifEvent(array $data) {
     $prep = $this->db->prepare('
-      UPDATE evenements SET nom=:nom,capacite=:capacite,prix=:prix,prive=:prive,
+      UPDATE evenements SET nom=:nom,capacite=:capacite,prix=:prix,
       site_web=:site_web,region=:region,adresse=:adresse,code_postal=:code_postal,ville=:ville,pays=:pays,description=:description,
-      mot_clef=:mot_clef,date_debut=:date_debut,date_fin=:date_fin,banniere=:banniere,poster=:poster,id_type=:type,id_theme=:theme WHERE id = :id_event
+      date_debut=:date_debut,date_fin=:date_fin,banniere=:banniere,poster=:poster,id_type=:type,id_theme=:theme WHERE id = :id_event
     ');
 
     $prep->bindParam(':nom', $data['nom']);
@@ -191,7 +189,6 @@ public function modifEvent(array $data) {
     $prep->bindParam(':date_fin', $data['date_fi']);
     $prep->bindParam(':capacite', $data['nbpl']);
     $prep->bindParam(':prix', $data['price']);
-    $prep->bindParam(':prive', $data['priv']);
     $prep->bindParam(':site_web', $data['weborg']);
     $prep->bindParam(':region', $data['reg']);
     $prep->bindParam(':adresse', $data['adr']);
@@ -199,7 +196,6 @@ public function modifEvent(array $data) {
     $prep->bindParam(':ville', $data['ville']);
     $prep->bindParam(':pays', $data['pays']);
     $prep->bindParam(':description', $data['descript']);
-    $prep->bindParam(':mot_clef', $data['mclef']);
     $prep->bindParam(':id_event', $data['id']);
     $prep->bindParam(':banniere', $data['bann']);
     $prep->bindParam(':poster', $data['poster']);

@@ -16,9 +16,24 @@ class SearchController extends Controller {
   public function advancedsearch() {
     $advancedsearchsend=Request::getAssoc(array('advancedsearch','region','theme','date_event','organisateur',
     'prix_min','nbr_place_min','prix_max','nbr_place_max','city','zip_code','type','sponsor'));
-    $data['theme'] = $this->model->gettheme();
-    $data['type'] = $this->model->gettype();
-    $data['region'] = $this->model->getregion();
+    $themetest = $this->model->gettheme();
+    $typetest = $this->model->gettype();
+    $regiontest = $this->model->getregion();
+    foreach($regiontest as $index=>$value){
+      if($value['afficher'] == 1){
+        $data['region'][$index] = $value;
+      }
+    }
+    foreach($typetest as $index=>$value){
+      if($value['afficher'] == 1){
+        $data['type'][$index] = $value;
+      }
+    }
+    foreach($themetest as $index=>$value){
+      if($value['afficher'] == 1){
+        $data['theme'][$index] = $value;
+      }
+    }
     if(!empty($advancedsearchsend['date_event'])){
       $datetest= $this->model->getIDeventforDate();
       $dateresults=array();
@@ -52,6 +67,7 @@ class SearchController extends Controller {
         $data['advancedresults'][$k]['type'] = $this->model->gettypewithid($value['id_type']);
         $k += 1;
       }
+      var_dump($data);
       return $data;
     }
     //Error if nothing has been selected by the user
@@ -71,6 +87,24 @@ class SearchController extends Controller {
           $data['advancedresults'][$k]['theme'] = $this->model->getthemewithid($value['id_theme']);
           $data['advancedresults'][$k]['type'] = $this->model->gettypewithid($value['id_type']);
           $k += 1;
+        }
+        $themetest = $this->model->gettheme();
+        $typetest = $this->model->gettype();
+        $regiontest = $this->model->getregion();
+        foreach($regiontest as $index=>$value){
+          if($value['afficher'] == 1){
+            $data['region'][$index] = $value;
+          }
+        }
+        foreach($typetest as $index=>$value){
+          if($value['afficher'] == 1){
+            $data['type'][$index] = $value;
+          }
+        }
+        foreach($themetest as $index=>$value){
+          if($value['afficher'] == 1){
+            $data['theme'][$index] = $value;
+          }
         }
         return $data;
 

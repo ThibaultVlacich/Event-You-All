@@ -266,13 +266,6 @@ class UserController extends Controller {
 				$data['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png';
 			}
 
-			if($data['profilprive'] == 1){
-				$data['profilprive'] = 'Profil Privé';
-			}
-			if($data['profilprive'] == 0){
-				$data['profilprive'] = 'Profil Public';
-			}
-
 			if(empty($data['birthdate'])){
 				$data['birthdate'] = 'Non renseigné';
 			}
@@ -304,12 +297,18 @@ class UserController extends Controller {
 				$maregion = $this->model->getregionwithid($data['id_region']);
 				$data['region'] =	$maregion['nom'];
 			}
+			$regiontest = $this->model->getregion();
+			foreach($regiontest as $index=>$value){
+				if($value['afficher'] == 1){
+					$regionsok[$index] = $value;
+				}
+			}
 
-			$data['nameregion'] = $this->model->getregion();
+		$data['nameregions'] = $regionsok;
 
 		}
 
-		$modifications=Request::getAssoc(array('commentaire','profilprive','birthdate','sex','adress','region','zip_code','city','mail','phone'));
+		$modifications=Request::getAssoc(array('commentaire','birthdate','sex','adress','region','zip_code','city','mail','phone'));
 		//checks that something has been modified
 		$photoprofil = Request::get('photoprofil', null, 'FILES');
 
