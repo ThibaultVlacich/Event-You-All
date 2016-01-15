@@ -249,24 +249,24 @@ CREATE TABLE IF NOT EXISTS `regions` (
 --
 
 INSERT INTO `regions` (`id`, `nom`, `afficher`) VALUES
-(1, 'Alsace Champagne-Ardenne Lorraine', 0),
-(2, 'Aquitaine Limousin Poitou-Charentes', 0),
-(3, 'Auvergne Rhône-Alpes', 0),
-(4, 'Bourgogne Franche-Comté', 0),
-(5, 'Bretagne', 0),
-(6, 'Centre-Val de Loire', 0),
-(7, 'Corse', 0),
-(8, 'Île-de-France', 0),
-(9, 'Languedoc-Roussillon Midi-Pyrénées', 0),
-(10, 'Nord - Pas-de-Calais Picardie', 0),
-(11, 'Normandie', 0),
-(12, 'Pays de la Loire', 0),
-(13, 'Provence - Alpes - Côte d''Azur', 0),
-(14, 'Guadeloupe', 0),
-(15, 'Guyane', 0),
-(16, 'Martinique', 0),
-(17, 'Mayotte', 0),
-(18, 'La Réunion', 0);
+(1, 'Alsace Champagne-Ardenne Lorraine', 1),
+(2, 'Aquitaine Limousin Poitou-Charentes', 1),
+(3, 'Auvergne Rhône-Alpes', 1),
+(4, 'Bourgogne Franche-Comté', 1),
+(5, 'Bretagne', 1),
+(6, 'Centre-Val de Loire', 1),
+(7, 'Corse', 1),
+(8, 'Île-de-France', 1),
+(9, 'Languedoc-Roussillon Midi-Pyrénées', 1),
+(10, 'Nord - Pas-de-Calais Picardie', 1),
+(11, 'Normandie', 1),
+(12, 'Pays de la Loire', 1),
+(13, 'Provence - Alpes - Côte d''Azur', 1),
+(14, 'Guadeloupe', 1),
+(15, 'Guyane', 1),
+(16, 'Martinique', 1),
+(17, 'Mayotte', 1),
+(18, 'La Réunion', 1);
 
 -- --------------------------------------------------------
 
@@ -351,6 +351,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
   `access` int(11) NOT NULL DEFAULT '1',
+  `commentaire` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
