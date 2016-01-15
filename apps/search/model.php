@@ -19,8 +19,8 @@ class SearchModel {
     //found will be having the SQL Request
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
-    $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements WHERE ';
-    $longueur = 82;
+    $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id, id_createur FROM evenements WHERE ';
+    $longueur = 95;
 
     if (!empty($advancedsearch['theme'])) {
       $found .= ' id_theme = '.intval($advancedsearch['theme']);
@@ -28,7 +28,7 @@ class SearchModel {
 
     if(!empty($advancedsearch['advancedsearch'])){
       if(strlen($found) < $longueur+1){
-        $found.=  '(evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
+        $found.=  ' (evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
       else{
         $found.=  ' AND (evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
@@ -37,7 +37,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['city'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'ville LIKE "'.addslashes($advancedsearch['city']).'"';
+        $found .= ' ville LIKE "'.addslashes($advancedsearch['city']).'"';
       }
       else{
         $found .= ' AND ville LIKE "'.addslashes($advancedsearch['city']).'"';
@@ -46,7 +46,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['type'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'id_type = '.intval($advancedsearch['type']);
+        $found .= ' id_type = '.intval($advancedsearch['type']);
       }
       else{
         $found .= ' AND id_type = '.intval($advancedsearch['type']);
@@ -55,7 +55,7 @@ class SearchModel {
 
     if(!empty($advancedsearch['region'])){
       if(strlen($found) < $longueur+1){
-        $found .= 'region = '.intval($advancedsearch['region']);
+        $found .= ' region = '.intval($advancedsearch['region']);
       }
       else{
         $found .= ' AND region LIKE '.intval($advancedsearch['region']);
@@ -64,7 +64,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['nbr_place_max'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'capacite < '.intval($advancedsearch['nbr_place_max']);
+        $found .= ' capacite < '.intval($advancedsearch['nbr_place_max']);
       }
       else{
         $found .= ' AND capacite < '.intval($advancedsearch['nbr_place_max']);
@@ -73,7 +73,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['nbr_place_min'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'capacite > '.intval($advancedsearch['nbr_place_min']);
+        $found .= ' capacite > '.intval($advancedsearch['nbr_place_min']);
       }
       else{
         $found .= ' AND capacite > '.intval($advancedsearch['nbr_place_min']);
@@ -82,7 +82,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['prix_min'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'prix > '.intval($advancedsearch['prix_min']);
+        $found .= ' prix > '.intval($advancedsearch['prix_min']);
       }
       else{
         $found .= ' AND prix > '.intval($advancedsearch['prix_min']);
@@ -91,7 +91,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['prix_max'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'prix < '.intval($advancedsearch['prix_max']);
+        $found .= ' prix < '.intval($advancedsearch['prix_max']);
       }
       else{
         $found .= ' AND prix < '.intval($advancedsearch['prix_max']);
@@ -100,7 +100,7 @@ class SearchModel {
 
     if (!empty($advancedsearch['zip_code'])) {
       if(strlen($found) < $longueur+1){
-        $found .= 'code_postal LIKE '.intval($advancedsearch['zip_code']);
+        $found .= ' code_postal LIKE '.intval($advancedsearch['zip_code']);
       }
       else{
         $found .= ' AND code_postal LIKE '.intval($advancedsearch['zip_code']);
@@ -110,7 +110,7 @@ class SearchModel {
     $k=0;
     if(!empty($advancedsearch['organisateur'][$k]['id'])){
       if(strlen($found) < $longueur+1){
-        $found .= 'id = '.intval($advancedsearch['organisateur'][$k]['id']);
+        $found .= ' id = '.intval($advancedsearch['organisateur'][$k]['id']);
         $k += 1;
       }
       else{
@@ -129,7 +129,7 @@ class SearchModel {
     $k=0;
     if(!empty($advancedsearch['sponsor_evenement_id'][$k]['id_evenement'])){
       if(strlen($found) < $longueur+1){
-        $found .= 'id = '.intval($advancedsearch['sponsor_evenement_id'][$k]['id_evenement']);
+        $found .= ' id = '.intval($advancedsearch['sponsor_evenement_id'][$k]['id_evenement']);
         $k += 1;
       }
       else{
@@ -148,7 +148,7 @@ class SearchModel {
     $k=0;
     if(!empty($advancedsearch['date_evenement_id'][$k])){
       if(strlen($found) < $longueur+1){
-        $found .= 'id = '.intval($advancedsearch['date_evenement_id'][$k]);
+        $found .= ' id = '.intval($advancedsearch['date_evenement_id'][$k]);
         $k += 1;
       }
       else{
@@ -165,13 +165,50 @@ class SearchModel {
     }
 
     if(strlen($found) < $longueur+1){
-      $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements';
+      $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id,id_createur FROM evenements';
     }
 //-------------------End of the Initialisation-------------------------
     //Sends back the final sql request
     $prep = $this->db->prepare($found);
     $prep->execute();
-    return $prep->fetchAll(PDO::FETCH_ASSOC);
+      $resultat=$prep->fetchAll(PDO::FETCH_ASSOC);
+      $filtered=array();
+
+      //recupere tableau vip
+      $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
+      $prep2->execute();
+      $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
+
+      //recupere id event vip
+      $id_vip=array();
+      foreach($priv as $vipid){
+          $id_vip[]=$vipid['id_evenement'];
+      }
+
+      //regarder si privé si le cas enlever si pas dans vip
+      foreach($resultat as $result)
+      {
+          if (!in_array($result['id'],$id_vip))
+          {
+              $filtered[]=$result;
+          }
+          else{
+              //recupere tableau vip d'users
+              $prep21 = $this->db->prepare('SELECT id_utilisateur FROM evenements_vip');
+              $prep21->execute();
+              $priv1=$prep21->fetchAll(PDO::FETCH_ASSOC);
+              $id_vip2=array();
+              foreach($priv1 as $vipid){$id_vip2[]=$vipid['id_utilisateur'];}
+              $session = System::getSession();
+              if (($session->isConnected())) {
+              $user_id=$_SESSION['userid'];
+              if (in_array($user_id,$id_vip2) or $_SESSION['access']==3 or $result['id_createur']==$user_id){
+                  $filtered[]=$result;
+              }}
+          }
+
+      }
+      return $filtered;
 
   }
 
@@ -235,7 +272,11 @@ class SearchModel {
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
-      $prep = $this->db->prepare('SELECT nom, ville, date_debut,poster,id_theme,id_type,id  FROM evenements WHERE
+      $prep = $this->db->prepare('SELECT ev.id_createur, ev.nom, ev.ville, ev.date_debut,ev.poster,ev.id_theme,ev.id_type,ev.id  FROM evenements AS ev
+      LEFT OUTER JOIN evenements_vip AS v ON v.id_evenement = ev.id
+
+
+      WHERE
             nom LIKE :search
         OR  date_debut = :search
         OR  description LIKE :search
@@ -250,7 +291,44 @@ class SearchModel {
       $prep->bindParam(':search',$filtered);
 
       $prep->execute();
-      return $prep->fetchAll(PDO::FETCH_ASSOC);
+      $resultat=$prep->fetchAll(PDO::FETCH_ASSOC);
+      $filtered=array();
+
+      //recupere tableau vip
+      $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
+      $prep2->execute();
+      $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
+
+      //recupere id event vip
+      $id_vip=array();
+      foreach($priv as $vipid){
+          $id_vip[]=$vipid['id_evenement'];
+      }
+
+      //regarder si privé si le cas enlever si pas dans vip
+      foreach($resultat as $result)
+      {
+          if (!in_array($result['id'],$id_vip))
+          {
+              $filtered[]=$result;
+          }
+          else{
+              //recupere tableau vip d'users
+              $prep21 = $this->db->prepare('SELECT id_utilisateur FROM evenements_vip');
+              $prep21->execute();
+              $priv1=$prep21->fetchAll(PDO::FETCH_ASSOC);
+              $id_vip2=array();
+              foreach($priv1 as $vipid){$id_vip2[]=$vipid['id_utilisateur'];}
+              $session = System::getSession();
+              if (($session->isConnected())) {
+              $user_id=$_SESSION['userid'];
+              if (in_array($user_id,$id_vip2) or $_SESSION['access']==3 or $result['id_createur']==$user_id){
+                  $filtered[]=$result;
+              }}
+          }
+
+      }
+      return $filtered;
     }
   }
 ?>

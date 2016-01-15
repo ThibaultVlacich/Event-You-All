@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 defined('EUA_VERSION') or die('Access denied');
 /**
  * This is the Controller for the app "events".
@@ -129,14 +129,16 @@ class EventsController extends Controller {
 
       // Get linked articles
       $data['articles'] = $this->model->getArticlesForEvent($data['id']);
-	    // Get creator's name and id
-	    $data['creator'] = $this->model->getCreator($data['id_createur']);
+      // Get creator's name and id
+      $data['creator'] = $this->model->getCreator($data['id_createur']);
 
       // Get number of participants
       $data['number_of_participants'] = $this->model->numberOfParticipants($event_id);
 
       // Get rate of event
       $data['rate'] = $this->model->getRateForEvent($event_id);
+      // Get vip of event
+      $data['vip'] = $this->model->getVip($event_id);
 
       // Get the user rate for the event
       $session = System::getSession();
@@ -186,7 +188,7 @@ class EventsController extends Controller {
     $errors = array();
 
     if (!in_array(null, $data, true)) {
-      $data += Request::getAssoc(array('sujet','weborg','partn'));
+      $data += Request::getAssoc(array('sujet','weborg','partn', 'vip'));
 
       $banner = Request::get('bann', null, 'FILES');
 
@@ -365,6 +367,7 @@ class EventsController extends Controller {
     $data['types']   = $typesok;
     $data['regions'] = $regionsok;
     $data['sponsors'] = $this->model->getSponsors($event_id);
+    $data['vip'] = $this->model->getVip($event_id);
 
       return $data;
     } else {
@@ -379,7 +382,7 @@ class EventsController extends Controller {
       $errors = array();
 
       if (!in_array(null, $data, true)) {
-        $data += Request::getAssoc(array('sujet','mclef','weborg','priv','partn'));
+        $data += Request::getAssoc(array('sujet','mclef','weborg','priv','partn','vip'));
 
         $banner = Request::get('bann', null, 'FILES');
 
