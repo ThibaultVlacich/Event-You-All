@@ -156,6 +156,20 @@ CREATE TABLE IF NOT EXISTS `evenements_sponsors` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `evenements_vip`
+--
+
+DROP TABLE IF EXISTS `evenements_vip`;
+CREATE TABLE IF NOT EXISTS `evenements_vip` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_evenement` int(11) NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `faq`
 --
 
@@ -198,35 +212,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_creation` datetime NOT NULL,
   `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `newsletters`
---
-
-DROP TABLE IF EXISTS `newsletters`;
-CREATE TABLE IF NOT EXISTS `newsletters` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `contenu` text COLLATE utf8_unicode_ci NOT NULL,
-  `date_envoi` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `newsletters_abonnes`
---
-
-DROP TABLE IF EXISTS `newsletters_abonnes`;
-CREATE TABLE IF NOT EXISTS `newsletters_abonnes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_newsletter` int(11) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
