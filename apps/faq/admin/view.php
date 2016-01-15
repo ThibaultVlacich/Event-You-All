@@ -21,12 +21,23 @@ defined('EUA_VERSION') or die('Access denied');
   public function modify() {
     $this->setTemplate('/apps/faq/admin/views/modify.php');
     $this->assign('css', Config::get('config.base').'/apps/faq/admin/styles/faq.css');
-  
+
     $this->assign('js', Config::get('config.base').'/apps/faq/admin/scripts/modify.js');
   }
   /*confirm page*/
   public function modifyConfirm(){
     $this->setTemplate('/apps/faq/admin/views/modifyconfirm.php');
+    $this->assign('css', Config::get('config.base').'/apps/faq/admin/styles/faq.css');
+
+  }
+  public function add(){
+    $this->setTemplate('/apps/faq/admin/views/add.php');
+    $this->assign('css', Config::get('config.base').'/apps/faq/admin/styles/faq.css');
+
+  }
+  public function confirmAdd(){
+
+    $this->setTemplate('/apps/faq/admin/views/confirmAdd.php');
     $this->assign('css', Config::get('config.base').'/apps/faq/admin/styles/faq.css');
 
   }

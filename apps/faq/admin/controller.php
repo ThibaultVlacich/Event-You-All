@@ -32,11 +32,18 @@ class FaqAdminController extends Controller {
 
       $data = Request::getAssoc(array("text_modifyQ","text_modifyR"));
       $data['id']=$id;
-      
+
 
       $this->model->modifyConfirm($data);
 
 }
+}
+function add(){
+  
+}
+function confirmAdd(){
+  $data= Request::getAssoc(array("text_modifyQ","text_modifyR"));
+    $this->model->confirmAdd($data);
 }
 }
 

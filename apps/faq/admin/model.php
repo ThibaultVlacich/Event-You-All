@@ -64,6 +64,20 @@ public function modifyConfirm(array $data ){
 
 
 }
+
+public function add(){
+
+}
+
+public function confirmAdd($data){
+  $prep = $this->db->prepare('INSERT INTO faq(question,reponse) VALUES (:question,:reponse)');
+  $prep->bindParam(':question', $data['text_modifyQ']);
+  $prep->bindParam(':reponse', $data['text_modifyR']);
+
+  $prep->execute();
+
+}
+
 }
 
 

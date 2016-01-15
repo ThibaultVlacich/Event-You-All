@@ -12,4 +12,5 @@
 
 
 <?php } ?>
+<a href="<?php echo Config::get('config.base'); ?>/admin/faq/add">Ajouter</a>
 </div>
