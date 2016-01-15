@@ -63,7 +63,7 @@
              </li>
 
           <?php } ?></ul><div class ='clearer'></div>
-          <div id='nosearchresults'><p>Vous ne trouvez pas l'événement de qui vous fait envie . N'attendez pas, créez l'événement dont vous rêvez dès maintenant en <a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></p></div>
+          <div id='nosearchresults'><p>Si vous ne trouvez pas d'événement qui vous donne envie . N'attendez pas, créez l'événement dont vous rêvez dès maintenant en <a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></p></div>
         <?php }
 else{ ?><div id='nosearchresults'><p>Aucun événement ne correspond à votre recherche. N'attendez pas, créez l'événement qui vous fait envie dès maintenant en <a id='createmyevent' href='<?php echo Config::get('config.base'); ?>/events/create'> cliquant ici !</a></p></div>
         <?php }?>

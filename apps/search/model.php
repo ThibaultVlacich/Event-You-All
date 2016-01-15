@@ -171,7 +171,44 @@ class SearchModel {
     //Sends back the final sql request
     $prep = $this->db->prepare($found);
     $prep->execute();
-    return $prep->fetchAll(PDO::FETCH_ASSOC);
+      $resultat=$prep->fetchAll(PDO::FETCH_ASSOC);
+      $filtered=array();
+      
+      //recupere tableau vip
+      $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
+      $prep2->execute();
+      $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
+      
+      //recupere id event vip
+      $id_vip=array();
+      foreach($priv as $vipid){
+          $id_vip[]=$vipid['id_evenement'];
+      }
+      
+      //regarder si privé si le cas enlever si pas dans vip
+      foreach($resultat as $result)
+      {
+          if (!in_array($result['id'],$id_vip))
+          {
+              $filtered[]=$result;
+          }
+          else{
+              //recupere tableau vip d'users
+              $prep21 = $this->db->prepare('SELECT id_utilisateur FROM evenements_vip');
+              $prep21->execute();
+              $priv1=$prep21->fetchAll(PDO::FETCH_ASSOC);
+              $id_vip2=array();
+              foreach($priv1 as $vipid){$id_vip2[]=$vipid['id_utilisateur'];}
+              $session = System::getSession();
+              if (($session->isConnected())) {
+              $user_id=$_SESSION['userid'];
+              if (in_array($user_id,$id_vip2)){
+                  $filtered[]=$result;
+              }}
+          }
+         
+      }
+      return $filtered;
 
   }
 
@@ -235,8 +272,12 @@ class SearchModel {
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
-      $prep = $this->db->prepare('SELECT nom, ville, date_debut,poster,id_theme,id_type,id  FROM evenements WHERE
-            nom LIKE :search
+      $prep = $this->db->prepare('SELECT ev.nom, ev.ville, ev.date_debut,ev.poster,ev.id_theme,ev.id_type,ev.id  FROM evenements AS ev 
+      LEFT OUTER JOIN evenements_vip AS v ON v.id_evenement = ev.id
+
+
+      WHERE
+            nom LIKE :search 
         OR  date_debut = :search
         OR  description LIKE :search
         OR  adresse LIKE :search
@@ -250,7 +291,44 @@ class SearchModel {
       $prep->bindParam(':search',$filtered);
 
       $prep->execute();
-      return $prep->fetchAll(PDO::FETCH_ASSOC);
+      $resultat=$prep->fetchAll(PDO::FETCH_ASSOC);
+      $filtered=array();
+      
+      //recupere tableau vip
+      $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
+      $prep2->execute();
+      $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
+      
+      //recupere id event vip
+      $id_vip=array();
+      foreach($priv as $vipid){
+          $id_vip[]=$vipid['id_evenement'];
+      }
+      
+      //regarder si privé si le cas enlever si pas dans vip
+      foreach($resultat as $result)
+      {
+          if (!in_array($result['id'],$id_vip))
+          {
+              $filtered[]=$result;
+          }
+          else{
+              //recupere tableau vip d'users
+              $prep21 = $this->db->prepare('SELECT id_utilisateur FROM evenements_vip');
+              $prep21->execute();
+              $priv1=$prep21->fetchAll(PDO::FETCH_ASSOC);
+              $id_vip2=array();
+              foreach($priv1 as $vipid){$id_vip2[]=$vipid['id_utilisateur'];}
+              $session = System::getSession();
+              if (($session->isConnected())) {
+              $user_id=$_SESSION['userid'];
+              if (in_array($user_id,$id_vip2)){
+                  $filtered[]=$result;
+              }}
+          }
+         
+      }
+      return $filtered;
     }
   }
 ?>
