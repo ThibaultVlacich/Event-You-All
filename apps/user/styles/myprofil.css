@@ -64,7 +64,7 @@ h1
     margin-right: 10px;
 }
 
-#codepostal,#pays
+#codepostal,#region
 {
   margin-top: 10px;
   margin-right: 10px;
@@ -80,7 +80,7 @@ h1
 
 }
 
-#ville,.prenom,#codepostal,#pays
+#ville,.prenom,#codepostal,#region
 {
   margin-top:10px;
   margin-right :10px;
@@ -181,4 +181,14 @@ select
 .nom .base
 {
   margin-right :5px;
+}
+
+@media (max-width: 992px)
+{
+  .infoperso {
+    width:80%;
+  }
+  .photodemoi {
+    width:80%;
+  }
 }

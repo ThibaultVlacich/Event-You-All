@@ -1,6 +1,6 @@
         <div id="divpage">
             <h1 class= 'entetecompte'>Mon Compte</h1>
-            <?php
+            <?php 
               if (isset($model['success']) && $model['success'] === true) {
             ?>
             <div class="note success">
@@ -42,6 +42,7 @@
       						</p>
                               <p><label class="laissercommentaire" for="commentaire">Laissez un commentaire sur vous !</label><br/></p>
                                   <textarea class="textlaissercommentaire" name="commentaire" id="commentaire" value='<?php echo $model['data']['commentaire']; ?>'></textarea><br/>
+
                                   <input class='boutoncompte' type = 'submit' value='Valider'>
                                   <a class='boutoncompte' href = '<?php echo Config::get('config.base'); ?>/user/myprofil'>Annuler</a>
 
@@ -61,10 +62,14 @@
                           <div class="infoperso2"><br/>
                                       <label for="adressephysique" id='adressephysique'><span class='base'>Adresse :</span> </label><?php echo $model['data']['adress'];?><br/>
                                         <input type='text' name='adress'/><br/>
-                                      <label for='pays' class='pays'> <span class='base'>Pays :</span>   </label><?php echo $model['data']['country'];?><br/>
-                                      <select name="country" class="pays" >
-                                        <option value="FR">France</option>
-                                        <option value="CN">Canada</option>
+                                      <label for='region' class='region'> <span class='base'>Region :</span>   </label><?php echo $model['data']['region'];?><br/>
+                                      <select  name='region' class='region'>
+                                         <option selected disabled>Région</option>
+                                         <?php
+                                       			  foreach ($model['data']['nameregion'] as $proptheme) {
+                                       							 ?>
+                                         <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['data']['nameregion']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
+                                        <?php } ?>
                                       </select><br/>
                                       <label for="codepostal" class='codepostal'><span class='base'>Code Postal :</span> </label><?php echo $model['data']['zip_code'];?><br/>
                                         <input class ='codepostal' type='number' name='zip_code'/><br/>

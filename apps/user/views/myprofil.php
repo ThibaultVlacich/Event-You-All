@@ -24,7 +24,7 @@
                     </div>
                     <div class="infoperso2"><br/>
                                 <label for="adressephysique" id='adressephysique'><span class='base'>Adresse :</span> </label><?php echo $model['adress'];?><br/>
-                                <label for='pays' id='pays'> <span class='base'>Pays :</span> </label><?php echo $model['country'];?>
+                                <label for='region' id='region'> <span class='base'>Region :</span> </label><?php echo $model['region'];?>
                                 <label for="codepostal" id='codepostal'><span class='base'>Code Postal :</span> </label><?php echo $model['zip_code'];?><br/>
                                 <label for="Ville" id='ville'><span class='base'>Ville :</span> </label><?php echo $model['city'];?><br/>
                                 <label for="adressemail" id='adressemail'><span class'base'>Mon Adresse Mail :</span> </label><?php echo $model['email'];?><br/>

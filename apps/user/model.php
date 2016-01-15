@@ -246,6 +246,13 @@ class UserModel {
        $changes .= 'phone = "'.addslashes($modifications['phone']).'" ';
      }
 
+     if(!empty($modifications['region'])){
+       if(strlen($changes)>17){
+         $changes .=', ';
+       }
+       $changes .= 'id_region = "'.intval($modifications['region']).'" ';
+     }
+
      if(strlen($changes)>17) {
        $changes .= 'WHERE id = :id_user';
 
@@ -395,5 +402,17 @@ public function topicscreation($user_id){
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
+  public function getregion(){
+    $prep = $this->db->prepare('SELECT id, nom FROM regions');
+    $prep->execute();
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getregionwithid($id_region){
+    $prep = $this->db->prepare('SELECT nom FROM regions WHERE id = :id_region');
+    $prep->bindParam(':id_region',$id_region);
+    $prep->execute();
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
 }
 ?>
