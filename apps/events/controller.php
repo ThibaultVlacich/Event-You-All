@@ -17,7 +17,8 @@ class EventsController extends Controller {
     'modif'          => 1,
     'modif_confirm'  => 1,
     'register'       => 1,
-    'rate'           => 1
+    'rate'           => 1,
+    'uploadphoto'    => 1
   );
 
   function index() {
@@ -108,6 +109,9 @@ class EventsController extends Controller {
         $data['heure_fin'] = null;
       }
 
+      // Get linked photos
+      $data['photos'] = $this->model->getPhotosForEvent($data['id']);
+
       // Get linked articles
       $data['articles'] = $this->model->getArticlesForEvent($data['id']);
 	    // Get creator's name and id
@@ -124,12 +128,6 @@ class EventsController extends Controller {
 
       if ($session->isConnected()) {
         $data['user_rate'] = $this->model->getUserRateForEvent($event_id);
-      }
-
-      // See if the user is logged in, and if he's already registered to the event
-      $session = System::getSession();
-
-  	  if ($session->isConnected()) {
         $data['user_already_registered'] = $this->model->isCurrentUserRegisteredToEvent($event_id);
       }
 
@@ -655,6 +653,96 @@ class EventsController extends Controller {
     } else {
       return array('data' => $data, 'success' => '');
     }
+  }
+
+  public function uploadphoto(array $params) {
+    if (isset($params[0])) {
+      $id_event = intval($params[0]);
+
+      if(!($event = $this->model->getEvent($id_event))) {
+        return array('errors' => array('L\'évenement demandé n\'existe pas !'));
+      }
+
+      $data = Request::getAssoc(array('title'));
+
+      if(!in_array(null, $data, true)) {
+        $photo = Request::get('photo', null, 'FILES');
+
+        $minwidth = 640;
+        $maxwidth = 1280;
+        $minheight = 360;
+        $maxheight = 720;
+
+        $errors = array();
+
+        if(!empty($photo['name'])) {
+          if(!$photo['error']) {
+            $extensions_valides = array('jpg', 'jpeg', 'gif', 'png');
+            //1. strrchr renvoie l'extension avec le point (« . »).
+            //2. substr(chaine,1) ignore le premier caractère de chaine.
+            //3. strtolower met l'extension en minuscules.
+            $extension_upload = strtolower(substr(strrchr($photo['name'], '.'), 1));
+
+            if ( in_array($extension_upload,$extensions_valides) ){
+              $sizeimage = getimagesize($photo['tmp_name']);
+
+              if ($sizeimage[0] >= $minwidth && $sizeimage[1] >= $minheight){
+                if ($sizeimage[0] <= $maxwidth && $sizeimage[1] <= $maxheight) {
+                  $new_file_name = preg_replace('#[^a-z0-9]#', '', strtolower($data['title'])).'-'.time().'.'.$extension_upload;
+
+                  move_uploaded_file($photo['tmp_name'], UPLOAD_DIR.'events'.DS.'photos'.DS.$new_file_name);
+
+                  $data['photo'] = Config::get('config.base').'/upload/events/photos/'.$new_file_name;
+                } else {
+                  $errors += array('Problème de dimension pour la photo : trop grand en hauteur et/ou en largeur');
+                }
+              } else {
+                $errors += array('Problème de dimension pour la photo : trop petit en hauteur et/ou en largeur');
+              }
+            } else {
+              $errors += array('Problème d\'extension pour la photo : votre fichier n\'est pas du type png, jpeg, jpg ou gif');
+            }
+          } else{
+            $errors += array('Problème de Serveur');
+          }
+        } else {
+          $errors += array('Aucune photo n\'a été téléchargée !');
+        }
+
+        if (empty($errors)) {
+          $user_id = $_SESSION['userid'];
+
+          $creator = $this->model->getCreator($event['id_createur']);
+
+          $review = ($user_id == $creator['id']) ? 1 : 0;
+
+          $photo_id = $this->model->addPhoto($id_event, $data, $review);
+
+          if($review == 0) {
+            // Send a email to the creator of the event to tell him to review the photo
+            $headers  = "From: " . strip_tags(Config::get('config.email')) . "\r\n";
+            $headers .= "Reply-To: ". strip_tags(Config::get('config.email')) . "\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            $message  = 'Bonjour <strong>'.$creator['nickname'].'</strong>,<br><br>' . "\r\n";
+            $message .= 'Une photo a été ajouté à votre événement <a href="'.Config::get('config.base').'/events/detail/'.$event['id'].'">'.$event['nom'].'</a> par un utilisateur.<br><br>' . "\r\n";
+            $message .= 'Afin que cette photo puisse être visible sur la page de votre événement, vous devez la valider en allant sur <a href="'.Config::get('config.base').'/events/reviewphoto/'.$photo_id.'">ce lien</a>.<br><br>';
+            $message .= 'Merci par avance !';
+
+            mail($creator['email'], 'Event-You-All : Photo ajoutée à l\'un de vos événements', $message, $headers);
+          }
+
+          return array('event' => $event, 'success' => true, 'need_review' => ($review == 0));
+        }
+
+        return array('event' => $event, 'errors' => $errors);
+      }
+
+      return array('event' => $event);
+    }
+
+    return false;
   }
 }
 ?>

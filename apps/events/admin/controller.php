@@ -64,6 +64,43 @@ class EventsAdminController extends Controller {
     }
   }
 
+      function modiftheme (array $params) {
+    if (isset($params[0])) {
+      $theme_id = intval($params[0]);
+
+      // Récupérer le theme lié depuis le model
+      if (!($data = $this->model->getTheme($theme_id))) {
+        return array();
+      }
+      else {return $data;}
+
+  }
+      }
+
+        function modiftype (array $params) {
+    if (isset($params[0])) {
+      $theme_id = intval($params[0]);
+
+      if (!($data = $this->model->getType($theme_id))) {
+        return array();
+      }
+      else {return $data;}
+
+  }
+      }
+
+              function modifregion (array $params) {
+    if (isset($params[0])) {
+      $theme_id = intval($params[0]);
+
+      if (!($data = $this->model->getRegion($theme_id))) {
+        return array();
+      }
+      else {return $data;}
+
+  }
+      }
+
   function modif_confirm(array $params) {
     if (isset($params[0])) {
     $id_event = intval($params[0]);
@@ -164,15 +201,156 @@ class EventsAdminController extends Controller {
     if (isset($params[0])) {
       $id_event = intval($params[0]);
       $delete = $this->model->deleteEvent($id_event);
-      ?>
-      <script>
-      window.history.back();
-      </script>
-      <?php
+
+      header('Location: '.Config::get('config.base').'/admin/events');
     }
 
   }
 
+  //-----------------------THEME----------------------------------
+  function hidetheme(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $this->model->nodisplayTheme($id_theme);
+
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+    }
+  }
+
+  function showtheme(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $this->model->displayTheme($id_theme);
+
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+    }
+  }
+
+  function modif_confirm_theme(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+
+      $data = Request::getAssoc(array('nom'));
+      $this->model->modTheme($id_theme,$data['nom']);
+
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+    }
+  }
+
+  function add_confirm_theme(array $params) {
+      $data = Request::getAssoc(array('nom'));
+      $this->model->addTheme($data);
+
+      header('Location: '.Config::get('config.base').'/admin/events/themes');
+  }
+
+  public function themes(array $params) {
+    $themes = $this->model->getAllThemes();
+
+    return $themes;
+  }
+
+  public function addtheme(array $params) {
+
+
+  }
+
+  //-----------TYPE---------------------------------------------
+  function hidetype(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $this->model->nodisplayType($id_theme);
+
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+    }
+
+  }
+
+  function showtype(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $this->model->displayType($id_theme);
+
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+    }
+  }
+
+  function modif_confirm_type(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $data = Request::getAssoc(array('nom'));
+      $this->model->modType($id_theme,$data['nom']);
+
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+    }
+  }
+
+  function add_confirm_type(array $params) {
+      $data = Request::getAssoc(array('nom'));
+      $this->model->addType($data);
+
+      header('Location: '.Config::get('config.base').'/admin/events/types');
+  }
+
+  public function types(array $params) {
+    $themes = $this->model->getAllTypes();
+
+    return $themes;
+  }
+
+  public function addtype(array $params) {
+
+
+  }
+
+  //---------------REGIONS--------------------------
+  function hideregion(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $this->model->nodisplayRegion($id_theme);
+
+      header('Location: '.Config::get('config.base').'/admin/events/regions');
+    }
+
+  }
+
+  function showregion(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+      $this->model->displayRegion($id_theme);
+
+      header('Location: '.Config::get('config.base').'/admin/events/regions');
+    }
+
+  }
+
+  function modif_confirm_region(array $params) {
+    if (isset($params[0])) {
+      $id_theme = intval($params[0]);
+
+      $data = Request::getAssoc(array('nom'));
+      $this->model->modRegion($id_theme,$data['nom']);
+
+      header('Location: '.Config::get('config.base').'/admin/events/regions');
+    }
+  }
+
+  function add_confirm_region(array $params) {
+      $data = Request::getAssoc(array('nom'));
+      $this->model->addRegion($data);
+
+      header('Location: '.Config::get('config.base').'/admin/events/regions');
+  }
+
+  public function regions(array $params) {
+    $themes = $this->model->getAllRegions();
+    return $themes;
+  }
+
+  public function addregion(array $params) {
+
+
+  }
 }
 
 ?>

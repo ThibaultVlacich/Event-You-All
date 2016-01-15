@@ -16,9 +16,9 @@ class FaqModel {
   }
 
   // Then add methods (can be named whatever you want)
-  public function faq() {
+  public function qw() {
     $prep = $this->db->prepare('
-    SELECT *
+    SELECT question,reponse
     FROM faq ');
 
     $prep->execute();

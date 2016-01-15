@@ -41,6 +41,11 @@ $(function() {
     $description_paragraph.addClass('visible');
   }
 
+  $('div.app-events-detail section.gallery div.photo-gallery').camera({
+    fx: 'simpleFade',
+    playPause: false
+  });
+
   var $share_buttons = $('.share-buttons');
 
   // No need to execute the rest of this script if this element does not exist.

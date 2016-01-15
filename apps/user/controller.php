@@ -75,8 +75,6 @@ class UserController extends Controller {
 				switch ($this->session->createSession($data['email'], $data['password'], $remember_time)) {
 					case Session::LOGIN_SUCCESS:
 						// Update activity
-						//$this->model->updateLastActivity($_SESSION['userid']);
-
 						if (empty($_COOKIE['wsid'])) {
 							array_push($errors, 'Les cookies ne sont pas acceptés par votre navigateur !');
 							$cookie = false;
@@ -84,6 +82,9 @@ class UserController extends Controller {
 							// Redirect
 							return array('success' => true);
 						}
+						break;
+					case Session::USER_BANNED:
+						array_push($errors, 'Vous avez été banni du site ! <a href="'.Config::get('config.base').'/contact">Contactez l\'administrateur</a>.');
 						break;
 					case 0:
 						array_push($errors, 'Couple Login / Mot de passe incorrect.');

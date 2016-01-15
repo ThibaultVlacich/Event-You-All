@@ -9,12 +9,12 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class FaqController extends Controller {
-  var $default_module = 'faq';
+  var $default_module = 'qw';
 
 
- function faq(){
+ function qw(){
 
-     $data = $this->model->faq();
+     $data = $this->model->qw();
      return $data;
   }
 }

@@ -2,10 +2,16 @@
 <h2> FAQ
 </h2>
         <!--haut page-->
-        <div class="app-faq">
-          <?php
-          echo $model['faq'];
-          ?>
+        <div class="text">
+          <?php  foreach($model as $qw) { ?>
+            <section class="QW">
+                <p class="question"> <?php echo $qw['question']; ?></p>
+                <p class="reponse"><?php echo $qw['reponse']; ?></p>
+            </section>
+
+
+          <?php } ?>
+
 
 
         </div>

@@ -55,12 +55,12 @@ class EventsModel {
     $prep->bindParam(':type', $data['type']);
     $prep->bindParam(':theme',$data['theme']);
 
-
     if ($prep->execute()) {
 	    $idevent = $this->db->lastInsertId('id');
-        if ($data['partn']!='' and $data['partn']!=NULL){
-            $sp=$this->sponsor($data['partn'], $idevent);
-        }
+
+      if ($data['partn']!='' and $data['partn']!=NULL){
+        $sp=$this->sponsor($data['partn'], $idevent);
+      }
 
       return $idevent;
     } else {
@@ -437,7 +437,7 @@ public function modifEvent(array $data) {
     $newsp=array();
     foreach ($sponsors as $spo)
     {
-        $newsp+=$sponsors[0];
+        $newsp[] = $spo['nom'];
     }
     $sponsors=implode (',',$newsp);
     return $sponsors;
@@ -471,6 +471,49 @@ public function modifEvent(array $data) {
 
     $prep->bindParam(':id_event',$id_event);
     $prep->execute();
+  }
+
+  public function addPhoto($id_event, $photo, $reviewed = 0) {
+    $prep = $this->db->prepare('
+      INSERT INTO evenements_photos
+      (id_evenement, nom, url, reviewed)
+      VALUES (:id_event, :nom, :url, :reviewed)
+    ');
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+    $prep->bindParam(':nom', $photo['title']);
+    $prep->bindParam(':url', $photo['photo']);
+    $prep->bindParam(':reviewed', $reviewed, PDO::PARAM_INT);
+
+    if ($prep->execute()) {
+	    return $this->db->lastInsertId('id');
+    } else {
+      return false;
+    }
+  }
+
+  public function getPhoto($id_photo) {
+    $prep = $this->db->prepare('SELECT * FROM evenements_photos WHERE id = :id_photo');
+
+    $prep->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
+
+    $prep->execute();
+
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getPhotosForEvent($id_event, $reviewed = true) {
+    if($reviewed) {
+      $prep = $this->db->prepare('SELECT * FROM evenements_photos WHERE id_evenement = :id_event AND reviewed = 1');
+    } else {
+      $prep = $this->db->prepare('SELECT * FROM evenements_photos WHERE id_evenement = :id_event');
+    }
+
+    $prep->bindParam(':id_event', $id_event, PDO::PARAM_INT);
+
+    $prep->execute();
+
+    return $prep->fetchAll(PDO::FETCH_ASSOC);
   }
 
 }

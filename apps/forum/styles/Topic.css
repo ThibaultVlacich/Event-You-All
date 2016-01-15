@@ -55,9 +55,7 @@ border-bottom:1px solid #cc0033;
 #presentation{
     margin: auto;
     text-align: center;
-    float:right;
-    margin-top: 5em;
-    margin-right: 22em;
+
 }
 #presentation h3{
   color:#cc0033;
@@ -93,14 +91,15 @@ table.messages {
     border-left: 1px solid #cc0033;
 }
 .avatartopic{
-  height:8em;
-  width:8em;
+  height:10em;
+  width:10em;
   border-radius: 6em;
-  margin-left: 25em;
-  margin-top: 5em;
+  margin-left: 43em;
+  margin-top: 2em;
 }
 .avatar{
   height:5em;
+  width:7em;
 }
 .image{
     border-right: 1px solid #cc0033;
@@ -135,4 +134,9 @@ table.messages {
 }
 .Envoyer{
   margin-bottom: 10px;
+}
+.admin{
+  position:absolute;
+  top:15em;
+  font-size:1.5em;
 }

@@ -1,0 +1,151 @@
+div.app-events.app-events-uploadphoto {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events.app-events-uploadphoto {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 15px;
+  }
+}
+
+div.app-events.app-events-uploadphoto:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+
+div.app-events.app-events-uploadphoto h1.app-title, div.app-events.app-events-uploadphoto h2.title {
+  padding: 0 15px;
+}
+
+div.app-events.app-events-uploadphoto div.form-main {
+  width: 66.66666667%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events.app-events-uploadphoto div.form-main {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+div.app-events.app-events-uploadphoto span.required {
+  color: #CC0033;
+  font-size: bold;
+}
+
+div.app-events.app-events-uploadphoto div.form-block {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+div.app-events.app-events-uploadphoto div.form-block h3.form-block-title {
+  margin: 0;
+  padding: 10px 15px;
+  background: #CC0033;
+  color: white;
+  text-transform: uppercase;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group, div.app-events.app-events-uploadphoto div.form-block p {
+  margin: 15px;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group label {
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group.checkbox label {
+  width: auto;
+  margin: 0;
+  display: inline-block;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group input, div.app-events.app-events-uploadphoto div.form-block div.form-group select {
+  display: inline-block;
+  min-height: 34px;
+  padding: 7px 8px;
+  font-size: 13px;
+  color: #333;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group.checkbox input {
+  width: auto;
+  display: inline-block;
+  min-height: 0px;
+  padding: 0;
+  box-shadow: none;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group.full input, div.app-events.app-events-uploadphoto div.form-block div.form-group.full select {
+  width: 100%;
+  display: block;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group input:disabled, div.app-events.app-events-uploadphoto div.form-block div.form-group select:disabled {
+  opacity: 0.7;
+}
+
+div.app-events.app-events-uploadphoto div.form-block div.form-group em.legend {
+  display: block;
+  margin-top: 10px;
+}
+
+div.app-events.app-events-uploadphoto aside.form-column {
+  width: 33.33333333%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  div.app-events.app-events-uploadphoto aside.form-column {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+div.app-events.app-events-uploadphoto input[type="submit"], div.app-events.app-events-uploadphoto input[type="button"] {
+  width: 80%;
+  width: calc(100% - 30px);
+  display: block;
+  margin: 10px 15px;
+  padding: 10px 15px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #CC0033;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
+}
+
+div.app-events.app-events-uploadphoto input[type="submit"]:hover, div.app-events.app-events-uploadphoto input[type="button"]:hover {
+  background-color: #880000;
+  border-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,4 +1,9 @@
-<h2 class="title">Liste des événements</h2>
+<h1 class="app-title">Liste des événements</h1>
+<div class="app-actions">
+  <a href="<?php echo Config::get('config.base'); ?>/admin/events/themes">Gérer les thèmes</a>
+  <a href="<?php echo Config::get('config.base'); ?>/admin/events/types">Gérer les types</a>
+  <a href="<?php echo Config::get('config.base'); ?>/admin/events/regions">Gérer les régions</a>
+</div>
 <table class="table">
   <thead>
     <tr>

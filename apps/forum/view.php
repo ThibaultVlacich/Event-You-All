@@ -34,6 +34,12 @@ class ForumView extends View {
   public function send_comment(){
     $this->setTemplate('/apps/forum/views/sent_comment.php');
   }
+  public function delete(){
+    $this->setTemplate('/apps/forum/views/delete.php');
+  }
+  public function deleteComment(){
+    $this->setTemplate('/apps/forum/views/deleteComment.php');
+  }
 }
 
 ?>

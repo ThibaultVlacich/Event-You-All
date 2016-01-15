@@ -1,21 +1,27 @@
         <ul id="haut">
             <a class="titreenteteforum" href="<?php echo Config::get('config.base'); ?>/forum/create"><li class="enteteforum">Créer un nouveau Topic</li></a>
-            <a href="<?php echo Config::get('config.base'); ?>/user/mestopics" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>    
+            <a href="<?php echo Config::get('config.base'); ?>/user/mestopics" class="titreenteteforum"><li class="enteteforum">Mes Topics</li></a>
         </ul>
         <table id="forum">
             <thead id="label">
                 <tr class="titresujet">
+                  <?php if($_SESSION['access']>=2){?>
+                  <td class="suppressbutton"></td>
+                  <?php } ?>
                     <th class="sujet">Titre</th>
                     <th class="description">Description</th>
-                    <th class="admin">Administrateur</th>
+                    <th class="admin">Créateur</th>
                     <th class="date">Date de création</th>
                 </tr>
             </thead>
             <?php foreach($model['topics'] as $topic) { ?>
             <tr>
+              <?php if($_SESSION['access']>=2){?>
+                <td class="suppressbutton"><a href="<?php echo Config::get('config.base'); ?>/forum/delete/<?php echo $topic['id']; ?>">supprimer</a></td>
+                <?php } ?>
                 <td class="sujet"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id']; ?>"><?php echo $topic['titre']; ?></a></td>
                 <td class="description"><?php echo $topic['description']; ?></td>
-                <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/user/profile/<?php echo $topic['createur']['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>
+                <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>
                 <td class="date"><?php echo $topic['date_creation'];?></td>
                 <td class="acceder"><a class="acceder" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo  $topic['id']; ?>">Accéder</a></td>
             </tr>

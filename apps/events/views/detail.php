@@ -1,3 +1,6 @@
+<?php
+  $session = System::getSession();
+?>
 <div class="app-events app-events-detail">
   <?php
     if (empty($model)) {
@@ -90,13 +93,35 @@
         </div>
       </section>
       <?php } ?>
-      <?php if(!empty($model['description'])) { ?>
-      <?php } ?>
-      <section class="event-news">
-        <h2 class="title">Articles
-        <?php
-            $session = System::getSession();
+      <section class="gallery">
+        <h2 class="title">
+          Gallerie photos
+          <?php
+            if($session->isConnected()) {
+              // User is logged in
+              $user_id = $_SESSION['userid'];
 
+              if ($model['user_already_registered']) {
+                // User is registered to the event
+          ?>
+          <a class="ajouter" href="<?php echo Config::get('config.base'); ?>/events/uploadphoto/<?php echo $model['id']; ?>"><i class="fa fa-plus"></i> Télécharger une photo</a>
+          <?php
+              }
+            }
+          ?>
+        </h2>
+        <?php if (!empty($model['photos'])) { ?>
+        <div class="photo-gallery">
+          <?php foreach ($model['photos'] as $photo) { ?><div data-src="<?php echo $photo['url']; ?>"><div class="camera_caption"><?php echo $photo['nom']; ?></div></div><?php } ?>
+        </div>
+        <?php } else { ?>
+        Aucune photo n'a encore été ajouté à cet événement !
+        <?php } ?>
+      </section>
+      <section class="event-news">
+        <h2 class="title">
+          Articles
+          <?php
             if($session->isConnected()) {
               // User is logged in
               $user_id = $_SESSION['userid'];
@@ -104,9 +129,10 @@
               if ($model['creator']['id'] == $user_id) {
                 // User is the creator
           ?>
-          <a class="ajouter" href="<?php echo Config::get('config.base'); ?>/article/create">Ajouter un article</a>
+          <a class="ajouter" href="<?php echo Config::get('config.base'); ?>/article/create"><i class="fa fa-plus"></i> Ajouter un article</a>
           <?php
-            }}
+              }
+            }
           ?>
           </h2>
         <?php
@@ -136,8 +162,6 @@
         <h2 class="title">Participer à cet événement</h2>
         <div class="register">
           <?php
-            $session = System::getSession();
-
             if($session->isConnected()) {
               // User is logged in
               $user_id = $_SESSION['userid'];

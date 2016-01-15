@@ -15,7 +15,7 @@ class FaqView extends View {
   }
 
   // Method for the module
-  public function Faq() {
+  public function qw() {
     // Here assign CSSs/JSs for that method
 
     // The assign the view for the module

@@ -19,10 +19,12 @@ class FaqAdminModel {
    */
    public function getFaq(){
      $prep = $this->db->prepare('
-   SELECT *
+   SELECT question,reponse
    FROM faq');
    $prep->execute();
-   return $prep->fetch(PDO::FETCH_ASSOC);
+   return $prep->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 
 
@@ -39,12 +41,29 @@ public function modify(){
 */
 
 
+public function getCompteur(){
+  $prep = $this->db->prepare('
+SELECT compteur
+FROM faq');
+$prep->execute();
+return $prep->fetchAll(PDO::FETCH_ASSOC);
+}
 
-public function modifyConfirm(array $data){
+public function modifyConfirm(array $data ){
+ $compteur =$this->db->prepare('
+SELECT compteur
+FROM faq');
+$compteur->execute();
+return $compteur;
 
-  $prep = $this->db->prepare('UPDATE faq SET faq=:faq');
-  $prep->bindParam(':faq', $data['text_modify']);
+foreach($compteur as $id){
+
+  $prep = $this->db->prepare('UPDATE faq SET question=:question,reponse=:reponse');
+  $prep->bindParam(':question', $data['text_modifyQ'.$id]);
+  $prep->bindParam(':reponse', $data['text_modifyR'.$id]);
+
   $prep->execute();
+  }
 
 }
 }

@@ -13,7 +13,9 @@ class ForumController extends Controller {
   var $access = array(
     'create' => 1,
     'create_confirm' => 1,
-    'send_comment' => 1
+    'send_comment' => 1,
+    'delete' => 2,
+    'deleteComment' => 2
   );
 
   function forum(array $params){
@@ -33,7 +35,7 @@ class ForumController extends Controller {
       $date_creation_timestamp = strtotime($topic['date_creation']);
       $topic['date_creation'] = strftime('%d %b. %Y', $date_creation_timestamp);
 
-      $topic['createur'] = $this->model->getCreatorForTopic($topic['id_createur']);
+      $topic['createur'] = $this->model->getCreatorForTopic($topic['id']);
 
       $topics[] = $topic;
     }
@@ -56,25 +58,24 @@ class ForumController extends Controller {
       $data = $this->model->getTopic($topic_id);
       $datecrea = $data['date_creation'];
       $titre = $data['titre'];
-      $createurtop = $this->model->getCreatorForTopic($data['id_createur']);
+      $createurtop = $this->model->getCreatorForTopic($topic_id);
       $description= $data['description'];
       $photoprofil=$this->model->getAvatarForCreator($data['id_createur']);
-      if(empty($photoprofil)){
-        $photoprofil = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
+
+      if(empty($photoprofil['photoprofil'])){
+        $photoprofil['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
       }
       $comments = $this->model->getComments($topic_id,($page-1)*$n, $n);
 
       foreach ($comments as $index => $comment) {
          $date_timestamp = strtotime($comment['date']);
          $comments[$index]['photoprofil'] = $this->model->getAvatarForCreator($comment['id_createur']);
-         if(empty($comments[$index]['photoprofil'])){
-           $comment['id_createur'];
-           $comments[$index]['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
+         if(empty($comments[$index]['photoprofil']['photoprofil'])){
+           $comments[$index]['photoprofil']['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png' ;
        }
          $comments[$index]['date'] = strftime('%d %b %Y', $date_timestamp);
-         $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id_createur']);
+         $comments[$index]['createur'] = $this->model->getCreatorForComments($comment['id']);
       }
-
       return array(
         'id_topic' => $topic_id,
         'comments' => $comments,
@@ -119,6 +120,27 @@ class ForumController extends Controller {
       return array('id' => $topic_id);
     }
   }
+
+  function delete(array $params) {
+    if(!isset($params[0])) {
+      return false;
+    }
+
+    $topic_id = intval($params[0]);
+    $data = $this->model->getTopic($topic_id);
+    $this->model->deleteTopic($data['id']);
+    }
+
+    function deleteComment(array $params) {
+      if(!isset($params[0])) {
+        return false;
+      }
+
+      $comment_id = intval($params[0]);
+      $data = $this->model->getcomment($comment_id);
+      $this->model->deleteComment($data['id']);
+      return array('id' => $data['id_topic']);
+      }
 }
 
 ?>
