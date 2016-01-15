@@ -67,7 +67,6 @@ class SearchController extends Controller {
         $data['advancedresults'][$k]['type'] = $this->model->gettypewithid($value['id_type']);
         $k += 1;
       }
-      var_dump($data);
       return $data;
     }
     //Error if nothing has been selected by the user

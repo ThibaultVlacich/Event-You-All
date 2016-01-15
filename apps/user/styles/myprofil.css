@@ -70,11 +70,6 @@ h1
   margin-right: 10px;
 }
 
-#codepostal
-{
-  margin-left: 10px;
-}
-
 .moncommentaire
 {
 
@@ -130,20 +125,22 @@ h1
 
 .boutoncompte
 {
-  color:black;
-  border : 1px black solid;
-  box-shadow: 1px 1px 1px black;
+  padding: 10px 15px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #CC0033;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
   margin-top: 20px;
-  display : inline-block;
-  margin-bottom:20px;
-  border: 0;
-  background: #CC0033;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 2px 6px 3px;
+  margin-bottom: 20px;
   margin-right: 10px;
+}
+
+.meseventsettopics
+{
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #divpage input,
@@ -190,5 +187,25 @@ select
   }
   .photodemoi {
     width:80%;
+  }
+}
+
+.updateprofiletmdp
+{
+  width :700px;
+  margin-bottom: 20px;
+}
+
+@media (max-width:992px)
+{
+  .updateprofiletmdp .boutoncompte
+  {
+    width:100%;
+    display:block;
+    text-align: center;
+  }
+  .updateprofiletmdp
+  {
+    width:100%;
   }
 }
