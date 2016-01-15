@@ -39,11 +39,19 @@ class FaqAdminController extends Controller {
 }
 }
 function add(){
-  
+
 }
 function confirmAdd(){
   $data= Request::getAssoc(array("text_modifyQ","text_modifyR"));
     $this->model->confirmAdd($data);
+}
+function delete(array $params){
+  if (isset($params[0])) {
+    $id_event = intval($params[0]);
+    $delete = $this->model->deleteFaq($id_event);
+
+    header('Location: '.Config::get('config.base').'/admin/faq');
+  }
 }
 }
 

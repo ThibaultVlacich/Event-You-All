@@ -77,6 +77,14 @@ public function confirmAdd($data){
   $prep->execute();
 
 }
+public function deleteFaq($id) {
+  $prep = $this->db->prepare('DELETE FROM faq WHERE id = :id');
+
+    $prep->bindParam(':id', $id);
+    $prep->execute();
+    return 'deleted';
+
+}
 
 }
 

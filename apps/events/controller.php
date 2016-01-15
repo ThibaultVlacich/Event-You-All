@@ -76,6 +76,8 @@ class EventsController extends Controller {
 
     $themetest = $this->model->getThemes();
     $regiontest = $this->model->getRegions();
+    $regionsok = array();
+    $themesok = array();
     foreach($regiontest as $index=>$value){
       if($value['afficher'] == 1){
         $regionsok[$index] = $value;
@@ -155,6 +157,9 @@ class EventsController extends Controller {
       $themetest = $this->model->getThemes();
       $regiontest = $this->model->getRegions();
       $typetest = $this->model->getTypes();
+      $regionsok = array();
+      $themesok = array();
+      $typesok = array();
       foreach($regiontest as $index=>$value){
         if($value['afficher'] == 1){
           $regionsok[$index] = $value;
@@ -350,6 +355,9 @@ class EventsController extends Controller {
       $themetest = $this->model->getThemes();
       $regiontest = $this->model->getRegions();
       $typetest = $this->model->getTypes();
+      $regionsok = array();
+      $typesok = array();
+      $themesok = array();
       foreach($regiontest as $index=>$value){
         if($value['afficher'] == 1){
           $regionsok[$index] = $value;

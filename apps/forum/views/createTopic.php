@@ -13,6 +13,6 @@
                 <input type="textarea" required name='description' id="commentaire"></input><br/>
               </div>
                 <input class="Envoyer" type="submit" value="Envoyer">
-                <input class="Annuler" type="submit" value="Annuler">
+                <input class="Annuler" type="reset" value="Annuler">
         </section>
     </form>

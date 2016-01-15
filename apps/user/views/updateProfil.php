@@ -66,9 +66,9 @@
                                       <select  name='region' class='region'>
                                          <option selected disabled>Région</option>
                                          <?php
-                                       			  foreach ($model['data']['nameregion'] as $proptheme) {
+                                       			  foreach ($model['data']['nameregions'] as $proptheme) {
                                        							 ?>
-                                         <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['data']['nameregion']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
+                                         <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['data']['nameregions']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
                                         <?php } ?>
                                       </select><br/>
                                       <label for="codepostal" class='codepostal'><span class='base'>Code Postal :</span> </label><?php echo $model['data']['zip_code'];?><br/>

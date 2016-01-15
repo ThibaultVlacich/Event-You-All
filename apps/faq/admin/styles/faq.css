@@ -109,3 +109,47 @@ section.QW{
   background: white;
   color: #CC0033;
 }
+.modifybutton{
+display: inline-block;
+transition: all 0.15s ease-in-out;
+border-radius: 4px;
+font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin: 0 5px;
+    padding: 12px 8px;
+    background: #CC0033;
+    color: white;
+}
+.modifybutton:hover{
+  background: white;
+  color: #CC0033;
+}
+.addbutton{
+  float: right;
+display: inline-block;
+transition: all 0.15s ease-in-out;
+border-radius: 4px;
+font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin: 0 5px;
+    padding: 12px 8px;
+    background: #CC0033;
+    color: white;
+}
+.addbutton:hover{
+  background: white;
+  color: #CC0033;
+}
+
+.deletebutton{
+display: inline-block;
+transition: all 0.15s ease-in-out;
+border-radius: 4px;
+font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin: 0 5px;
+    padding: 12px 8px;
+    background: #CC0033;
+    color: white;
+}
+.deletebutton:hover{
+  background: white;
+  color: #CC0033;
+}

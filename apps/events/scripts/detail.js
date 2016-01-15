@@ -41,10 +41,14 @@ $(function() {
     $description_paragraph.addClass('visible');
   }
 
-  $('div.app-events-detail section.gallery div.photo-gallery').camera({
-    fx: 'simpleFade',
-    playPause: false
-  });
+  var $gallery = $('div.app-events-detail section.gallery div.photo-gallery');
+
+  if($gallery.length) {
+    $gallery.camera({
+      fx: 'simpleFade',
+      playPause: false
+    });
+  }
 
   var $share_buttons = $('.share-buttons');
 
