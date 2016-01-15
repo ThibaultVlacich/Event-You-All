@@ -499,7 +499,7 @@ public function modifEvent(array $data) {
 
     $prep->execute();
 
-    return $prep->fetchAll(PDO::FETCH_ASSOC);
+    return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
   public function getPhotosForEvent($id_event, $reviewed = true) {
@@ -514,6 +514,22 @@ public function modifEvent(array $data) {
     $prep->execute();
 
     return $prep->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function reviewPhoto($id_photo) {
+    $prep = $this->db->prepare('UPDATE evenements_photos SET reviewed = 1 WHERE id = :id_photo');
+
+    $prep->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
+
+    $prep->execute();
+  }
+
+  public function deletePhoto($id_photo) {
+    $prep = $this->db->prepare('DELETE FROM evenements_photos WHERE id = :id_photo');
+
+    $prep->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
+
+    $prep->execute();
   }
 
 }

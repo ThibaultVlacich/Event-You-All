@@ -744,5 +744,35 @@ class EventsController extends Controller {
 
     return false;
   }
+
+  public function reviewphoto(array $params) {
+    if (isset($params[0])) {
+      $id_photo = intval($params[0]);
+
+      if (!($photo = $this->model->getPhoto($id_photo))) {
+        return array('errors' => array('La photo demandée n\'existe pas !'));
+      }
+
+      if ($photo['reviewed'] == 1) {
+        return array('errors' => array('La photo a déjà été validée !'));
+      }
+
+      if (isset($params[1]) && $params[1] == 'confirm') {
+        $this->model->reviewPhoto($id_photo);
+
+        return array('photo' => $photo, 'success' => true);
+      }
+
+      if (isset($params[1]) && $params[1] == 'delete') {
+        $this->model->deletePhoto($id_photo);
+
+        return array('photo' => $photo, 'success' => true, 'deleted' => true);
+      }
+
+      return array('photo' => $photo, 'success' => false);
+    }
+
+    return array('errors' => array('Aucun ID de photo n\'a été fourni !'));
+  }
 }
 ?>
