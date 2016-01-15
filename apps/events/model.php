@@ -141,8 +141,46 @@ class EventsModel {
         $event['type'] = $prep->fetch(PDO::FETCH_ASSOC);
       }
     }
-
-    return $events;
+    
+    //---------filtre-------------
+      $resultat=$events;
+      $filtered=array();
+      
+      //recupere tableau vip
+      $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
+      $prep2->execute();
+      $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
+      
+      //recupere id event vip
+      $id_vip=array();
+      foreach($priv as $vipid){
+          $id_vip[]=$vipid['id_evenement'];
+      }
+      
+      //regarder si privé si le cas enlever si pas dans vip
+      foreach($resultat as $result)
+      {
+          if (!in_array($result['id'],$id_vip))
+          {
+              $filtered[]=$result;
+          }
+          else{
+              //recupere tableau vip d'users
+              $prep21 = $this->db->prepare('SELECT id_utilisateur FROM evenements_vip');
+              $prep21->execute();
+              $priv1=$prep21->fetchAll(PDO::FETCH_ASSOC);
+              $id_vip2=array();
+              foreach($priv1 as $vipid){$id_vip2[]=$vipid['id_utilisateur'];}
+              $session = System::getSession();
+              if (($session->isConnected())) {
+              $user_id=$_SESSION['userid'];
+              if (in_array($user_id,$id_vip2) or $_SESSION['access']==3 or $result['id_createur']==$user_id){
+                  $filtered[]=$result;
+              }}
+          }
+         
+      }
+      return $filtered;
   }
 
   /**

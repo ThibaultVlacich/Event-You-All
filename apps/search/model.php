@@ -19,8 +19,8 @@ class SearchModel {
     //found will be having the SQL Request
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
-    $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements WHERE ';
-    $longueur = 82;
+    $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id, id_createur FROM evenements WHERE ';
+    $longueur = 108;
 
     if (!empty($advancedsearch['theme'])) {
       $found .= ' id_theme = '.intval($advancedsearch['theme']);
@@ -31,7 +31,7 @@ class SearchModel {
         $found.=  '(evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
       else{
-        $found.=  ' AND (evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
+        $found.=  '(AND evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
     }
 
@@ -165,7 +165,7 @@ class SearchModel {
     }
 
     if(strlen($found) < $longueur+1){
-      $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id FROM evenements';
+      $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id,id_createur FROM evenements';
     }
 //-------------------End of the Initialisation-------------------------
     //Sends back the final sql request
@@ -202,7 +202,7 @@ class SearchModel {
               $session = System::getSession();
               if (($session->isConnected())) {
               $user_id=$_SESSION['userid'];
-              if (in_array($user_id,$id_vip2)){
+              if (in_array($user_id,$id_vip2) or $_SESSION['access']==3 or $result['id_createur']==$user_id){
                   $filtered[]=$result;
               }}
           }
@@ -272,7 +272,7 @@ class SearchModel {
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
-      $prep = $this->db->prepare('SELECT ev.nom, ev.ville, ev.date_debut,ev.poster,ev.id_theme,ev.id_type,ev.id  FROM evenements AS ev 
+      $prep = $this->db->prepare('SELECT ev.id_createur, ev.nom, ev.ville, ev.date_debut,ev.poster,ev.id_theme,ev.id_type,ev.id  FROM evenements AS ev 
       LEFT OUTER JOIN evenements_vip AS v ON v.id_evenement = ev.id
 
 
@@ -322,7 +322,7 @@ class SearchModel {
               $session = System::getSession();
               if (($session->isConnected())) {
               $user_id=$_SESSION['userid'];
-              if (in_array($user_id,$id_vip2)){
+              if (in_array($user_id,$id_vip2) or $_SESSION['access']==3 or $result['id_createur']==$user_id){
                   $filtered[]=$result;
               }}
           }
