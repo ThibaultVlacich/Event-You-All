@@ -20,7 +20,7 @@ class SearchModel {
     //SQL Initial Request (while have to be modified in case advancedresearch is empty)
 //----------------------Initialisation of found--------------------------------------
     $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id, id_createur FROM evenements WHERE ';
-    $longueur = 108;
+    $longueur = 95;
 
     if (!empty($advancedsearch['theme'])) {
       $found .= ' id_theme = '.intval($advancedsearch['theme']);
@@ -31,7 +31,7 @@ class SearchModel {
         $found.=  '(evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
       else{
-        $found.=  '(AND evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
+        $found.=  'AND (evenements.nom LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"' .' OR  evenements.description LIKE "%'.addslashes($advancedsearch['advancedsearch']).'%"'.')';
       }
     }
 
@@ -173,18 +173,18 @@ class SearchModel {
     $prep->execute();
       $resultat=$prep->fetchAll(PDO::FETCH_ASSOC);
       $filtered=array();
-      
+
       //recupere tableau vip
       $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
       $prep2->execute();
       $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
-      
+
       //recupere id event vip
       $id_vip=array();
       foreach($priv as $vipid){
           $id_vip[]=$vipid['id_evenement'];
       }
-      
+
       //regarder si privé si le cas enlever si pas dans vip
       foreach($resultat as $result)
       {
@@ -206,7 +206,7 @@ class SearchModel {
                   $filtered[]=$result;
               }}
           }
-         
+
       }
       return $filtered;
 
@@ -272,12 +272,12 @@ class SearchModel {
 
     //SQL request if only a couple of words have been entered in the top-right search tool
     public function basicsearchindatabase($search) {
-      $prep = $this->db->prepare('SELECT ev.id_createur, ev.nom, ev.ville, ev.date_debut,ev.poster,ev.id_theme,ev.id_type,ev.id  FROM evenements AS ev 
+      $prep = $this->db->prepare('SELECT ev.id_createur, ev.nom, ev.ville, ev.date_debut,ev.poster,ev.id_theme,ev.id_type,ev.id  FROM evenements AS ev
       LEFT OUTER JOIN evenements_vip AS v ON v.id_evenement = ev.id
 
 
       WHERE
-            nom LIKE :search 
+            nom LIKE :search
         OR  date_debut = :search
         OR  description LIKE :search
         OR  adresse LIKE :search
@@ -293,18 +293,18 @@ class SearchModel {
       $prep->execute();
       $resultat=$prep->fetchAll(PDO::FETCH_ASSOC);
       $filtered=array();
-      
+
       //recupere tableau vip
       $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
       $prep2->execute();
       $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
-      
+
       //recupere id event vip
       $id_vip=array();
       foreach($priv as $vipid){
           $id_vip[]=$vipid['id_evenement'];
       }
-      
+
       //regarder si privé si le cas enlever si pas dans vip
       foreach($resultat as $result)
       {
@@ -326,7 +326,7 @@ class SearchModel {
                   $filtered[]=$result;
               }}
           }
-         
+
       }
       return $filtered;
     }
