@@ -437,7 +437,7 @@ public function modifEvent(array $data) {
     $newsp=array();
     foreach ($sponsors as $spo)
     {
-        $newsp+=$sponsors[0];
+        $newsp[] = $spo['nom'];
     }
     $sponsors=implode (',',$newsp);
     return $sponsors;
