@@ -1,6 +1,6 @@
         <div id="divpage">
             <h1 class= 'entetecompte'>Mon Compte</h1>
-            <?php 
+            <?php
               if (isset($model['success']) && $model['success'] === true) {
             ?>
             <div class="note success">
@@ -51,8 +51,43 @@
                           <div class="infoperso1">
                                   <p class="nom"><span class='base'>Nom :</span><?php echo $model['data']['lastname']; ?></p>
                                   <p class="prenom"><span class ='base'>Prénom :</span>	<?php echo $model['data']['firstname'];?></p><p class="datedenaissance"><span class ='base'>Date de naissance :</span> <?php echo $model['data']['birthdate'];?></p>
-                                    <input name='birthdate' type='date'/>
-                                  <p id="sexe"><span class='base'>Sexe :</span>  <?php echo $model['data']['sex'];?> </p>
+                                  <select name="date_de_j" id="date_de_j">
+                                    <option value="" disabled selected>--</option>
+                                    <?php
+                                      for ($i = 1; $i <= 31; $i++) {
+                                        echo '<option value="'.$i.'">'.$i.'</option>';
+                                      }
+                                    ?>
+                                  </select>
+                                  <select name="date_de_m" id="date_de_m">
+                                    <option value="" disabled selected>--</option>
+                                    <?php
+                                      $months = array(
+                                        1  => "Janvier",
+                                        2  => "Février",
+                                        3  => "Mars",
+                                        4  => "Avril",
+                                        5  => "Mai",
+                                        6  => "Juin",
+                                        7  => "Juillet",
+                                        8  => "Août",
+                                        9  => "Septembre",
+                                        10 => "Octobre",
+                                        11 => "Novembre",
+                                        12 => "Décembre"
+                                      );
+
+                                      foreach ($months as $number => $month) {
+                                        echo '<option value="'.$number.'">'.$month.'</option>';
+                                      }
+                                    ?>
+                                  </select>
+                                  <select name="date_de_a" id="date_de_a">
+                                    <option value="" disabled selected>--</option>
+                                  <?php  for ($i = 1; $i <= 100; $i++) {
+                                      echo '<option value="'.(date('Y')-$i).'">'.(date('Y')-$i).'</option>';
+                                    } ?>
+                                  </select>                                  <p id="sexe"><span class='base'>Sexe :</span>  <?php echo $model['data']['sex'];?> </p>
                                     <select name='sex'>
                                       <option selected disabled>Non renseigné</option>
                                         <option value='M'>Homme</option>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 defined('EUA_VERSION') or die('Access denied');
 /**
  * This is the Controller for the app "events".
@@ -129,8 +129,8 @@ class EventsController extends Controller {
 
       // Get linked articles
       $data['articles'] = $this->model->getArticlesForEvent($data['id']);
-	    // Get creator's name and id
-	    $data['creator'] = $this->model->getCreator($data['id_createur']);
+      // Get creator's name and id
+      $data['creator'] = $this->model->getCreator($data['id_createur']);
 
       // Get number of participants
       $data['number_of_participants'] = $this->model->numberOfParticipants($event_id);
@@ -188,7 +188,7 @@ class EventsController extends Controller {
     $errors = array();
 
     if (!in_array(null, $data, true)) {
-      $data += Request::getAssoc(array('sujet','mclef','weborg','priv','partn','vip'));
+      $data += Request::getAssoc(array('sujet','weborg','partn', 'vip'));
 
       $banner = Request::get('bann', null, 'FILES');
 
@@ -272,18 +272,8 @@ class EventsController extends Controller {
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
 
-      if (!empty($data['priv'])) {
-        $data['priv'] = 1;
-      } else {
-         $data['priv'] = 0;
-      }
-
 	    if (empty($data['bann'])) {
         $data['bann'] = null;
-      }
-
-      if (empty($data['mclef'])) {
-        $data['mclef'] = '';
       }
 
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];

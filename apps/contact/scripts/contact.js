@@ -20,6 +20,12 @@ $('#subject, #message, #firstname, #lastname, #email').on('change keyup', functi
       $firstname        = $('#firstname'),
       $lastname         = $('#lastname'),
       $email            = $('#email'),
+      $errorS           = $('#errorS'),
+      $errorM          = $('#errorM'),
+      $errorL          = $('#errorL'),
+      $errorF          = $('#errorF'),
+      $errorEM           = $('#errorEM'),
+
       $sent_button    = $('#sent');
 /*set up conditions*/
 
@@ -38,7 +44,72 @@ if (
 }
 
 else {
-  $this.addClass('error').removeClass('good');}
+  $this.addClass('error').removeClass('good');
+}
+
+if ( ( $subject.val().length >=2 && $subject.val().length <=200)){
+  $errorS.css('display','none');
+}
+else if (( $subject.val().length ==0)){
+  $errorS.css('display','none');
+}
+else  {
+  $errorS.css('display','block');
+
+}
+
+if ( ($message.val().length >=2 && $message.val().length <=5000) ){
+  $errorM.css('display','none');
+}
+else if (( $message.val().length ==0)){
+  $errorM.css('display','none');
+}
+
+else {
+  $errorM.css('display','block');
+
+}
+
+
+
+if ( ( $firstname.val().length >=1 && $firstname.val().length <=40)){
+  $errorF.css('display','none');
+}
+else if (( $firstname.val().length ==0)){
+  $errorF.css('display','none');
+}
+else {
+  $errorF.css('display','block');
+  }
+
+
+
+  if ( ( $lastname.val().length >=1 && $lastname.val().length <=40)){
+    $errorL.css('display','none');
+  }
+
+  else if (( $lastname.val().length ==0)){
+    $errorL.css('display','none');
+  }
+
+  else {
+    $errorL.css('display','block');
+    }
+
+
+
+    if ( validateEmail($email.val())){
+      $errorEM.css('display','none');
+    }
+
+    else if (( $email.val().length ==0)){
+      $errorEM.css('display','none');
+    }
+
+    else {
+      $errorEM.css('display','block');
+      }
+
 
 
 //disable or able sent button according to conditions
