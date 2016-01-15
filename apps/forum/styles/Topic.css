@@ -140,3 +140,6 @@ table.messages {
   top:15em;
   font-size:1.5em;
 }
+.suppressbutton{
+  border-right: 1px solid #cc0033;
+}

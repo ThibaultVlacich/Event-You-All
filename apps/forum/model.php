@@ -44,9 +44,9 @@ class ForumModel {
 
     return $prep->rowCount();
   }
-  public function countMessages() {
-    $prep = $this->db->prepare('SELECT * FROM forum_messages');
-
+  public function countMessages($topic_id) {
+    $prep = $this->db->prepare('SELECT * FROM forum_messages WHERE id_topic = :topic_id');
+    $prep->bindParam(':topic_id', $topic_id, PDO::PARAM_INT);
     $prep->execute();
 
     return $prep->rowCount();

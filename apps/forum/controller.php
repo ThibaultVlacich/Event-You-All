@@ -49,12 +49,14 @@ class ForumController extends Controller {
  }
 
  function topic(array $params){
-   $n = 10; // Number of topics per page
+   $n = 2; // Number of comments per page
    $page = 1; // Current page
 
-    if (isset($params[0])) {
-      $topic_id = intval($params[0]);
+   if ((isset($params[0]) && $params[0] == 'page') && isset($params[1])) {
+     $page = intval($params[1]);
 
+    }
+    $topic_id = intval($params[0]);
       $data = $this->model->getTopic($topic_id);
       $datecrea = $data['date_creation'];
       $titre = $data['titre'];
@@ -86,10 +88,9 @@ class ForumController extends Controller {
         'description' =>$description,
         'current_page' => $page,
         'per_page'     => $n,
-        'total'        => $this->model->countMessages()
+        'total'        => $this->model->countMessages($topic_id)
       );
     }
-  }
 
   function create() {
 
