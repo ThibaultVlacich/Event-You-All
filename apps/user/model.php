@@ -183,18 +183,11 @@ class UserModel {
        $changes .= 'commentaire = "'.addslashes($modifications['commentaire']).'" ';
      }
 
-     if(!empty($modifications['profilprive'])) {
-       if(strlen($changes)>17) {
-         $changes .=', ';
-       }
-       $changes .= 'profilprive = '.intval($modifications['profilprive']);
-     }
-
      if(!empty($modifications['birthdate'])) {
        if(strlen($changes)>17) {
          $changes .=', ';
        }
-       $changes .= 'birthdate = "'.intval($modifications['birthdate']).'" ';
+       $changes .= 'birthdate = "'.addslashes($modifications['birthdate']).'" ';
      }
 
      if(!empty($modifications['sex'])) {
@@ -255,7 +248,6 @@ class UserModel {
 
      if(strlen($changes)>17) {
        $changes .= 'WHERE id = :id_user';
-
        $prep = $this->db->prepare($changes) ;
 
        $prep->bindParam(':id_user',$user_id);

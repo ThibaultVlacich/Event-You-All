@@ -297,6 +297,7 @@ class UserController extends Controller {
 				$maregion = $this->model->getregionwithid($data['id_region']);
 				$data['region'] =	$maregion['nom'];
 			}
+			$regionsok =array();
 			$regiontest = $this->model->getregion();
 			foreach($regiontest as $index=>$value){
 				if($value['afficher'] == 1){
@@ -308,7 +309,7 @@ class UserController extends Controller {
 
 		}
 
-		$modifications=Request::getAssoc(array('commentaire','birthdate','sex','adress','region','zip_code','city','mail','phone'));
+		$modifications=Request::getAssoc(array('date_de_j','date_de_m','date_de_a','commentaire','sex','adress','region','zip_code','city','mail','phone'));
 		//checks that something has been modified
 		$photoprofil = Request::get('photoprofil', null, 'FILES');
 
@@ -318,8 +319,31 @@ class UserController extends Controller {
 				$isValid = true;
 			}
 		}
-
 		if(!empty($photoprofil)){
+			$isValid = true;
+		}
+		if(isset($modifications['date_de_j']) && empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && !empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && !empty($modifications['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($modifications['date_de_j']) && !empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && !empty($modifications['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($modifications['date_de_j']) && !empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && !empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && empty($modifications['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($modifications['date_de_j']) && !empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && empty($modifications['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($modifications['date_de_j']) && empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && !empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && empty($modifications['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($modifications['date_de_j']) && empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && !empty($modifications['date_de_a'])){
+			$isValid = false;
+		}
+
+		if(isset($modifications['date_de_j']) && !empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && !empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && !empty($modifications['date_de_a'])){
+			$modifications['birthdate'] = $modifications['date_de_a'].'-'.$modifications['date_de_m'].'-'.$modifications['date_de_j'];
+;
 			$isValid = true;
 		}
 
