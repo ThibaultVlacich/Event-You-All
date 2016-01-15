@@ -14,20 +14,27 @@ class FaqAdminModel {
   public function __construct() {
     $this->db = System::getDb();
   }
+
+  public function getAllFaq(){
+    $prep = $this->db->prepare('
+  SELECT *
+  FROM faq ');
+
+  $prep->execute();
+  return $prep->fetchAll(PDO::FETCH_ASSOC);
+}
+
   /**
    * fonction obtenir faq db
    */
-   public function getFaq(){
+   public function getFaq($id){
      $prep = $this->db->prepare('
-   SELECT question,reponse
-   FROM faq');
+   SELECT *
+   FROM faq WHERE id=:id');
+
+   $prep->bindParam(':id',$id);
    $prep->execute();
-   return $prep->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-
-
+   return $prep->fetch(PDO::FETCH_ASSOC);
 }
 
 /**
@@ -41,29 +48,20 @@ public function modify(){
 */
 
 
-public function getCompteur(){
-  $prep = $this->db->prepare('
-SELECT compteur
-FROM faq');
-$prep->execute();
-return $prep->fetchAll(PDO::FETCH_ASSOC);
-}
+
 
 public function modifyConfirm(array $data ){
- $compteur =$this->db->prepare('
-SELECT compteur
-FROM faq');
-$compteur->execute();
-return $compteur;
 
-foreach($compteur as $id){
 
-  $prep = $this->db->prepare('UPDATE faq SET question=:question,reponse=:reponse');
-  $prep->bindParam(':question', $data['text_modifyQ'.$id]);
-  $prep->bindParam(':reponse', $data['text_modifyR'.$id]);
+
+
+  $prep = $this->db->prepare('UPDATE faq SET question=:question,reponse=:reponse WHERE id=:id');
+  $prep->bindParam(':id',$data['id']);
+  $prep->bindParam(':question', $data['text_modifyQ']);
+  $prep->bindParam(':reponse', $data['text_modifyR']);
 
   $prep->execute();
-  }
+
 
 }
 }

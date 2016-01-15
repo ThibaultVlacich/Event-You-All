@@ -82,6 +82,10 @@ class EventsView extends View {
     $this->setTemplate('/apps/events/views/uploadphoto.php');
   }
 
+  public function reviewphoto() {
+    $this->setTemplate('/apps/events/views/reviewphoto.php');
+  }
+
 }
 
 ?>

@@ -49,10 +49,12 @@ section.QW{
 /*admin textarea*/
 #text_modifyQ{
   width:100%;
+  height:100px;
 }
 /*admin textarea*/
 #text_modifyR{
   width:100%;
+  height:100px;
 }
 
 /*conteneur button*/
