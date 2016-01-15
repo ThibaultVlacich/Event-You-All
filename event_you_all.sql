@@ -348,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `zip_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `id_region` int(11) DAFAULT NULL
+  `id_region` int(11) DEFAULT NULL
   `commentaire` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
   `access` int(11) NOT NULL DEFAULT '1',
