@@ -1,2 +1,3 @@
 doc/
-upload/[^.]*/
+upload/[^.]*/[^.]*/[^.]*
+!upload/[^.]*/[^.]*/index.html
