@@ -1,0 +1,14 @@
+.modify{
+  margin-top: 10%;
+  padding: 1%;
+  background: #CC0033;
+  color : white;
+  transition: all 0.15s ease-in-out;
+  border-radius: 4px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.modify:hover {
+  background: white;
+  color: #CC0033;
+}

@@ -11,7 +11,10 @@ class AboutController extends Controller {
   var $default_module = 'about';
 
  
- function about(){}
+ function about(){
+     $data = $this->model->cgu();
+     return $data;
+ }
 
 }
 
