@@ -15,10 +15,9 @@
   <?php
       return;
     }
-  ?>
-    <?php
+
     if (!empty($model['vip'])) {
-        if (!($session->isConnected())) {
+      if (!($session->isConnected())) {
   ?>
   <div class="note error">
     <i class="fa fa-exclamation-triangle"></i>
@@ -27,17 +26,13 @@
     </ul>
   </div>
   <?php
-      return;
-    }
-    }
-  ?>
-      <?php
-    if (!empty($model['vip'])) {
-        if($session->isConnected()) {
-              $user_name = $_SESSION['nickname'];
-              $user_id = $_SESSION['userid'];
-              $access_id = $_SESSION['access'];
-    if (!(in_array($user_name,explode(",",$model['vip']))) and ($access_id!=3) and $model['id_createur']!=$user_id){
+        return;
+      } else {
+        $user_name = $_SESSION['nickname'];
+        $user_id   = $_SESSION['userid'];
+        $access    = $_SESSION['access'];
+
+        if (!(in_array($user_name, explode(",", $model['vip']))) && $access != 3 && $model['id_createur'] != $user_id) {
   ?>
   <div class="note error">
     <i class="fa fa-exclamation-triangle"></i>
@@ -46,12 +41,11 @@
     </ul>
   </div>
   <?php
-      return;
+          return;
+        }
+      }
     }
-    }
-    }
-  ?>
-  <?php
+
   if (!empty($model['banniere'])) {
   ?>
   <div class="banner">
@@ -99,7 +93,7 @@
             </li>
             <?php if ($model['prix'] > 0) { ?><li><i class="fa fa-li fa-money"></i> <?php echo $model['prix']; ?>&nbsp;€</li><?php } ?>
             <?php if ($model['capacite'] > 0) { ?><li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places</li><?php } ?>
-            <?php if (isset($model['site_web']) and !empty($model['site_web'])) { ?><li><i ></i> <a href="<?php echo $model['site_web']; ?>">Site internet</a></li><?php } ?>
+            <?php if (!empty($model['site_web'])) { ?><li><i class="fa fa-li fa-external-link"></i> <a href="<?php echo $model['site_web']; ?>" target="_blank">Site internet</a></li><?php } ?>
             <?php if ($model['rate']) { ?><li><i class="fa fa-li fa-star"></i> Note de l'événement : <?php echo round($model['rate']); ?>/5</li><?php } ?>
           </ul>
           <?php if(!empty($model['description'])) { ?>
@@ -268,11 +262,11 @@
         </div>
       </section>
       <?php
-        if ($session->isConnected() ){ ?>
+        if ($session->isConnected()) { ?>
       <section class="block">
-        <h2 class='title'>Contacter l'organisateur</h2>
-        <div class='contact'>
-          <a href="<?php echo Config::get('config.base'); ?>/events/contactorganisateur/<?php echo $model['id']; ?>">Envoyer un mail</a>
+        <h2 class="title">Contacter l'organisateur</h2>
+        <div class="contact">
+          <a class="button" href="<?php echo Config::get('config.base'); ?>/events/contactorganisateur/<?php echo $model['id']; ?>">Envoyer un mail</a>
         </div>
       </section>
       <?php } ?>

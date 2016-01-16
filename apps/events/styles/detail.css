@@ -40,6 +40,7 @@ div.app-events-detail div.event-wrapper {
 }
 
 /* Extra small devices (phones, less than 768px) */
+
 @media only screen and (max-width: 768px) {
   div.app-events-detail div.event-wrapper {
     margin-right: 0;
@@ -47,7 +48,6 @@ div.app-events-detail div.event-wrapper {
     padding: 0 15px;
   }
 }
-
 div.app-events-detail div.event-wrapper:after {
   display: table;
   content: " ";
@@ -88,7 +88,6 @@ div.app-events-detail div.event-wrapper section h2.title .ajouter:hover {
   border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
-
 @media (max-width: 992px) {
   div.app-events-detail div.event-wrapper section h2.title .ajouter {
     float: none;
@@ -108,6 +107,7 @@ div.app-events-detail div.event-wrapper div.event-main {
 }
 
 /* Extra small devices (phones, less than 768px) */
+
 @media only screen and (max-width: 768px) {
   div.app-events-detail div.event-wrapper div.event-main {
     width: 100%;
@@ -139,6 +139,7 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
 }
 
 /* Extra small devices (phones, less than 768px) */
+
 @media only screen and (max-width: 768px) {
   div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .poster {
     width: 100%;
@@ -148,7 +149,6 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
     padding: 0;
   }
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details h2.nom {
   color: #CC0033;
   font-weight: normal;
@@ -161,33 +161,29 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
 }
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .fa-ul li .fa-li {
   color: #CC0033;
-  top: 0;
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p {
   text-align: justify;
   overflow: hidden;
   max-height: 150px;
   position: relative;
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p.visible {
   max-height: 999999px;
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p:after {
   content: ' ';
   display: block;
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 40px;
   background: linear-gradient(to top, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0));
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p.visible:after {
   display: none;
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description a.readmore {
   display: none;
   float: right;
@@ -199,7 +195,6 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
   border-radius: 3px;
   transition: background 0.1s ease-in-out;
 }
-
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description a.readmore:hover {
   background-color: #880000;
 }
@@ -227,6 +222,7 @@ div.app-events-detail div.event-wrapper div.event-main section.event-map div.adr
 /**
  * Photo gallery
  */
+
 div.app-events-detail div.event-wrapper div.event-main section.gallery::after {
   content: ' ';
   display: block;
@@ -245,6 +241,7 @@ div.app-events-detail div.event-wrapper aside.event-column {
 }
 
 /* Extra small devices (phones, less than 768px) */
+
 @media only screen and (max-width: 768px) {
   div.app-events-detail div.event-wrapper aside.event-column {
     width: 100%;
@@ -252,11 +249,10 @@ div.app-events-detail div.event-wrapper aside.event-column {
     padding-left: 0;
   }
 }
-
-div.app-events-detail div.event-wrapper aside.event-column div.register {
+div.app-events-detail div.event-wrapper aside.event-column div.register, div.app-events-detail div.event-wrapper aside.event-column div.contact {
   text-align: center;
 }
-div.app-events-detail div.event-wrapper aside.event-column div.register a.button {
+div.app-events-detail div.event-wrapper aside.event-column div.register a.button, div.app-events-detail div.event-wrapper aside.event-column div.contact a.button {
   display: inline-block;
   margin: 10px 0;
   padding: 10px 15px;
@@ -266,7 +262,7 @@ div.app-events-detail div.event-wrapper aside.event-column div.register a.button
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: all ease-in-out 0.15s;
 }
-div.app-events-detail div.event-wrapper aside.event-column div.register a.button:hover {
+div.app-events-detail div.event-wrapper aside.event-column div.register a.button:hover, div.app-events-detail div.event-wrapper aside.event-column div.contact a.button:hover {
   background-color: #880000;
   border-color: rgba(0, 0, 0, 0.5);
 }
@@ -321,7 +317,6 @@ div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-g
 div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-google-plus:hover {
   background-color: #de3721;
 }
-
 div.app-events-detail div.event-wrapper aside.event-column .rating {
   width: 250px;
   margin: 10px auto 0;
@@ -345,22 +340,4 @@ div.app-events-detail div.event-wrapper aside.event-column .rating a:focus,
 div.app-events-detail div.event-wrapper aside.event-column .rating a:focus ~ a		{
   color: #CC0033;
   cursor: pointer;
-}
-
-.block .contact
-{
-  text-align: center;
-}
-
-.block .contact a
-{
-  display: inline-block;
-    margin: 10px 0;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #CC0033;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    transition: all ease-in-out 0.15s;
-
 }

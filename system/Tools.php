@@ -35,5 +35,15 @@ class Tools {
 	public static function isEmail($string) {
 		return (!empty($string) && preg_match('#^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$#i', $string));
 	}
+
+	/**
+	 * Verifies whether a string is a valid website.
+	 *
+	 * @param string $string
+	 * @return bool
+	 */
+	public static function isWebsite($string) {
+		return (!empty($string) && preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $string));
+	}
 }
 ?>

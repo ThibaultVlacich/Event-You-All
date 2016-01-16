@@ -305,6 +305,10 @@ class EventsController extends Controller {
         }
       }
 
+      if(!Tools::isWebsite($data['weborg'])) {
+        $errors += array('Le site web entré n\'est pas valide');
+      }
+
       if (empty($errors)) {
         $id_event = $this->model->createEvent($data);
 
