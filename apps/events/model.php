@@ -639,6 +639,31 @@ public function modifEvent(array $data) {
 
     $prep->execute();
   }
+  
+  public function createTopic($id) {
+    $data=$this->getEvent($id);
+    $prep = $this->db->prepare('
+     INSERT INTO forum_topics (titre,description,date_creation,id_createur)
+     VALUES (:titre,:description,NOW(),:id_createur)
+   ');
+
+    $session = System::getSession();
+	  if ($session->isConnected()) {
+  	  $user_id = $_SESSION['userid'];
+    }
+    //print_r($data);
+    $title='[Evénement] '.$data['nom'];
+    $descri=$data['description'].'<p><a href="'.Config::get('config.base').'/events/detail/'.$data['id'].'">Voir la page de l\'événement</a></p>';
+    $prep->bindParam(':titre', $title);
+    $prep->bindParam(':description', $descri);
+    $prep->bindParam(':id_createur', $user_id);
+
+    if ($prep->execute()) {
+      return $this->db->lastInsertId('id');
+    } else {
+      return false;
+    }
+  }
 
 }
 ?>

@@ -245,10 +245,13 @@
           <input type="file" id="bann" name="bann">
           <em class="legend">Dimensions minimales : 1600*900px. Dimensions maximales : 3200*1800px.</em>
         </div>
-        <!--<p>
-            <input type="checkbox" name="sujet" id="sujet" />
+      </div>
+      <div class="form-block">
+        <h3 class="form-block-title">Forum</h3>
+        <p>
+            <input type="checkbox" name="sujet" id="sujet" value="true" />
             <label for="sujet">Créer un sujet dans le forum</label>
-        </p>-->
+        </p>
       </div>
       <!--<div class="create_part">
         <h3>7-Invitation à l'événement</h3>

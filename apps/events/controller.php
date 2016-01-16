@@ -191,7 +191,6 @@ class EventsController extends Controller {
       $data += Request::getAssoc(array('sujet','weborg','partn', 'vip'));
 
       $banner = Request::get('bann', null, 'FILES');
-
       $minwidth = 1600;
       $maxwidth = 3200;
       $minheight = 900;
@@ -305,12 +304,15 @@ class EventsController extends Controller {
         }
       }
 
-      if(!Tools::isWebsite($data['weborg'])) {
+      if(!empty($data['weborg']) and !Tools::isWebsite($data['weborg'])) {
         $errors += array('Le site web entré n\'est pas valide');
       }
 
       if (empty($errors)) {
         $id_event = $this->model->createEvent($data);
+        if (!empty($data['sujet'])){
+            $this->model->createTopic($id_event);
+            }
 
   	    return array('id' => $id_event);
       }
