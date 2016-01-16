@@ -355,7 +355,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id_region` int(11) DEFAULT NULL,
   `commentaire` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `register_date` datetime DEFAULT NULL,
-  `access` int(11) NOT NULL DEFAULT '1',
+  `access` int(11) NOT NULL DEFAULT '0',
+  `confirm` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

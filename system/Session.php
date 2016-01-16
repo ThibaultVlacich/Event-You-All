@@ -28,6 +28,7 @@ class Session {
 	 */
 	const USER_BANNED   = -1;
 	const LOGIN_SUCCESS = 1;
+	const NOT_VALIDATED = 2;
 
 	/**
 	 * Session setup
@@ -91,6 +92,10 @@ class Session {
 		if (!empty($data)) {
 			if($data['access'] == -1) {
 				return self::USER_BANNED;
+			}
+
+			if($data['access'] == 0) {
+				return self::NOT_VALIDATED;
 			}
 
 			$this->setupSession($data['id'], $data);

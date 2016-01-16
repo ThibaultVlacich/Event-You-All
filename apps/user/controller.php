@@ -86,6 +86,9 @@ class UserController extends Controller {
 					case Session::USER_BANNED:
 						array_push($errors, 'Vous avez été banni du site ! <a href="'.Config::get('config.base').'/contact">Contactez l\'administrateur</a>.');
 						break;
+					case Session::NOT_VALIDATED:
+						array_push($errors, 'Votre compte n\'a pas encore été activé !');
+						break;
 					case 0:
 						array_push($errors, 'Couple Login / Mot de passe incorrect.');
 						break;
@@ -160,10 +163,27 @@ class UserController extends Controller {
 
 			if (empty($errors)) {
 				$data += Request::getAssoc(array('adress', 'zip_code', 'city', 'country', 'phone'));
+
+				// Set a confirm code
+				$data['confirm'] = uniqid();
+
 				// Configure user
 				$user_id = $this->model->createUser($data);
 
 				if ($user_id !== false) {
+					// Send a validation email
+					$headers  = "From: " . strip_tags(Config::get('config.email')) . "\r\n";
+					$headers .= "Reply-To: ". strip_tags(Config::get('config.email')) . "\r\n";
+					$headers .= "MIME-Version: 1.0\r\n";
+					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+					$message  = 'Bonjour <strong>'.$data['nickname'].'</strong>,<br><br>' . "\r\n";
+					$message .= 'Votre inscription sur Event-You-All a bien été prise en compte !<br>Cependant, vous devez toujours confirmer votre email avant de pouvoir vous connecter !<br><br>' . "\r\n";
+					$message .= 'Pour pouvoir valider votre email, veuillez cliquer sur <a href="'.Config::get('config.base').'/user/activate/'.$data['confirm'].'">ce lien</a><br><br>' . "\r\n";
+					$message .= 'Merci et à bientôt sur Event-You-All !';
+
+					mail($data['email'], 'Event-You-All : Validez votre inscription', $message, $headers);
+
 					return array('data' => $data, 'success' => true);
 				} else {
 					return array('data' => $data, 'errors' => array('Une erreur inconnue est survenue durant l\'inscription'));
@@ -176,6 +196,32 @@ class UserController extends Controller {
 		}
 
 		return array('data' => $data, 'errors' => array());
+	}
+
+	/**
+	 * The Activate action allows the user to validate its account after registering.
+	 *
+	 * @param array $params
+	 * @return void
+	 */
+	protected function activate(array $params) {
+		// Retrieve the confirm code
+		$confirm_code = array_shift($params);
+
+		if (empty($confirm_code)) {
+			$this->setHeader('Location', Config::get('config.base'));
+			return;
+		}
+
+		$data = $this->model->findUserWithConfirmCode($confirm_code);
+
+		if (empty($data)) { // No confirm code found
+			return array('errors' => array('Aucun membre n\'a été trouvé avec ce code de confirmation'));
+		}
+
+		$this->model->activateUser($data['id']);
+
+		return array('success' => true);
 	}
 
 	// Function which enables us to get the forgiven password in the database

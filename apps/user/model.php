@@ -98,8 +98,8 @@ class UserModel {
    */
   public function createUser(array $data) {
     $prep = $this->db->prepare('
-      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, country)
-      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :country)
+      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, country, confirm)
+      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :country, :confirm)
     ');
 
     $prep->bindParam(':nickname', $data['nickname']);
@@ -112,6 +112,7 @@ class UserModel {
     $prep->bindParam(':zip_code', $data['zip_code']);
     $prep->bindParam(':city', $data['city']);
     $prep->bindParam(':country', $data['country']);
+    $prep->bindParam(':confirm', $data['confirm']);
 
     if ($prep->execute()) {
       return $this->db->lastInsertId();
@@ -405,6 +406,40 @@ public function topicscreation($user_id){
     $prep->bindParam(':id_region',$id_region);
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  /**
+   * Find a user with its confirm code.
+   *
+   * @param string $confirm The confirm code of the user
+   * @return array User data (array() if not found)
+   */
+   public function findUserWithConfirmCode($confirm) {
+    $prep = $this->db->prepare('
+      SELECT *
+      FROM users
+      WHERE confirm = :confirm AND access = 0
+    ');
+
+    $prep->bindParam(':confirm', $confirm);
+
+    $prep->execute();
+
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function activateUser($user_id) {
+    $prep = $this->db->prepare("
+      UPDATE users
+      SET
+        access = 1,
+        confirm = ''
+      WHERE id = :user_id
+    ");
+
+    $prep->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+    $prep->execute();
   }
 }
 ?>

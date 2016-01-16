@@ -50,12 +50,16 @@ class UserView extends View {
     $this->assign('css',Config::get('config.base').'/apps/user/styles/mestopics.css');
 
     $this->setTemplate('/apps/user/views/mestopics.php');
-}
+  }
 
   public function updatepassword(){
     $this->assign('css',Config::get('config.base').'/apps/user/styles/myprofil.css');
 
     $this->setTemplate('/apps/user/views/updatepassword.php');
+  }
+
+  public function activate() {
+    $this->setTemplate('/apps/user/views/activate.php');
   }
 
 }
