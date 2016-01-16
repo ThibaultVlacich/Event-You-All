@@ -9,7 +9,7 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class ArticleController extends Controller {
-  var $default_module = 'index';
+  var $default_module = 'all';
 
   var $access = array(
     'create'         => 1,
