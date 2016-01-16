@@ -17,6 +17,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `about`
+--
+
+DROP TABLE IF EXISTS `about`;
+CREATE TABLE IF NOT EXISTS `about` (
+  `about` text COLLATE utf8_unicode_ci NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `about`
+--
+
+INSERT INTO `about` (`about`) VALUES
+('Event-You-All');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `admin_messages`
 --
 
@@ -55,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
 
 DROP TABLE IF EXISTS `cgu`;
 CREATE TABLE IF NOT EXISTS `cgu` (
-  `cgu` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cgu` text COLLATE utf8_unicode_ci NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `cgu`
