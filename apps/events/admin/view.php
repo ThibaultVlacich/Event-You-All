@@ -11,7 +11,6 @@ defined('EUA_VERSION') or die('Access denied');
 class EventsAdminView extends View {
   public function index() {
     $this->setTemplate('/apps/events/admin/views/index.php');
-    $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
   }
 
   public function modif() {
@@ -33,7 +32,7 @@ class EventsAdminView extends View {
     $this->assign('css', Config::get('config.base').'/apps/events/admin/styles/home.css');
   }
 
-    public function modiftheme() {
+  public function modiftheme() {
     $this->setTemplate('/apps/events/admin/views/modiftheme.php');
     $this->assign('css', Config::get('config.base').'/apps/events/styles/create.css');
   }
