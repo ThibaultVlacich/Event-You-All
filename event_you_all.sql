@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `about`;
 CREATE TABLE IF NOT EXISTS `about` (
-  `about` text COLLATE utf8_unicode_ci NOT NULL,
+  `about` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 
 DROP TABLE IF EXISTS `cgu`;
 CREATE TABLE IF NOT EXISTS `cgu` (
-  `cgu` text COLLATE utf8_unicode_ci NOT NULL,
+  `cgu` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
