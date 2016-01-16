@@ -34,6 +34,10 @@ class ArticleView extends View {
    public function deleted(){
     $this->setTemplate('/apps/article/views/delete.php');
  }
+    public function all(){
+    $this->setTemplate('/apps/article/views/all.php');
+    $this->assign('css', Config::get('config.base').'/apps/article/styles/index.css');
+ }
 }
 
 ?>

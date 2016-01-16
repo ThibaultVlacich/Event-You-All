@@ -136,6 +136,77 @@ class ArticleModel {
     $vips=implode (',',$newsp);
     return $vips;
   }
+  
+  //----------------liste articles--------------
+  
+  
+  public function getArticles($from = 0, $number = 9999999, $order = 'date_creation', $asc = true, $where_clause = '') {
+    $prep = $this->db->prepare('
+      SELECT * FROM articles
+      '.$where_clause.'
+      ORDER BY '.$order.' '.($asc ? 'ASC' : 'DESC').'
+      LIMIT :from, :number
+    ');
+
+    $prep->bindParam(':from', $from, PDO::PARAM_INT);
+    $prep->bindParam(':number', $number, PDO::PARAM_INT);
+    $prep->execute();
+
+    $events = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($events as &$event) {
+      // Get event linked for the article
+      if (!empty($event['id_evenement'])) {
+        $prep = $this->db->prepare('SELECT * FROM evenements WHERE id = :id_theme');
+
+        $prep->bindParam(':id_theme', $event['id_evenement']);
+        $prep->execute();
+
+        $event['event'] = $prep->fetch(PDO::FETCH_ASSOC);
+      }
+
+    }
+    
+    //---------filtre-------------
+      $resultat=$events;
+      $filtered=array();
+      
+      //recupere tableau vip
+      $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
+      $prep2->execute();
+      $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
+      
+      //recupere id event vip
+      $id_vip=array();
+      foreach($priv as $vipid){
+          $id_vip[]=$vipid['id_evenement'];
+      }
+      
+      //regarder si privé si le cas enlever si pas dans vip
+      foreach($resultat as $result)
+      {
+          if (!in_array($result['id_evenement'],$id_vip))
+          {
+              $filtered[]=$result;
+          }
+          else{
+              //recupere tableau vip d'users
+              $prep21 = $this->db->prepare('SELECT id_utilisateur FROM evenements_vip');
+              $prep21->execute();
+              $priv1=$prep21->fetchAll(PDO::FETCH_ASSOC);
+              $id_vip2=array();
+              foreach($priv1 as $vipid){$id_vip2[]=$vipid['id_utilisateur'];}
+              $session = System::getSession();
+              if (($session->isConnected())) {
+              $user_id=$_SESSION['userid'];
+              if (in_array($user_id,$id_vip2) or $_SESSION['access']==3 or $result['id_createur']==$user_id){
+                  $filtered[]=$result;
+              }}
+          }
+         
+      }
+      return $filtered;
+  }
 }
 
 ?>

@@ -198,6 +198,12 @@ function modif_confirm(array $params) {
       $this->model->deleteArticle($id_event);
     }
   }
+  
+    function all() {
+        $data = $this->model->getArticles(0, 10);
+        return $data;
+
+ }
 
 }
 
