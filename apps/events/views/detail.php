@@ -99,9 +99,9 @@
           <?php if(!empty($model['description'])) { ?>
           <div class="description">
             <h2 class="title">Description</h2>
-            <p>
+            <div class="description-content">
               <?php echo $model['description']; ?>
-            </p>
+            </div>
             <a href="#" class="readmore">En lire <i class="fa fa-plus"></i></a>
           </div>
           <?php } ?>

@@ -162,16 +162,16 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .fa-ul li .fa-li {
   color: #CC0033;
 }
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description div.description-content {
   text-align: justify;
   overflow: hidden;
   max-height: 150px;
   position: relative;
 }
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p.visible {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description div.description-content.visible {
   max-height: 999999px;
 }
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p:after {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description div.description-content:after {
   content: ' ';
   display: block;
   position: absolute;
@@ -181,8 +181,11 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
   height: 40px;
   background: linear-gradient(to top, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0));
 }
-div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description p.visible:after {
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description div.description-content.visible:after {
   display: none;
+}
+div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description div.description-content p:first-child {
+  margin-top: 0;
 }
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description a.readmore {
   display: none;

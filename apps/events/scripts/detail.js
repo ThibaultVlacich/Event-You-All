@@ -11,11 +11,11 @@ $(function() {
 
   // Handle "read more" button in description
   var $description           = $('.details .description'),
-      $description_paragraph = $description.find('p'),
+      $description_paragraph = $description.find('div.description-content'),
       $description_readmore  = $description.find('a.readmore');
 
   if ($description_paragraph.prop('scrollHeight') > $description_paragraph.height()) {
-    // Content of the description does not fit his container
+    // Content of the description does not fit its container
     // Show the read more button
     $description_readmore.show();
 
@@ -43,6 +43,7 @@ $(function() {
 
   var $gallery = $('div.app-events-detail section.gallery div.photo-gallery');
 
+  // If the gallery is not empty, launch the camera plugin
   if($gallery.length) {
     $gallery.camera({
       fx: 'simpleFade',
