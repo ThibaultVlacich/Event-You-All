@@ -89,6 +89,13 @@ div.app-events-detail div.event-wrapper section h2.title .ajouter:hover {
   text-decoration: none;
 }
 
+@media (max-width: 992px) {
+  div.app-events-detail div.event-wrapper section h2.title .ajouter {
+    float: none;
+    margin-top: 10px;
+  }
+}
+
 /**
  * Left column
  */
@@ -316,20 +323,21 @@ div.app-events-detail div.event-wrapper aside.event-column .share-buttons a.fa-g
 }
 
 div.app-events-detail div.event-wrapper aside.event-column .rating {
-  width: 260px;
+  width: 250px;
   margin: 10px auto 0;
-  font-size: 45px;
-  overflow:hidden;
+  font-size: 40px;
+  overflow: hidden;
 }
 div.app-events-detail div.event-wrapper aside.event-column .rating a {
+  width: 40px;
   margin: 0 5px;
-  float:right;
+  float: right;
   color: #aaa;
   text-decoration: none;
-  -webkit-transition: color .4s;
-  -moz-transition: color .4s;
-  -o-transition: color .4s;
-  transition: color .4s;
+  -webkit-transition: color .4s ease-in-out;
+  -moz-transition: color .4s ease-in-out;
+  -o-transition: color .4s ease-in-out;
+  transition: color .4s ease-in-out;
 }
 div.app-events-detail div.event-wrapper aside.event-column .rating a:hover,
 div.app-events-detail div.event-wrapper aside.event-column .rating a:hover ~ a,
