@@ -49,9 +49,7 @@
     </div>
     <nav class="main-navigation">
       <ul>
-        <li><a href="<?php echo Config::get('config.base') ;?>">Accueil</a></li>
-        <li><a href="<?php echo Config::get('config.base') ;?>/events/themes">Thèmes</a></li>
-        <li><a href="<?php echo Config::get('config.base') ;?>/news">Articles</a></li>
+        <li><a href="<?php echo Config::get('config.base') ;?>"><i class="fa fa-home fa-lg"></i> Accueil</a></li>
         <li><a href="<?php echo Config::get('config.base') ;?>/forum">Forum</a></li>
         <li class="search">
           <form action="<?php echo Config::get('config.base'); ?>/search/basicsearch" method="GET">
@@ -70,8 +68,6 @@
         <i class="search fa fa-search"></i>
         <ul class="mobile-menu">
           <li><a href="<?php echo Config::get('config.base') ;?>">Accueil</a></li>
-          <li><a href="<?php echo Config::get('config.base') ;?>/events/themes">Thèmes</a></li>
-          <li><a href="<?php echo Config::get('config.base') ;?>/news">Articles</a></li>
           <li><a href="<?php echo Config::get('config.base') ;?>/forum">Forum</a></li>
         </ul>
         <ul class="mobile-login">
@@ -109,9 +105,7 @@
     <footer>
       <nav class="main-navigation">
         <ul>
-          <li><a href="<?php echo Config::get('config.base') ; ?>">Accueil</a></li>
-          <li><a href="<?php echo Config::get('config.base') ; ?>/events/themes">Thèmes</a></li>
-          <li><a href="<?php echo Config::get('config.base') ; ?>/articles">Articles</a></li>
+          <li><a href="<?php echo Config::get('config.base') ; ?>"><i class="fa fa-home fa-lg"></i> Accueil</a></li>
           <li><a href="<?php echo Config::get('config.base') ; ?>/forum">Forum</a></li>
           <li><a href="<?php echo Config::get('config.base') ; ?>/faq">FAQ</a></li>
           <li><a href="<?php echo Config::get('config.base') ; ?>/contact">Contact</a></li>
