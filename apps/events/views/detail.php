@@ -136,7 +136,7 @@
               // User is logged in
               $user_id = $_SESSION['userid'];
 
-              if ($model['user_already_registered']) {
+              if ($model['user_already_registered'] OR $user_id == $model['id_createur']) {
                 // User is registered to the event
           ?>
           <a class="ajouter" href="<?php echo Config::get('config.base'); ?>/events/uploadphoto/<?php echo $model['id']; ?>"><i class="fa fa-plus"></i> Télécharger une photo</a>
