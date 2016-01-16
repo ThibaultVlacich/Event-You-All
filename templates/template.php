@@ -50,6 +50,7 @@
     <nav class="main-navigation">
       <ul>
         <li><a href="<?php echo Config::get('config.base') ;?>"><i class="fa fa-home fa-lg"></i> Accueil</a></li>
+        <li><a href="<?php echo Config::get('config.base'); ?>/article">Articles</a></li>
         <li><a href="<?php echo Config::get('config.base') ;?>/forum">Forum</a></li>
         <li class="search">
           <form action="<?php echo Config::get('config.base'); ?>/search/basicsearch" method="GET">
@@ -68,6 +69,7 @@
         <i class="search fa fa-search"></i>
         <ul class="mobile-menu">
           <li><a href="<?php echo Config::get('config.base') ;?>">Accueil</a></li>
+          <li><a href="<?php echo Config::get('config.base'); ?>/article">Articles</a></li>
           <li><a href="<?php echo Config::get('config.base') ;?>/forum">Forum</a></li>
         </ul>
         <ul class="mobile-login">
