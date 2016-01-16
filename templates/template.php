@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <title>
-    <?php echo !empty($app_rendered['title']) ? $app_rendered['title'] : Config::get('config.site_title'); ?>
+    <?php echo (isset($app_rendered['title']) && !empty($app_rendered['title'])) ? $app_rendered['title'] : Config::get('config.site_title'); ?>
   </title>
   <link href="<?php echo Config::get('config.base') ; ?>/librairies/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/librairies/normalize/normalize.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/templates/styles/style.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo Config::get('config.base') ; ?>/templates/styles/responsive.css" rel="stylesheet" type="text/css" />
-  <?php echo $app_rendered['css']; ?>
+  <?php if (isset($app_rendered['css'])) echo $app_rendered['css']; ?>
 </head>
 
 <body>
@@ -100,7 +100,21 @@
       </div>
     </nav>
     <section class="main-content">
-      <?php echo $app_rendered['tpl']; ?>
+      <?php
+        if ($app_rendered === false) {
+      ?>
+      <div class="note error">
+        <i class="fa fa-exclamation-triangle"></i>
+        <ul>
+          <li>Vous n'avez pas accès à cette page !</li>
+          <?php if (!$session->isConnected()) {?><li><a href="<?php echo Config::get('config.base'); ?>/user/login">Merci de vous connecter !</a><?php } ?>
+        </ul>
+      </div>
+      <?php
+        } else {
+          echo $app_rendered['tpl'];
+        }
+      ?>
     </section>
     <footer>
       <nav class="main-navigation">
@@ -120,6 +134,6 @@
   </div>
   <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/librairies/jquery-2.1.4/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="<?php echo Config::get('config.base'); ?>/templates/scripts/global.js"></script>
-  <?php echo $app_rendered['js']; ?>
+  <?php if (isset($app_rendered['js'])) echo $app_rendered['js']; ?>
 </body>
 </html>
