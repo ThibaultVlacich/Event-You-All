@@ -78,7 +78,7 @@ class ArticleModel {
   }
     //recuperer l'id lié au createur
   public function getCreatorForArticle($event_id) {
-    $prep = $this->db->prepare('SELECT users.nickname, users.id FROM users INNER JOIN articles ON  users.id = articles.id_createur');
+    $prep = $this->db->prepare('SELECT users.nickname, users.id, users.photoprofil FROM users INNER JOIN articles ON  users.id = articles.id_createur');
     $prep->bindParam(':event_id', $event_id, PDO::PARAM_INT);
     $prep->execute();
     return $prep->fetch(PDO::FETCH_ASSOC);

@@ -74,17 +74,20 @@ div.banner img {
     font-family: Trebuchet MS;
     color: #CC0033;
 }
-.avatar{
-    height:40px;
-    width:40px;
+div #avatar_organisateur{
     border: solid black 2px;
     border-radius:100px;
     background:url(personnage%20logo.png);
-    background-size: cover;
-    background-position: center;
-    margin-left:5px;
-    margin-top: 5px;
-    position: absolute;
+
+    overflow: hidden;
+}
+#ava{
+    z-index: -60;
+    height:100px;
+    padding-right:20px;
+    padding-bottom:20px;
+    width:100px;
+    overflow: hidden;
 }
 .commentaire{
     margin-top:3px;

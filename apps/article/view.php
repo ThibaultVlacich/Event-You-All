@@ -11,7 +11,8 @@ defined('EUA_VERSION') or die('Access denied');
 class ArticleView extends View {
   public function detail() {
     $this->setTemplate('/apps/article/views/article.php');
-  	$this->assign('css', Config::get('config.base').'/apps/article/styles/Article.css');
+    $this->assign('css', Config::get('config.base').'/apps/article/styles/Article.css');
+    $this->assign('js', Config::get('config.base').'/apps/article/script/art.js');
   }
 
   public function create() {

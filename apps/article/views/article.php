@@ -25,13 +25,7 @@ if (empty($model['id'])) {
     }
     }
   ?>
-  <?php
-  if (!empty($model['banniere']) and $model['banniere']!=NULL) {
-  ?>
-  <div class="banner">
-    <img src="<?php echo $model['banniere']; ?>" alt="<?php echo $model['nom']; ?>" />
-  </div>
-  <?php }?>
+  
 
       <?php
     if (!empty($model['vip'])) {
@@ -53,7 +47,13 @@ if (empty($model['id'])) {
     }
     }
   ?>
-
+ <?php
+  if (!empty($model['banniere']) and $model['banniere']!=NULL) {
+  ?>
+  <div class="banner">
+    <img src="<?php echo $model['banniere']; ?>" alt="<?php echo $model['nom']; ?>" />
+  </div>
+  <?php }?>
 <div id="entete">
   <h1>
     <?php echo $model['nom']; ?>
@@ -89,10 +89,10 @@ if (empty($model['id'])) {
 </div>
 <ul id="signer">
   <li>
-    <div id=avatar_organisateur></div>
+    <div id=avatar_organisateur><?php if (!empty($model['creator']['photoprofil']) and $model['creator']['photoprofil']!=NULL){?> <img id="ava" src="<?php echo $model['creator']['photoprofil'];?>" alt="avatar"> <?php }?></div>
   </li>
   <li>
-    <h3>Mr.Jones :</h3>
+    <h3><?php echo $model['creator']['nickname']?></h3>
   </li>
 
   <li>
