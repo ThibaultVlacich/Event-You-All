@@ -34,6 +34,11 @@
         if ($app_name != 'board') {
 
           switch($app_name) {
+            case "about":
+              $name = "&Agrave; propos";
+              $icon = "info";
+              break;
+
             case "article":
               $name = 'Articles';
               $icon = 'sticky-note';
