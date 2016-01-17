@@ -10,7 +10,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package System
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 0.1.0-dev-26-11-2015
+ * @version 0.2.0-dev-26-11-2015
  */
 class System {
 	/**

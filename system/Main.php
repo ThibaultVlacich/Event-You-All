@@ -12,7 +12,7 @@ require_once SYS_DIR.'View.php';
  *
  * @package System
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 0.1.0-dev-09-10-2015
+ * @version 0.2.0-dev-09-10-2015
  */
 class Main {
 	/**

@@ -4,7 +4,7 @@
  *
  * @package apps/forum
  * @author Léo Plouvier <leo.plouvier@isep.fr>
- * @version 0.1.0-dev-07-01-2015
+ * @version 0.2.0-dev-07-01-2015
  */
 
 class ForumView extends View {

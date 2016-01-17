@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/user
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 0.1.0-dev-03-12-2015
+ * @version 0.2.0-dev-03-12-2015
  */
 
 class UserView extends View {

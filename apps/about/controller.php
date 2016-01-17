@@ -4,7 +4,7 @@
  *
  * @package apps/about
  * @author Alexandre Gay <alexandre.gay@isep.fr>
- * @version 0.1.0-dev-31-12-2015
+ * @version 0.2.0-dev-31-12-2015
  */
 
 class AboutController extends Controller {

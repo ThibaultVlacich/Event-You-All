@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/search
  * @author Hugo Michard <hugomichard@isep.fr>
- * @version 0.1.0-dev-dd-mm-yyyy
+ * @version 0.2.0-dev-dd-mm-yyyy
  */
 
 class SearchModel {
