@@ -82,6 +82,16 @@ class UserAdminModel extends UserModel {
     $prep->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
     $prep->execute();
+
+    // Then remove all its content from the database
+    $this->db->query('DELETE FROM admin_messages WHERE author_id = '.intval($user_id));
+    $this->db->query('DELETE FROM articles WHERE id_createur = '.intval($user_id));
+    $this->db->query('DELETE FROM evenements WHERE id_createur = '.intval($user_id));
+    $this->db->query('DELETE FROM forum_topics WHERE id_createur = '.intval($user_id));
+    $this->db->query('DELETE FROM forum_messages WHERE id_createur = '.intval($user_id));
+    $this->db->query('DELETE FROM evenements_participants WHERE id_utilisateur = '.intval($user_id));
+    $this->db->query('DELETE FROM evenements_notes WHEREid_utilisateur = '.intval($user_id));
+
   }
 
 }
