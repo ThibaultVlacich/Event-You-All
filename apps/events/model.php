@@ -218,7 +218,7 @@ class EventsModel {
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
-public function modifEvent(array $data) {
+public function modifEvent(array $data, $admin=0) {
     $prep = $this->db->prepare('
       UPDATE evenements SET nom=:nom,capacite=:capacite,prix=:prix,
       site_web=:site_web,region=:region,adresse=:adresse,code_postal=:code_postal,ville=:ville,pays=:pays,description=:description,
@@ -258,7 +258,7 @@ public function modifEvent(array $data) {
                 $prep->bindParam(':id_event', $data['id']);
 
                 $prep->execute();
-                
+            if ($admin==0){
                 
             if ($data['partn']!='' and $data['partn']!=NULL){
                 //met les nouveaux sponsors
@@ -269,6 +269,7 @@ public function modifEvent(array $data) {
             if ($data['vip']!='' and $data['vip']!=NULL){
                 //met les nouveaux vips
                 $vi=$this->vip($data['vip'], $data['id']);
+       }
 
 
             }

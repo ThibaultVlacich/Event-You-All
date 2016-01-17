@@ -190,7 +190,7 @@ class EventsAdminController extends Controller {
       $data['date_de'] = $date_debut;
       $data['date_fi'] = $date_fin;
       $data['id'] = $id_event;
-      $id_event = $this->model->modifEvent($data);
+      $id_event = $this->model->modifEvent($data,1);
 
 	    return array('id' => $id_event, 'error' => $errors);
     }
