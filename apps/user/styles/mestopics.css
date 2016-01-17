@@ -25,10 +25,12 @@
 .detailtopic1{
   background-color: rgb(235,235,235);
   text-align: center;
+  height:60px;
 }
 .detailtopic2{
   background-color: whitesmoke;
   text-align: center;
+  height:60px;
 }
 .topic{
   text-align: center;
