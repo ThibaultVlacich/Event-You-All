@@ -15,9 +15,9 @@
       <?php foreach ($model['users'] as $user) { ?>
       <tr>
         <td><?php echo $user['id']; ?></td>
+        <td><?php echo $user['nickname']; ?></td>
         <td><?php echo $user['firstname']; ?></td>
         <td><?php echo $user['lastname']; ?></td>
-        <td><?php echo $user['nickname']; ?></td>
         <td><?php echo $user['register_date']; ?></td>
         <td>
           <a href="<?php echo Config::get('config.base'); ?>/admin/user/modify/<?php echo $user['id']; ?>" title="Modifier l'utilisateur"><i class="fa fa-edit fa-lg"></i></a>
