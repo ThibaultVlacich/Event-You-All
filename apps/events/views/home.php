@@ -43,8 +43,43 @@
             <option disabled selected hidden>Thème</option>
             <?php foreach($model['themes'] as $theme) { ?><option value="<?php echo $theme['id']; ?>"><?php echo $theme['nom']; ?></option><?php } ?>
           </select>
-          <input type="date" name="date_event" placeholder="Date">
-          <input type="submit" value="Rechercher">
+          <select name="date_de_j" id="date_de_j">
+            <option disabled selected hidden>Jour</option>
+            <?php
+              for ($i = 1; $i <= 31; $i++) {
+                echo '<option value="'.$i.'">'.$i.'</option>';
+              }
+            ?>
+          </select>
+          <select name="date_de_m" id="date_de_m">
+            <option disabled selected hidden>Mois</option>
+            <?php
+              $months = array(
+                1  => "Janvier",
+                2  => "Février",
+                3  => "Mars",
+                4  => "Avril",
+                5  => "Mai",
+                6  => "Juin",
+                7  => "Juillet",
+                8  => "Août",
+                9  => "Septembre",
+                10 => "Octobre",
+                11 => "Novembre",
+                12 => "Décembre"
+              );
+
+              foreach ($months as $number => $month) {
+                echo '<option value="'.$number.'">'.$month.'</option>';
+              }
+            ?>
+          </select>
+          <select name="date_de_a" id="date_de_a">
+            <option disabled selected hidden>Année</option>
+          <?php  for ($i = 2016; $i <= 2116; $i++) {
+              echo '<option value="'.($i).'">'.($i).'</option>';
+            } ?>
+          </select>          <input type="submit" value="Rechercher">
         </div>
       </form>
     </section>

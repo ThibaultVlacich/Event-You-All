@@ -165,7 +165,7 @@ class SearchModel {
     }
 
     if(strlen($found) < $longueur+1){
-      $found = 'SELECT nom, ville, date_debut, poster, id_theme, id_type,id,id_createur FROM evenements';
+      return array();
     }
 //-------------------End of the Initialisation-------------------------
     //Sends back the final sql request

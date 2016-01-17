@@ -20,7 +20,7 @@
                     <?php } ?>
             </select>
             <select name="date_de_j" id="date_de_j">
-              <option value="" disabled selected>--</option>
+              <option disabled selected hidden>Jour</option>
               <?php
                 for ($i = 1; $i <= 31; $i++) {
                   echo '<option value="'.$i.'">'.$i.'</option>';
@@ -28,7 +28,7 @@
               ?>
             </select>
             <select name="date_de_m" id="date_de_m">
-              <option value="" disabled selected>--</option>
+              <option disabled selected hidden>Mois</option>
               <?php
                 $months = array(
                   1  => "Janvier",
@@ -51,7 +51,7 @@
               ?>
             </select>
             <select name="date_de_a" id="date_de_a">
-              <option value="" disabled selected>--</option>
+              <option disabled selected hidden>Année</option>
             <?php  for ($i = 2016; $i <= 2116; $i++) {
                 echo '<option value="'.($i).'">'.($i).'</option>';
               } ?>
