@@ -182,7 +182,7 @@
         <br>
       </div>-->
       <div class="form-block">
-        <h3 class="form-block-title">Privativation</h3>
+        <h3 class="form-block-title">Privatisation</h3>
         <div class="form-group full">
           <label for="partn">Membres admis</label>
           <input type="text" name="vip" id="vip" placeholder="utilisateur1,utilisateur2">

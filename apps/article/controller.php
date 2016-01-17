@@ -56,10 +56,10 @@ class ArticleController extends Controller {
 
       //TO DO : Make the error work (doesn't appear despite bad extension)
       //-------------Banniere---------------------------------------------------
-      $maxwidth = 100000;
-      $minwidth = 0;
-      $maxheight = 100000;
-      $minheight = 0;
+      $maxwidth = 3200;
+      $minwidth = 1600;
+      $maxheight = 1800;
+      $minheight = 900;
       $banner = Request::get('bann', null, 'FILES');
       $message_erreur = '';
       if(!empty($banner['name'])) {

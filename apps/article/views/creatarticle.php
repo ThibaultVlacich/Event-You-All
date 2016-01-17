@@ -62,7 +62,7 @@
                             <label for='bann'>Bannière  </label>
                         </div>
                         <input type="file" id="bann" name="bann">
-                        <p class='gauche'>Dimensions : 400px*900px</p>
+                        <p class='gauche'>Dimensions minimales : 1600*900px. Dimensions maximales : 3200*1800px.</p>
                         <!--mettre les vrais dimensions-->
                     </div>
 
