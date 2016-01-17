@@ -1,5 +1,14 @@
 $(function() {
-  $('div.app-events-home div.slideshow').slidesjs({
+
+  var $slideshow = $('div.app-events-home div.slideshow');
+
+  if (!$slideshow.length) {
+    $('div.app-events-home div.home-wrapper').css('margin-top', '0px');
+
+    return;
+  }
+
+  $slideshow.slidesjs({
     width: '100%',
     height: 600,
     play: {

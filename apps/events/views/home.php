@@ -119,6 +119,9 @@
             </div>
           </li>
         <?php } ?>
+        <?php if (empty($model['events'])) { ?>
+          <p>Aucun événement n'a encore été créé !</p>
+        <?php } ?>
       </ul>
     </section>
   </div>
