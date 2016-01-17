@@ -98,8 +98,8 @@ class UserModel {
    */
   public function createUser(array $data) {
     $prep = $this->db->prepare('
-      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, country, confirm)
-      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :country, :confirm)
+      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, id_region, confirm)
+      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :id_region, :confirm)
     ');
 
     $prep->bindParam(':nickname', $data['nickname']);
@@ -111,7 +111,7 @@ class UserModel {
     $prep->bindParam(':adress', $data['adress']);
     $prep->bindParam(':zip_code', $data['zip_code']);
     $prep->bindParam(':city', $data['city']);
-    $prep->bindParam(':country', $data['country']);
+    $prep->bindParam(':id_region', $data['region'], PDO::PARAM_INT);
     $prep->bindParam(':confirm', $data['confirm']);
 
     if ($prep->execute()) {
@@ -396,7 +396,7 @@ public function topicscreation($user_id){
   }
 
   public function getregion(){
-    $prep = $this->db->prepare('SELECT * FROM regions');
+    $prep = $this->db->prepare('SELECT * FROM regions WHERE `afficher` = 1');
     $prep->execute();
     return $prep->fetchAll(PDO::FETCH_ASSOC);
   }
@@ -441,5 +441,7 @@ public function topicscreation($user_id){
 
     $prep->execute();
   }
+
+
 }
 ?>

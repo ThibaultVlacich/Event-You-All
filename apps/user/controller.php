@@ -127,10 +127,12 @@ class UserController extends Controller {
 	 * @return array Data given
 	 */
 	protected function register() {
+		$regions = $this->model->getregion();
+
 		$data = Request::getAssoc(array('nickname', 'password', 'password_confirm', 'email', 'firstname', 'lastname', 'cgu', 'g-recaptcha-response'));
 
 		if (!in_array(null, $data, true)) {
-			$data += Request::getAssoc(array('adress','zip_code','city','country','phone','newsletter'));
+			$data += Request::getAssoc(array('adress','zip_code','city','region','phone','newsletter'));
 			$errors = array();
 
 			// Check Captcha
@@ -195,10 +197,10 @@ class UserController extends Controller {
 				return array('data' => $data, 'errors' => $errors);
 			}
 		} else if(Request::getMethod() == 'POST') {
-			return array('data' => $data, 'errors' => array('Tous les champs requis n\'ont pas été renseignés'));
+			return array('data' => $data, 'errors' => array('Tous les champs requis n\'ont pas été renseignés'), 'regions' => $regions);
 		}
 
-		return array('data' => $data, 'errors' => array());
+		return array('data' => $data, 'errors' => array(), 'regions' => $regions);
 	}
 
 	/**

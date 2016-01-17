@@ -46,16 +46,16 @@
         <label for="adress">Adresse</label> <input type="text" name="adress" id="adress" />
         <label for="zip_code">Code postal</label> <input type="text" name="zip_code" id="zip_code" maxlength="5" />
         <label for="city">Ville</label> <input type="text" name="city" id="city" />
-        <label for="country">Pays</label>
-        <select name="country" id="country" >
-          <option value="FR">France</option>
-          <option value="CN">Canada</option>
+        <label for="region">Région</label>
+        <select name="region" id="region">
+          <option value="">--</option>
+          <?php
+            foreach ($model['regions'] as $region) {
+              echo '<option value="'.$region['id'].'">'.$region['nom'].'</option>';
+            }
+          ?>
         </select>
         <label for="phone">Telephone</label><input type="text" name="phone" id="phone" />
-        <div class="checkbox">
-          <input type="checkbox" name="newsletter" id="newsletter" checked />
-          <label for="newsletter">J'accepte de recevoir les newsletters par mail</label>
-        </div>
         <div class="checkbox">
           <input type="checkbox" name="cgu" id="cgu" required />
           <label for="cgu">J'accepte les <a href="<?php echo Config::get('config.base'); ?>/cgu">conditions d'utilisation</a> du site <span class="required">*</span></label>
