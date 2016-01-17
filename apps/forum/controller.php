@@ -58,7 +58,8 @@ class ForumController extends Controller {
     }
     $topic_id = intval($params[0]);
       $data = $this->model->getTopic($topic_id);
-      $datecrea = $data['date_creation'];
+      $datecrea_timestamp = strtotime($data['date_creation']);
+      $datecrea=strftime('%d %b %Y', $datecrea_timestamp);
       $titre = $data['titre'];
       $createurtop = $this->model->getCreatorForTopic($topic_id);
       $description= $data['description'];
@@ -104,7 +105,7 @@ class ForumController extends Controller {
       $id_topic = $this->model->createTopic($data);
       //print_r($data);
       return array ('id' => $id_topic);
-      
+
     }
   }
 
