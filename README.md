@@ -3,7 +3,7 @@
 
 This is the Event-You-All website source code.
 
-This website is being made as a school project by first year students of the engineer school [ISEP](http://www.isep.fr), Paris, France :
+This website is being made as a school project by first year students of the engineering school [ISEP](http://www.isep.fr), Paris, France :
 * Louis Arbaretier [[LinkedIn](https://fr.linkedin.com/pub/louis-arbaretier/107/8b7/332)]
 * Alexis Dahan
 * Alexandre Gay [[LinkedIn](https://fr.linkedin.com/pub/alexandre-gay/a4/407/2a4)]
