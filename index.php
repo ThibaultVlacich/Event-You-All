@@ -3,13 +3,13 @@
  * Event-You-All index.php start-up file
  *
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 0.2.0-dev
+ * @version 1.0.0
  */
 
 /**
  * App version number
  */
-define('EUA_VERSION', '0.2.0-dev');
+define('EUA_VERSION', '1.0.0');
 
 /**
  * Error reporting level = MAXIMUM

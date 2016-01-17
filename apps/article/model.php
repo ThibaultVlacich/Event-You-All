@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/article
  * @author Louis Arbaretier <louis.arbaretier@isep.fr>
- * @version 0.2.0-dev-12-12-2015
+ * @version 1.0.0-12-12-2015
  */
 
 class ArticleModel {

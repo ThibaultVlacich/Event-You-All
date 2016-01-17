@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/search
  * @author Hugo Michard <hugomichard@isep.fr>
- * @version 0.2.0-dev-dd-mm-yyyy
+ * @version 1.0.0-dd-mm-yyyy
  */
 
 // This file is not needed

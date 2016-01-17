@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/faq
  * @author Alexandre Gay <alexandre.gay@isep.fr>
- * @version 0.2.0-dev-18-12-2015
+ * @version 1.0.0-18-12-2015
  */
 
 class ContactController extends Controller {

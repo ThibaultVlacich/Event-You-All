@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/user/admin
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 0.2.0-dev-12-01-2016
+ * @version 1.0.0-12-01-2016
  */
 
 require APPS_DIR.'user/model.php';

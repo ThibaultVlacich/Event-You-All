@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/events/admin
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 0.2.0-dev-13-12-2015
+ * @version 1.0.0-13-12-2015
  */
 
 class ArticleAdminController extends Controller {
