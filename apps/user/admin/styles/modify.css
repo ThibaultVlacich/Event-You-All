@@ -32,6 +32,10 @@ div.app-user input, div.app-user select {
   transition: all 0.15s ease-in-out;
 }
 
+div.app-user input:disabled, div.app-user select:disabled {
+  opacity: 0.5;
+}
+
 div.app-user input.error {
   border-color: #CC0033;
 }

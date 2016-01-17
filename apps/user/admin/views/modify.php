@@ -45,7 +45,7 @@ if (!empty($model['errors'])) {
 }
 ?>
 <div class="app-user app-user-admin app-user-admin-modify">
-  <h2 class="title">Modifier un utilisateur</h2>
+  <h1 class="app-title">Modifier un utilisateur</h1>
   <form method="post" action="<?php echo Config::get("config.base"); ?>/admin/user/modify/<?php echo $model['id_user']; ?>">
     <div>
       <label for="nickname">Pseudonyme (Ne peut être modifié)</label> <input type="text" name="nickname" id="nickname" value="<?php echo $model['user']['nickname']; ?>" disabled />

@@ -1,5 +1,5 @@
 <div class="app-user app-user-admin app-user-admin-index">
-  <h2 class="title">Liste des utilisateurs</h2>
+  <h1 class="app-title">Liste des utilisateurs</h1>
   <table class="table">
     <thead>
       <tr>
