@@ -20,7 +20,7 @@
                 <td class="suppressbutton"><a href="<?php echo Config::get('config.base'); ?>/forum/delete/<?php echo $topic['id']; ?>">supprimer</a></td>
                 <?php }} ?>
                 <td class="sujet"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id']; ?>"><?php echo $topic['titre']; ?></a></td>
-                <td class="description"><?php echo $topic['description']; ?></td>
+                <td class="description"><?php echo substr(strip_tags ($topic['description']), 0, 500); if (strlen(strip_tags ($topic['description'])) > 500){ echo '...'; } ?></td>
                 <td class="admin"><a class="link_topic" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo $topic['id'];?>"><?php echo $topic['createur']['nickname'];?></a></td>
                 <td class="date"><?php echo $topic['date_creation'];?></td>
                 <td class="acceder"><a class="acceder" href="<?php echo Config::get('config.base'); ?>/forum/Topic/<?php echo  $topic['id']; ?>">Accéder</a></td>

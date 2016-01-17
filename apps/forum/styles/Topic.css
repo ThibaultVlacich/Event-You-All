@@ -63,7 +63,8 @@ border-bottom:1px solid #cc0033;
 table.messages {
   margin-left: auto;
   margin-right: auto;
-  width:80%;
+  width:90%;
+  
 }
 .first_ligne{
   background-color: rgb(229,229,229);
@@ -98,8 +99,16 @@ table.messages {
   margin-top: 2em;
 }
 .avatar{
-  height:5em;
+  height:7em;
   width:7em;
+  border-radius: 6em;
+}
+.avatarking{
+  height:7em;
+  width:7em;
+  border-radius: 6em;
+  border-right: 2px solid black;
+  border-left: 2px solid #cc0033;
 }
 .image{
     border-right: 1px solid #cc0033;
@@ -140,6 +149,12 @@ table.messages {
   top:15em;
   font-size:1.5em;
 }
+.com{
+    padding:5px;
+}
 .suppressbutton{
   border-right: 1px solid #cc0033;
+}
+tr.back2{
+    border-bottom: 1px solid rgb(235,235,235);
 }

@@ -18,22 +18,10 @@
           }
         ?>
         <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
-          <a class="admin" href="<?php echo Config::get('config.base'); ?>/forum/delete/<?php echo $model['id_topic']; ?>">supprimer ce topic</a>
+          <a class="admin" href="<?php echo Config::get('config.base'); ?>/forum/delete/<?php echo $model['id_topic']; ?>">Supprimer ce topic</a>
           <?php }} ?>
-        <img src="<?php echo $model['photoprofil']['photoprofil']; ?>" class="avatartopic"/>
-        <ul id="presentation">
-            <li><p>Sujet de :</p></li>
-            <li><h3><?php echo $model['createurtop']; ?></h3></li>
-            <li><p>Crée le :</p></li>
-            <li><h3><?php echo $model['date_creation']; ?></h3></li>
-        </ul>
         <ul id="titre">
-            <li><p>Sujet :</p></li>
             <li><div><h1><?php echo $model['titre']; ?></h1></div></li>
-        </ul>
-        <ul id="description">
-            <li><p>Description :</p></li>
-            <li><div><h3><?php echo $model['description']; ?></h3></div></li>
         </ul>
         <table class="messages">
           <thead class="first_ligne">
@@ -58,6 +46,13 @@
           </thead>
           <tbody>
             <?php $i=1; ?>
+            <tr class="back2">
+            <td class="suppressbutton"></td>
+            <td class="image"><img src="<?php echo $model['photoprofil']['photoprofil']; ?>" class="avatarking"/></td>
+            <td class="utilisateur"><?php echo $model['createurtop']; ?></td>
+            <td class="com"><?php echo $model['description']; ?></td>
+            <td class="date"><?php echo $model['date_creation']; ?></td>
+            </tr>
             <?php foreach($model['comments'] as $comment) {?>
             <tr class="back<?php echo (!$i%2) ? '1' : '2'; ?>">
               <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
