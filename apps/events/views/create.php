@@ -142,11 +142,13 @@
         </div>
         <div class="form-group full">
           <label for="nbpl">Capacité <span class="required">*</span></label>
-          <input type="number" name="nbpl" id="nbpl" required min="2">
+          <input type="number" name="nbpl" id="nbpl" required min="0">
+          <em class="legend">Saisir 0 pour un événement n'ayant pas de capacité limitée.</em>
         </div>
         <div class="form-group full">
           <label for="price">Prix (euros) <span class="required">*</span></label>
           <input type="number" name="price" id="price" required min="0">
+          <em class="legend">Saisir 0 pour un événement gratuit.</em>
         </div>
       </div>
       <!--<div class="form-block">
