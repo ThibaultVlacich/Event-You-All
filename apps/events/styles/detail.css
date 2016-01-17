@@ -190,7 +190,7 @@ div.app-events-detail div.event-wrapper div.event-main section.event-detail-info
 div.app-events-detail div.event-wrapper div.event-main section.event-detail-infos .details .description a.readmore {
   display: none;
   float: right;
-  margin-top: -10px;
+  margin-top: 10px;
   padding: 5px 10px;
   color: white;
   background-color: #CC0033;
