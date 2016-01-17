@@ -8,7 +8,7 @@
       Liens rapides :
       <br><br>
       <ul class="fa-ul">
-        <li><i class="fa-li fa fa-link"></i><a href="#">Notice d'utilisation</a></li>
+        <li><i class="fa-li fa fa-link"></i><a href="<?php echo Config::get('config.base'); ?>/upload/admin/manuel.pdf">Notice d'utilisation</a></li>
       </ul>
     </li>
     <li>
