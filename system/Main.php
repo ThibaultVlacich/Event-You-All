@@ -100,13 +100,13 @@ class Main {
 
 		// Calculates app's directory and class name
 		if ($admin) {
-			$app_dir   = APPS_DIR.$app.DS.'admin'.DS;
+			$app_dir        = APPS_DIR.$app.DS.'admin'.DS;
 			$app_name_clear = str_replace(' ', '', ucwords(preg_replace('#[^a-zA-Z]+#', ' ', $app)));
-			$app_class = $app_name_clear.'AdminController';
+			$app_class      = $app_name_clear.'AdminController';
 		} else {
-			$app_dir   = APPS_DIR.$app.DS;
+			$app_dir        = APPS_DIR.$app.DS;
 			$app_name_clear = str_replace(' ', '', ucwords(preg_replace('#[^a-zA-Z]+#', ' ', $app)));
-			$app_class = $app_name_clear.'Controller';
+			$app_class      = $app_name_clear.'Controller';
 		}
 
 		if (is_dir($app_dir) && file_exists($app_dir.'controller.php') && !$this->is404) {

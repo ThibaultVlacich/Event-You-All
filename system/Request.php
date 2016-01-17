@@ -28,7 +28,7 @@ class Request {
 	 * - "REQUEST" (default)
 	 *
 	 * The following syntax is allowed:
-	 * <code>list($v1, ...) = WRequest::get(array('v1', 'v2'));</code>
+	 * <code>list($v1, ...) = Request::get(array('v1', 'v2'));</code>
 	 *
 	 * @param string|array  $names      variable names
 	 * @param mixed         $default    optional default values
