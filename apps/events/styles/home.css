@@ -183,8 +183,11 @@ div.app-events-home div.home-wrapper section div.search-form {
 }
 
 div.app-events-home div.home-wrapper section div.search-form select, div.app-events-home div.home-wrapper div.search-form input {
-  width: 200px;
   height: 40px;
+}
+
+div.app-events-home div.home-wrapper section div.search-form select.large, div.app-events-home div.home-wrapper div.search-form input.large {
+  width: 200px;
 }
 
 div.app-events-home div.home-wrapper section div.search-form input[type="submit"] {
@@ -204,9 +207,12 @@ div.app-events-home div.home-wrapper section div.search-form input[type="submit"
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
   div.app-events-home div.home-wrapper section div.search-form select, div.app-events-home div.home-wrapper div.search-form input, div.app-events-home div.home-wrapper section div.search-form input[type="submit"] {
-    width: 90%;
     margin-top: 5px;
     height: 40px;
+  }
+
+  div.app-events-home div.home-wrapper section div.search-form select.large, div.app-events-home div.home-wrapper div.search-form input.large, div.app-events-home div.home-wrapper section div.search-form input[type="submit"] {
+    width: 90%;
   }
 }
 
