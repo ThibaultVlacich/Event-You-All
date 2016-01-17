@@ -45,6 +45,10 @@ ul .enteteforum:hover
 {
     background-color:whitesmoke;
 }
+#forum th:nth-child(2n)
+{
+    background-color:whitesmoke;
+}
 #Trier{
     margin-top: 10px;
 }
@@ -60,11 +64,7 @@ table{
     margin-right: auto;
     text-align: center;
 }
-.acceder{
-  background-color:#f8f8f8;
-  width:5em;
 
-}
 .acceder a{
   background-color: #CC0033;
   color:white;

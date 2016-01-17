@@ -189,8 +189,19 @@ class ArticleController extends Controller {
 
   function deleted(array $params) {
     if (isset($params[0])) {
+      
       $id_event = intval($params[0]);
+      $articles = $this->model->getArticle($id_event);
+      $session = System::getSession();
+      $user_id   = $_SESSION['userid'];
+      if ($articles['id_createur']==$user_id){
+      
       $this->model->deleteArticle($id_event);
+      return 1;
+    }
+    else{
+        return 0;
+    }
     }
   }
 

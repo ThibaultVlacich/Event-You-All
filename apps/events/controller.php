@@ -604,6 +604,9 @@ class EventsController extends Controller {
       $id_event = intval($params[0]);
 
       $data = $this->model->getEvent($id_event);
+      $session = System::getSession();
+      $user_id   = $_SESSION['userid'];
+      if ($data['id_createur']==$user_id){
 
       $headers  = "From: " . strip_tags(Config::get('config.email')) . "\r\n";
       $headers .= "Reply-To: ". strip_tags(Config::get('config.email')) . "\r\n";
@@ -625,6 +628,11 @@ class EventsController extends Controller {
       $this->model->deleteEvent($id_event);
       $this->model->deleteParticipantsofEvent($id_event);
       $this->model->deleteArticlesOfEvent($id_event);
+      return 1;
+    }
+    else{
+        return 0;
+    }
     }
   }
 
