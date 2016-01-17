@@ -46,6 +46,11 @@
         <label for="adress">Adresse</label> <input type="text" name="adress" id="adress" />
         <label for="zip_code">Code postal</label> <input type="text" name="zip_code" id="zip_code" maxlength="5" />
         <label for="city">Ville</label> <input type="text" name="city" id="city" />
+        <label for="country">Pays</label>
+        <select name="country" id="country" >
+          <option value="FR">France</option>
+          <option value="CN">Canada</option>
+        </select>
         <label for="phone">Telephone</label><input type="text" name="phone" id="phone" />
         <div class="checkbox">
           <input type="checkbox" name="newsletter" id="newsletter" checked />

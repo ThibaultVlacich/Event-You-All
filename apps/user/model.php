@@ -98,8 +98,8 @@ class UserModel {
    */
   public function createUser(array $data) {
     $prep = $this->db->prepare('
-      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, confirm)
-      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :confirm)
+      INSERT INTO users(nickname, email, password, firstname, lastname, register_date, phone, adress, zip_code, city, country, confirm)
+      VALUES (:nickname, :email, :password, :firstname, :lastname, NOW(), :phone, :adress, :zip_code, :city, :country, :confirm)
     ');
 
     $prep->bindParam(':nickname', $data['nickname']);
@@ -111,6 +111,7 @@ class UserModel {
     $prep->bindParam(':adress', $data['adress']);
     $prep->bindParam(':zip_code', $data['zip_code']);
     $prep->bindParam(':city', $data['city']);
+    $prep->bindParam(':country', $data['country']);
     $prep->bindParam(':confirm', $data['confirm']);
 
     if ($prep->execute()) {
@@ -202,6 +203,13 @@ class UserModel {
          $changes .=', ';
        }
        $changes .= 'adress = "'.addslashes($modifications['adress']).'" ';
+     }
+
+     if(!empty($modifications['country'])) {
+       if(strlen($changes)>17) {
+         $changes .=', ';
+       }
+       $changes .= 'country = "'.addslashes($modifications['country']).'" ';
      }
 
      if(!empty($modifications['zip_code'])) {

@@ -130,7 +130,7 @@ class UserController extends Controller {
 		$data = Request::getAssoc(array('nickname', 'password', 'password_confirm', 'email', 'firstname', 'lastname', 'cgu', 'g-recaptcha-response'));
 
 		if (!in_array(null, $data, true)) {
-			$data += Request::getAssoc(array('adress','zip_code','city','phone','newsletter'));
+			$data += Request::getAssoc(array('adress','zip_code','city','country','phone','newsletter'));
 			$errors = array();
 
 			// Check Captcha
@@ -165,7 +165,7 @@ class UserController extends Controller {
 			}
 
 			if (empty($errors)) {
-				$data += Request::getAssoc(array('adress', 'zip_code', 'city', 'phone'));
+				$data += Request::getAssoc(array('adress', 'zip_code', 'city', 'country', 'phone'));
 
 				// Set a confirm code
 				$data['confirm'] = uniqid();
