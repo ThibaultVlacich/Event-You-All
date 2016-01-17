@@ -15,9 +15,12 @@ class UserController extends Controller {
 	private $session;
 
 	var $access = array(
-		'mesevents'    => 1,
-		'updateProfil' => 1,
-		'myprofil'     => 1
+		'mesevents'      => 1,
+		'updateProfil'   => 1,
+		'myprofil'       => 1,
+		'mestopics'      => 1,
+		'mesevents'      => 1,
+		'updatepassword' => 1
 	);
 
 	/**

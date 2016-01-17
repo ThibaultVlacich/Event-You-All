@@ -10,6 +10,9 @@ defined('EUA_VERSION') or die('Access denied');
 
 class CguAdminController extends Controller {
   var $default_module = 'getCgu';
+  var $access = array(
+    'all' => 3
+  );
 
   function getCgu(){
     $data = $this->model->getCgu();
@@ -24,7 +27,7 @@ class CguAdminController extends Controller {
     $data = Request::getAssoc(array('text_modify'));
 
     $this->model->modifyConfirm($data);
-    
+
   }
 
 

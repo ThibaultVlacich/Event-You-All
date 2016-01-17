@@ -10,6 +10,9 @@ defined('EUA_VERSION') or die('Access denied');
 
 class FaqAdminController extends Controller {
   var $default_module = 'getFaq';
+  var $access = array(
+    'all' => 3
+  );
 
   function getFaq(){
     $data = $this->model->getAllFaq();
