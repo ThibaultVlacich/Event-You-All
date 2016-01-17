@@ -12,6 +12,7 @@
                     <th class="description">Description</th>
                     <th class="admin">Créateur</th>
                     <th class="date">Date de création</th>
+                    <th class="admin"></th>
                 </tr>
             </thead>
             <?php foreach($model['topics'] as $topic) { ?>

@@ -47,7 +47,8 @@
           <tbody>
             <?php $i=1; ?>
             <tr class="back2">
-            <td class="suppressbutton"></td>
+             <?php if(isset($_SESSION['access'])){if($_SESSION['access']>=2){?>
+            <td class="suppressbutton"></td><?php }} ?>
             <td class="image"><img src="<?php echo $model['photoprofil']['photoprofil']; ?>" class="avatarking"/></td>
             <td class="utilisateur"><?php echo $model['createurtop']; ?></td>
             <td class="com"><?php echo $model['description']; ?></td>
