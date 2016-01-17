@@ -389,7 +389,6 @@ class UserController extends Controller {
 
 		if(isset($modifications['date_de_j']) && !empty($modifications['date_de_j']) && isset($modifications['date_de_m']) && !empty($modifications['date_de_m']) && isset($modifications['date_de_a']) && !empty($modifications['date_de_a'])){
 			$modifications['birthdate'] = $modifications['date_de_a'].'-'.$modifications['date_de_m'].'-'.$modifications['date_de_j'];
-;
 			$isValid = true;
 		}
 

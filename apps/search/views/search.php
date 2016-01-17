@@ -19,7 +19,43 @@
                     <option value="<?php echo $proptheme['id']; ?>"<?php if($proptheme['id'] == $model['type']) { echo ' selected'; } ?>><?php echo $proptheme['nom'];?></option>
                     <?php } ?>
             </select>
-            <input type="date" placeholder="Date" id="date_event" name='date_event'/>
+            <select name="date_de_j" id="date_de_j">
+              <option value="" disabled selected>--</option>
+              <?php
+                for ($i = 1; $i <= 31; $i++) {
+                  echo '<option value="'.$i.'">'.$i.'</option>';
+                }
+              ?>
+            </select>
+            <select name="date_de_m" id="date_de_m">
+              <option value="" disabled selected>--</option>
+              <?php
+                $months = array(
+                  1  => "Janvier",
+                  2  => "Février",
+                  3  => "Mars",
+                  4  => "Avril",
+                  5  => "Mai",
+                  6  => "Juin",
+                  7  => "Juillet",
+                  8  => "Août",
+                  9  => "Septembre",
+                  10 => "Octobre",
+                  11 => "Novembre",
+                  12 => "Décembre"
+                );
+
+                foreach ($months as $number => $month) {
+                  echo '<option value="'.$number.'">'.$month.'</option>';
+                }
+              ?>
+            </select>
+            <select name="date_de_a" id="date_de_a">
+              <option value="" disabled selected>--</option>
+            <?php  for ($i = 2016; $i <= 2116; $i++) {
+                echo '<option value="'.($i).'">'.($i).'</option>';
+              } ?>
+            </select>
             <input id='sendrecherche' type="submit" value="Recherche"/><br/>
             <select  name='region' id='region' name = 'region'>
                <option selected disabled>Région</option>

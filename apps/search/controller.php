@@ -14,7 +14,7 @@ class SearchController extends Controller {
 
   //In case of an advanced research
   public function advancedsearch() {
-    $advancedsearchsend=Request::getAssoc(array('advancedsearch','region','theme','date_event','organisateur',
+    $advancedsearchsend=Request::getAssoc(array('advancedsearch','region','theme','date_de_j','date_de_m','date_de_a','organisateur',
     'prix_min','nbr_place_min','prix_max','nbr_place_max','city','zip_code','type','sponsor'));
     $themetest = $this->model->gettheme();
     $typetest = $this->model->gettype();
@@ -34,13 +34,39 @@ class SearchController extends Controller {
         $data['theme'][$index] = $value;
       }
     }
-    if(!empty($advancedsearchsend['date_event'])){
+    $isValid = false;
+    if(isset($advancedsearchsend['date_de_j']) && empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && !empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && !empty($advancedsearchsend['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($advancedsearchsend['date_de_j']) && !empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && !empty($advancedsearchsend['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($advancedsearchsend['date_de_j']) && !empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && !empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && empty($advancedsearchsend['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($advancedsearchsend['date_de_j']) && !empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && empty($advancedsearchsend['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($advancedsearchsend['date_de_j']) && empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && !empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && empty($advancedsearchsend['date_de_a'])){
+			$isValid = false;
+		}
+		if(isset($advancedsearchsend['date_de_j']) && empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && !empty($advancedsearchsend['date_de_a'])){
+			$isValid = false;
+		}
+
+		if(isset($advancedsearchsend['date_de_j']) && !empty($advancedsearchsend['date_de_j']) && isset($advancedsearchsend['date_de_m']) && !empty($advancedsearchsend['date_de_m']) && isset($advancedsearchsend['date_de_a']) && !empty($advancedsearchsend['date_de_a'])){
+			$advancedsearchsend['date_event'] = $advancedsearchsend['date_de_a'].'-'.$advancedsearchsend['date_de_m'].'-'.$advancedsearchsend['date_de_j'];
+			$isValid = true;
+		}
+    if($isValid === true){
       $datetest= $this->model->getIDeventforDate();
       $dateresults=array();
       foreach ($datetest as $index=>$value) {
         $datetranslation = date_create($value['date_debut']);
         $value['date_debut'] = date_format($datetranslation, 'Y-m-d');
-        if($value['date_debut'] == $advancedsearchsend['date_event']){
+        $advancedsearchsenddatecreate = date_create($advancedsearchsend['date_event']);
+        $advancedsearchsenddatetranslation = date_format($advancedsearchsenddatecreate,'Y-m-d');
+        if($value['date_debut'] == $advancedsearchsenddatetranslation){
           $dateresults[] = $value['id'];
         }
       }
