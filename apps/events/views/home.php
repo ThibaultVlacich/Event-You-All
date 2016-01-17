@@ -35,11 +35,11 @@
       <h2 class="title">Faire une recherche</h2>
       <form action="<?php echo Config::get('config.base'); ?>/search/advancedsearch" method="get">
         <div class="search-form">
-          <select name="region">
+          <select name="region" class="large">
             <option disabled selected hidden>Région</option>
             <?php foreach($model['regions'] as $region) { ?><option value="<?php echo $region['id']; ?>"><?php echo $region['nom']; ?></option><?php } ?>
           </select>
-          <select name="theme">
+          <select name="theme" class="large">
             <option disabled selected hidden>Thème</option>
             <?php foreach($model['themes'] as $theme) { ?><option value="<?php echo $theme['id']; ?>"><?php echo $theme['nom']; ?></option><?php } ?>
           </select>
@@ -79,7 +79,8 @@
           <?php  for ($i = 2016; $i <= 2116; $i++) {
               echo '<option value="'.($i).'">'.($i).'</option>';
             } ?>
-          </select>          <input type="submit" value="Rechercher">
+          </select>
+          <input type="submit" value="Rechercher">
         </div>
       </form>
     </section>
@@ -90,6 +91,9 @@
           $session = System::getSession();
 
           if($session->isConnected()) {
+            if(isset($model['user_region']) && !empty($model['user_region'])) {
+              echo ' dans votre région ('.$model['regions'][$model['user_region']]['nom'].')';
+            }
             echo '<a href="'.Config::get('config.base').'/events/create" class="create"><i class="fa fa-plus"></i> Ajouter un événement</a>';
           }
         ?>

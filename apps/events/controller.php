@@ -48,7 +48,25 @@ class EventsController extends Controller {
       $slideshow[] = $event;
     }
 
-    $data = $this->model->getEvents(0, 10, 'date_debut', true, 'WHERE `date_fin` > NOW()');
+    $where_clause = 'WHERE `date_fin` > NOW()';
+
+    $session = System::getSession();
+    $user_region = '';
+
+    if ($session->isConnected()) {
+  		include_once APPS_DIR.'user'.DS.'model.php';
+
+  		$userModel = new UserModel();
+  		$data = $userModel->getUser($_SESSION['userid']);
+
+      $user_region = $data['id_region'];
+
+      if(!empty($user_region)) {
+        $where_clause .= ' AND `region` = '.intval($user_region);
+      }
+    }
+
+    $data = $this->model->getEvents(0, 10, 'date_debut', true, $where_clause);
 
     $events = array();
 
@@ -80,20 +98,21 @@ class EventsController extends Controller {
     $themesok = array();
     foreach($regiontest as $index=>$value){
       if($value['afficher'] == 1){
-        $regionsok[$index] = $value;
+        $regionsok[$value['id']] = $value;
       }
     }
     foreach($themetest as $index=>$value){
       if($value['afficher'] == 1){
-        $themesok[$index] = $value;
+        $themesok[$value['id']] = $value;
       }
     }
 
     return array(
-      'slideshow' => $slideshow,
-      'events'    => $events,
-      'regions'   => $regionsok,
-      'themes'    => $themesok
+      'slideshow'   => $slideshow,
+      'events'      => $events,
+      'regions'     => $regionsok,
+      'themes'      => $themesok,
+      'user_region' => $user_region
     );
   }
 
