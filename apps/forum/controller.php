@@ -102,7 +102,9 @@ class ForumController extends Controller {
 
     if (!in_array(null, $data, true)) {
       $id_topic = $this->model->createTopic($data);
+      //print_r($data);
       return array ('id' => $id_topic);
+      
     }
   }
 

@@ -10,7 +10,7 @@
               </div>
               <div class="description">
                 <h1>Description du sujet</h1>
-                <input type="textarea" required name='description' id="commentaire"></input><br/>
+                <textarea required name='description' id='description'></textarea><br/>
               </div>
                 <input class="Envoyer" type="submit" value="Envoyer">
                 <input class="Annuler" type="reset" value="Annuler">

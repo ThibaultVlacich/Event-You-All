@@ -29,6 +29,7 @@ class ForumModel {
     $prep->bindParam(':titre', $data['titre']);
     $prep->bindParam(':description', $data['description']);
     $prep->bindParam(':id_createur', $user_id);
+    
 
     if ($prep->execute()) {
       return $this->db->lastInsertId('id');
