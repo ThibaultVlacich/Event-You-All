@@ -11,7 +11,7 @@
           <?php
               return;
             }?>
-            <?php 
+            <?php
             $session = System::getSession();
             if($session->isConnected()) {
               // User is logged in
@@ -52,7 +52,7 @@
                             <label for='corps'>Article  </label>
                         </div>
                         <br>
-                        <textarea required name="corps" rows=10 cols=100><?php echo $model['contenu'] ?></textarea>
+                        <textarea required name="corps" id="corps" rows=10 cols=100><?php echo $model['contenu'] ?></textarea>
                     </div>
                     <div class="long">
                         <div class="label">
@@ -62,17 +62,17 @@
                         <p class='gauche'>Dimensions : 400px*900px</p>
                         <!--mettre les vrais dimensions-->
                     </div>
-                    
+
                 </div>
 				</div>
-                 <p><input type='checkbox' name='condi' id='condi' required/> 
+                 <p><input type='checkbox' name='condi' id='condi' required/>
                      <label for='condi'>J'accepte les <a href="<?php echo Config::get('config.base'); ?>/cgu">conditions d'utilisation</a> du site... <span class="required">*</span></label></p>
                  <br>
                  <p class="gauche"><span class="required">*</span> : champs obligatoires</p>
                  <!--Mettre différentes fonctions à chaque bouton -->
-                 <p><input id="bouton" type='submit' value='Envoyer'/> 
+                 <p><input id="bouton" type='submit' value='Envoyer'/>
                 <input id="bouton" type='button' onclick="window.history.back()" value='Annuler'/></p>
             </form>
-			
+
         </section>
             <?php } }?>

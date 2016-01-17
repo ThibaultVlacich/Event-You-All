@@ -55,7 +55,7 @@
                             <label for='corps'>Article  </label>
                         </div>
                         <br>
-                        <textarea required name="corps" rows=10 cols=100>Bla bla bla </textarea>
+                        <textarea required name="corps" id="corps" rows=10 cols=100>Bla bla bla </textarea>
                     </div>
                     <div class="long">
                         <div class="label">
