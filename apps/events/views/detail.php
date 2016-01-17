@@ -92,7 +92,7 @@
               ?>
             </li>
             <?php if ($model['prix'] > 0) { ?><li><i class="fa fa-li fa-money"></i> <?php echo $model['prix']; ?>&nbsp;€</li><?php } ?>
-            <?php if ($model['capacite'] > 0) { ?><li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places</li><?php } ?>
+            <?php if ($model['capacite'] > 0) { ?><li><i class="fa fa-li fa-users"></i> <?php echo $model['capacite']; ?> places (<?php echo ($model['capacite'] - $model['number_of_participants']); ?>&nbsp;restantes)</li><?php } ?>
             <?php if (!empty($model['site_web'])) { ?><li><i class="fa fa-li fa-external-link"></i> <a href="<?php echo $model['site_web']; ?>" target="_blank">Site internet</a></li><?php } ?>
             <?php if ($model['rate']) { ?><li><i class="fa fa-li fa-star"></i> Note de l'événement : <?php echo round($model['rate']); ?>/5</li><?php } ?>
           </ul>
