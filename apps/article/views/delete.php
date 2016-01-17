@@ -1,6 +1,8 @@
 <?php 
 if ($model==0){
     ?>
+    <div class="note error">
+	<i class="fa fa-spin fa-spinner"></i>
     <script type="text/javascript">
       setTimeout(function() {
         window.location = '<?php echo Config::get('config.base'); ?>';
@@ -11,6 +13,7 @@ if ($model==0){
         <li>Ceci n'est pas votre événement !</li>
         <li>Vous allez être redirigé dans 3 secondes.</li>
     </ul>
+    </div>
     <?php
     return;
 }
