@@ -238,14 +238,6 @@
         <br>
       </div>-->
       <div class="form-block">
-        <h3 class="form-block-title">Privatisation</h3>
-        <div class="form-group full">
-          <label for="partn">Membres admis</label>
-          <input type="text" name="vip" id="vip" placeholder="utilisateur1,utilisateur2" value="<?php echo $model['vip']; ?>">
-          <p>Laissez ce champ vide si vous voulez que votre événement reste publique</p>
-        </div>
-      </div>
-      <div class="form-block">
         <h3 class="form-block-title">Organisateur</h3>
         <div class="form-group">
           <label for="partn">Partenaires et Sponsors </label>
@@ -299,6 +291,14 @@
           <input type="file" id="bann" name="bann">
           <em class="legend">Dimensions minimales : 1600*900px. Dimensions maximales : 3200*1800px.</em>
         </div>
+        <div class="form-block">
+        <h3 class="form-block-title">Privatisation</h3>
+        <div class="form-group full">
+          <label for="partn">Membres admis</label>
+          <input type="text" name="vip" id="vip" placeholder="utilisateur1,utilisateur2" value="<?php echo $model['vip']; ?>">
+          <p>Laissez ce champ vide si vous voulez que votre événement reste publique</p>
+        </div>
+      </div>
         <!--<p>
             <input type="checkbox" name="sujet" id="sujet" />
             <label for="sujet">Créer un sujet dans le forum</label>
