@@ -16,9 +16,7 @@
             if($session->isConnected()) {
               // User is logged in
               $user_id = $_SESSION['userid'];
-
-              if ($model['creator']['id'] == $user_id) {
-                // User is the creator?>
+              ?>
 <section class="blocinscri">
             <form method='post' action='<?php echo Config::get('config.base'); ?>/admin/article/modif_confirm/<?php echo $model['id']?>' enctype="multipart/form-data">
                 <h2>Modifier mon article</h2>
@@ -81,4 +79,4 @@
             </form>
 			
         </section>
-            <?php } }?>
+            <?php  }?>
