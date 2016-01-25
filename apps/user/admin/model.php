@@ -90,7 +90,7 @@ class UserAdminModel extends UserModel {
     $this->db->query('DELETE FROM forum_topics WHERE id_createur = '.intval($user_id));
     $this->db->query('DELETE FROM forum_messages WHERE id_createur = '.intval($user_id));
     $this->db->query('DELETE FROM evenements_participants WHERE id_utilisateur = '.intval($user_id));
-    $this->db->query('DELETE FROM evenements_notes WHEREid_utilisateur = '.intval($user_id));
+    $this->db->query('DELETE FROM evenements_notes WHERE id_utilisateur = '.intval($user_id));
 
   }
 

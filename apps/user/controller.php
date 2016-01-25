@@ -167,8 +167,6 @@ class UserController extends Controller {
 			}
 
 			if (empty($errors)) {
-				$data += Request::getAssoc(array('adress', 'zip_code', 'city', 'country', 'phone'));
-
 				// Set a confirm code
 				$data['confirm'] = uniqid();
 
