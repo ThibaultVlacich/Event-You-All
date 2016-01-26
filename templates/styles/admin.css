@@ -213,6 +213,15 @@ a:hover {
   color: white;
 }
 
+@media (max-width: 992px) {
+  .col-content .content div.app-actions a {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+  }
+}
+
 .col-content .content div.app-actions a:hover {
   background: #660000;
 }
