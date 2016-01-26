@@ -1,155 +1,162 @@
 /*genreral conteneur*/
-.blocinscri form {
-    width:100%;
-    margin: auto;
-}
 
-/*Title*/
-h2{
-  font-size: 300%;
-  text-align: center;
-  color: rgb(119,119,119);
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+.blocinscri form {
+  width: 100%;
+  margin: auto;
 }
 
 /*question answer*/
-section.QW{
+
+section.QW {
   height: 100%;
 }
-
-.question{
-    color: #cc0033;
-    font-weight:bold;
-    font-size: 200%;
-    border-bottom: 4px solid #cc0033;
-    border-radius: 2px;
+.question {
+  color: #cc0033;
+  font-weight: bold;
+  font-size: 200%;
+  border-bottom: 4px solid #cc0033;
+  border-radius: 2px;
+}
+.reponse {
+  color: rgb(70, 70, 70);
+  font-weight: bold;
 }
 
-.reponse{
-    color: rgb(70,70,70);
-    font-weight: bold;
-}
 /*admin modif*/
-.questionmodif{
-    color: #cc0033;
-    font-weight:bold;
-    font-size: 200%;
-    border-bottom: 4px solid #cc0033;
-    border-radius: 2px;
+
+.questionmodif {
+  color: #cc0033;
+  font-weight: bold;
+  font-size: 200%;
+  border-bottom: 4px solid #cc0033;
+  border-radius: 2px;
 }
+
 /*admin mdoif*/
-.reponsemodif{
-    color: #cc0033;
-    font-weight:bold;
-    font-size: 200%;
-    border-bottom: 4px solid #cc0033;
-    border-radius: 2px;
+
+.reponsemodif {
+  color: #cc0033;
+  font-weight: bold;
+  font-size: 200%;
+  border-bottom: 4px solid #cc0033;
+  border-radius: 2px;
 }
 
 /*admin textarea*/
-#text_modifyQ{
-  width:100%;
-  height:100px;
+
+#text_modifyQ {
+  width: 100%;
+  height: 40px;
 }
+
 /*admin textarea*/
-#text_modifyR{
-  width:100%;
-  height:100px;
+
+#text_modifyR {
+  width: 100%;
+  height: 100px;
 }
 
 /*conteneur button*/
-.conteneur{
+
+.conteneur {
   text-align: right;
   margin-bottom: 2%;
-
 }
 
 /*button time transition slower for nice effect*/
-.button{
 
+.button {
   padding: 1%;
   background: #CC0033;
-  color : white;
+  color: white;
   transition: all 0.15s ease-in-out;
   border-radius: 4px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
-
 .button:hover {
   background: white;
   color: #CC0033;
 }
+
 /*button*/
-.modify{
-  margin-top: 10%;
-  padding: 1%;
+
+.modify {
+  margin-top: 10px;
+  padding: 10px;
+  border: 0;
   background: #CC0033;
-  color : white;
+  color: white;
   transition: all 0.15s ease-in-out;
   border-radius: 4px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+
 /*button*/
+
 .modify:hover {
   background: white;
   color: #CC0033;
 }
+
 /*button*/
-.add{
-  margin-top: 10%;
-  padding: 1%;
+
+.add {
+  margin-top: 10px;
+  padding: 10px;
+  border: 0;
   background: #CC0033;
-  color : white;
+  color: white;
   transition: all 0.15s ease-in-out;
   border-radius: 4px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+
 /*button*/
+
 .add:hover {
   background: white;
   color: #CC0033;
 }
-.modifybutton{
-display: inline-block;
-transition: all 0.15s ease-in-out;
-border-radius: 4px;
-font-family: "Trebuchet MS", Helvetica, sans-serif;
-    margin: 0 5px;
-    padding: 12px 8px;
-    background: #CC0033;
-    color: white;
+.modifybutton {
+  display: inline-block;
+  transition: all 0.15s ease-in-out;
+  border-radius: 4px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0 5px;
+  padding: 12px 8px;
+  background: #CC0033;
+  color: white;
 }
-.modifybutton:hover{
+.modifybutton:hover {
   background: white;
   color: #CC0033;
 }
-.addbutton{
+.addbutton {
   float: right;
-display: inline-block;
-transition: all 0.15s ease-in-out;
-border-radius: 4px;
-font-family: "Trebuchet MS", Helvetica, sans-serif;
-    margin: 0 5px;
-    padding: 12px 8px;
-    background: #CC0033;
-    color: white;
+  display: inline-block;
+  transition: all 0.15s ease-in-out;
+  border-radius: 4px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0 5px;
+  padding: 12px 8px;
+  background: #CC0033;
+  color: white;
 }
-.addbutton:hover{
+.addbutton:hover {
   background: white;
   color: #CC0033;
 }
-
-.deletebutton{
-display: inline-block;
-transition: all 0.15s ease-in-out;
-border-radius: 4px;
-font-family: "Trebuchet MS", Helvetica, sans-serif;
-    margin: 0 5px;
-    padding: 12px 8px;
-    background: #CC0033;
-    color: white;
+.deletebutton {
+  display: inline-block;
+  transition: all 0.15s ease-in-out;
+  border-radius: 4px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin: 0 5px;
+  padding: 12px 8px;
+  background: #CC0033;
+  color: white;
 }
-.deletebutton:hover{
+.deletebutton:hover {
   background: white;
   color: #CC0033;
 }

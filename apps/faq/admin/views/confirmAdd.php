@@ -6,7 +6,7 @@
       }, 3000);
     </script>
 	<ul>
-		<li>Création enregistrée! </li>
+		<li>Question/réponse enregistrée! </li>
 		<li>Vous allez être redirigé dans 3 secondes.</li>
 	</ul>
 </div>
