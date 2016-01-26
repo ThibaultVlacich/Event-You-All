@@ -62,6 +62,7 @@
         </div>
         <div class="details">
           <h2 class="nom"><?php echo $model['nom']; ?></h2>
+          <?php if (!empty($model['creator'])) { ?><span class="creator">&Eacute;vénement publié par <?php echo $model['creator']['nickname']; ?></span><?php } ?>
           <ul class="fa-ul">
             <li>
               <i class="fa fa-li fa-calendar-o"></i>
