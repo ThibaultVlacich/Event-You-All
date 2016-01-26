@@ -9,31 +9,21 @@ defined('EUA_VERSION') or die('Access denied');
  */
 
 class AboutAdminController extends Controller {
-  var $default_module = 'getabou';
+  var $default_module = 'modify';
   var $access = array(
     'all' => 3
   );
 
-  function getabou(){
-    $data = $this->model->getAbou();
-    return $data;
-  }
   function modify(){
-    $data = $this->model->getAbou();
+    $data = $this->model->getAbout();
+
     return $data;
   }
 
   function modifyConfirm(){
     $data = Request::getAssoc(array('text_modify'));
+
     $this->model->modifyConfirm($data);
-
   }
-
-
-
-
-
-
 }
-
 ?>

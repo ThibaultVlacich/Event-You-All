@@ -15,26 +15,19 @@ class AboutAdminModel {
     $this->db = System::getDb();
   }
 
-  
-   public function getAbou(){
-     $prep = $this->db->prepare('SELECT *FROM about');
-   $prep->execute();
-   return $prep->fetch(PDO::FETCH_ASSOC);
+  public function getAbout(){
+    $prep = $this->db->prepare('SELECT *FROM about');
+    $prep->execute();
+
+    return $prep->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function modifyConfirm(array $data){
+    $prep = $this->db->prepare('UPDATE about SET about = :about');
+
+    $prep->bindParam(':about', $data['text_modify']);
+
+    $prep->execute();
+  }
 }
-
-public function modify(){
-
-}
-
-public function modifyConfirm(array $data){
-
-  $prep = $this->db->prepare('UPDATE about SET about=:about');
-  $prep->bindParam(':about', $data['text_modify']);
-  $prep->execute();
-
-}
-}
-
-
-
 ?>
