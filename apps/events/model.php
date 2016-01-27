@@ -141,22 +141,22 @@ class EventsModel {
         $event['type'] = $prep->fetch(PDO::FETCH_ASSOC);
       }
     }
-    
+
     //---------filtre-------------
       $resultat=$events;
       $filtered=array();
-      
+
       //recupere tableau vip
       $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
       $prep2->execute();
       $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
-      
+
       //recupere id event vip
       $id_vip=array();
       foreach($priv as $vipid){
           $id_vip[]=$vipid['id_evenement'];
       }
-      
+
       //regarder si privé si le cas enlever si pas dans vip
       foreach($resultat as $result)
       {
@@ -178,7 +178,7 @@ class EventsModel {
                   $filtered[]=$result;
               }}
           }
-         
+
       }
       return $filtered;
   }
@@ -259,12 +259,12 @@ public function modifEvent(array $data, $admin=0) {
 
                 $prep->execute();
             if ($admin==0){
-                
+
             if ($data['partn']!='' and $data['partn']!=NULL){
                 //met les nouveaux sponsors
                 $sp=$this->sponsor($data['partn'], $data['id']);
 
-            
+
             }
             if ($data['vip']!='' and $data['vip']!=NULL){
                 //met les nouveaux vips
@@ -379,13 +379,20 @@ public function modifEvent(array $data, $admin=0) {
 
     return $prep->rowCount();
   }
-    public function deleteEvent($id) {
-      $prep = $this->db->prepare('DELETE FROM evenements WHERE id = :id');
 
-        $prep->bindParam(':id', $id);
-        $prep->execute();
-        return 'deleted';
+  public function deleteEvent($id) {
+    $prep = $this->db->prepare('DELETE FROM evenements WHERE id = :id');
 
+    $prep->bindParam(':id', $id);
+    $prep->execute();
+
+    // Delete all linked articles
+    $prep = $this->db->prepare('DELETE FROM articles WHERE id_evenement = :id');
+
+    $prep->bindParam(':id', $id);
+    $prep->execute();
+
+    return 'deleted';
   }
 
   public function getRateForEvent($id_event) {
@@ -548,10 +555,10 @@ public function modifEvent(array $data, $admin=0) {
     $vips=implode (',',$newsp);
     return $vips;
   }
-  
+
   //get users
-  
-  
+
+
   public function getUser($id_user){
     $prep = $this->db->prepare('SELECT * FROM users WHERE id = :id_user');
 
@@ -640,7 +647,7 @@ public function modifEvent(array $data, $admin=0) {
 
     $prep->execute();
   }
-  
+
   public function createTopic($id) {
     $data=$this->getEvent($id);
     $prep = $this->db->prepare('
