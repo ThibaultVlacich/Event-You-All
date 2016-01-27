@@ -120,7 +120,7 @@ class ArticleModel {
         return 'deleted';
 
   }
-  
+
   //-------------------vip---------------
   public function getVip($event_id){
 
@@ -137,10 +137,10 @@ class ArticleModel {
     $vips=implode (',',$newsp);
     return $vips;
   }
-  
+
   //----------------liste articles--------------
-  
-  
+
+
   public function getArticles($from = 0, $number = 9999999, $order = 'date_creation', $asc = true, $where_clause = '') {
     $prep = $this->db->prepare('
       SELECT * FROM articles
@@ -166,23 +166,33 @@ class ArticleModel {
         $event['event'] = $prep->fetch(PDO::FETCH_ASSOC);
       }
 
+      // Get creator of the article infos
+      if (!empty($event['id_createur'])) {
+        $prep = $this->db->prepare('SELECT * FROM users WHERE id = :id_user');
+
+        $prep->bindParam(':id_user', $event['id_createur']);
+        $prep->execute();
+
+        $event['author'] = $prep->fetch(PDO::FETCH_ASSOC);
+      }
+
     }
-    
+
     //---------filtre-------------
       $resultat=$events;
       $filtered=array();
-      
+
       //recupere tableau vip
       $prep2 = $this->db->prepare('SELECT * FROM evenements_vip');
       $prep2->execute();
       $priv=$prep2->fetchAll(PDO::FETCH_ASSOC);
-      
+
       //recupere id event vip
       $id_vip=array();
       foreach($priv as $vipid){
           $id_vip[]=$vipid['id_evenement'];
       }
-      
+
       //regarder si privé si le cas enlever si pas dans vip
       foreach($resultat as $result)
       {
@@ -204,7 +214,7 @@ class ArticleModel {
                   $filtered[]=$result;
               }}
           }
-         
+
       }
       return $filtered;
   }
