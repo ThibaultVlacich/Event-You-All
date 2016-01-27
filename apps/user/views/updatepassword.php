@@ -15,7 +15,7 @@
         return;
       }
 
-      elseif(isset($model['success']) && $model['success'] === false){
+      if(isset($model['success']) && $model['success'] === false) {
     ?>
     <div class="note error">
       <i class="fa fa-exclamation-triangle"></i>
@@ -25,7 +25,7 @@
       ?>
       </ul>
     </div>
-    <?php } elseif($model['success'] == 'pasencore'){?>
+    <?php } else if($model['success'] == 'pasencore') { ?>
     <p>
       Pour modifier votre mot de passe, veuillez remplir le formulaire ci-dessous.
     </p>
@@ -33,9 +33,9 @@
     <form method="post" action="<?php echo Config::get('config.base'); ?>/user/updatepassword">
       <div>
         <label for="oldpassword">Ancien mot de passe</label><input name="oldpassword" id="oldpassword" type="password" required /><br/>
-        <label for="newpassword">Nouveau Mot de Passe</label><input name="newpassword" id="newpassword" type="password" required /><br/>
+        <label for="newpassword">Nouveau mot de Passe</label><input name="newpassword" id="newpassword" type="password" required /><br/>
         <label for="newpasswordcheck">Confirmation</label><input name="newpasswordcheck" id="newpasswordcheck" type="password" required /><br/>
-        <input type="submit" value="Mette à jour mon Mot de Passe" class="submit" />
+        <input type="submit" value="Mettre à jour mon mot de Passe" class="submit" />
       </div>
     </form>
   </div>
