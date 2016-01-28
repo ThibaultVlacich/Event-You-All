@@ -135,4 +135,9 @@
     font-size: 13px;
     color: #8b8b8b;
   }
+
+  footer.main-footer ul.widgets > li {
+    width: 100%;
+    padding: 0 15px;
+  }
 }

@@ -20,10 +20,7 @@ a:hover {
   color: #880000;
   text-decoration: underline;
 }
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
+input:focus, select:focus, textarea:focus, button:focus {
   outline: none;
 }
 
@@ -182,6 +179,57 @@ section.main-content {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+}
+
+/**
+ * Main footer
+ */
+
+footer.main-footer {
+  background: #CC0033;
+  color: white;
+}
+footer.main-footer ul.widgets {
+  list-style-type: none;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0;
+}
+footer.main-footer ul.widgets::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+footer.main-footer ul.widgets > li {
+  width: 25%;
+  padding: 0 15px;
+  float: left;
+}
+footer.main-footer ul.widgets > li h3.title {
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+footer.main-footer ul.widgets > li > ul.links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+footer.main-footer ul.widgets > li > ul.links > li > a {
+  display: block;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+footer.main-footer div.lower-foot {
+  background: #9a0027;
+}
+footer.main-footer div.lower-foot div.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
 }
 
 /*

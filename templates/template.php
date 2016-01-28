@@ -118,16 +118,43 @@
         }
       ?>
     </section>
-    <footer>
-      <nav class="main-navigation">
-        <ul>
-          <li><a href="<?php echo Config::get('config.base') ; ?>"><i class="fa fa-home fa-lg"></i> Accueil</a></li>
-          <li><a href="<?php echo Config::get('config.base') ; ?>/forum">Forum</a></li>
-          <li><a href="<?php echo Config::get('config.base') ; ?>/faq">FAQ</a></li>
-          <li><a href="<?php echo Config::get('config.base') ; ?>/contact">Contact</a></li>
-          <li><a href="<?php echo Config::get('config.base') ; ?>/about">A propos de nous</a></li>
-        </ul>
-      </nav>
+    <footer class="main-footer">
+      <ul class="widgets">
+        <li>
+          <h3 class="title">Event-You-All</h3>
+          <ul class="links">
+            <li><a href="<?php echo Config::get('config.base'); ?>"><i class="fa fa-home"></i> Accueil</a></li>
+            <li><a href="<?php echo Config::get('config.base'); ?>/events/create">Créer un événement</a></li>
+            <li><a href="<?php echo Config::get('config.base'); ?>/forum">Forum</a></li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="title">Nous suivre</h3>
+          <ul class="links">
+            <li><a href="https://facebook.com/Event-You-All" target="_blank"><i class="fa fa-lg fa-facebook-square"></i> Facebook</a></li>
+            <li><a href="https://twitter.com/Event-You-All" target="_blank"><i class="fa fa-lg fa-twitter-square"></i> Twitter</a></li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="title">Aide</h3>
+          <ul class="links">
+            <li><a href="<?php echo Config::get('config.base'); ?>/faq">Questions fréquentes</a></li>
+            <li><a href="<?php echo Config::get('config.base'); ?>/contact">Contacter l'équipe</a></li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="title">Légal</h3>
+          <ul class="links">
+            <li><a href="<?php echo Config::get('config.base'); ?>/about">&Agrave; propos de nous</a></li>
+            <li><a href="<?php echo Config::get('config.base'); ?>/cgu">Conditions générales d'utilisations</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="lower-foot">
+        <div class="wrap">
+          Copyright &copy; 2016 Event-You-All. Tous droits réservés.
+        </div>
+      </div>
     </footer>
   </div>
   <div id="cookie-notice">
