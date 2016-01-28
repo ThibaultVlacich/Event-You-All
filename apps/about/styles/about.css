@@ -1,25 +1,20 @@
-/*Title*/
-h2{
-  font-size: 300%;
-  text-align: center;
-  color: rgb(119,119,119);
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+div.app-about {
+  margin: 20px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
-h1{
-    color:white;
-    font-family: Trebuchet MS;
-    margin-left: 10px;
+div.app-about h2.title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #CC0033;
+  margin: 15px;
+  margin-bottom: 0;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
 }
-p{
-    font-family: Trebuchet MS;
-    text-align: center;
-    margin-top: 50px;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-img.event{
-    height:300px;
-    width:30%;
-    margin-left:35%;
-    margin-top: 75px;
+
+div.app-about div.text {
+  margin: 15px;
 }
