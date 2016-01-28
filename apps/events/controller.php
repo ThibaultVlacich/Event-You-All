@@ -21,7 +21,7 @@ class EventsController extends Controller {
     'uploadphoto'    => 1
   );
 
-  function index() {
+  function index(array $params) {
     $data = $this->model->getEvents(0, 5, 'date_debut', true, 'WHERE `banniere` != "" AND `date_fin` > NOW()');
 
     $slideshow = array();
@@ -66,7 +66,15 @@ class EventsController extends Controller {
       }
     }
 
-    $data = $this->model->getEvents(0, 10, 'date_debut', true, $where_clause);
+    $n = 10; // Number of events per page
+    $page = 1; // Current page
+
+    // Get the current page from URL
+    if ((isset($params[0]) && $params[0] == 'page') && isset($params[1])) {
+      $page = intval($params[1]);
+    }
+
+    $data = $this->model->getEvents(($page-1)*$n, $n, 'date_debut', true, $where_clause);
 
     $events = array();
 
@@ -108,11 +116,14 @@ class EventsController extends Controller {
     }
 
     return array(
-      'slideshow'   => $slideshow,
-      'events'      => $events,
-      'regions'     => $regionsok,
-      'themes'      => $themesok,
-      'user_region' => $user_region
+      'slideshow'    => $slideshow,
+      'events'       => $events,
+      'total'        => $this->model->countEvents(),
+			'current_page' => $page,
+			'per_page'     => $n,
+      'regions'      => $regionsok,
+      'themes'       => $themesok,
+      'user_region'  => $user_region
     );
   }
 

@@ -222,6 +222,11 @@ div.app-events-home div.home-wrapper section ul.events {
   padding: 0;
 }
 
+div.app-events-home div.home-wrapper section ul.events p.no-events {
+  margin: 15px 0;
+  padding: 0 15px;
+}
+
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
   div.app-events-home div.home-wrapper {
@@ -306,4 +311,37 @@ div.app-events-home div.home-wrapper section ul.events li div.caption h3 {
 
 div.app-events-home div.home-wrapper section ul.events li div.caption h3 a {
   color: white;
+}
+
+/* Pagination */
+
+div.app-events-home div.home-wrapper section .num_page {
+  list-style: none;
+  margin: 5px 10px;
+  padding: 0;
+}
+
+div.app-events-home div.home-wrapper section .num_page li {
+  display: inline-block;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+div.app-events-home div.home-wrapper section .num_page li a {
+  display: block;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: #CC0033;
+}
+
+div.app-events-home div.home-wrapper section .num_page li a:hover {
+  color: #660000;
+}
+
+div.app-events-home div.home-wrapper section .num_page li.current {
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: white;
+  background-color: #CC0033;
 }

@@ -120,8 +120,27 @@
           </li>
         <?php } ?>
         <?php if (empty($model['events'])) { ?>
-          <p>Aucun événement n'a encore été créé !</p>
+          <p class="no-events">Aucun événement n'a encore été créé !</p>
         <?php } ?>
+      </ul>
+      <?php
+        // Pagination
+        $numberOfPages = ceil($model['total'] / $model['per_page']);
+      ?>
+      <ul class="num_page">
+          <?php
+            for($n = 1; $n <= $numberOfPages; $n++) {
+              if ($n == $model['current_page']) {
+          ?>
+          <li class="current"><?php echo $n; ?></li>
+          <?php
+              } else {
+          ?>
+          <li><a href="<?php echo Config::get('config.base'); ?>/events/page/<?php echo $n; ?>"><?php echo $n; ?></a></li>
+          <?php
+              }
+            }
+          ?>
       </ul>
     </section>
   </div>
