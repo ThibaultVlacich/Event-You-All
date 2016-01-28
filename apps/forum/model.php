@@ -22,8 +22,8 @@ class ForumModel {
    ');
 
     $session = System::getSession();
-	  if ($session->isConnected()) {
-  	  $user_id = $_SESSION['userid'];
+    if ($session->isConnected()) {
+      $user_id = $_SESSION['userid'];
     }
 
     $prep->bindParam(':titre', $data['titre']);

@@ -12,7 +12,7 @@ class LegalController extends Controller {
 
 
  function legal(){
-   	$mail = Config::get('config.email');
+     $mail = Config::get('config.email');
  }
 
 }

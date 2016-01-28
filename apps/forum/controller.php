@@ -43,8 +43,8 @@ class ForumController extends Controller {
     return array(
       'topics'       => $topics,
       'total'        => $this->model->countTopics(),
-			'current_page' => $page,
-			'per_page'     => $n
+      'current_page' => $page,
+      'per_page'     => $n
     );
  }
 

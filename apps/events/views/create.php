@@ -11,17 +11,17 @@
         <div class="form-group full">
           <label for="theme">Thème <span class="required">*</span></label>
           <select name='theme' id='theme'>
-    				<?php foreach ($model['themes'] as $theme) { ?>
-    				<option value="<?php echo $theme['id']?>"><?php echo $theme['nom']?></option>
-    				<?php	} ?>
+            <?php foreach ($model['themes'] as $theme) { ?>
+            <option value="<?php echo $theme['id']?>"><?php echo $theme['nom']?></option>
+            <?php  } ?>
           </select>
         </div>
         <div class="form-group full">
           <label for="type">Type <span class="required">*</span></label>
           <select name='type' id='type'>
-  					<?php foreach ($model['types'] as $type) { ?>
-  					<option value="<?php echo $type['id']?>"><?php echo $type['nom']?></option>
-  					<?php } ?>
+            <?php foreach ($model['types'] as $type) { ?>
+            <option value="<?php echo $type['id']?>"><?php echo $type['nom']?></option>
+            <?php } ?>
           </select>
         </div>
         <div class="form-group">
@@ -212,9 +212,9 @@
           <label for="reg">Région <span class="required">*</span></label>
           <select  name="reg" id="reg">
             <option value="" disabled selected>--</option>
-  				<?php foreach ($model['regions'] as $region) { ?>
-  					<option value="<?php echo $region['id']; ?>"><?php echo $region['nom']; ?></option>
-  				<?php } ?>
+          <?php foreach ($model['regions'] as $region) { ?>
+            <option value="<?php echo $region['id']; ?>"><?php echo $region['nom']; ?></option>
+          <?php } ?>
           </select>
         </div>
         <div class="form-group full">

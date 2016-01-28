@@ -54,10 +54,10 @@ class EventsController extends Controller {
     $user_region = '';
 
     if ($session->isConnected()) {
-  		include_once APPS_DIR.'user'.DS.'model.php';
+      include_once APPS_DIR.'user'.DS.'model.php';
 
-  		$userModel = new UserModel();
-  		$data = $userModel->getUser($_SESSION['userid']);
+      $userModel = new UserModel();
+      $data = $userModel->getUser($_SESSION['userid']);
 
       $user_region = $data['id_region'];
 
@@ -119,8 +119,8 @@ class EventsController extends Controller {
       'slideshow'    => $slideshow,
       'events'       => $events,
       'total'        => $this->model->countEvents(),
-			'current_page' => $page,
-			'per_page'     => $n,
+      'current_page' => $page,
+      'per_page'     => $n,
       'regions'      => $regionsok,
       'themes'       => $themesok,
       'user_region'  => $user_region
@@ -301,7 +301,7 @@ class EventsController extends Controller {
       $date_debut = $data['date_de_a'].'-'.$data['date_de_m'].'-'.$data['date_de_j'].' '.$data['time_de_h'].':'.$data['time_de_m'];
       $date_fin = $data['date_fi_a'].'-'.$data['date_fi_m'].'-'.$data['date_fi_j'].' '.$data['time_fi_h'].':'.$data['time_fi_m'];
 
-	    if (empty($data['bann'])) {
+      if (empty($data['bann'])) {
         $data['bann'] = null;
       }
 
@@ -340,14 +340,15 @@ class EventsController extends Controller {
 
       if (empty($errors)) {
         $id_event = $this->model->createEvent($data);
-        if (!empty($data['sujet'])){
-            $this->model->createTopic($id_event);
-            }
+        
+        if (!empty($data['sujet'])) {
+          $this->model->createTopic($id_event);
+        }
 
-  	    return array('id' => $id_event);
+        return array('id' => $id_event);
       }
 
-	    return array('error' => $errors);
+      return array('error' => $errors);
     }
 
     return array('error' => array('Tous les champs requis n\'ont pas été remplis.'));
@@ -550,7 +551,7 @@ class EventsController extends Controller {
           }
         }
 
-  	    return array('id' => $id_event, 'error' => $errors);
+        return array('id' => $id_event, 'error' => $errors);
       }
     }
   }

@@ -13,7 +13,7 @@ class EventsView extends View {
     $this->setTemplate('/apps/events/views/detail.php');
 
     $this->assign('css', Config::get('config.base').'/librairies/camera/css/camera.css');
-  	$this->assign('css', Config::get('config.base').'/apps/events/styles/detail.css');
+    $this->assign('css', Config::get('config.base').'/apps/events/styles/detail.css');
 
     $this->assign('js', Config::get('config.base').'/librairies/camera/scripts/jquery.easing.1.3.js');
     $this->assign('js', Config::get('config.base').'/librairies/camera/scripts/camera.min.js');

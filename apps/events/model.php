@@ -31,10 +31,8 @@ class EventsModel {
     ');
 
     //prend l'id utilisateur
-	  $session = System::getSession();
-	  if ($session->isConnected()) {
-	    $user_id = $_SESSION['userid'];
-	  }
+    $user_id = $_SESSION['userid'];
+
     $prep->bindParam(':nom', $data['nom']);
     $prep->bindParam(':date_debut', $data['date_de']);
     $prep->bindParam(':date_fin', $data['date_fi']);
@@ -49,12 +47,12 @@ class EventsModel {
     $prep->bindParam(':description', $data['descript']);
     $prep->bindParam(':banniere', $data['bann']);
     $prep->bindParam(':poster', $data['poster']);
-    $prep->bindParam(':creator',$user_id);
+    $prep->bindParam(':creator', $user_id);
     $prep->bindParam(':type', $data['type']);
-    $prep->bindParam(':theme',$data['theme']);
+    $prep->bindParam(':theme', $data['theme']);
 
     if ($prep->execute()) {
-	    $idevent = $this->db->lastInsertId('id');
+      $idevent = $this->db->lastInsertId('id');
 
       if ($data['partn']!='' and $data['partn']!=NULL){
         $sp=$this->sponsor($data['partn'], $idevent);
@@ -312,9 +310,9 @@ public function modifEvent(array $data, $admin=0) {
   public function isCurrentUserRegisteredToEvent($id_event) {
     $session = System::getSession();
 
-	  if ($session->isConnected()) {
-	    $id_user = $_SESSION['userid'];
-	  }
+    if ($session->isConnected()) {
+      $id_user = $_SESSION['userid'];
+    }
 
     $prep = $this->db->prepare('
       SELECT * FROM evenements_participants
@@ -332,11 +330,11 @@ public function modifEvent(array $data, $admin=0) {
   public function registerUserToEvent($id_event) {
     $session = System::getSession();
 
-	  if (!$session->isConnected()) {
+    if (!$session->isConnected()) {
       return;
     }
 
-	  $id_user = $_SESSION['userid'];
+    $id_user = $_SESSION['userid'];
 
     $prep = $this->db->prepare('
       INSERT INTO evenements_participants
@@ -357,7 +355,7 @@ public function modifEvent(array $data, $admin=0) {
       return;
     }
 
-	  $id_user = $_SESSION['userid'];
+    $id_user = $_SESSION['userid'];
 
     $prep = $this->db->prepare('
       DELETE FROM evenements_participants
@@ -567,8 +565,8 @@ public function modifEvent(array $data, $admin=0) {
     return $prep->fetch(PDO::FETCH_ASSOC);
   }
 
-	public function getParticipants($id_event){
-		$prep = $this->db->prepare('SELECT id_utilisateur FROM evenements_participants WHERE id_evenement = :id_event');
+  public function getParticipants($id_event){
+    $prep = $this->db->prepare('SELECT id_utilisateur FROM evenements_participants WHERE id_evenement = :id_event');
 
     $prep->bindParam(':id_event',$id_event);
     $prep->execute();
@@ -602,7 +600,7 @@ public function modifEvent(array $data, $admin=0) {
     $prep->bindParam(':reviewed', $reviewed, PDO::PARAM_INT);
 
     if ($prep->execute()) {
-	    return $this->db->lastInsertId('id');
+      return $this->db->lastInsertId('id');
     } else {
       return false;
     }
@@ -656,10 +654,10 @@ public function modifEvent(array $data, $admin=0) {
    ');
 
     $session = System::getSession();
-	  if ($session->isConnected()) {
-  	  $user_id = $_SESSION['userid'];
+    if ($session->isConnected()) {
+      $user_id = $_SESSION['userid'];
     }
-    //print_r($data);
+
     $title='[Evénement] '.$data['nom'];
     $descri=$data['description'].'<p><a href="'.Config::get('config.base').'/events/detail/'.$data['id'].'">Voir la page de l\'événement</a></p>';
     $prep->bindParam(':titre', $title);

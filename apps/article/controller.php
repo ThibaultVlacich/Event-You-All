@@ -35,16 +35,16 @@ class ArticleController extends Controller {
   }
 
   function create() {
-	  //recupere id utilisateur
-	  $session = System::getSession();
-		if ($session->isConnected()) {
-		  $user_id = $_SESSION['userid'];
-		}
+    //recupere id utilisateur
+    $session = System::getSession();
+    if ($session->isConnected()) {
+      $user_id = $_SESSION['userid'];
+    }
 
-	  //recupere infos sur evenements crees par utilisateur
-	  $data['evenements'] = $this->model->getUserEvents($user_id);
+    //recupere infos sur evenements crees par utilisateur
+    $data['evenements'] = $this->model->getUserEvents($user_id);
 
-	  return $data;
+    return $data;
   }
 
   function create_confirm() {
@@ -95,7 +95,7 @@ class ArticleController extends Controller {
 
       $id_article = $this->model->createEvent($data);
 
-	    return array('id' => $id_article,'error' => $errors);
+      return array('id' => $id_article,'error' => $errors);
     }
   }
 
@@ -112,11 +112,11 @@ class ArticleController extends Controller {
       $data['creator'] = $this->model->getCreatorForArticle($data['id']);
 
       //recupere id utilisateur
-	    $session = System::getSession();
+      $session = System::getSession();
 
-		  if ($session->isConnected()) {
-		    $user_id = $_SESSION['userid'];
-		  }
+      if ($session->isConnected()) {
+        $user_id = $_SESSION['userid'];
+      }
 
       //recupere infos sur evenements crees par utilisateur
       $data['evenements'] = $this->model->getUserEvents($user_id);
@@ -182,7 +182,7 @@ class ArticleController extends Controller {
 
         $this->model->modifArticle($data,$article_id);
 
-	      return array('id' => $article_id, 'error' => $errors);
+        return array('id' => $article_id, 'error' => $errors);
       }
     }
   }
@@ -219,8 +219,8 @@ class ArticleController extends Controller {
     return array(
       'articles'     => $articles,
       'total'        => $this->model->countArticles(),
-			'current_page' => $page,
-			'per_page'     => $n
+      'current_page' => $page,
+      'per_page'     => $n
     );
   }
 }

@@ -246,12 +246,12 @@
       <section class="block">
         <h2 class="title">Noter cet événement</h2>
         <div class="rating">
-      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=5" title="Give 5 stars"><i class="fa fa-star"></i></a>
-      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=4" title="Give 4 stars"><i class="fa fa-star"></i></a>
-      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=3" title="Give 3 stars"><i class="fa fa-star"></i></a>
-      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=2" title="Give 2 stars"><i class="fa fa-star"></i></a>
-      		<a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=1" title="Give 1 star"><i class="fa fa-star"></i></a>
-      	</div>
+          <a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=5" title="Give 5 stars"><i class="fa fa-star"></i></a>
+          <a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=4" title="Give 4 stars"><i class="fa fa-star"></i></a>
+          <a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=3" title="Give 3 stars"><i class="fa fa-star"></i></a>
+          <a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=2" title="Give 2 stars"><i class="fa fa-star"></i></a>
+          <a href="<?php echo Config::get('config.base'); ?>/events/rate/<?php echo $model['id']; ?>/?note=1" title="Give 1 star"><i class="fa fa-star"></i></a>
+        </div>
       </section>
       <?php } ?>
       <section class="block">

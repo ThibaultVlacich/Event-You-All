@@ -22,18 +22,18 @@ a:hover {
 }
 
 .btn-group {
-	white-space: nowrap;
+  white-space: nowrap;
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
 
 .btn-group > a:first-child {
-	margin-right: -4px;
+  margin-right: -4px;
 }
 
 .btn-group > a.btn, .btn-group button.btn {
-	float: none;
+  float: none;
 }
 
 /**

@@ -1,6 +1,6 @@
 <?php
-  if (empty($model)) {
-    // No event based on asked id
+if (empty($model)) {
+  // No event based on asked id
 ?>
 <div class="note error">
   <i class="fa fa-exclamation-triangle"></i>
@@ -9,8 +9,8 @@
   </ul>
 </div>
 <?php
-    return;
-  }
+  return;
+}
 ?>
 <div class="app-events app-events-create">
   <h1 class="app-title">Modifier l'événement (Admin)</h1>
@@ -25,17 +25,17 @@
         <div class="form-group full">
           <label for="theme">Thème <span class="required">*</span></label>
           <select name='theme' id='theme'>
-    				<?php foreach ($model['themes'] as $theme) { ?>
-    				<option value="<?php echo $theme['id']?>"<?php echo ($model['id_theme'] == $theme['id']) ? ' selected' : ''; ?>><?php echo $theme['nom']?></option>
-    				<?php	} ?>
+          <?php foreach ($model['themes'] as $theme) { ?>
+            <option value="<?php echo $theme['id']?>"<?php echo ($model['id_theme'] == $theme['id']) ? ' selected' : ''; ?>><?php echo $theme['nom']?></option>
+          <?php  } ?>
           </select>
         </div>
         <div class="form-group full">
           <label for="type">Type <span class="required">*</span></label>
           <select name='type' id='type'>
-  					<?php foreach ($model['types'] as $type) { ?>
-  					<option value="<?php echo $type['id']?>"<?php echo ($model['id_type'] == $type['id']) ? ' selected' : ''; ?>><?php echo $type['nom']?></option>
-  					<?php } ?>
+          <?php foreach ($model['types'] as $type) { ?>
+            <option value="<?php echo $type['id']?>"<?php echo ($model['id_type'] == $type['id']) ? ' selected' : ''; ?>><?php echo $type['nom']?></option>
+          <?php } ?>
           </select>
         </div>
         <div class="form-group">
@@ -261,9 +261,9 @@
         <div class="form-group full">
           <label for="reg">Région <span class="required">*</span></label>
           <select  name="reg" id="reg">
-  				<?php foreach ($model['regions'] as $region) { ?>
-  					<option value="<?php echo $region['id']; ?>"<?php if ($region['id'] == $model['region']) echo ' selected'; ?>><?php echo $region['nom']; ?></option>
-  				<?php } ?>
+          <?php foreach ($model['regions'] as $region) { ?>
+            <option value="<?php echo $region['id']; ?>"<?php if ($region['id'] == $model['region']) echo ' selected'; ?>><?php echo $region['nom']; ?></option>
+          <?php } ?>
           </select>
         </div>
         <div class="form-group full">

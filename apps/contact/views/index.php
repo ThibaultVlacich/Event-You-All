@@ -4,7 +4,7 @@
   if($session->isConnected()) {
     include_once APPS_DIR.'user'.DS.'model.php';
 
-		$userModel = new UserModel();
+    $userModel = new UserModel();
 
     $user = $userModel->getUser($_SESSION['userid']);
   }

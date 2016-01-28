@@ -64,7 +64,7 @@
         </li>
       </ul>
       <div class="mobile">
-      	<i class="hamburger fa fa-bars"></i>
+        <i class="hamburger fa fa-bars"></i>
         <i class="login fa fa-user"></i>
         <i class="search fa fa-search"></i>
         <ul class="mobile-menu">

@@ -28,8 +28,8 @@ class UserAdminController extends Controller {
     return array(
       'users'        => $users,
       'total'        => $this->model->countUsers(),
-			'current_page' => $page,
-			'per_page'     => $n
+      'current_page' => $page,
+      'per_page'     => $n
     );
   }
 

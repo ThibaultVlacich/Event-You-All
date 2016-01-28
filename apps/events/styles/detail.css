@@ -340,7 +340,7 @@ div.app-events-detail div.event-wrapper aside.event-column .rating a {
 div.app-events-detail div.event-wrapper aside.event-column .rating a:hover,
 div.app-events-detail div.event-wrapper aside.event-column .rating a:hover ~ a,
 div.app-events-detail div.event-wrapper aside.event-column .rating a:focus,
-div.app-events-detail div.event-wrapper aside.event-column .rating a:focus ~ a		{
+div.app-events-detail div.event-wrapper aside.event-column .rating a:focus ~ a {
   color: #CC0033;
   cursor: pointer;
 }
