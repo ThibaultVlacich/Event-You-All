@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/forum
  * @author Léo Plouvier <leo.plouvier@isep.fr>
- * @version 1.0.0-07-01-2015
+ * @version 1.1.0-07-01-2015
  */
 
 class ForumController extends Controller {

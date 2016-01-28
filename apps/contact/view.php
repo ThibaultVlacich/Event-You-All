@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/user
  * @author Alexandre Gay <alexandre.gay@isep.fr>
- * @version 1.0.0-31-12-2015
+ * @version 1.1.0-31-12-2015
  */
 
 class ContactView extends View {

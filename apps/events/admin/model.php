@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/events/admin
  * @author Louis Arbaretier
- * @version 1.0.0-14-01-2016
+ * @version 1.1.0-14-01-2016
  */
 
 require APPS_DIR.'events/model.php';

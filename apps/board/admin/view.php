@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/board/admin
  * @author Thibault Vlacich <thibault.vlacich@isep.fr>
- * @version 1.0.0-03-01-2016
+ * @version 1.1.0-03-01-2016
  */
 
 class BoardAdminView extends View {

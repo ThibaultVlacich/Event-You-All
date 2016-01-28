@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/about/admin
  * @author Louis
- * @version 1.0.0-13-12-2015
+ * @version 1.1.0-13-12-2015
  */
 
 class AboutAdminModel {

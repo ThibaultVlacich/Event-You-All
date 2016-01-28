@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/events/admin
  * @author Alexandre Gay <alexandre.gay@isep.fr>
- * @version 1.0.0-13-12-2015
+ * @version 1.1.0-13-12-2015
  */
 
 class FaqAdminModel {

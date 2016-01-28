@@ -5,7 +5,7 @@ defined('EUA_VERSION') or die('Access denied');
  *
  * @package apps/events
  * @author Louis Arbaretier <louis.arbaretier@isep.fr>
- * @version 1.0.0-11-12-2015
+ * @version 1.1.0-11-12-2015
  */
 
 class EventsModel {
