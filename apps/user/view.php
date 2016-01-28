@@ -62,5 +62,17 @@ class UserView extends View {
     $this->setTemplate('/apps/user/views/activate.php');
   }
 
+  public function profile() {
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/profile.css');
+
+    $this->setTemplate('/apps/user/views/profile.php');
+  }
+
+  public function contact() {
+    $this->assign('css',Config::get('config.base').'/apps/user/styles/contact.css');
+
+    $this->setTemplate('/apps/user/views/contact.php');
+  }
+
 }
 ?>

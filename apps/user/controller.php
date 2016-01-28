@@ -480,20 +480,19 @@ class UserController extends Controller {
 		return $data;
 	}
 
-public function mestopics(){
+	public function mestopics(){
+		$session = System::getSession();
 
-	$session = System::getSession();
+		if (!$session->isConnected()){
+			return;
+		}
 
-	if (!$session->isConnected()){
-		return;
+		$user_id = $_SESSION['userid'];
+
+		$data['topicscreation'] = $this->model->topicscreation($user_id);
+
+		return $data;
 	}
-
-	$user_id = $_SESSION['userid'];
-
-	$data['topicscreation'] = $this->model->topicscreation($user_id);
-
-	return $data;
-}
 
 	public function updatepassword(array $params){
 		$session = System::getSession();
@@ -532,6 +531,114 @@ public function mestopics(){
 			$data = array('success'=>false, 'error'=>$error);
 		}
 		return $data;
+	}
+
+	function profile(array $params) {
+		if(!isset($params[0])) {
+			return false;
+		}
+
+		$user_id = intval($params[0]);
+
+		if(!($user = $this->model->getUser($user_id))) {
+			return false;
+		}
+
+		// Check if user has an avatar
+		if(empty($user['photoprofil'])) {
+			$user['photoprofil'] = Config::get('config.base').'/apps/user/images/photoinconnu.png';
+		}
+
+		// Format register date of the user
+		$register_date_timestamp = strtotime($user['register_date']);
+		$user['register_date'] = strftime('%a %d %b %Y', $register_date_timestamp);
+
+		// Get the age of the user
+		if(!empty($user['birthdate']) && $user['birthdate'] != '0000-00-00') {
+			$birthdate = new DateTime($user['birthdate']);
+			$user['age'] = $birthdate->diff(new DateTime('now'))->y;
+		}
+
+		// Get the region of the user
+		if(!empty($user['id_region'])) {
+			$user['region'] = $this->model->getregionwithid($user['id_region']);
+		}
+
+		// Get events of the user (created/participated)
+		$eventscreated = $this->model->eventscreation($user_id);
+		foreach($eventscreated as $index => $value){
+			$eventscreated[$index]['type'] = $this->model->gettypewithid($eventscreated[$index]['id_type']);
+			$eventscreated[$index]['theme'] = $this->model->getthemewithid($eventscreated[$index]['id_theme']);
+		}
+
+		$dateactuelle = time();
+
+		$eventsinscrit = $this->model->geteventsinscritID($user_id);
+
+		$eventsfutur = array();
+		$eventspasse = array();
+
+		if(!empty($eventsinscrit)) {
+			foreach($eventsinscrit as $index => $value){
+				$dateevent = $this->model->geteventsinscritDate($value['id_evenement']);
+				if(strtotime($dateevent['date_debut']) > $dateactuelle){
+					$eventsfutur[$index] = $this->model->geteventsDetail($value['id_evenement']);
+					$eventsfutur[$index]['type'] = $this->model->gettypewithid($eventsfutur[$index]['id_type']);
+					$eventsfutur[$index]['theme'] = $this->model->getthemewithid($eventsfutur[$index]['id_theme']);
+				} else {
+					$eventspasse[$index] = $this->model->geteventsDetail($value['id_evenement']);
+					$eventspasse[$index]['type'] = $this->model->gettypewithid($eventspasse[$index]['id_type']);
+					$eventspasse[$index]['theme'] = $this->model->getthemewithid($eventspasse[$index]['id_theme']);
+				}
+			}
+		}
+
+		return array(
+			'user'          => $user,
+			'eventscreated' => $eventscreated,
+			'eventsfutur'   => $eventsfutur,
+			'eventspasse'   => $eventspasse
+		);
+	}
+
+	public function contact(array $params) {
+		if(isset($params[0])) {
+      $id_user = intval($params[0]);
+
+    	$user = $this->model->getUser($id_user);
+    } else {
+      return array('success' => false);
+    }
+
+    $message = Request::get('message');
+    $sujet = Request::get('subject');
+
+    $session = System::getSession();
+
+    if ($session->isConnected()) {
+      $expediteur_id = $_SESSION['userid'];
+    } else {
+      return array('data' => $data, 'not_register' => 'Vous n\'êtes pas connecté');
+    }
+
+    $expediteur = $this->model->getUser($expediteur_id);
+
+    $headers  = "From: " . strip_tags($expediteur['email']) . "\r\n";
+    $headers .= "Reply-To: ". strip_tags($expediteur['email']) . "\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+    if(!empty($message) && !empty($sujet)){
+      $html_message  = 'Bonjour <strong>'.$user['nickname'].'</strong>,<br><br>' . "\r\n";
+      $html_message .= 'Vous avez reçu un message de la part de <strong>'.$expediteur['nickname'].'</strong> sur <strong>Event-You-All</strong>.<br><br>' . "\r\n";
+      $html_message .= '<blockquote>'.$message.'</blockquote>';
+
+      mail($user['email'], $sujet, $html_message, $headers);
+
+      return array('user' => $user, 'success' => true);
+    } else {
+      return array('user' => $user, 'success' => '');
+    }
 	}
 }
 ?>

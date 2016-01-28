@@ -1,0 +1,233 @@
+/**
+ * App users : profile page
+ */
+
+div.app-user-profile {
+  font-size: 16px;
+}
+
+/**
+ * Profile wrapper
+ */
+
+div.app-user-profile div.profile-wrapper {
+  margin-top: 25px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+
+@media only screen and (max-width: 768px) {
+  div.app-user-profile div.profile-wrapper {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 15px;
+  }
+}
+div.app-user-profile div.profile-wrapper:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+div.app-user-profile div.profile-wrapper section {
+  background: white;
+  border: 1px solid #EAEAEA;
+  margin: 15px 0;
+  padding: 15px;
+}
+div.app-user-profile div.profile-wrapper section h2.title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #CC0033;
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+/**
+ * Left column
+ */
+
+div.app-user-profile div.profile-wrapper div.profile-main {
+  width: 66.66666667%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+
+@media only screen and (max-width: 768px) {
+  div.app-user-profile div.profile-wrapper div.profile-main {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/**
+ * Details of the event
+ */
+
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos:after {
+  display: table;
+  content: " ";
+  clear: both;
+}
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .avatar {
+  width: 33.33333333%;
+  float: left;
+}
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .avatar img {
+  width: 100%;
+}
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .details {
+  width: 66.66666667%;
+  padding: 0 15px;
+  float: left;
+}
+
+/* Extra small devices (phones, less than 768px) */
+
+@media only screen and (max-width: 768px) {
+  div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .avatar {
+    width: 100%;
+  }
+  div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .details {
+    width: 100%;
+    padding: 0;
+  }
+}
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .details h2.nom {
+  color: #CC0033;
+  font-weight: normal;
+  font-size: 36px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .details .fa-ul li {
+  margin-top: 5px;
+}
+div.app-user-profile div.profile-wrapper div.profile-main section.profile-detail-infos .details .fa-ul li .fa-li {
+  color: #CC0033;
+}
+
+section ul.events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+section ul.events:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+section ul.events li {
+  position: relative;
+  float: left;
+  margin: 10px 0;
+  padding: 0 10px;
+  width: 50%;
+  height: 200px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media only screen and (max-width: 768px) {
+  section ul.events li {
+    width: 100%;
+  }
+}
+
+section ul.events li:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+section ul.events li div.poster {
+  float: left;
+  width: 35%;
+  height: 200px;
+  overflow: hidden;
+}
+
+section ul.events li div.poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section ul.events li div.caption {
+  float: left;
+  width: 65%;
+  height: 200px;
+  padding: 10px;
+  background: #CC0033;
+  color: white;
+}
+
+section ul.events li div.caption span.theme {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  background-color: #880000;
+  color: white;
+  margin-right: 5px;
+}
+
+section ul.events li div.caption h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 18px;
+}
+
+section ul.events li div.caption h3 a {
+  color: white;
+}
+
+/**
+ * Right column
+ */
+
+div.app-user-profile div.profile-wrapper aside.profile-column {
+  width: 33.33333333%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+
+@media only screen and (max-width: 768px) {
+  div.app-user-profile div.profile-wrapper aside.profile-column {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+div.app-user-profile div.profile-wrapper aside.profile-column div.contact {
+  text-align: center;
+}
+div.app-user-profile div.profile-wrapper aside.profile-column div.contact a.button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #CC0033;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.15s;
+}
+div.app-user-profile div.profile-wrapper aside.profile-column div.contact a.button:hover {
+  background-color: #880000;
+  border-color: rgba(0, 0, 0, 0.5);
+}
