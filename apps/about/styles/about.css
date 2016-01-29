@@ -18,3 +18,7 @@ div.app-about h2.title {
 div.app-about div.text {
   margin: 15px;
 }
+
+div.app-about div.text img {
+  max-width: 100%;
+}

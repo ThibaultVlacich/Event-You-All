@@ -16,7 +16,7 @@
 <body>
   <div class="col-menu">
     <div class="top-logo">
-      <a href="<?php echo Config::get('config.base') ; ?>"><img src="<?php echo Config::get('config.base') ; ?>/templates/images/header/logo.png" alt="" /></a>
+      <a href="<?php echo Config::get('config.base'); ?>"><img src="<?php echo Config::get('config.base'); ?>/templates/images/header/logo.png" srcset="<?php echo Config::get('config.base'); ?>/templates/images/header/logo.png 1x, <?php echo Config::get('config.base'); ?>/templates/images/header/logo@2x.png 2x" alt="Event-You-All logo"></a>
     </div>
 
     <?php

@@ -23,7 +23,7 @@
           <a href="https://twitter.com/Event-You-All" target="_blank"><i class="fa fa-twitter-square"></i></a>
         </div>
         <a href="<?php echo Config::get('config.base'); ?>">
-          <img src="<?php echo Config::get('config.base') ;?>/templates/images/header/logo.png" alt="Event-You-All logo" class="logo">
+          <img src="<?php echo Config::get('config.base'); ?>/templates/images/header/logo.png" srcset="<?php echo Config::get('config.base'); ?>/templates/images/header/logo.png 1x, <?php echo Config::get('config.base'); ?>/templates/images/header/logo@2x.png 2x" alt="Event-You-All logo" class="logo">
         </a>
         <?php
           $session = System::getSession();
