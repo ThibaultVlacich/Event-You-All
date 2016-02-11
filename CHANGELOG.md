@@ -20,5 +20,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed a bug when deleting a user in the back-office
 - Fixed some typos the in update password form
 
-## [1.1.0] - 2016-01-17
+## [1.0.0] - 2016-01-17
 Initial release
