@@ -1,4 +1,4 @@
-![Logo Event-You-All](http://event-you-all.thibault.vlacich.fr/templates/images/header/logo.png)
+![Logo Event-You-All](/templates/images/header/logo.png)
 # Event-You-All
 
 This is the Event-You-All website source code.
